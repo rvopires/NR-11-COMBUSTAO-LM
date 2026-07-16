@@ -1,0 +1,722 @@
+[
+  {
+    "file": "pagina-1.mp3",
+    "text": "Módulo de Treinamento . Segurança Operacional NR 11 — Empilhadeira Elétrica Retrátil e Combustão Segurança, prevenção e operação correta na movimentação de materiais com NR 11 — Empilhadeira Elétrica Retrátil e Combustão. INICIAR O TREINAMENTO",
+    "slideId": "s1",
+    "globalN": 1,
+    "state": "main",
+    "sourceFile": "index.html"
+  },
+  {
+    "file": "pagina-2.mp3",
+    "text": "Apresentação Introdução a NR 11 — Empilhadeira Elétrica Retrátil e Combustão",
+    "slideId": "s1b",
+    "globalN": 2,
+    "state": "main",
+    "sourceFile": "index.html"
+  },
+  {
+    "file": "pagina-3.mp3",
+    "text": "Sumário Conteúdo Programático Módulo 1 Introdução e Legislação Módulo 2 Sistemas e Controles Módulo 3 Operação Segura Módulo 4 Procedimentos Operacionais Módulo 5 Armazenagem e Emergências Módulo 6 Encerramento",
+    "slideId": "s-sumario",
+    "globalN": 3,
+    "state": "main",
+    "sourceFile": "index.html"
+  },
+  {
+    "file": "pagina-4.mp3",
+    "text": "INÍCIO DO MÓDULO MÓDULO 1 Introdução e Legislação",
+    "slideId": "intro-m1",
+    "globalN": 4,
+    "state": "main",
+    "sourceFile": "modulo-1.html"
+  },
+  {
+    "file": "pagina-5.mp3",
+    "text": "Módulo 1 Objetivos do Treinamento Operação Segura Utilizar a empilhadeira corretamente e com segurança Prevenção de Riscos Garantir a segurança e prevenir acidentes no ambiente Normas e Leis Cumprir todas as exigências legais da NR-11 Objetivo Central Preservar a integridade física de todos os colaboradores",
+    "slideId": "s3",
+    "globalN": 5,
+    "state": "main",
+    "sourceFile": "modulo-1.html"
+  },
+  {
+    "file": "pagina-6.mp3",
+    "text": "Módulo 1 O que é a NR-11? Definição A NR-11 estabelece requisitos de segurança para as operações de transporte, movimentação, armazenagem e manuseio de materiais, com ênfase na operação de equipamentos como a NR 11 — Empilhadeira Elétrica Retrátil e Combustão. Transporte de Materiais Regras para movimentação segura de cargas no ambiente de trabalho Armazenagem Segura Normas para estocagem, organização e estabilidade de cargas Segurança Operacional Proteger o trabalhador durante todas as fases da operação logística",
+    "slideId": "s2",
+    "globalN": 6,
+    "state": "main",
+    "sourceFile": "modulo-1.html"
+  },
+  {
+    "file": "pagina-7.mp3",
+    "text": "Módulo 1 Requisitos Obrigatórios . NR-11",
+    "slideId": "s4",
+    "globalN": 7,
+    "state": "main",
+    "sourceFile": "modulo-1.html"
+  },
+  {
+    "file": "pagina-8.mp3",
+    "text": "Módulo 1 Cartão de Identificação A carteirinha pessoal, intransferível e deve permanecer visível em seu uniforme durante todo o expediente.",
+    "slideId": "s6",
+    "globalN": 8,
+    "state": "main",
+    "sourceFile": "modulo-1.html"
+  },
+  {
+    "file": "pagina-9.mp3",
+    "text": "Módulo 1 Validade da Autorização Toque nos cards para avançar Renovação Anual Toque para ver Renovação Anual A autorização deve ser renovada a cada 12 meses com reciclagem teórica, prática e exame médico atualizado. Exame Médico Periódico Toque para ver Exame Médico Periódico Avaliação de saúde obrigatória para confirmar aptidão física e mental do operador para continuar na função. Controle de Validade Toque para ver Controle de Validade A empresa é responsável por monitorar os vencimentos e notificar os operadores com antecedência mínima de 30 dias.",
+    "slideId": "s7",
+    "globalN": 9,
+    "state": "main",
+    "sourceFile": "modulo-1.html"
+  },
+  {
+    "file": "pagina-10-intro.mp3",
+    "text": "Hora do desafio. Quiz do Módulo 1. Mostre que você domina os principais procedimentos da operação segura. Esta avaliação contém cinco perguntas com mínimo de setenta por cento de acertos. Toque em Iniciar Desafio para começar.",
+    "slideId": "sq1",
+    "globalN": 10,
+    "state": "intro",
+    "sourceFile": "modulo-1.html"
+  },
+  {
+    "file": "pagina-10-q1.mp3",
+    "text": "Pergunta 1 de 5. O que a Norma Regulamentadora 11, NR 11, regulamenta? Opção A: Segurança elétrica industrial. Opção B: Ergonomia no trabalho. Opção C: Transporte, movimentação e armazenagem de materiais. Opção D: Saúde ocupacional geral.",
+    "slideId": "sq1",
+    "globalN": 10,
+    "state": "q1",
+    "sourceFile": "modulo-1.html"
+  },
+  {
+    "file": "pagina-10-q2.mp3",
+    "text": "Pergunta 2 de 5. Qual documento o operador de NR 11 — Empilhadeira Elétrica Retrátil e Combustão deve portar durante a operação? Opção A: Apenas o crachá da empresa. Opção B: Cartão de identificação de operador autorizado. Opção C: CNH, Carteira Nacional de Habilitação. Opção D: Diploma de conclusão de curso.",
+    "slideId": "sq1",
+    "globalN": 10,
+    "state": "q2",
+    "sourceFile": "modulo-1.html"
+  },
+  {
+    "file": "pagina-10-q3.mp3",
+    "text": "Pergunta 3 de 5. Com que frequência deve ser renovada a autorização do operador de empilhadeira? Opção A: A cada dois anos. Opção B: A cada cinco anos. Opção C: Apenas uma vez na carreira. Opção D: Anualmente, a cada doze meses.",
+    "slideId": "sq1",
+    "globalN": 10,
+    "state": "q3",
+    "sourceFile": "modulo-1.html"
+  },
+  {
+    "file": "pagina-10-q4.mp3",
+    "text": "Pergunta 4 de 5. Qual requisito é obrigatório antes de operar a NR 11 — Empilhadeira Elétrica Retrátil e Combustão? Opção A: Possuir autorização e treinamento. Opção B: Apenas conhecer o equipamento. Opção C: Trabalhar no estoque. Opção D: Ter experiência informal.",
+    "slideId": "sq1",
+    "globalN": 10,
+    "state": "q4",
+    "sourceFile": "modulo-1.html"
+  },
+  {
+    "file": "pagina-10-q5.mp3",
+    "text": "Pergunta 5 de 5. A reciclagem periódica do treinamento tem como objetivo: Opção A: Substituir o exame médico. Opção B: Aumentar velocidade da operação. Opção C: Atualizar conhecimentos de segurança. Opção D: Liberar operadores sem avaliação.",
+    "slideId": "sq1",
+    "globalN": 10,
+    "state": "q5",
+    "sourceFile": "modulo-1.html"
+  },
+  {
+    "file": "pagina-10-result.mp3",
+    "text": "Resultado do Quiz do Módulo 1. Veja sua pontuação na tela. Toque em Tentar Novamente para refazer ou siga para o próximo módulo.",
+    "slideId": "sq1",
+    "globalN": 10,
+    "state": "result",
+    "sourceFile": "modulo-1.html"
+  },
+  {
+    "file": "pagina-11.mp3",
+    "text": "INÍCIO DO MÓDULO MÓDULO 2 Riscos Operacionais e Conhecimento do Equipamento",
+    "slideId": "intro-m2",
+    "globalN": 11,
+    "state": "main",
+    "sourceFile": "modulo-2.html"
+  },
+  {
+    "file": "pagina-12.mp3",
+    "text": "Equipamento Conhecendo o Equipamento",
+    "slideId": "s-equipamento",
+    "globalN": 12,
+    "state": "main",
+    "sourceFile": "modulo-2.html"
+  },
+  {
+    "file": "pagina-13.mp3",
+    "text": "Módulo 2 Principais Aplicações do Equipamento Transporte de carga Movimentação horizontal de materiais Elevação Elevação segura para armazenagem. Operação logística Uso em corredores e áreas operacionais. Estoque Organização e armazenagem de materiais. Toque nos tópicos para visualizar",
+    "slideId": "s10",
+    "globalN": 13,
+    "state": "main",
+    "sourceFile": "modulo-2.html"
+  },
+  {
+    "file": "pagina-14.mp3",
+    "text": "Módulo 2 Conhecendo a NR 11 — Empilhadeira Elétrica Retrátil e Combustão 01 01 . Garfo e Torre de Elevação Toque para visualizar 01 Ampliar imagem Garfo e Torre de Elevação Responsáveis pela elevação e sustentação da carga de forma estável e segura. 02 02 . Timão Toque para visualizar 02 Ampliar imagem Timão Responsável pela direção, aceleração e frenagem do equipamento. 03 03 . Painel de Controle Toque para visualizar 03 Ampliar imagem Painel de Controle Contém os comandos de elevação, buzina e funções operacionais da empilhadeira. 04 04 . Patolas de Apoio Toque para visualizar 04 Ampliar imagem Patolas de Apoio Hastes inferiores que garantem o equilíbrio e a estabilidade do equipamento.",
+    "slideId": "s9",
+    "globalN": 14,
+    "state": "main",
+    "sourceFile": "modulo-2.html"
+  },
+  {
+    "file": "pagina-15.mp3",
+    "text": "Módulo 2 Tombamentos, Colisões e Riscos",
+    "slideId": "s8",
+    "globalN": 15,
+    "state": "main",
+    "sourceFile": "modulo-2.html"
+  },
+  {
+    "file": "pagina-16-intro.mp3",
+    "text": "Quiz do Módulo 2. Verdadeiro ou Falso. Teste seus conhecimentos sobre operação segura. Esta avaliação contém oito afirmações com mínimo de setenta por cento de acertos. Toque em Começar para iniciar.",
+    "slideId": "sq2",
+    "globalN": 16,
+    "state": "intro",
+    "sourceFile": "modulo-2.html"
+  },
+  {
+    "file": "pagina-16-q1.mp3",
+    "text": "Pergunta 1 de 8. Afirmação: A inspeção visual do equipamento deve ser realizada antes da operação. Responda verdadeiro ou falso.",
+    "slideId": "sq2",
+    "globalN": 16,
+    "state": "q1",
+    "sourceFile": "modulo-2.html"
+  },
+  {
+    "file": "pagina-16-q2.mp3",
+    "text": "Pergunta 2 de 8. Afirmação: Os garfos podem permanecer elevados durante o deslocamento. Responda verdadeiro ou falso.",
+    "slideId": "sq2",
+    "globalN": 16,
+    "state": "q2",
+    "sourceFile": "modulo-2.html"
+  },
+  {
+    "file": "pagina-16-q3.mp3",
+    "text": "Pergunta 3 de 8. Afirmação: O botão de buzina auxilia na prevenção de colisões. Responda verdadeiro ou falso.",
+    "slideId": "sq2",
+    "globalN": 16,
+    "state": "q3",
+    "sourceFile": "modulo-2.html"
+  },
+  {
+    "file": "pagina-16-q4.mp3",
+    "text": "Pergunta 4 de 8. Afirmação: O timão possui sistema de frenagem automática nas posições extremas. Responda verdadeiro ou falso.",
+    "slideId": "sq2",
+    "globalN": 16,
+    "state": "q4",
+    "sourceFile": "modulo-2.html"
+  },
+  {
+    "file": "pagina-16-q5.mp3",
+    "text": "Pergunta 5 de 8. Afirmação: Curvas em alta velocidade aumentam o risco de tombamento. Responda verdadeiro ou falso.",
+    "slideId": "sq2",
+    "globalN": 16,
+    "state": "q5",
+    "sourceFile": "modulo-2.html"
+  },
+  {
+    "file": "pagina-16-q6.mp3",
+    "text": "Pergunta 6 de 8. Afirmação: A NR 11 — Empilhadeira Elétrica Retrátil e Combustão é utilizada apenas para movimentação vertical. Responda verdadeiro ou falso.",
+    "slideId": "sq2",
+    "globalN": 16,
+    "state": "q6",
+    "sourceFile": "modulo-2.html"
+  },
+  {
+    "file": "pagina-16-q7.mp3",
+    "text": "Pergunta 7 de 8. Afirmação: A carga instável pode causar queda de materiais. Responda verdadeiro ou falso.",
+    "slideId": "sq2",
+    "globalN": 16,
+    "state": "q7",
+    "sourceFile": "modulo-2.html"
+  },
+  {
+    "file": "pagina-16-q8.mp3",
+    "text": "Pergunta 8 de 8. Afirmação: O operador pode utilizar o equipamento sem conhecer os comandos. Responda verdadeiro ou falso.",
+    "slideId": "sq2",
+    "globalN": 16,
+    "state": "q8",
+    "sourceFile": "modulo-2.html"
+  },
+  {
+    "file": "pagina-16-result.mp3",
+    "text": "Resultado do Quiz do Módulo 2. Veja sua pontuação na tela. Toque em Tentar Novamente para refazer ou siga para o próximo módulo.",
+    "slideId": "sq2",
+    "globalN": 16,
+    "state": "result",
+    "sourceFile": "modulo-2.html"
+  },
+  {
+    "file": "pagina-17.mp3",
+    "text": "INÍCIO DO MÓDULO MÓDULO 3 Bateria e Operação Segura",
+    "slideId": "intro-m3",
+    "globalN": 17,
+    "state": "main",
+    "sourceFile": "modulo-3.html"
+  },
+  {
+    "file": "pagina-18.mp3",
+    "text": "Módulo 3 Condução Segura",
+    "slideId": "s-bateria",
+    "globalN": 18,
+    "state": "main",
+    "sourceFile": "modulo-3.html"
+  },
+  {
+    "file": "pagina-19-q1.mp3",
+    "text": "Decisões seguras na operação. Ação 1 de 6. Avalie a seguinte ação: Usar celular durante a operação. Essa ação é permitida ou não permitida?",
+    "slideId": "s-conducao",
+    "globalN": 19,
+    "state": "q1",
+    "sourceFile": "modulo-3.html"
+  },
+  {
+    "file": "pagina-19-q2.mp3",
+    "text": "Ação 2 de 6. Avalie a seguinte ação: Reduzir velocidade em curvas. Essa ação é permitida ou não permitida?",
+    "slideId": "s-conducao",
+    "globalN": 19,
+    "state": "q2",
+    "sourceFile": "modulo-3.html"
+  },
+  {
+    "file": "pagina-19-q3.mp3",
+    "text": "Ação 3 de 6. Avalie a seguinte ação: Transportar pessoas no equipamento. Essa ação é permitida ou não permitida?",
+    "slideId": "s-conducao",
+    "globalN": 19,
+    "state": "q3",
+    "sourceFile": "modulo-3.html"
+  },
+  {
+    "file": "pagina-19-q4.mp3",
+    "text": "Ação 4 de 6. Avalie a seguinte ação: Utilizar buzina em cruzamentos. Essa ação é permitida ou não permitida?",
+    "slideId": "s-conducao",
+    "globalN": 19,
+    "state": "q4",
+    "sourceFile": "modulo-3.html"
+  },
+  {
+    "file": "pagina-19-q5.mp3",
+    "text": "Ação 5 de 6. Avalie a seguinte ação: Circular com carga elevada. Essa ação é permitida ou não permitida?",
+    "slideId": "s-conducao",
+    "globalN": 19,
+    "state": "q5",
+    "sourceFile": "modulo-3.html"
+  },
+  {
+    "file": "pagina-19-q6.mp3",
+    "text": "Ação 6 de 6. Avalie a seguinte ação: Olhar sempre na direção do movimento. Essa ação é permitida ou não permitida?",
+    "slideId": "s-conducao",
+    "globalN": 19,
+    "state": "q6",
+    "sourceFile": "modulo-3.html"
+  },
+  {
+    "file": "pagina-19-result.mp3",
+    "text": "Decisões seguras concluídas. Você avaliou corretamente as seis ações de condução segura.",
+    "slideId": "s-conducao",
+    "globalN": 19,
+    "state": "result",
+    "sourceFile": "modulo-3.html"
+  },
+  {
+    "file": "pagina-20.mp3",
+    "text": "MÓDULO 3 Troca de Bateria",
+    "slideId": "s-rampas",
+    "globalN": 20,
+    "state": "main",
+    "sourceFile": "modulo-3.html"
+  },
+  {
+    "file": "pagina-21.mp3",
+    "text": "MÓDULO 3 Prevenções para Operação",
+    "slideId": "s-bateria-troca",
+    "globalN": 21,
+    "state": "main",
+    "sourceFile": "modulo-3.html"
+  },
+  {
+    "file": "pagina-22-intro.mp3",
+    "text": "Quiz do Módulo 3. Decisões na Operação. Teste seus conhecimentos sobre situações reais de operação. Esta avaliação contém cinco perguntas com mínimo de sessenta por cento de acertos. Toque em Iniciar para começar.",
+    "slideId": "s-quiz3",
+    "globalN": 22,
+    "state": "intro",
+    "sourceFile": "modulo-3.html"
+  },
+  {
+    "file": "pagina-22-q1.mp3",
+    "text": "Pergunta 1 de 5. Atenção. A bateria atingiu vinte por cento durante a operação. O que o operador deve fazer? Opção A: Solicitar troca segura da bateria. Opção B: Continuar operando até descarregar completamente. Opção C: Aumentar velocidade para finalizar mais rápido. Opção D: Ignorar o nível de carga.",
+    "slideId": "s-quiz3",
+    "globalN": 22,
+    "state": "q1",
+    "sourceFile": "modulo-3.html"
+  },
+  {
+    "file": "pagina-22-q2.mp3",
+    "text": "Pergunta 2 de 5. Crítico. A troca da bateria será realizada. Qual procedimento é obrigatório? Opção A: Remover rapidamente sem desligar. Opção B: Realizar sozinho para agilizar. Opção C: Utilizar EPIs e apoio adequado. Opção D: Desconectar apenas após remover.",
+    "slideId": "s-quiz3",
+    "globalN": 22,
+    "state": "q2",
+    "sourceFile": "modulo-3.html"
+  },
+  {
+    "file": "pagina-22-q3.mp3",
+    "text": "Pergunta 3 de 5. Seguro. O operador está transportando um palete. Qual a altura correta da carga? Opção A: Encostada no chão. Opção B: Acima da linha de visão. Opção C: O mais alto possível. Opção D: De quinze a vinte centímetros do solo.",
+    "slideId": "s-quiz3",
+    "globalN": 22,
+    "state": "q3",
+    "sourceFile": "modulo-3.html"
+  },
+  {
+    "file": "pagina-22-q4.mp3",
+    "text": "Pergunta 4 de 5. Atenção. O operador se aproxima de um cruzamento. O que deve ser feito? Opção A: Acelerar para passar rápido. Opção B: Usar buzina e reduzir velocidade. Opção C: Levantar a carga. Opção D: Ignorar pedestres.",
+    "slideId": "s-quiz3",
+    "globalN": 22,
+    "state": "q4",
+    "sourceFile": "modulo-3.html"
+  },
+  {
+    "file": "pagina-22-q5.mp3",
+    "text": "Pergunta 5 de 5. Crítico. Outro funcionário pede carona no equipamento. Qual a atitude correta? Opção A: Negar e seguir normas de segurança. Opção B: Transportar em baixa velocidade. Opção C: Permitir se for rápido. Opção D: Permitir apenas sem carga.",
+    "slideId": "s-quiz3",
+    "globalN": 22,
+    "state": "q5",
+    "sourceFile": "modulo-3.html"
+  },
+  {
+    "file": "pagina-22-result.mp3",
+    "text": "Resultado do Quiz do Módulo 3. Veja sua pontuação na tela. Toque em Tentar Novamente para refazer ou siga para o próximo módulo.",
+    "slideId": "s-quiz3",
+    "globalN": 22,
+    "state": "result",
+    "sourceFile": "modulo-3.html"
+  },
+  {
+    "file": "pagina-23.mp3",
+    "text": "INÍCIO DO MÓDULO MÓDULO 4 Procedimentos Operacionais e Segurança",
+    "slideId": "s-mod4-intro",
+    "globalN": 23,
+    "state": "main",
+    "sourceFile": "modulo-4.html"
+  },
+  {
+    "file": "pagina-24.mp3",
+    "text": "MÓDULO 4 Inspeção inicial do Equipamento",
+    "slideId": "s-mod4-video",
+    "globalN": 24,
+    "state": "main",
+    "sourceFile": "modulo-4.html"
+  },
+  {
+    "file": "pagina-25.mp3",
+    "text": "MÓDULO 4 Locomoção Segura",
+    "slideId": "s-mod4-inspecao",
+    "globalN": 25,
+    "state": "main",
+    "sourceFile": "modulo-4.html"
+  },
+  {
+    "file": "pagina-26.mp3",
+    "text": "MÓDULO 4 Passo a Passo Operacional Clique nos passos para visualizar as instruções 1 Inspecionar o equipamento Verifique rodas, garfos, bateria e itens de segurança. 2 Verificar o trajeto Certifique-se de que o trajeto está livre. 3 Sinalizar a movimentação Utilize buzina e sinalização antes da movimentação. 4 Iniciar a operação Inicie a operação com velocidade segura.",
+    "slideId": "s-mod4-video-finalizacao",
+    "globalN": 26,
+    "state": "main",
+    "sourceFile": "modulo-4.html"
+  },
+  {
+    "file": "pagina-27-intro.mp3",
+    "text": "Quiz do Módulo 4. Decisão Rápida. Simule situações operacionais e tome a decisão correta. Esta avaliação contém cinco situações com mínimo de sessenta por cento de acertos. Toque em Iniciar para começar.",
+    "slideId": "s-quiz4",
+    "globalN": 27,
+    "state": "intro",
+    "sourceFile": "modulo-4.html"
+  },
+  {
+    "file": "pagina-27-q1.mp3",
+    "text": "Situação 1 de 5. A carga começou a inclinar durante o deslocamento. Opção A: Parar e reposicionar. Opção B: Continuar a operação.",
+    "slideId": "s-quiz4",
+    "globalN": 27,
+    "state": "q1",
+    "sourceFile": "modulo-4.html"
+  },
+  {
+    "file": "pagina-27-q2.mp3",
+    "text": "Situação 2 de 5. O trajeto possui pessoas circulando próximas. Opção A: Manter velocidade. Opção B: Reduzir e sinalizar.",
+    "slideId": "s-quiz4",
+    "globalN": 27,
+    "state": "q2",
+    "sourceFile": "modulo-4.html"
+  },
+  {
+    "file": "pagina-27-q3.mp3",
+    "text": "Situação 3 de 5. Sua visão frontal foi totalmente bloqueada pela carga alta. Opção A: Conduzir de ré. Opção B: Tentar olhar por cima.",
+    "slideId": "s-quiz4",
+    "globalN": 27,
+    "state": "q3",
+    "sourceFile": "modulo-4.html"
+  },
+  {
+    "file": "pagina-27-q4.mp3",
+    "text": "Situação 4 de 5. Você finalizou o turno e precisa estacionar o equipamento. Opção A: Baixar os garfos ao chão. Opção B: Deixar os garfos elevados.",
+    "slideId": "s-quiz4",
+    "globalN": 27,
+    "state": "q4",
+    "sourceFile": "modulo-4.html"
+  },
+  {
+    "file": "pagina-27-q5.mp3",
+    "text": "Situação 5 de 5. Durante o deslocamento, você precisa passar por uma rampa. Opção A: Subir de frente e descer de ré. Opção B: Subir e descer de frente.",
+    "slideId": "s-quiz4",
+    "globalN": 27,
+    "state": "q5",
+    "sourceFile": "modulo-4.html"
+  },
+  {
+    "file": "pagina-27-result.mp3",
+    "text": "Resultado do Quiz do Módulo 4. Veja sua pontuação na tela. Toque em Tentar Novamente para refazer ou siga para o próximo módulo.",
+    "slideId": "s-quiz4",
+    "globalN": 27,
+    "state": "result",
+    "sourceFile": "modulo-4.html"
+  },
+  {
+    "file": "pagina-28.mp3",
+    "text": "INÍCIO DO MÓDULO MÓDULO 5 Armazenagem e Emergências",
+    "slideId": "s-mod5-intro",
+    "globalN": 28,
+    "state": "main",
+    "sourceFile": "modulo-5.html"
+  },
+  {
+    "file": "pagina-29.mp3",
+    "text": "MÓDULO 5 Armazenagem Segura",
+    "slideId": "s-mod5-video1",
+    "globalN": 29,
+    "state": "main",
+    "sourceFile": "modulo-5.html"
+  },
+  {
+    "file": "pagina-30.mp3",
+    "text": "MÓDULO 5 Controle de Armazenagem Clique nos cards para avançar INCORRETO . Carga desalinhada . Corredor bloqueado . Armazenagem desorganizada CORRETO . Carga alinhada . Corredor livre . Armazenagem organizada",
+    "slideId": "s-mod5-comp1",
+    "globalN": 30,
+    "state": "main",
+    "sourceFile": "modulo-5.html"
+  },
+  {
+    "file": "pagina-31.mp3",
+    "text": "MÓDULO 5 Gravidade e Visibilidade",
+    "slideId": "s-mod5-video2",
+    "globalN": 31,
+    "state": "main",
+    "sourceFile": "modulo-5.html"
+  },
+  {
+    "file": "pagina-32.mp3",
+    "text": "MÓDULO 5 Precisão",
+    "slideId": "s-mod5-distancia",
+    "globalN": 32,
+    "state": "main",
+    "sourceFile": "modulo-5.html"
+  },
+  {
+    "file": "pagina-33.mp3",
+    "text": "MÓDULO 5 Risco de Incêndio",
+    "slideId": "s-mod5-video3",
+    "globalN": 33,
+    "state": "main",
+    "sourceFile": "modulo-5.html"
+  },
+  {
+    "file": "pagina-34.mp3",
+    "text": "MÓDULO 5 Situações de Emergência Toque nos cards para avançar 01 Incêndio Toque para ver 01 Incêndio Parar a operação, afastar pessoas e acionar a brigada de emergência. 02 Vazamento Toque para ver 02 Vazamento Isolar a área e comunicar imediatamente a supervisão responsável. 03 Tombamento Toque para ver 03 Tombamento Não tentar estabilizar manualmente o equipamento e manter distância segura. 04 Queda de carga Toque para ver 04 Queda de carga Interromper a operação e sinalizar a área imediatamente.",
+    "slideId": "s-mod5-flip",
+    "globalN": 34,
+    "state": "main",
+    "sourceFile": "modulo-5.html"
+  },
+  {
+    "file": "pagina-35.mp3",
+    "text": "MÓDULO 5 Equipamentos de Proteção Individual Toque nos blocos para visualizar e confirmar os itens 01 Botina Proteção dos pés OBRIGATÓRIO Ampliar 02 Luvas Proteção das mãos OBRIGATÓRIO Ampliar 03 Capacete Proteção da cabeça OBRIGATÓRIO Ampliar",
+    "slideId": "s-mod5-epi",
+    "globalN": 35,
+    "state": "main",
+    "sourceFile": "modulo-5.html"
+  },
+  {
+    "file": "pagina-36-intro.mp3",
+    "text": "Quiz do Módulo 5. Simulação Operacional. Avalie cenários de movimentação, armazenagem e emergências. Esta avaliação contém cinco situações com mínimo de setenta por cento de acertos. Toque em Iniciar para começar.",
+    "slideId": "s-quiz5",
+    "globalN": 36,
+    "state": "intro",
+    "sourceFile": "modulo-5.html"
+  },
+  {
+    "file": "pagina-36-q1.mp3",
+    "text": "Pergunta 1 de 5. Corredor Obstruído. O operador encontrou um corredor parcialmente bloqueado durante a movimentação da carga. Qual deve ser o procedimento correto? Opção A: Continuar normalmente. Opção B: Sinalizar e liberar o corredor antes da operação. Opção C: Passar rapidamente pelo bloqueio. Opção D: Ignorar o obstáculo.",
+    "slideId": "s-quiz5",
+    "globalN": 36,
+    "state": "q1",
+    "sourceFile": "modulo-5.html"
+  },
+  {
+    "file": "pagina-36-q2.mp3",
+    "text": "Pergunta 2 de 5. Carga Elevada. A carga está sendo transportada acima da altura recomendada. Qual é o principal risco desta operação? Opção A: Melhor visibilidade. Opção B: Maior estabilidade. Opção C: Maior velocidade. Opção D: Comprometimento da visibilidade e risco de colisão.",
+    "slideId": "s-quiz5",
+    "globalN": 36,
+    "state": "q2",
+    "sourceFile": "modulo-5.html"
+  },
+  {
+    "file": "pagina-36-q3.mp3",
+    "text": "Pergunta 3 de 5. EPI Ausente. O operador iniciou a movimentação sem todos os EPIs obrigatórios. Qual procedimento está correto? Opção A: Interromper a operação até regularizar os EPIs. Opção B: Operar apenas em áreas vazias. Opção C: Continuar se a operação for rápida. Opção D: Solicitar ajuda apenas em caso de risco.",
+    "slideId": "s-quiz5",
+    "globalN": 36,
+    "state": "q3",
+    "sourceFile": "modulo-5.html"
+  },
+  {
+    "file": "pagina-36-q4.mp3",
+    "text": "Pergunta 4 de 5. Emergência Operacional. Foi identificado um princípio de incêndio próximo à área de movimentação. Qual deve ser a primeira ação? Opção A: Continuar a operação. Opção B: Improvisar sozinho o combate. Opção C: Parar a operação e afastar as pessoas. Opção D: Mover a carga rapidamente.",
+    "slideId": "s-quiz5",
+    "globalN": 36,
+    "state": "q4",
+    "sourceFile": "modulo-5.html"
+  },
+  {
+    "file": "pagina-36-q5.mp3",
+    "text": "Pergunta 5 de 5. Distanciamento Seguro. Durante a movimentação, o operador reduziu excessivamente a distância da estrutura lateral. Qual distância mínima deve ser mantida? Opção A: Vinte centímetros. Opção B: Cinquenta centímetros. Opção C: Trinta centímetros. Opção D: Não existe distância mínima.",
+    "slideId": "s-quiz5",
+    "globalN": 36,
+    "state": "q5",
+    "sourceFile": "modulo-5.html"
+  },
+  {
+    "file": "pagina-36-result.mp3",
+    "text": "Resultado do Quiz do Módulo 5. Veja sua pontuação na tela. Toque em Tentar Novamente para refazer ou siga para o próximo módulo.",
+    "slideId": "s-quiz5",
+    "globalN": 36,
+    "state": "result",
+    "sourceFile": "modulo-5.html"
+  },
+  {
+    "file": "pagina-37.mp3",
+    "text": "ENCERRAMENTO MÓDULO 6 Reforçando o compromisso com a Segurança Operacional",
+    "slideId": "s-mod6-intro",
+    "globalN": 37,
+    "state": "main",
+    "sourceFile": "modulo-6.html"
+  },
+  {
+    "file": "pagina-38.mp3",
+    "text": "MÓDULO 6 Recapitulação",
+    "slideId": "s-mod6-video-encerramento",
+    "globalN": 38,
+    "state": "main",
+    "sourceFile": "modulo-6.html"
+  },
+  {
+    "file": "pagina-39.mp3",
+    "text": "MÓDULO 6 Compromissos Operacionais Toque nos painéis para confirmar os compromissos operacionais 0/4 compromissos confirmados Compromissos operacionais confirmados 01 Segurança Cumprir procedimentos reduz riscos operacionais. 02 Responsabilidade Cada operador é responsável por uma operação segura. 03 Prevenção Atitudes preventivas ajudam a evitar acidentes. 04 Atenção Operacional Manter foco total durante a movimentação é essencial.",
+    "slideId": "s-mod6-compromissos",
+    "globalN": 39,
+    "state": "main",
+    "sourceFile": "modulo-6.html"
+  },
+  {
+    "file": "pagina-40.mp3",
+    "text": "MÓDULO 6 Atitudes Preventivas Salvam Vidas Toque nas imagens para comparar os comportamentos Veja os dois lados para avançar Análise concluída INCORRETO . Operador sem atenção . Comportamento inseguro . Postura inadequada CORRETO . Operador focado . Postura correta . Operação segura",
+    "slideId": "s-mod6-comp-preventiva",
+    "globalN": 40,
+    "state": "main",
+    "sourceFile": "modulo-6.html"
+  },
+  {
+    "file": "pagina-41.mp3",
+    "text": "MÓDULO 6 A SEGURANÇA É DIREITO E DEVER DE TODOS Operar com responsabilidade protege vidas, equipamentos e toda a operação.",
+    "slideId": "s-mod6-mensagem-final",
+    "globalN": 41,
+    "state": "main",
+    "sourceFile": "modulo-6.html"
+  },
+  {
+    "file": "pagina-42.mp3",
+    "text": "MÓDULO 6 Encerramento",
+    "slideId": "s-mod6-video-mensagem-final",
+    "globalN": 42,
+    "state": "main",
+    "sourceFile": "modulo-6.html"
+  },
+  {
+    "file": "pagina-43.mp3",
+    "text": "MÓDULO 6 Mensagem final",
+    "slideId": "s-mod6-video-final",
+    "globalN": 43,
+    "state": "main",
+    "sourceFile": "modulo-6.html"
+  },
+  {
+    "file": "pagina-44-intro.mp3",
+    "text": "Quiz Final. Validação Operacional. Analise cada cenário e decida se a operação deve ser liberada ou não liberada. Esta avaliação contém cinco análises com mínimo de sessenta por cento de acertos. Toque em Iniciar para começar.",
+    "slideId": "s-quiz6",
+    "globalN": 44,
+    "state": "intro",
+    "sourceFile": "modulo-6.html"
+  },
+  {
+    "file": "pagina-44-q1.mp3",
+    "text": "Análise 1 de 5. Verificação do Trajeto. O operador irá iniciar a movimentação sem verificar o corredor operacional. Você deve liberar ou não liberar?",
+    "slideId": "s-quiz6",
+    "globalN": 44,
+    "state": "q1",
+    "sourceFile": "modulo-6.html"
+  },
+  {
+    "file": "pagina-44-q2.mp3",
+    "text": "Análise 2 de 5. Altura da Carga. A carga está posicionada corretamente para movimentação segura. Você deve liberar ou não liberar?",
+    "slideId": "s-quiz6",
+    "globalN": 44,
+    "state": "q2",
+    "sourceFile": "modulo-6.html"
+  },
+  {
+    "file": "pagina-44-q3.mp3",
+    "text": "Análise 3 de 5. Distração Operacional. O operador utiliza celular durante a movimentação da carga. Você deve liberar ou não liberar?",
+    "slideId": "s-quiz6",
+    "globalN": 44,
+    "state": "q3",
+    "sourceFile": "modulo-6.html"
+  },
+  {
+    "file": "pagina-44-q4.mp3",
+    "text": "Análise 4 de 5. Proteção Operacional. O operador iniciou a operação utilizando os EPIs obrigatórios. Você deve liberar ou não liberar?",
+    "slideId": "s-quiz6",
+    "globalN": 44,
+    "state": "q4",
+    "sourceFile": "modulo-6.html"
+  },
+  {
+    "file": "pagina-44-q5.mp3",
+    "text": "Análise 5 de 5. Finalização Segura. O equipamento foi estacionado corretamente ao final da operação. Você deve liberar ou não liberar?",
+    "slideId": "s-quiz6",
+    "globalN": 44,
+    "state": "q5",
+    "sourceFile": "modulo-6.html"
+  },
+  {
+    "file": "pagina-44-result.mp3",
+    "text": "Resultado da Validação Operacional. Veja sua pontuação na tela. Caso aprovado, toque em Finalizar Treinamento. Caso contrário, refaça a validação.",
+    "slideId": "s-quiz6",
+    "globalN": 44,
+    "state": "result",
+    "sourceFile": "modulo-6.html"
+  },
+  {
+    "file": "pagina-45.mp3",
+    "text": "TREINAMENTO CONCLUÍDO Você completou com sucesso a capacitação em NR 11 — Empilhadeira Elétrica Retrátil e Combustão. Sua dedicação aos procedimentos de segurança é fundamental. A excelência operacional protege vidas e garante um ambiente de trabalho seguro.",
+    "slideId": "s-conclusion",
+    "globalN": 45,
+    "state": "main",
+    "sourceFile": "modulo-6.html"
+  }
+]

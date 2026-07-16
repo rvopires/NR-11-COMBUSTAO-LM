@@ -1,0 +1,1047 @@
+﻿<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="referrer" content="no-referrer">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <title>Módulo 1 - Introdução e Legislação</title>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;900&family=Open+Sans:wght@400;600&display=swap"
+        rel="stylesheet">
+    <script src="https://player.vimeo.com/api/player.js"></script>
+    <link rel="stylesheet" href="shared.css?v=3">
+    <script>
+        window.MODULE_NAV = {
+            id: "modulo-1",
+            prev: "index.html",
+            next: "modulo-2.html",
+            label: "Módulo 1 - Introdução e Legislação"
+        };
+    </script>
+</head>
+<body>
+
+    <button id="btn-demo" type="button" onclick="toggleDemoMode()" title="Modo Simulação" aria-label="Modo simulação">SIMULAÇÃO</button>
+    <div id="demo-indicator"
+        style="position: fixed; top: 15px; right: 15px; z-index: 9999; background: var(--gold); color: var(--black); padding: 5px 15px; font-size: 12px; font-weight: bold; font-family: var(--font-h); border-radius: 99px; box-shadow: 0 0 15px rgba(241,196,15,0.5); opacity: 0; pointer-events: none; transition: all 0.3s; transform: translateY(-20px);">
+        Modo Simulação Ativado</div>
+
+    <div id="app">
+
+        <div id="pbar-wrap">
+            <div id="pbar" style="width:2.56%"></div>
+        </div>
+
+        <div id="slide-counter"></div>
+
+        <div id="logo">
+            <img src="https://i.imgur.com/c1m4CIy.png" alt="Tecno-Cursos"
+                onerror="this.onerror=null;this.src='https://imgur.com/c1m4CIy.png'">
+        </div>
+
+        <div id="slides">
+            <div class="slide active" id="s4">
+                <div class="mod-intro">
+                    <div class="mod-intro-pill">INÍCIO</div>
+                    <div class="mod-intro-num">MÓDULO 1</div>
+                    <div class="mod-intro-title">Introdução e Legislação</div>
+                </div>
+                <div class="wave"><svg viewBox="0 0 1440 100" preserveAspectRatio="none">
+                        <path d="M0,50 C480,10 960,85 1440,30 L1440,100 L0,100 Z" fill="rgba(230,81,0,0.07)" />
+                    </svg></div>
+            </div>
+
+            <div class="slide" id="s5">
+                <style>
+                    #s5 .icon-card {
+                        border: 1px solid rgba(230, 81, 0, 0.2);
+                        box-shadow: 0 0 18px rgba(230, 81, 0, 0.08);
+                        transition: all 0.35s cubic-bezier(0.18, 1, 0.26, 1);
+                        background: linear-gradient(145deg, rgba(25, 12, 5, 0.95), rgba(15, 8, 3, 0.98));
+                        position: relative;
+                    }
+                    #s5 .icon-card:hover {
+                        border-color: rgba(230, 81, 0, 0.5) !important;
+                        box-shadow: 0 8px 32px rgba(230, 81, 0, 0.25), 0 0 0 1px rgba(230, 81, 0, 0.15) !important;
+                        transform: translateY(-4px) scale(1.02);
+                    }
+                    #s5 .ic-circle {
+                        background: rgba(230, 81, 0, 0.12);
+                        border: 1px solid rgba(230, 81, 0, 0.3);
+                        box-shadow: 0 0 12px rgba(230, 81, 0, 0.2);
+                    }
+                    @media (max-width: 768px) {
+                        #s5 .grid-2x2 {
+                            grid-template-columns: 1fr 1fr !important;
+                            gap: 8px !important;
+                            width: 100% !important;
+                            overflow-y: auto !important;
+                        }
+                        #s5 .icon-card {
+                            padding: 14px 10px !important;
+                            min-width: 0 !important;
+                        }
+                        #s5 .ic-circle {
+                            width: 38px !important;
+                            height: 38px !important;
+                            font-size: 22px !important;
+                            margin: 0 auto 6px !important;
+                        }
+                        #s5 .ic-text h4 {
+                            font-size: 12px !important;
+                            line-height: 1.3 !important;
+                            margin-bottom: 4px !important;
+                        }
+                        #s5 .ic-text p {
+                            font-size: 11px !important;
+                            line-height: 1.4 !important;
+                            color: rgba(255,244,232,0.6) !important;
+                        }
+                        #s5 .slide-title {
+                            font-size: 22px !important;
+                        }
+                    }
+                    @media (max-width: 768px) {
+                        #s5 .grid-2x2 { display:none !important; }
+                        #s5 .s5-mobile { display:flex !important; }
+                        #s5 .content-area { overflow-y:auto !important; padding:12px !important; justify-content:flex-start !important; }
+                        #s5 .slide-title { font-size:22px !important; }
+                    }
+                    @media (min-width: 769px) {
+                        #s5 .s5-mobile { display:none !important; }
+                    }
+                </style>
+                <div class="top-bar">
+                    <div class="section-tag"
+                        style="background: var(--red); color: var(--black); font-size: 16px; padding: 6px 16px; font-weight: 800; box-shadow: 0 0 12px rgba(230, 81, 0, 0.4);">
+                        Módulo 1</div>
+                    <h2 class="slide-title"
+                        style="font-size: clamp(28px, 4vw, 42px); letter-spacing: -0.01em; text-shadow: 0 0 15px rgba(230, 81, 0, 0.4);">
+                        Objetivos do <span>Treinamento</span></h2>
+
+                </div>
+                <div class="content-area">
+                    <!-- MOBILE ONLY s5 -->
+                    <div class="s5-mobile" style="display:none;flex-direction:column;align-items:center;gap:12px;width:100%;max-width:380px;margin:0 auto;">
+
+                        <!-- Contador -->
+                        <div id="s5-counter" style="font-family:var(--font-h);font-size:11px;font-weight:800;letter-spacing:3px;color:rgba(230,81,0,0.8);">OBJETIVO 1 DE 4</div>
+
+                        <!-- Dots -->
+                        <div id="s5-dots" style="display:flex;gap:8px;justify-content:center;"></div>
+
+                        <!-- Card -->
+                        <div id="s5-card" style="width:100%;border-radius:16px;padding:32px 20px;background:linear-gradient(145deg,rgba(25,12,5,0.97),rgba(15,8,3,0.99));border:1px solid rgba(230,81,0,0.25);box-shadow:0 0 24px rgba(230,81,0,0.1);text-align:center;display:flex;flex-direction:column;align-items:center;gap:14px;transition:opacity 0.3s ease,transform 0.3s ease;">
+                            <div id="s5-icon" style="font-size:52px;filter:drop-shadow(0 0 14px rgba(230,81,0,0.5));"></div>
+                            <div id="s5-title" style="font-family:var(--font-h);font-size:18px;font-weight:900;color:rgba(230,81,0,1);letter-spacing:1px;line-height:1.2;"></div>
+                            <div style="width:36px;height:2px;background:rgba(230,81,0,0.5);border-radius:2px;"></div>
+                            <div id="s5-desc" style="font-size:13px;color:rgba(255,244,232,0.75);line-height:1.6;"></div>
+                        </div>
+
+                        <!-- Tela final -->
+                        <div id="s5-done" style="display:none;width:100%;border-radius:16px;padding:28px 20px;background:linear-gradient(145deg,rgba(5,25,12,0.97),rgba(3,15,8,0.99));border:1px solid rgba(46,204,113,0.3);text-align:center;flex-direction:column;align-items:center;gap:12px;">
+                            <div style="font-size:40px;">✅</div>
+                            <div style="font-family:var(--font-h);font-size:15px;font-weight:800;color:rgba(46,204,113,1);letter-spacing:2px;">OBJETIVOS APRESENTADOS</div>
+                            <div style="font-size:12px;color:rgba(255,244,232,0.6);line-height:1.6;">Agora você conhecerá os fundamentos necessários para uma operação segura e responsável.</div>
+                        </div>
+
+                        <!-- Botão -->
+                        <button id="s5-next-btn" onclick="s5Next()" style="width:100%;padding:14px;border-radius:12px;background:rgba(230,81,0,1);border:none;color:#FFF4E8;font-family:var(--font-h);font-size:13px;font-weight:800;letter-spacing:1px;cursor:pointer;box-shadow:0 0 16px rgba(230,81,0,0.3);transition:all 0.3s;">PRÓXIMO OBJETIVO →</button>
+
+                        <div id="s5-mobile-tracker" class="req-item" style="display:none;"></div>
+                    </div>
+                    <div class="grid-2x2">
+                        <div class="icon-card"
+                            style="flex-direction:column; align-items:center; text-align:center; padding: 24px;">
+                            <div class="ic-circle" style="width:56px; height:56px; font-size: 37px;">⚙️</div>
+                            <div class="ic-text" style="margin-top:8px;">
+                                <h4>Operação Segura</h4>
+                                <p>Desenvolver uma condução correta, estável e segura da empilhadeira.</p>
+                            </div>
+                        </div>
+                        <div class="icon-card"
+                            style="flex-direction:column; align-items:center; text-align:center; padding: 24px;">
+                            <div class="ic-circle" style="width:56px; height:56px; font-size: 32px; display:flex; align-items:center; justify-content:center; line-height:1;">🛡️</div>
+                            <div class="ic-text" style="margin-top:8px;">
+                                <h4>Prevenção de Riscos</h4>
+                                <p>Reduzir falhas operacionais, colisões e situações inseguras.</p>
+                            </div>
+                        </div>
+                        <div class="icon-card"
+                            style="flex-direction:column; align-items:center; text-align:center; padding: 24px;">
+                            <div class="ic-circle" style="width:56px; height:56px; font-size: 37px;">📋</div>
+                            <div class="ic-text" style="margin-top:8px;">
+                                <h4>Conformidade Legal</h4>
+                                <p>Atender às exigências obrigatórias da NR-11 para operadores.</p>
+                            </div>
+                        </div>
+                        <div class="icon-card"
+                            style="flex-direction:column; align-items:center; text-align:center; padding: 24px;">
+                            <div class="ic-circle" style="width:56px; height:56px; font-size: 37px;">🏗️</div>
+                            <div class="ic-text" style="margin-top:8px;">
+                                <h4>Proteção da Operação</h4>
+                                <p>Preservar pessoas, equipamentos e a continuidade operacional.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <script>
+                var s5Items = [
+                    { icon:'⚙️', title:'OPERAÇÃO SEGURA', desc:'Condução correta e segura da empilhadeira.' },
+                    { icon:'🛡️', title:'PREVENÇÃO DE RISCOS', desc:'Redução de falhas operacionais e situações inseguras.' },
+                    { icon:'📋', title:'CONFORMIDADE LEGAL', desc:'Atendimento às exigências obrigatórias da NR-11.' },
+                    { icon:'🏭', title:'PROTEÇÃO DA OPERAÇÃO', desc:'Preservação das pessoas, equipamentos e processos.' }
+                ];
+                var s5Idx = 0;
+                function s5Render() {
+                    var q = s5Items[s5Idx];
+                    var card = document.getElementById('s5-card');
+                    card.style.opacity='0'; card.style.transform='translateY(10px)';
+                    setTimeout(function(){
+                        document.getElementById('s5-icon').textContent = q.icon;
+                        document.getElementById('s5-title').textContent = q.title;
+                        document.getElementById('s5-desc').textContent = q.desc;
+                        document.getElementById('s5-counter').textContent = 'OBJETIVO '+(s5Idx+1)+' DE '+s5Items.length;
+                        var dots=document.getElementById('s5-dots'); dots.innerHTML='';
+                        for(var i=0;i<s5Items.length;i++){
+                            var d=document.createElement('div');
+                            d.style.cssText='width:10px;height:10px;border-radius:50%;transition:all 0.3s;background:'+(i<=s5Idx?'rgba(230,81,0,1)':'rgba(255,255,255,0.2)')+';';
+                            dots.appendChild(d);
+                        }
+                        card.style.opacity='1'; card.style.transform='translateY(0)';
+                    }, 200);
+                }
+                function s5Next() {
+                    try{ if(typeof playTechClick==='function') playTechClick(); else if(typeof playBeep==='function') playBeep('ok'); }catch(e){}
+                    if(s5Idx < s5Items.length-1){
+                        s5Idx++; s5Render();
+                        if(s5Idx === s5Items.length-1){
+                            document.getElementById('s5-next-btn').textContent = 'INICIAR MÓDULO →';
+                        }
+                    } else {
+                        document.getElementById('s5-card').style.display='none';
+                        document.getElementById('s5-counter').style.display='none';
+                        document.getElementById('s5-dots').style.display='none';
+                        document.getElementById('s5-done').style.display='flex';
+                        document.getElementById('s5-next-btn').style.display='none';
+                        var t=document.getElementById('s5-mobile-tracker');
+                        if(t){ t.classList.add('req-done'); if(typeof updateNextButton==='function') updateNextButton(); }
+                    }
+                }
+                if(window.innerWidth <= 768) s5Render();
+                if(window.innerWidth > 768){
+                    var t=document.getElementById('s5-mobile-tracker');
+                    if(t) t.classList.remove('req-item');
+                    if(typeof updateNextButton==='function') updateNextButton();
+                }
+                </script>
+                <div class="wave"><svg viewBox="0 0 1440 100" preserveAspectRatio="none">
+                        <path d="M0,50 C480,10 960,85 1440,30 L1440,100 L0,100 Z" fill="rgba(230,81,0,0.07)" />
+                    </svg></div>
+            </div>
+
+            <div class="slide" id="s6">
+                <style>
+                    @media (max-width: 768px) {
+                        #s6 .def-banner { display:none !important; }
+                        #s6 .three-col.grid-2x2 { display:none !important; }
+                        #s6 .s6-mobile { display:flex !important; }
+                        #s6 .slide-title { font-size:24px !important; }
+                        #s6 .content-area { overflow-y:auto !important; padding:12px !important; justify-content:flex-start !important; }
+                    }
+                    @media (min-width: 769px) {
+                        #s6 .s6-mobile { display:none !important; }
+                    }
+                </style>
+                <div class="top-bar">
+                    <div class="section-tag"
+                        style="background: var(--red); color: var(--black); font-size: 16px; padding: 6px 16px; font-weight: 800; box-shadow: 0 0 12px rgba(46, 204, 113, 0.4);">
+                        Módulo 1</div>
+                    <h2 class="slide-title"
+                        style="font-size: clamp(28px, 4vw, 42px); letter-spacing: -0.01em; text-shadow: 0 0 15px rgba(46, 204, 113, 0.4);">
+                        O que é a <span>NR-11?</span></h2>
+
+                </div>
+                <div class="content-area">
+                    <!-- MOBILE ONLY -->
+                    <div class="s6-mobile" style="display:none;flex-direction:column;align-items:center;gap:14px;width:100%;max-width:400px;margin:0 auto;">
+
+                        <!-- Banner definição -->
+                        <div style="width:100%;border-radius:12px;padding:10px 14px;background:rgba(230,81,0,0.08);border:1px solid rgba(230,81,0,0.25);display:flex;align-items:center;gap:10px;">
+                            <div style="font-size:22px;flex-shrink:0;">📖</div>
+                            <div>
+                                <div style="font-family:var(--font-h);font-size:11px;font-weight:800;color:rgba(230,81,0,1);letter-spacing:1px;margin-bottom:3px;">DEFINIÇÃO</div>
+                                <div style="font-size:11px;color:rgba(255,244,232,0.7);line-height:1.4;">A NR-11 estabelece requisitos de segurança para operações de transporte, movimentação e manuseio de materiais.</div>
+                            </div>
+                        </div>
+
+                        <!-- Dots -->
+                        <div id="s6-dots" style="display:flex;gap:8px;justify-content:center;"></div>
+
+                        <!-- Card principal -->
+                        <div id="s6-card" style="width:100%;border-radius:14px;padding:18px 16px;background:linear-gradient(145deg,rgba(25,12,5,0.97),rgba(15,8,3,0.99));border:1px solid rgba(230,81,0,0.25);box-shadow:0 0 20px rgba(230,81,0,0.1);text-align:center;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:10px;transition:opacity 0.3s ease,transform 0.3s ease;">
+                            <div id="s6-icon" style="font-size:36px;filter:drop-shadow(0 0 8px rgba(230,81,0,0.4));"></div>
+                            <div id="s6-title" style="font-family:var(--font-h);font-size:15px;font-weight:800;color:rgba(230,81,0,1);letter-spacing:0.5px;line-height:1.2;"></div>
+                            <div style="width:30px;height:2px;background:rgba(230,81,0,0.5);border-radius:2px;"></div>
+                            <div id="s6-desc" style="font-size:12px;color:rgba(255,244,232,0.75);line-height:1.5;"></div>
+                        </div>
+
+                        <!-- Botão próximo -->
+                        <button id="s6-next-btn" onclick="s6Next()" style="width:100%;padding:12px;border-radius:10px;background:rgba(230,81,0,1);border:none;color:#FFF4E8;font-family:var(--font-h);font-size:13px;font-weight:800;letter-spacing:1px;cursor:pointer;box-shadow:0 0 16px rgba(230,81,0,0.3);transition:all 0.3s;">PRÓXIMO TÓPICO →</button>
+                        <div id="s6-mobile-tracker" class="req-item" style="display:none;"></div>
+
+                    </div>
+                    <div class="def-banner">
+                        <div class="ic-circle">📖</div>
+                        <div class="ic-text">
+                            <h4>Definição</h4>
+                            <p>A NR-11 estabelece requisitos de segurança para as operações de transporte, movimentação, armazenagem e manuseio de materiais, com ênfase na operação de equipamentos como empilhadeiras elétricas retráteis e de combustão.</p>
+                        </div>
+                    </div>
+                    <div class="three-col grid-2x2" style="grid-template-columns: repeat(4, 1fr) !important; gap: 16px !important;">
+                        <div class="icon-card" style="flex-direction:column; align-items:center; text-align:center; padding: 16px !important;">
+                            <div class="ic-circle">🚛</div>
+                            <div class="ic-text">
+                                <h4>Transporte de Materiais</h4>
+                                <p>Regras para movimentação segura de cargas no ambiente de trabalho.</p>
+                            </div>
+                        </div>
+                        <div class="icon-card" style="flex-direction:column; align-items:center; text-align:center; padding: 16px !important;">
+                            <div class="ic-circle">⚙️</div>
+                            <div class="ic-text">
+                                <h4>Movimentação</h4>
+                                <p>Normas de segurança para operação de elevadores, guindastes, transportadores industriais e empilhadeiras.</p>
+                            </div>
+                        </div>
+                        <div class="icon-card" style="flex-direction:column; align-items:center; text-align:center; padding: 16px !important;">
+                            <div class="ic-circle" style="width:56px; height:56px; font-size:32px; display:flex; align-items:center; justify-content:center; line-height:1;">🛡️</div>
+                            <div class="ic-text" style="margin-top:8px;">
+                                <h4>Manuseio e Segurança</h4>
+                                <p>Proteger o trabalhador durante todas as fases da operação logística, prevenindo acidentes.</p>
+                            </div>
+                        </div>
+                        <div class="icon-card" style="flex-direction:column; align-items:center; text-align:center; padding: 16px !important;">
+                            <div class="ic-circle">📦</div>
+                            <div class="ic-text">
+                                <h4>Armazenagem Segura</h4>
+                                <p>Normas para estocagem, organização e estabilidade de cargas.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <script>
+                var s6Items = [
+                    { icon:'🚛', title:'TRANSPORTE DE MATERIAIS', desc:'Regras para movimentação segura de cargas no ambiente de trabalho.' },
+                    { icon:'⚙️', title:'MOVIMENTAÇÃO', desc:'Normas para operação de equipamentos industriais e empilhadeiras.' },
+                    { icon:'🛡️', title:'MANUSEIO E SEGURANÇA', desc:'Proteção do trabalhador durante todas as fases da operação logística.' },
+                    { icon:'📦', title:'ARMAZENAGEM SEGURA', desc:'Normas para estocagem, organização e estabilidade das cargas.' }
+                ];
+                var s6Idx = 0;
+                function s6Render() {
+                    var q = s6Items[s6Idx];
+                    var card = document.getElementById('s6-card');
+                    card.style.opacity = '0'; card.style.transform = 'translateY(10px)';
+                    setTimeout(function(){
+                        document.getElementById('s6-icon').textContent = q.icon;
+                        document.getElementById('s6-title').textContent = q.title;
+                        document.getElementById('s6-desc').textContent = q.desc;
+                        var dots = document.getElementById('s6-dots'); dots.innerHTML = '';
+                        for(var i=0;i<s6Items.length;i++){
+                            var d=document.createElement('div');
+                            d.style.cssText='width:10px;height:10px;border-radius:50%;background:'+(i<=s6Idx?'rgba(230,81,0,1)':'rgba(255,255,255,0.2)')+';transition:all 0.3s;';
+                            dots.appendChild(d);
+                        }
+                        card.style.opacity='1'; card.style.transform='translateY(0)';
+                        var btn = document.getElementById('s6-next-btn');
+                        var isLast = s6Idx >= s6Items.length-1;
+                        btn.textContent = isLast ? '✅ CONCLUÍDO' : 'PRÓXIMO TÓPICO →';
+                        // Libera o botão PRÓXIMO da plataforma apenas no último card
+                        var tracker = document.getElementById('s6-mobile-tracker');
+                        if(isLast && tracker){ tracker.classList.add('req-done'); if(typeof updateNextButton==='function') updateNextButton(); }
+                    }, 200);
+                }
+                function s6Next() {
+                    try{ if(typeof playTechClick==='function') playTechClick(); else if(typeof playBeep==='function') playBeep('ok'); }catch(e){}
+                    if(s6Idx < s6Items.length-1){ s6Idx++; s6Render(); }
+                }
+                if(window.innerWidth <= 768) s6Render();
+                // Se desktop, libera o Próximo sem exigir navegação por tópicos
+                if(window.innerWidth > 768){
+                    var t = document.getElementById('s6-mobile-tracker');
+                    if(t) t.classList.remove('req-item');
+                    if(typeof updateNextButton==='function') updateNextButton();
+                }
+                </script>
+                <div class="wave"><svg viewBox="0 0 1440 100" preserveAspectRatio="none">
+                        <path d="M0,60 C360,20 720,90 1080,35 C1260,10 1380,70 1440,55 L1440,100 L0,100 Z"
+                            fill="rgba(230,81,0,0.07)" />
+                    </svg></div>
+            </div>
+
+            <div class="slide" id="s7"
+                style="background: radial-gradient(ellipse at center, rgba(40, 18, 5, 1) 0%, rgba(13, 10, 8, 1) 65%, rgba(8, 6, 4, 1) 100%); overflow: hidden;">
+                <div
+                    style="position: absolute; inset: 0; pointer-events: none; z-index: 0; background: radial-gradient(ellipse at 50% 50%, rgba(230, 81, 0, 0.12) 0%, transparent 65%); animation: s1b-glow 4s infinite alternate ease-in-out;">
+                </div>
+                <div
+                    style="position: absolute; inset: 0; pointer-events: none; z-index: 0; background-image: repeating-linear-gradient(0deg, transparent, transparent 2px, rgba(46, 204, 113, 0.03) 3px, rgba(46, 204, 113, 0.03) 4px);">
+                </div>
+                <div
+                    style="position: absolute; inset: 0; pointer-events: none; z-index: 0; opacity: 0.4; background-image: radial-gradient(rgba(255,255,255,0.15) 1px, transparent 1px); background-size: 60px 60px; animation: s1b-smoke 30s infinite linear;">
+                </div>
+                <div class="top-bar" style="position: relative; z-index: 2;">
+                    <div class="section-tag"
+                        style="background: var(--red); color: var(--black); font-size: 16px; padding: 6px 16px; font-weight: 800; box-shadow: 0 0 12px rgba(46, 204, 113, 0.4);">
+                        Módulo 1</div>
+                    <h2 class="slide-title"
+                        style="font-size: clamp(28px, 4vw, 42px); letter-spacing: -0.01em; text-shadow: 0 0 15px rgba(46, 204, 113, 0.4);">
+                        A Máquina e a <span>Lei</span></h2>
+                </div>
+                <div class="content-area"
+                    style="align-items: center; text-align: center; justify-content: flex-start; position: relative; z-index: 2;">
+                    <div class="video-wrap req-item"
+                        style="max-width: 1240px; margin-top: 40px; box-shadow: 0 40px 80px rgba(0,0,0,0.9), 0 0 60px rgba(230, 81, 0, 0.3); border: 1px solid rgba(230, 81, 0, 0.4); border-radius: 12px; transform: translateZ(0);">
+                        <iframe
+                            src="https://player.vimeo.com/video/1197720162?controls=1&title=0&byline=0&portrait=0&badge=0&autopause=0&transparent=0&dnt=1"
+                            frameborder="0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen title="A MÁQUINA E A LEI - NR 11"></iframe>
+                    </div>
+                </div>
+                <div class="wave" style="position: absolute; bottom: 0; left: 0; right: 0; z-index: 1;"><svg
+                        viewBox="0 0 1440 100" preserveAspectRatio="none">
+                        <path d="M0,60 C360,20 720,90 1080,35 L1440,55 L1440,100 L0,100 Z"
+                            fill="rgba(230, 81, 0, 0.07)" />
+                    </svg></div>
+                <style>
+                @media (max-width: 768px) {
+                    #s7 .top-bar { padding-bottom:6px !important; }
+                    #s7 .slide-title { font-size:22px !important; line-height:1.2 !important; }
+                    #s7 .content-area { padding:6px 10px !important; justify-content:flex-start !important; }
+                    #s7 .video-wrap {
+                        max-width:100% !important;
+                        width:100% !important;
+                        margin-top:40px !important;
+                        border-radius:12px !important;
+                        box-shadow:0 40px 80px rgba(0,0,0,0.9), 0 0 60px rgba(230,81,0,0.3) !important;
+                        border:1px solid rgba(230,81,0,0.4) !important;
+                    }
+                    #s7 .video-wrap iframe {
+                        width:100% !important;
+                        height:auto !important;
+                        aspect-ratio:16/9 !important;
+                        display:block !important;
+                    }
+                }
+                </style>
+            </div>
+
+            <div class="slide" id="s8" style="background: radial-gradient(ellipse at center, rgba(230,81,0,0.06) 0%, transparent 60%), #0d0a08;">
+                <style>
+                #s8 .flip-card { perspective:1000px; cursor:pointer; }
+                #s8 .flip-inner { position:relative; width:100%; height:100%; transform-style:preserve-3d; transition:transform 0.45s ease; transform:none !important; }
+                #s8 .flip-card.flipped .flip-inner { transform:rotateY(180deg) !important; }
+                #s8 .flip-front { position:absolute; inset:0; border-radius:24px; display:flex; flex-direction:column; align-items:center; justify-content:center; padding:22px; gap:18px; text-align:center; backface-visibility:hidden !important; -webkit-backface-visibility:hidden !important; transform:rotateY(0deg) !important; transition:none !important; opacity:1 !important; }
+                #s8 .flip-back  { position:absolute; inset:0; border-radius:24px; display:flex; flex-direction:column; align-items:center; justify-content:center; padding:22px; gap:16px; backface-visibility:hidden !important; -webkit-backface-visibility:hidden !important; transform:rotateY(180deg) !important; transition:none !important; opacity:1 !important; }
+                @media (max-width: 768px) {
+                    #s8 .s8-desktop { display:none !important; }
+                    #s8 .s8-mobile { display:flex !important; }
+                    #s8 .content-area { padding:12px !important; justify-content:flex-start !important; overflow-y:auto !important; }
+                    #s8 .slide-title { font-size:22px !important; }
+                }
+                @media (min-width: 769px) {
+                    #s8 .s8-mobile { display:none !important; }
+                }
+                </style>
+                <div class="top-bar">
+                    <div class="section-tag"
+                        style="background: var(--red); color: var(--black); font-size: 16px; padding: 6px 16px; font-weight: 800; box-shadow: 0 0 12px rgba(230,81,0,0.4);">
+                        Módulo 1</div>
+                    <h2 class="slide-title"
+                        style="font-size: clamp(28px, 4vw, 42px); letter-spacing: -0.01em; text-shadow: 0 0 15px rgba(230,81,0,0.4);">
+                        Tipos de Culpa nos <span>Acidentes</span></h2>
+                </div>
+                <div class="content-area" style="justify-content:center;align-items:center;">
+                    <!-- MOBILE ONLY s8 -->
+                    <div class="s8-mobile" style="display:none;flex-direction:column;align-items:center;gap:14px;width:100%;max-width:380px;margin:0 auto;">
+
+                        <!-- Contador + dots -->
+                        <div id="s8-counter" style="font-family:var(--font-h);font-size:11px;font-weight:800;letter-spacing:3px;color:rgba(230,81,0,0.8);text-align:center;">1 DE 3</div>
+                        <div id="s8-dots" style="display:flex;gap:8px;justify-content:center;"></div>
+
+                        <!-- Card frente (antes de revelar) -->
+                        <div id="s8-front" style="width:100%;border-radius:16px;padding:32px 20px;background:linear-gradient(145deg,rgba(30,14,5,0.98),rgba(15,6,2,1));border:1px solid rgba(230,81,0,0.25);text-align:center;display:flex;flex-direction:column;align-items:center;gap:14px;">
+                            <div id="s8-icon" style="font-size:52px;"></div>
+                            <div id="s8-name" style="font-family:var(--font-h);font-size:20px;font-weight:800;color:#FFF4E8;"></div>
+                            <div style="font-size:12px;color:rgba(255,255,255,0.4);">Toque em REVELAR para ver a definição</div>
+                        </div>
+
+                        <!-- Card verso (após revelar) -->
+                        <div id="s8-back" style="display:none;width:100%;border-radius:16px;padding:24px 20px;background:linear-gradient(145deg,rgba(60,10,5,0.98),rgba(30,5,2,1));border:1px solid rgba(200,30,20,0.35);text-align:center;flex-direction:column;align-items:center;gap:12px;">
+                            <div id="s8-back-icon" style="font-size:36px;"></div>
+                            <div id="s8-back-name" style="font-family:var(--font-h);font-size:18px;font-weight:800;color:rgba(255,160,60,1);"></div>
+                            <div style="width:36px;height:2px;background:rgba(200,30,20,0.5);border-radius:2px;"></div>
+                            <div id="s8-back-desc" style="font-size:13px;color:rgba(255,244,232,0.85);line-height:1.6;"></div>
+                        </div>
+
+                        <!-- Botões -->
+                        <button id="s8-reveal-btn" onclick="s8Reveal()" style="width:100%;padding:14px;border-radius:12px;background:rgba(230,81,0,1);border:none;color:#FFF4E8;font-family:var(--font-h);font-size:13px;font-weight:800;letter-spacing:1px;cursor:pointer;box-shadow:0 0 16px rgba(230,81,0,0.3);">🔍 REVELAR</button>
+                        <button id="s8-next-btn" onclick="s8Next()" style="display:none;width:100%;padding:14px;border-radius:12px;background:rgba(40,15,5,1);border:1px solid rgba(230,81,0,0.4);color:rgba(230,81,0,1);font-family:var(--font-h);font-size:13px;font-weight:800;letter-spacing:1px;cursor:pointer;">PRÓXIMO TIPO →</button>
+
+                        <div id="s8-mobile-tracker" class="req-item" style="display:none;"></div>
+                    </div>
+                    <div class="s8-desktop" style="display:contents;">
+                    <div style="width:100%; text-align:center; margin-bottom:28px; font-size:20px; color:rgba(230,81,0,1); font-weight:800; letter-spacing:1px; text-shadow:0 0 16px rgba(230,81,0,0.6); animation:pulse 1.5s infinite;">
+                        👆 Toque nos cards para revelar</div>
+                    <div style="display:flex;gap:18px;flex-wrap:wrap;justify-content:center;width:100%;max-width:820px;">
+
+                        <!-- Card 1: Negligência -->
+                        <div class="flip-card req-item"
+                            onclick="if(!this.classList.contains('flipped')){this.classList.add('flipped','req-done');updateNextButton();}">
+                            <div class="flip-inner">
+                                <div class="flip-front" style="background: linear-gradient(145deg, rgba(30,14,5,0.98), rgba(15,6,2,1)); border: 1px solid rgba(230,81,0,0.25); box-shadow: 0 0 15px rgba(230,81,0,0.08); backface-visibility:hidden; -webkit-backface-visibility:hidden;">
+                                    <div style="font-size:46px;margin-bottom:12px;">😴</div>
+                                    <div style="font-family:var(--font-h);font-size:17px;font-weight:700;color:var(--white);">
+                                        Negligência</div>
+                                    <div style="font-size:12px;color:rgba(255,255,255,0.5);margin-top:8px;">Toque para ver</div>
+                                </div>
+                                <div class="flip-back" style="background: linear-gradient(145deg, rgba(60,10,5,0.98), rgba(30,5,2,1)); border: 1px solid rgba(200,30,20,0.35); box-shadow: 0 0 20px rgba(200,30,20,0.12); backface-visibility:hidden; -webkit-backface-visibility:hidden;">
+                                    <div style="font-size:28px;margin-bottom:10px;">😴</div>
+                                    <h4 style="font-family:var(--font-h);font-size:16px;font-weight:700;color:rgba(255,160,60,1);margin-bottom:8px;">
+                                        Negligência</h4>
+                                    <p style="font-size:14px;line-height:1.5;color:var(--cream);">
+                                        <strong>Omissão voluntária</strong> de cuidado. O operador sabe o que deve fazer, mas deixa de fazer — como ignorar a inspeção diária da empilhadeira.
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Card 2: Imprudência -->
+                        <div class="flip-card req-item"
+                            onclick="if(!this.classList.contains('flipped')){this.classList.add('flipped','req-done');updateNextButton();}">
+                            <div class="flip-inner">
+                                <div class="flip-front" style="background: linear-gradient(145deg, rgba(30,14,5,0.98), rgba(15,6,2,1)); border: 1px solid rgba(230,81,0,0.25); box-shadow: 0 0 15px rgba(230,81,0,0.08); backface-visibility:hidden; -webkit-backface-visibility:hidden;">
+                                    <div style="font-size:46px;margin-bottom:12px;">🚨</div>
+                                    <div style="font-family:var(--font-h);font-size:17px;font-weight:700;color:var(--white);">
+                                        Imprudência</div>
+                                    <div style="font-size:12px;color:rgba(255,255,255,0.5);margin-top:8px;">Toque para ver</div>
+                                </div>
+                                <div class="flip-back" style="background: linear-gradient(145deg, rgba(60,10,5,0.98), rgba(30,5,2,1)); border: 1px solid rgba(200,30,20,0.35); box-shadow: 0 0 20px rgba(200,30,20,0.12); backface-visibility:hidden; -webkit-backface-visibility:hidden;">
+                                    <div style="font-size:28px;margin-bottom:10px;">🚨</div>
+                                    <h4 style="font-family:var(--font-h);font-size:16px;font-weight:700;color:rgba(255,160,60,1);margin-bottom:8px;">
+                                        Imprudência</h4>
+                                    <p style="font-size:14px;line-height:1.5;color:var(--cream);">
+                                        <strong>Agir sem cautela</strong>. O operador toma uma atitude arriscada conscientemente — como acelerar em corredor estreito ou elevar carga com pessoas próximas.
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Card 3: Imperícia -->
+                        <div class="flip-card req-item"
+                            onclick="if(!this.classList.contains('flipped')){this.classList.add('flipped','req-done');updateNextButton();}">
+                            <div class="flip-inner">
+                                <div class="flip-front" style="background: linear-gradient(145deg, rgba(30,14,5,0.98), rgba(15,6,2,1)); border: 1px solid rgba(230,81,0,0.25); box-shadow: 0 0 15px rgba(230,81,0,0.08); backface-visibility:hidden; -webkit-backface-visibility:hidden;">
+                                    <div style="font-size:46px;margin-bottom:12px;">🎓</div>
+                                    <div style="font-family:var(--font-h);font-size:17px;font-weight:700;color:var(--white);">
+                                        Imperícia</div>
+                                    <div style="font-size:12px;color:rgba(255,255,255,0.5);margin-top:8px;">Toque para ver</div>
+                                </div>
+                                <div class="flip-back" style="background: linear-gradient(145deg, rgba(60,10,5,0.98), rgba(30,5,2,1)); border: 1px solid rgba(200,30,20,0.35); box-shadow: 0 0 20px rgba(200,30,20,0.12); backface-visibility:hidden; -webkit-backface-visibility:hidden;">
+                                    <div style="font-size:28px;margin-bottom:10px;">🎓</div>
+                                    <h4 style="font-family:var(--font-h);font-size:16px;font-weight:700;color:rgba(255,160,60,1);margin-bottom:8px;">
+                                        Imperícia</h4>
+                                    <p style="font-size:14px;line-height:1.5;color:var(--cream);">
+                                        <strong>Falta de habilidade técnica</strong>. O operador não tem o conhecimento necessário para operar com segurança — reforça a obrigatoriedade do treinamento pela NR-11.
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                    </div>
+                </div>
+                <script>
+                var s8Items = [
+                    { icon:'😴', name:'Negligência', desc:'<strong>Omissão voluntária</strong> de cuidado. O operador sabe o que deve fazer, mas deixa de fazer — como ignorar a inspeção diária da empilhadeira.' },
+                    { icon:'🚨', name:'Imprudência', desc:'<strong>Agir sem cautela</strong>. O operador toma uma atitude arriscada conscientemente — como acelerar em corredor estreito ou elevar carga com pessoas próximas.' },
+                    { icon:'🎓', name:'Imperícia', desc:'<strong>Falta de habilidade técnica</strong>. O operador não tem o conhecimento necessário para operar com segurança — reforça a obrigatoriedade do treinamento pela NR-11.' }
+                ];
+                var s8Idx = 0, s8Revealed = false;
+                function s8Render() {
+                    var q = s8Items[s8Idx];
+                    document.getElementById('s8-counter').textContent = (s8Idx+1)+' DE '+s8Items.length;
+                    var dots = document.getElementById('s8-dots'); dots.innerHTML = '';
+                    for(var i=0;i<s8Items.length;i++){
+                        var d=document.createElement('div');
+                        d.style.cssText='width:10px;height:10px;border-radius:50%;transition:all 0.3s;background:'+(i<=s8Idx?'rgba(230,81,0,1)':'rgba(255,255,255,0.2)')+';';
+                        dots.appendChild(d);
+                    }
+                    document.getElementById('s8-icon').textContent = q.icon;
+                    document.getElementById('s8-name').textContent = q.name;
+                    document.getElementById('s8-back-icon').textContent = q.icon;
+                    document.getElementById('s8-back-name').textContent = q.name;
+                    document.getElementById('s8-back-desc').innerHTML = q.desc;
+                    document.getElementById('s8-front').style.display = 'flex';
+                    document.getElementById('s8-back').style.display = 'none';
+                    document.getElementById('s8-reveal-btn').style.display = 'block';
+                    document.getElementById('s8-next-btn').style.display = 'none';
+                    s8Revealed = false;
+                }
+                function s8CompleteActivity() {
+                    try{ if(typeof playBeep==='function') playBeep('ok'); }catch(e){}
+                    var t = document.getElementById('s8-mobile-tracker');
+                    if(t){ t.style.display='block'; t.classList.add('req-done'); if(typeof updateNextButton==='function') updateNextButton(); }
+                }
+                function s8Reveal() {
+                    try{ if(typeof playBeep==='function') playBeep('flip'); else if(typeof playTechClick==='function') playTechClick(); }catch(e){}
+                    document.getElementById('s8-front').style.display = 'none';
+                    document.getElementById('s8-back').style.display = 'flex';
+                    document.getElementById('s8-reveal-btn').style.display = 'none';
+                    var isLast = s8Idx >= s8Items.length-1;
+                    var nextBtn = document.getElementById('s8-next-btn');
+                    nextBtn.style.display = 'block';
+                    nextBtn.textContent = isLast ? '✅ CONCLUÍDO' : 'PRÓXIMO TIPO →';
+                    s8Revealed = true;
+                    if(isLast && window.innerWidth <= 768) s8CompleteActivity();
+                }
+                function s8Next() {
+                    try{ if(typeof playTechClick==='function') playTechClick(); }catch(e){}
+                    if(s8Idx < s8Items.length-1){ s8Idx++; s8Render(); }
+                    else {
+                        s8CompleteActivity();
+                    }
+                }
+                if(window.innerWidth <= 768) {
+                    document.querySelectorAll('#s8 .s8-desktop .req-item').forEach(function(el){ el.classList.remove('req-item'); });
+                    s8Render();
+                }
+                if(window.innerWidth > 768){
+                    var t = document.getElementById('s8-mobile-tracker');
+                    if(t) t.classList.add('req-done');
+                }
+                </script>
+                <div class="wave"><svg viewBox="0 0 1440 100" preserveAspectRatio="none">
+                        <path d="M0,60 C360,20 720,90 1080,35 L1440,55 L1440,100 L0,100 Z" fill="rgba(230,81,0,0.07)" />
+                    </svg></div>
+            </div>
+
+            <div class="slide" id="s8-req">
+                <style>
+                    #s8-req .acc-item {
+                        border: 1px solid rgba(230,81,0,0.2);
+                        border-radius: 12px;
+                        overflow: hidden;
+                        margin-bottom: 12px;
+                        background: linear-gradient(145deg, rgba(30,14,5,0.95), rgba(15,6,2,1));
+                        transition: all 0.35s cubic-bezier(0.18,1,0.26,1);
+                    }
+                    #s8-req .acc-item.open {
+                        border-color: rgba(230,81,0,0.5);
+                        box-shadow: 0 8px 24px rgba(230,81,0,0.15);
+                    }
+                    #s8-req .acc-header {
+                        display: flex;
+                        align-items: center;
+                        justify-content: space-between;
+                        padding: 16px 20px;
+                        cursor: pointer;
+                        font-family: var(--font-h);
+                        font-size: 20px;
+                        font-weight: 700;
+                        color: var(--white);
+                        letter-spacing: 0.5px;
+                        gap: 12px;
+                    }
+                    #s8-req .acc-header:hover { color: rgba(230,81,0,1); }
+                    #s8-req .acc-arrow {
+                        font-size: 22px;
+                        color: var(--red);
+                        transition: transform 0.3s ease;
+                        flex-shrink: 0;
+                    }
+                    #s8-req .acc-item.open .acc-arrow { transform: rotate(180deg); }
+                    #s8-req .acc-body {
+                        max-height: 0;
+                        overflow: hidden;
+                        transition: max-height 0.4s ease, padding 0.3s ease;
+                        padding: 0 20px;
+                        font-size: 17px;
+                        color: rgba(255,255,255,0.75);
+                        line-height: 1.8;
+                    }
+                    #s8-req .acc-item.open .acc-body {
+                        max-height: 200px;
+                        padding: 0 20px 16px;
+                    }
+                    #s8-req .acc-icon {
+                        font-size: 28px;
+                        flex-shrink: 0;
+                    }
+                    @media (max-width: 768px) {
+                        #s8-req .req-layout {
+                            flex-direction: column !important;
+                            gap: 16px !important;
+                            align-items: center !important;
+                        }
+                        #s8-req .req-img {
+                            width: 100% !important;
+                            min-width: 0 !important;
+                            max-width: 100% !important;
+                        }
+                        #s8-req .req-img img {
+                            max-height: 220px !important;
+                            object-fit: contain !important;
+                        }
+                        #s8-req .content-area {
+                            overflow-y: auto !important;
+                        }
+                        #s8-req div[style*="inline-flex"] {
+                            font-size: 13px !important;
+                            white-space: normal !important;
+                        }
+                        #s8-req .acc-body {
+                            font-size: 13px !important;
+                        }
+                    }
+                    @keyframes shine-card {
+                        0%, 100% { opacity:0; }
+                        40% { opacity:1; }
+                        60% { opacity:0; }
+                    }
+                    #s8-req .acc-item.req-done .acc-header { color: rgba(46,204,113,1); }
+                    #s8-req .acc-item.req-done { border-color: rgba(46,204,113,0.4); background: linear-gradient(145deg, rgba(5,30,14,0.95), rgba(3,15,8,1)); }
+                    #s8-req .acc-item.req-done .acc-arrow { color: rgba(46,204,113,1); }
+                    #s8-req .acc-item.req-done .acc-icon { filter: hue-rotate(80deg); }
+                </style>
+
+                <div class="top-bar">
+                    <div class="section-tag"
+                        style="background: var(--red); color: var(--black); font-size: 16px; padding: 6px 16px; font-weight: 800; box-shadow: 0 0 12px rgba(230,81,0,0.4);">
+                        Módulo 1</div>
+                    <h2 class="slide-title"
+                        style="font-size: clamp(28px, 4vw, 42px); letter-spacing: -0.01em; text-shadow: 0 0 15px rgba(230,81,0,0.4);">
+                        Credencial do <span>Operador</span></h2>
+                </div>
+
+                <div class="content-area">
+                    <div class="req-layout" style="display:flex; gap:40px; align-items:center !important; width:100%; max-width:900px; margin:0 auto;">
+
+                        <!-- Foto do Crachá -->
+                        <div class="req-img" style="flex-shrink:0; width:540px; min-width:540px; max-width:540px; position:relative;">
+                            <div style="position:absolute; inset:-40px; z-index:0; background:radial-gradient(ellipse at center, rgba(230,81,0,0.22) 0%, transparent 65%); filter:blur(25px); animation:pulse 3s ease-in-out infinite; pointer-events:none;"></div>
+                            <div style="position:relative; border-radius:20px; overflow:hidden; box-shadow: 0 0 60px rgba(230,81,0,0.3), 0 0 120px rgba(230,81,0,0.12), 0 30px 70px rgba(0,0,0,0.85); transition: transform 0.4s cubic-bezier(0.18,1,0.26,1), box-shadow 0.4s ease; cursor: pointer; background: rgba(15,6,2,0.6); backdrop-filter: blur(2px);"
+                                onmouseover="this.style.transform='translateY(-8px) scale(1.02) rotateX(2deg)';this.style.boxShadow='0 0 90px rgba(230,81,0,0.45), 0 0 160px rgba(230,81,0,0.2), 0 40px 90px rgba(0,0,0,0.95)'"
+                                onmouseout="this.style.transform='translateY(0) scale(1) rotateX(0)';this.style.boxShadow='0 0 60px rgba(230,81,0,0.3), 0 0 120px rgba(230,81,0,0.12), 0 30px 70px rgba(0,0,0,0.85)'">
+                                <div style="position:absolute; inset:0; z-index:2; pointer-events:none; border-radius:20px; background:linear-gradient(115deg, transparent 30%, rgba(255,255,255,0.05) 50%, transparent 70%); animation:shine-card 4s ease-in-out infinite;"></div>
+                                <img src="https://i.imgur.com/B83Zchf.png"
+                                    alt="Crachá de Operador"
+                                    style="width:100%; max-height:420px; object-fit:contain; border-radius:16px; border:1px solid rgba(230,81,0,0.35); position:relative; z-index:1;">
+                            </div>
+                            <div style="text-align:right; margin-top:10px;">
+                                <button onclick="openImageModal('https://i.imgur.com/B83Zchf.png')" style="padding:8px 16px; background:rgba(0,0,0,0.8); border:1px solid rgba(230,81,0,0.6); border-radius:8px; color:rgba(230,81,0,1); font-size:13px; font-weight:700; letter-spacing:1px; cursor:pointer; text-transform:uppercase; display:inline-flex; align-items:center; gap:6px; backdrop-filter:blur(8px); box-shadow:0 0 15px rgba(230,81,0,0.2); transition:all 0.3s;" onmouseover="this.style.background='rgba(230,81,0,0.2)';this.style.boxShadow='0 0 25px rgba(230,81,0,0.4)'" onmouseout="this.style.background='rgba(0,0,0,0.8)';this.style.boxShadow='0 0 15px rgba(230,81,0,0.2)'">🔍 Ampliar imagem</button>
+                            </div>
+                        </div>
+
+                        <!-- Acordeão -->
+                        <div style="flex:1; width:100%;">
+
+                            <div style="display:inline-flex; align-items:center; font-size:16px; color:rgba(230,81,0,1); font-weight:800; letter-spacing:1px; text-shadow:0 0 16px rgba(230,81,0,0.6); animation:pulse 1.5s infinite; margin-bottom:12px; white-space:nowrap;">
+                                👆 Toque em cada tópico para expandir
+                            </div>
+
+                            <div class="acc-item req-item" onclick="toggleAcc(this)">
+                                <div class="acc-header">
+                                    <span class="acc-icon">🪪</span>
+                                    <span style="flex:1;">Habilitação</span>
+                                    <span class="acc-arrow">▼</span>
+                                </div>
+                                <div class="acc-body">
+                                    Os operadores deverão ser habilitados através de treinamento e só poderão dirigir se portarem o <strong style="color:rgba(230,81,0,0.9);">cartão de identificação em lugar visível</strong>.
+                                </div>
+                            </div>
+
+                            <div class="acc-item req-item" onclick="toggleAcc(this)">
+                                <div class="acc-header">
+                                    <span class="acc-icon">📅</span>
+                                    <span style="flex:1;">Validade</span>
+                                    <span class="acc-arrow">▼</span>
+                                </div>
+                                <div class="acc-body">
+                                    O cartão tem validade de <strong style="color:rgba(230,81,0,0.9);">1 (um) ano</strong>. O operador é o responsável por observar o vencimento de sua autorização.
+                                </div>
+                            </div>
+
+                            <div class="acc-item req-item" onclick="toggleAcc(this)">
+                                <div class="acc-header">
+                                    <span class="acc-icon">🩺</span>
+                                    <span style="flex:1;">Saúde</span>
+                                    <span class="acc-arrow">▼</span>
+                                </div>
+                                <div class="acc-body">
+                                    Para a revalidação anual, o empregado deverá passar por <strong style="color:rgba(230,81,0,0.9);">exame de saúde completo</strong>, por conta do empregador.
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+
+                <script>
+                    function toggleAcc(el) {
+                        const parent = el.closest('#s8-req');
+                        const wasOpen = el.classList.contains('open');
+                        parent.querySelectorAll('.acc-item').forEach(i => {
+                            if(i.classList.contains('req-done')) i.classList.remove('open');
+                        });
+                        if(!wasOpen) el.classList.add('open');
+                        el.classList.add('req-done');
+                        if (typeof playTechClick === 'function') playTechClick();
+                        if (typeof updateNextButton === 'function') updateNextButton();
+                    }
+                </script>
+
+                <div class="wave"><svg viewBox="0 0 1440 100" preserveAspectRatio="none">
+                        <path d="M0,60 C360,20 720,90 1080,35 L1440,55 L1440,100 L0,100 Z" fill="rgba(230,81,0,0.07)" />
+                    </svg></div>
+            </div>
+
+            <div class="slide" id="s9">
+                <style>
+                @media (max-width: 768px) {
+                    #s9 { overflow:hidden !important; }
+                    #s9 .top-bar { padding-bottom:4px !important; }
+                    #s9 .slide-title { font-size:18px !important; margin-bottom:0 !important; }
+                    #s9 .content-area {
+                        padding:8px 10px 220px !important;
+                        overflow-y:auto !important;
+                        overflow-x:hidden !important;
+                        -webkit-overflow-scrolling:touch !important;
+                        touch-action:pan-y !important;
+                        justify-content:flex-start !important;
+                        flex:1 1 auto !important;
+                        min-height:0 !important;
+                        height:calc(100vh - 140px) !important;
+                        max-height:calc(100vh - 140px) !important;
+                    }
+                    #s9 .quiz-wrap { padding:0 !important; max-width:100% !important; height:auto !important; }
+                    #s9 #q1-intro-panel { padding:10px 0 !important; }
+                    #s9 #q1-intro-panel .hud-anim-enter:first-of-type {
+                        padding:20px 16px !important;
+                        margin-bottom:14px !important;
+                    }
+                    #s9 #q1-intro-panel h3 { font-size:20px !important; margin-bottom:8px !important; }
+                    #s9 #q1-intro-panel p { font-size:13px !important; }
+                    #s9 #q1-intro-panel .hud-anim-enter:nth-of-type(2) { margin-top:16px !important; margin-bottom:16px !important; font-size:12px !important; padding:8px 14px !important; }
+                    #s9 .btn-tf-verify { font-size:15px !important; padding:14px 30px !important; width:100% !important; justify-content:center !important; }
+                    #s9 #q1-question-panel { height:auto !important; }
+                    #s9 #q1-question-panel .q-meta { margin-bottom:14px !important; }
+                    #s9 #q1-counter { font-size:13px !important; letter-spacing:1.5px !important; }
+                    #s9 #q1-text,
+                    #s9 .q-text,
+                    #s9 .quiz-question-card {
+                        min-height:auto !important;
+                        height:auto !important;
+                        padding:20px !important;
+                        font-size:16px !important;
+                        line-height:1.45 !important;
+                        margin-bottom:12px !important;
+                    }
+                    #s9 .q-options { gap:10px !important; height:auto !important; }
+                    #s9 .q-opt {
+                        height:auto !important;
+                        min-height:0 !important;
+                        padding:10px 14px !important;
+                        font-size:15px !important;
+                        width:100% !important;
+                    }
+                    #s9 .q-opt span { font-size:15px !important; }
+                    #s9 .opt-l {
+                        width:32px !important;
+                        height:32px !important;
+                        font-size:17px !important;
+                    }
+                    #s9 .q-feedback {
+                        padding:12px 14px !important;
+                        font-size:15px !important;
+                        line-height:1.45 !important;
+                        margin-top:10px !important;
+                        margin-bottom:8px !important;
+                    }
+                    #s9 .btn-next-q {
+                        width:100% !important;
+                        font-size:15px !important;
+                        padding:14px 30px !important;
+                        margin-top:12px !important;
+                    }
+                    #s9 .wave { pointer-events:none; }
+                }
+                </style>
+                <div class="top-bar">
+                    <div class="section-tag"
+                        style="background: var(--red); color: var(--black); font-size: 16px; padding: 6px 16px; font-weight: 800; box-shadow: 0 0 12px rgba(230, 81, 0, 0.4);">
+                        🎯 Quiz · Módulo 1</div>
+                    <h2 class="slide-title"
+                        style="font-size: clamp(32px, 5vw, 48px); letter-spacing: 0.02em; text-shadow: 0 0 20px rgba(230, 81, 0, 0.6); position: relative; display: inline-block;">
+                        <div
+                            style="position: absolute; inset: -20px; background: radial-gradient(circle, rgba(230,81,0,0.15) 0%, transparent 70%); z-index: -1; filter: blur(10px);">
+                        </div>
+                        Prove que Você <span>Domina</span>
+                    </h2>
+
+                </div>
+                <div class="content-area">
+                    <div class="quiz-wrap">
+                        <div id="q1-intro-panel" style="text-align: center; padding: 40px 20px; position: relative;">
+                            <!-- Efeitos Visuais Sutis HUD -->
+                            <div
+                                style="position: absolute; inset: 0; pointer-events: none; z-index: 0; background: radial-gradient(ellipse at center, rgba(230, 81, 0, 0.05) 0%, transparent 60%);">
+                            </div>
+                            <div
+                                style="position: absolute; top: 20px; left: 50%; transform: translateX(-50%); width: 200px; height: 1px; background: linear-gradient(90deg, transparent, rgba(230,81,0,0.3), transparent);">
+                            </div>
+                            <div
+                                style="position: absolute; bottom: 20px; left: 50%; transform: translateX(-50%); width: 200px; height: 1px; background: linear-gradient(90deg, transparent, rgba(230,81,0,0.3), transparent);">
+                            </div>
+
+                            <div class="hud-anim-enter"
+                                style="position: relative; z-index: 1; max-width: 850px; margin: 0 auto 30px; padding: 50px 30px; border-radius: 8px; background: linear-gradient(180deg, rgba(28,10,6,0.96) 0%, rgba(12,5,4,0.98) 100%); border: 1px solid rgba(255,106,26,0.14); box-shadow: 0 0 40px rgba(255,106,26,0.08), 0 20px 60px rgba(0,0,0,0.45); backdrop-filter: blur(12px); animation-delay: 0.2s; opacity: 0; overflow: hidden;">
+
+                                <!-- Efeitos Visuais HUD Premium Internos -->
+                                <div
+                                    style="position: absolute; inset: 0; pointer-events: none; background: repeating-linear-gradient(0deg, transparent, transparent 2px, rgba(230,81,0,0.03) 3px, rgba(230,81,0,0.03) 4px);">
+                                </div>
+                                <div
+                                    style="position: absolute; inset: 0; pointer-events: none; opacity: 0.3; background-image: radial-gradient(rgba(255,255,255,0.1) 1px, transparent 1px); background-size: 20px 20px; animation: s1b-smoke 40s infinite linear;">
+                                </div>
+                                <div
+                                    style="position: absolute; top: 0; left: 50%; transform: translateX(-50%); width: 60%; height: 1px; background: linear-gradient(90deg, transparent, rgba(230,81,0,0.4), transparent);">
+                                </div>
+                                <div
+                                    style="position: absolute; bottom: 0; left: 50%; transform: translateX(-50%); width: 60%; height: 1px; background: linear-gradient(90deg, transparent, rgba(230,81,0,0.4), transparent);">
+                                </div>
+                                <div
+                                    style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); width: 80%; height: 80%; background: radial-gradient(circle at top, rgba(255,106,26,0.05), transparent 45%); pointer-events: none; animation: pulse 4s infinite;">
+                                </div>
+
+                                <!-- PROTOCOLO DE AVALIAÇÃO -->
+                                <div
+                                    style="position: relative; font-family: var(--font-h); font-size: 12px; font-weight: 700; color: rgba(230,81,0,0.8); letter-spacing: 4px; text-transform: uppercase; margin-bottom: 16px; display: flex; align-items: center; justify-content: center; gap: 12px;">
+                                    <span style="width: 30px; height: 1px; background: rgba(230,81,0,0.4);"></span>
+                                    PROTOCOLO DE AVALIAÇÃO
+                                    <span style="width: 30px; height: 1px; background: rgba(230,81,0,0.4);"></span>
+                                </div>
+
+                                <!-- AVALIAÇÃO FINAL — MÓDULO 1 -->
+                                <h3
+                                    style="position: relative; font-family: var(--font-h); font-size: clamp(24px, 3.5vw, 36px); font-weight: 800; color: #FFF4E8; text-transform: uppercase; letter-spacing: 1px; line-height: 1.2; margin-bottom: 16px; text-shadow: 0 0 15px rgba(230,81,0,0.5);">
+                                    AVALIAÇÃO FINAL — MÓDULO 1
+                                </h3>
+
+                                <!-- Texto Inferior -->
+                                <p
+                                    style="position: relative; font-size: clamp(16px, 2vw, 18px); color: rgba(255,244,232,0.78); max-width: 500px; margin: 0 auto; line-height: 1.5; font-weight: 300;">
+                                    Habilitação, responsabilidade civil<br>e penalidades da NR-11
+                                </p>
+
+                                <div class="hud-anim-enter"
+                                    style="position: relative; z-index: 1; font-family: var(--font-h); font-size: 14px; font-weight: 700; color: rgba(255,255,255,0.75); letter-spacing: 2px; text-transform: uppercase; margin-top: 40px; margin-bottom: 40px; animation-delay: 0.3s; opacity: 0; display: inline-flex; align-items: center; gap: 8px; background: rgba(255,255,255,0.05); padding: 10px 20px; border: 1px solid rgba(255,255,255,0.15); border-radius: 8px;">
+                                    <span
+                                        style="display:inline-block; width:6px; height:6px; background:var(--red); border-radius:50%; box-shadow:0 0 6px var(--red);"></span>
+                                    3 PERGUNTAS &middot; MÍNIMO DE 70% DE ACERTOS
+                                </div><br>
+
+                                <div class="hud-anim-enter"
+                                    style="position: relative; display: inline-block; z-index: 2; animation-delay: 0.4s; opacity: 0;">
+                                    <!-- Círculo Tecnológico Atrás do Botão -->
+                                    <div
+                                        style="position: absolute; inset: -15px; border-radius: 99px; border: 1px dashed rgba(230,81,0,0.3); pointer-events: none;">
+                                    </div>
+                                    <div
+                                        style="position: absolute; inset: -5px; border-radius: 99px; background: rgba(230,81,0,0.15); filter: blur(10px); animation: pulse 2s infinite; pointer-events: none;">
+                                    </div>
+
+                                    <button class="btn-tf-verify"
+                                        style="position:relative; font-size:18px; padding:15px 40px; border-radius:99px; display:inline-flex; align-items:center; gap:10px; background:#ffffff; border:none; color:#0d0a08; text-transform:uppercase; letter-spacing:1px; font-weight:800; box-shadow:0 0 30px rgba(255,255,255,0.2); transition:all 0.3s ease;"
+                                        onmouseover="this.style.boxShadow='0 0 50px rgba(255,255,255,0.4)';this.style.transform='scale(1.03)'"
+                                        onmouseout="this.style.boxShadow='0 0 30px rgba(255,255,255,0.2)';this.style.transform='scale(1)'"
+                                        onclick="startQuiz1Intro()">
+                                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none"
+                                            stroke="currentColor" stroke-width="2.5" stroke-linecap="round"
+                                            stroke-linejoin="round"
+                                            style="filter: drop-shadow(0 0 4px rgba(230,81,0,0.5));">
+                                            <polygon points="5 3 19 12 5 21"></polygon>
+                                        </svg>
+                                        INICIAR DESAFIO
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                        <div id="q1-question-panel" style="display:none; transition: opacity 0.5s ease;">
+                            <div class="q-meta">
+                                <div class="q-dots">
+                                    <div class="qdot2 cur" id="q1dot0"></div>
+                                    <div class="qdot2" id="q1dot1"></div>
+                                    <div class="qdot2" id="q1dot2"></div>
+                                </div>
+                                <div class="q-lbl" id="q1-counter">Pergunta 1 de 3</div>
+                            </div>
+                            <div class="q-text" id="q1-text"></div>
+                            <div class="q-options" id="q1-options"></div>
+                            <div id="q1-verify-container"
+                                style="text-align: center; margin-top: 15px; opacity: 0; visibility: hidden; transition: all 0.3s ease; display: none;">
+                                <button class="btn-tf-verify" id="btn-tf-verify-q1" onclick="verifyAnswer1()">✔
+                                    Verificar
+                                    Resposta</button>
+                            </div>
+                            <div class="q-feedback" id="q1-feedback"></div>
+                            <button class="btn-next-q" id="btn-next-q1" onclick="nextQuestion1()">Continuar →</button>
+                        </div>
+                        <div id="q1-result-panel" style="display:none;text-align:center;">
+                            <div class="result-pct green" id="q1-pct">--</div>
+                            <div class="r-stars" id="q1-stars">⭐⭐⭐</div>
+                            <div class="r-status" id="q1-status"></div>
+                            <div class="r-sub" id="q1-sub"></div>
+                            <button class="btn-retry" onclick="resetQuiz1()">↺ Tentar Novamente</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="wave"><svg viewBox="0 0 1440 100" preserveAspectRatio="none">
+                        <path d="M0,55 C480,15 960,85 1440,35 L1440,100 L0,100 Z" fill="rgba(230,81,0,0.07)" />
+                    </svg></div>
+            </div>
+
+        </div>
+
+        <div id="nav">
+            <button class="nav-btn" id="btn-back" onclick="modulePrev()" disabled>
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"
+                    stroke-linejoin="round">
+                    <polyline points="15 18 9 12 15 6" />
+                </svg>
+                ANTERIOR
+            </button>
+            <button class="nav-btn" id="btn-fwd" onclick="moduleNext()">
+                PRÓXIMO
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"
+                    stroke-linejoin="round">
+                    <polyline points="9 18 15 12 9 6" />
+                </svg>
+            </button>
+        </div>
+
+        <div class="img-modal-overlay" id="imgModal" onclick="closeImageModal(event)">
+            <div class="img-modal-content" onclick="event.stopPropagation()">
+                <button class="img-modal-close" onclick="closeImageModal()">×</button>
+                <img id="modalImg" alt="Imagem Ampliada">
+            </div>
+        </div>
+
+    </div>
+
+    <script src="audio-data.js"></script>
+    <script src="shared.js?v=3"></script>
+</body>
+
+</html>

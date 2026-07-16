@@ -1,0 +1,9 @@
+node_modules/
+temp_latest/
+temp_pristine/
+temp_restore/
+.DS_Store
+Thumbs.db
+*.log
+.env
+.env.*

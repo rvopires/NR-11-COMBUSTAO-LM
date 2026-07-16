@@ -1,0 +1,1223 @@
+﻿<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <title>Módulo 3 - Riscos Operacionais</title>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;900&family=Open+Sans:wght@400;600&display=swap"
+        rel="stylesheet">
+    <script src="https://player.vimeo.com/api/player.js"></script>
+    <link rel="stylesheet" href="shared.css?v=3">
+    <script>
+        window.MODULE_NAV = {
+            id: "modulo-3",
+            prev: "modulo-2.html",
+            next: "modulo-4.html",
+            label: "Módulo 3 - Riscos Operacionais"
+        };
+    </script>
+</head>
+<body>
+
+    <button id="btn-demo" type="button" onclick="toggleDemoMode()" title="Modo Simulação" aria-label="Modo simulação">SIMULAÇÃO</button>
+    <div id="demo-indicator"
+        style="position: fixed; top: 15px; right: 15px; z-index: 9999; background: var(--gold); color: var(--black); padding: 5px 15px; font-size: 12px; font-weight: bold; font-family: var(--font-h); border-radius: 99px; box-shadow: 0 0 15px rgba(241,196,15,0.5); opacity: 0; pointer-events: none; transition: all 0.3s; transform: translateY(-20px);">
+        Modo Simulação Ativado</div>
+
+    <div id="app">
+
+        <div id="pbar-wrap">
+            <div id="pbar" style="width:2.56%"></div>
+        </div>
+
+        <div id="slide-counter"></div>
+
+        <div id="logo">
+            <img src="https://i.imgur.com/c1m4CIy.png" alt="Tecno-Cursos"
+                onerror="this.onerror=null;this.src='https://imgur.com/c1m4CIy.png'">
+        </div>
+
+        <div id="slides">
+            <div class="slide active" id="s16">
+                <div class="mod-intro">
+                    <div class="mod-intro-pill">INÍCIO</div>
+                    <div class="mod-intro-num">MÓDULO 3</div>
+                    <div class="mod-intro-title">Riscos Operacionais</div>
+                </div>
+                <div class="wave"><svg viewBox="0 0 1440 100" preserveAspectRatio="none">
+                        <path d="M0,50 C480,10 960,85 1440,30 L1440,100 L0,100 Z" fill="rgba(230,81,0,0.07)" />
+                    </svg></div>
+            </div>
+
+            <div class="slide" id="s17">
+<style>
+    #s17 { background: #0d0a08; overflow: hidden; position: relative; }
+    #s17 .hud-bg {
+        position: absolute; inset: 0; z-index: 0; pointer-events: none;
+        background:
+            radial-gradient(ellipse at 50% 40%, rgba(230,81,0,0.05) 0%, transparent 55%),
+            repeating-linear-gradient(0deg, transparent, transparent 40px, rgba(255,255,255,0.008) 41px),
+            repeating-linear-gradient(90deg, transparent, transparent 40px, rgba(255,255,255,0.008) 41px);
+    }
+    #s17 .cam-progress {
+        width: 100%; max-width: 700px; margin: 0 auto 6px;
+        display: flex; align-items: center; gap: 10px;
+        font-family: var(--font-h); font-size: 9px; font-weight: 800;
+        letter-spacing: 2px; color: rgba(230,81,0,0.6); text-transform: uppercase;
+        position: relative; z-index: 1;
+    }
+    #s17 .cam-progress-bar { flex: 1; height: 3px; background: rgba(255,255,255,0.06); border-radius: 3px; overflow: hidden; }
+    #s17 .cam-progress-fill { height: 100%; width: 0%; border-radius: 3px; background: rgba(230,81,0,0.8); box-shadow: 0 0 6px rgba(230,81,0,0.5); transition: width 0.5s ease; }
+    #s17 .cam-carousel {
+        display: flex; align-items: center; gap: 12px;
+        max-width: 860px; width: 100%; margin: 0 auto;
+        position: relative; z-index: 1;
+    }
+    #s17 .cam-card {
+        flex: 1; border-radius: 14px; overflow: hidden;
+        border: 1px solid rgba(230,81,0,0.2);
+        box-shadow: 0 0 30px rgba(230,81,0,0.1), 0 16px 40px rgba(0,0,0,0.7);
+        background: #050302; position: relative;
+        max-width: 800px; width: 100%;
+    }
+    #s17 .cam-topbar {
+        display: flex; align-items: center; justify-content: space-between;
+        padding: 8px 14px; background: rgba(0,0,0,0.8);
+        border-bottom: 1px solid rgba(230,81,0,0.15);
+    }
+    #s17 .cam-id { font-family: monospace; font-size: 11px; font-weight: 700; color: rgba(230,81,0,0.8); letter-spacing: 2px; }
+    #s17 .cam-live { display: flex; align-items: center; gap: 5px; font-family: var(--font-h); font-size: 9px; font-weight: 800; letter-spacing: 2px; color: rgba(220,50,50,1); }
+    #s17 .cam-live::before { content: ''; width: 6px; height: 6px; border-radius: 50%; background: rgba(220,50,50,1); box-shadow: 0 0 6px rgba(220,50,50,0.8); animation: pulse 1s infinite; }
+    #s17 .cam-img-wrap { position: relative; width: 100%; height: 300px; overflow: hidden; }
+    #s17 .cam-img-wrap img { width: 100%; height: 100%; object-fit: cover; filter: brightness(0.75) contrast(1.1); transition: filter 0.5s ease; }
+    #s17 .cam-scanlines { position: absolute; inset: 0; pointer-events: none; background: repeating-linear-gradient(0deg, transparent, transparent 2px, rgba(0,0,0,0.06) 3px, rgba(0,0,0,0.06) 4px); }
+    #s17 .cam-scan-effect { position: absolute; inset: 0; pointer-events: none; background: linear-gradient(180deg, transparent 0%, rgba(230,81,0,0.05) 50%, transparent 100%); opacity: 0; transition: opacity 0.3s ease; animation: none; }
+    #s17 .cam-card.scanning .cam-scan-effect { opacity: 1; animation: scan-anim 1s ease forwards; }
+    @keyframes scan-anim { 0% { background-position: 0% 0%; } 100% { background-position: 0% 100%; } }
+    #s17 .cam-img-wrap .cam-result-overlay {
+        position: absolute; inset: 0; background: rgba(0,0,0,0.7);
+        display: flex; flex-direction: column; align-items: center; justify-content: center;
+        opacity: 0; transition: opacity 0.5s ease; pointer-events: none;
+        padding: 16px; text-align: center;
+    }
+    #s17 .cam-card.revealed .cam-result-overlay { opacity: 1; }
+    #s17 .cam-result-risk { font-family: var(--font-h); font-size: clamp(22px,3.5vw,32px); font-weight: 900; color: #FFF4E8; margin-bottom: 6px; }
+    #s17 .cam-result-desc { font-size: 15px; color: rgba(255,244,232,0.7); line-height: 1.4; max-width: 400px; }
+    #s17 .cam-result-sev { margin-top: 8px; font-family: var(--font-h); font-size: 10px; font-weight: 800; letter-spacing: 2px; padding: 3px 10px; border-radius: 4px; }
+    #s17 .cam-result-sev.alta { background: rgba(230,81,0,0.2); color: rgba(255,140,60,1); border: 1px solid rgba(230,81,0,0.4); }
+    #s17 .cam-result-sev.critica { background: rgba(200,30,30,0.2); color: rgba(255,80,80,1); border: 1px solid rgba(200,30,30,0.4); }
+    #s17 .cam-bottom {
+        padding: 12px 16px; background: rgba(0,0,0,0.6); border-top: 1px solid rgba(230,81,0,0.1); display: flex; align-items: center; justify-content: center; width: 100%;
+    }
+    #s17 .cam-location { font-family: monospace; font-size: 11px; color: rgba(255,244,232,0.35); letter-spacing: 1px; }
+    #s17 .cam-btn {
+        padding: 12px 28px; border-radius: 8px; cursor: pointer;
+        font-family: var(--font-h); font-size: 14px; font-weight: 800;
+        letter-spacing: 1px; text-transform: uppercase;
+        background: rgba(230,81,0,0.2); border: 2px solid rgba(230,81,0,0.8);
+        color: rgba(230,81,0,1); transition: all 0.3s ease;
+        animation: cam-btn-pulse 1.2s ease-in-out infinite;
+        box-shadow: 0 0 16px rgba(230,81,0,0.2);
+    }
+    @keyframes cam-btn-pulse {
+        0%, 100% { transform: scale(1); box-shadow: 0 0 10px rgba(230,81,0,0.3); }
+        50% { transform: scale(1.06); box-shadow: 0 0 24px rgba(230,81,0,0.7); }
+    }
+    @keyframes pulse-border { 0%,100% { box-shadow: 0 0 0 0 rgba(230,81,0,0.3); } 50% { box-shadow: 0 0 0 4px rgba(230,81,0,0); } }
+    #s17 .cam-btn:hover { background: rgba(230,81,0,0.3); box-shadow: 0 0 16px rgba(230,81,0,0.3); }
+    #s17 .cam-btn.done { background: rgba(46,160,80,0.15); border-color: rgba(46,160,80,0.5); color: rgba(80,200,100,1); animation: none; cursor: default; }
+    #s17 .cam-dots { display: flex; gap: 6px; justify-content: center; max-width: 700px; margin: 10px auto 0; position: relative; z-index: 1; }
+    #s17 .cam-dot { width: 8px; height: 8px; border-radius: 50%; background: rgba(255,255,255,0.12); transition: all 0.3s ease; cursor: pointer; }
+    #s17 .cam-dot.active { background: rgba(230,81,0,0.9); box-shadow: 0 0 8px rgba(230,81,0,0.6); transform: scale(1.2); }
+    #s17 .cam-dot.done { background: rgba(46,160,80,0.7); }
+    #s17 .done-msg { max-width: 700px; margin: 8px auto 0; text-align: center; font-family: var(--font-h); font-size: 14px; font-weight: 800; color: rgba(230,81,0,0.9); letter-spacing: 1px; opacity: 0; transition: opacity 0.5s ease; position: relative; z-index: 1; }
+    @media (max-width: 768px) {
+        #s17 { overflow: hidden !important; }
+        #s17 .cam-img-wrap { height: 180px !important; }
+        #s17 .cam-result-risk { font-size: 16px !important; }
+        #s17 .cam-result-desc { font-size: 12px !important; }
+        #s17 .content-area.camera-analysis-mobile {
+            flex: 1 1 auto !important;
+            min-height: 0 !important;
+            height: calc(100vh - 140px) !important;
+            max-height: calc(100vh - 140px) !important;
+            overflow-y: auto !important;
+            overflow-x: hidden !important;
+            -webkit-overflow-scrolling: touch !important;
+            touch-action: pan-y !important;
+            display: block !important;
+            padding-bottom: 220px !important;
+        }
+        #s17 .mobile-scene-footer {
+            margin-bottom: 120px !important;
+        }
+        #s17 .mobile-pagination {
+            margin-bottom: 16px !important;
+        }
+        #s17 .mobile-scene-nav {
+            flex-direction: column !important;
+            gap: 10px !important;
+            width: 100% !important;
+            max-width: 100% !important;
+        }
+        #s17 .mobile-scene-nav button {
+            width: 100% !important;
+            min-height: 48px !important;
+        }
+        #s17 .btn-next-camera {
+            width: 100% !important;
+            min-height: 52px !important;
+            margin-top: 16px !important;
+            margin-bottom: 24px !important;
+            position: relative !important;
+            z-index: 5 !important;
+        }
+        #s17 .wave { pointer-events: none; }
+    }
+</style>
+
+<div class="hud-bg"></div>
+
+<div class="top-bar" style="position:relative;z-index:2;">
+    <div class="section-tag" style="background:var(--red);color:var(--black);font-size:16px;padding:6px 16px;font-weight:800;box-shadow:0 0 12px rgba(230,81,0,0.4);">Módulo 3</div>
+    <h2 class="slide-title" style="font-size:clamp(22px,3.5vw,36px);letter-spacing:-0.01em;text-shadow:0 0 15px rgba(230,81,0,0.4);">Análise de <span>Riscos Operacionais</span></h2>
+</div>
+
+<div class="content-area camera-analysis-mobile" style="position:relative;z-index:1;display:flex;flex-direction:column;justify-content:flex-start;padding-top:24px !important;flex:1;">
+
+    <div class="cam-progress">
+        <span id="s17-prog-label">0 / 6</span>
+        <div class="cam-progress-bar"><div class="cam-progress-fill" id="s17-prog-fill"></div></div>
+        <span>OCORRÊNCIAS ANALISADAS</span>
+    </div>
+
+    <div id="s17-first-hint" style="display:flex;align-items:center;justify-content:center;gap:10px;margin-bottom:10px;padding:10px 20px;background:rgba(230,81,0,0.12);border:1px solid rgba(230,81,0,0.4);border-radius:10px;font-family:var(--font-h);font-size:14px;font-weight:800;letter-spacing:2px;color:rgba(230,81,0,1);text-transform:uppercase;animation:pulse-border 1.5s infinite;max-width:700px;margin-left:auto;margin-right:auto;width:100%;">
+        👆 Clique no botão abaixo para analisar a cena
+    </div>
+
+    <div class="cam-carousel">
+
+        <div class="cam-card" id="s17-card">
+            <div class="cam-topbar">
+                <span class="cam-id" id="s17-cam-id">CAM-01 | CORREDOR LOGÍSTICO</span>
+                <span class="cam-live">AO VIVO</span>
+            </div>
+            <div class="cam-img-wrap">
+                <img id="s17-cam-img" src="https://i.imgur.com/WIN4X4r.jpg" alt="Câmera">
+                <div class="cam-scanlines"></div>
+                <div class="cam-scan-effect"></div>
+                <div class="cam-result-overlay">
+                    <div class="cam-result-risk" id="s17-risk-name">💥 COLISÃO COM ESTRUTURA</div>
+                    <div class="cam-result-desc" id="s17-risk-desc">Impacto contra porta-paletes e estruturas fixas.</div>
+                    <div class="cam-result-sev alta" id="s17-risk-sev">SEVERIDADE: ALTA</div>
+                </div>
+            </div>
+            <div class="cam-bottom" style="justify-content:center;">
+                <button class="cam-btn" id="s17-cam-btn" onclick="camAnalyze()">🔍 ANALISAR CENA</button>
+            </div>
+        </div>
+
+    </div>
+
+    <div class="mobile-scene-footer">
+        <div class="cam-dots mobile-pagination" id="s17-dots"></div>
+        <div class="mobile-scene-nav" style="display:flex; gap:12px; justify-content:center; align-items:center; margin-top:12px; position:relative; z-index:1; width:100%; max-width:860px; margin-left:auto; margin-right:auto;">
+            <button onclick="if(typeof playTechClick==='function')playTechClick(); camNav(-1)" id="s17-btn-prev" style="padding:12px 24px; border-radius:10px; background:rgba(255,255,255,0.06); border:1px solid rgba(255,255,255,0.15); color:rgba(255,244,232,0.7); font-family:var(--font-h); font-size:14px; font-weight:800; letter-spacing:1px; cursor:pointer; transition:all 0.3s ease; visibility:hidden;">
+                ← CÂMERA ANTERIOR
+            </button>
+            <button class="btn-next-camera" onclick="if(typeof playTechClick==='function')playTechClick(); camNav(1)" id="s17-btn-next" style="padding:12px 24px; border-radius:10px; background:rgba(230,81,0,0.06); border:2px solid rgba(230,81,0,0.2); color:rgba(230,81,0,0.3); font-family:var(--font-h); font-size:14px; font-weight:800; letter-spacing:1px; cursor:not-allowed; transition:all 0.3s ease;" disabled>
+                PRÓXIMA CÂMERA →
+            </button>
+        </div>
+        <div class="done-msg req-item" id="s17-done">✓ Todas as ocorrências foram analisadas</div>
+    </div>
+
+</div>
+
+<script>
+    const s17Cameras = [
+        { id: 'CAM-01 | CORREDOR LOGÍSTICO', loc: 'SETOR A · NÍVEL 1', img: 'https://i.imgur.com/WIN4X4r.jpg', risk: '💥 COLISÃO COM ESTRUTURA', desc: 'Impacto contra porta-paletes e estruturas fixas.', sev: 'alta', sevText: 'SEVERIDADE: ALTA' },
+        { id: 'CAM-02 | CRUZAMENTO', loc: 'SETOR B · INTERSEÇÃO', img: 'https://i.imgur.com/5tuQ11z.jpg', risk: '🚜 COLISÃO ENTRE VEÍCULOS', desc: 'Risco de impacto entre empilhadeiras e outros equipamentos.', sev: 'alta', sevText: 'SEVERIDADE: ALTA' },
+        { id: 'CAM-03 | CORREDOR LATERAL', loc: 'SETOR C · NÍVEL 2', img: 'https://i.imgur.com/Gq0koba.jpg', risk: '🚶 ATROPELAMENTO', desc: 'Movimentação simultânea de pessoas e equipamentos.', sev: 'critica', sevText: 'SEVERIDADE: CRÍTICA' },
+        { id: 'CAM-04 | ÁREA DE CARGA', loc: 'SETOR D · PLATAFORMA', img: 'https://i.imgur.com/IVPG0P4.jpg', risk: '📦 QUEDA DE MATERIAIS', desc: 'Carga instável pode cair durante a movimentação.', sev: 'alta', sevText: 'SEVERIDADE: ALTA' },
+        { id: 'CAM-05 | ABASTECIMENTO', loc: 'SETOR E · PÁTIO', img: 'https://i.imgur.com/gpsz3rW.jpg', risk: '🔥 INCÊNDIO OU EXPLOSÃO', desc: 'Risco durante abastecimento e troca de cilindros GLP.', sev: 'critica', sevText: 'SEVERIDADE: CRÍTICA' },
+        { id: 'CAM-06 | ÁREA DE MANOBRA', loc: 'SETOR F · CURVA', img: 'https://i.imgur.com/7vVEc2n.jpg', risk: '🔄 TOMBAMENTO', desc: 'Perda de estabilidade durante a operação.', sev: 'critica', sevText: 'SEVERIDADE: CRÍTICA' }
+    ];
+    let s17Current = 0;
+    let s17Analyzed = new Array(6).fill(false);
+
+    function camRender() {
+        const c = s17Cameras[s17Current];
+        document.getElementById('s17-cam-id').textContent = c.id;
+        document.getElementById('s17-cam-img').src = c.img;
+        document.getElementById('s17-risk-name').textContent = c.risk;
+        document.getElementById('s17-risk-desc').textContent = c.desc;
+        const sev = document.getElementById('s17-risk-sev');
+        sev.className = 'cam-result-sev ' + c.sev;
+        sev.textContent = c.sevText;
+        const card = document.getElementById('s17-card');
+        const btn = document.getElementById('s17-cam-btn');
+        if (s17Analyzed[s17Current]) {
+            card.classList.add('revealed');
+            card.classList.remove('scanning');
+            btn.className = 'cam-btn done';
+            btn.textContent = '✔ ANALISADO';
+        } else {
+            card.classList.remove('revealed', 'scanning');
+            const overlay = card.querySelector('.cam-result-overlay');
+            if (overlay) { overlay.style.transition = 'none'; overlay.style.opacity = '0'; setTimeout(() => { overlay.style.transition = ''; }, 50); }
+            btn.className = 'cam-btn';
+            btn.textContent = '🔍 ANALISAR CENA';
+        }
+        // Mostra aviso só na câmera 1
+        var hint = document.getElementById('s17-first-hint');
+        if (hint) hint.style.display = s17Current === 0 ? 'flex' : 'none';
+        const dots = document.getElementById('s17-dots');
+        dots.innerHTML = '';
+        s17Cameras.forEach((_, i) => {
+            const d = document.createElement('div');
+            d.className = 'cam-dot' + (s17Analyzed[i] ? ' done' : '') + (i === s17Current ? ' active' : '');
+            d.onclick = () => { s17Current = i; camRender(); };
+            dots.appendChild(d);
+        });
+        const btnPrev = document.getElementById('s17-btn-prev');
+        const btnNext = document.getElementById('s17-btn-next');
+        if (btnPrev) {
+            btnPrev.style.visibility = 'visible';
+            if (s17Current === 0) {
+                btnPrev.disabled = true;
+                btnPrev.style.cursor = 'not-allowed';
+                btnPrev.style.opacity = '0.3';
+            } else {
+                btnPrev.disabled = false;
+                btnPrev.style.cursor = 'pointer';
+                btnPrev.style.opacity = '1';
+            }
+        }
+        if (btnNext) {
+            const isLast = s17Current === s17Cameras.length - 1;
+            const isAnalyzed = s17Analyzed[s17Current];
+            btnNext.style.display = 'inline-flex';
+            if (isLast) {
+                btnNext.disabled = true;
+                btnNext.style.cursor = 'not-allowed';
+                btnNext.style.opacity = '0.3';
+                btnNext.style.background = 'rgba(255,255,255,0.06)';
+                btnNext.style.borderColor = 'rgba(255,255,255,0.15)';
+                btnNext.style.color = 'rgba(255,244,232,0.4)';
+                btnNext.style.boxShadow = 'none';
+            } else if (isAnalyzed) {
+                btnNext.disabled = false;
+                btnNext.style.cursor = 'pointer';
+                btnNext.style.opacity = '1';
+                btnNext.style.background = '#ffffff';
+                btnNext.style.borderColor = '#ffffff';
+                btnNext.style.color = '#0d0a08';
+                btnNext.style.boxShadow = '0 0 20px rgba(255,255,255,0.2)';
+            } else {
+                btnNext.disabled = true;
+                btnNext.style.cursor = 'not-allowed';
+                btnNext.style.opacity = '0.4';
+                btnNext.style.background = 'rgba(230,81,0,0.06)';
+                btnNext.style.borderColor = 'rgba(230,81,0,0.2)';
+                btnNext.style.color = 'rgba(230,81,0,0.3)';
+                btnNext.style.boxShadow = 'none';
+            }
+        }
+    }
+
+    function camNav(dir) {
+        const next = s17Current + dir;
+        if (next >= 0 && next < s17Cameras.length) { s17Current = next; camRender(); }
+    }
+
+    function camAnalyze() {
+        if (s17Analyzed[s17Current]) return;
+        const card = document.getElementById('s17-card');
+        const btn = document.getElementById('s17-cam-btn');
+        card.classList.add('scanning');
+        btn.disabled = true;
+        setTimeout(() => {
+            card.classList.add('revealed');
+            card.classList.remove('scanning');
+            const overlay = card.querySelector('.cam-result-overlay');
+            if (overlay) { overlay.style.transition = ''; overlay.style.opacity = '1'; }
+            s17Analyzed[s17Current] = true;
+            btn.className = 'cam-btn done';
+            btn.textContent = '✔ ANALISADO';
+            btn.disabled = false;
+            if (typeof playBeep === 'function') playBeep('ok');
+            const total = s17Analyzed.filter(Boolean).length;
+            document.getElementById('s17-prog-fill').style.width = (total/6*100) + '%';
+            document.getElementById('s17-prog-label').textContent = total + ' / 6';
+            camRender();
+            setTimeout(function () {
+                var nextBtn = document.querySelector('#s17 .btn-next-camera');
+                if (nextBtn && !nextBtn.disabled) {
+                    nextBtn.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                }
+            }, 300);
+            if (total === 6) {
+                var done = document.getElementById('s17-done');
+                done.style.opacity = '1';
+                done.classList.add('req-done');
+                if (typeof updateNextButton === 'function') updateNextButton();
+            }
+        }, 0);
+    }
+
+    camRender();
+</script>
+
+<div class="wave"><svg viewBox="0 0 1440 100" preserveAspectRatio="none">
+    <path d="M0,60 C360,20 720,90 1080,35 L1440,55 L1440,100 L0,100 Z" fill="rgba(230,81,0,0.07)" />
+</svg></div>
+            </div>
+
+<div class="slide" id="s18">
+<style>
+    #s18.slide { background: #0d0a08; overflow: hidden; }
+    #s18 .top-bar { padding-bottom: 0 !important; }
+    #s18 .hud-bg {
+        position: absolute; inset: 0; z-index: 0; pointer-events: none;
+        background:
+            radial-gradient(ellipse at 50% 40%, rgba(230,81,0,0.05) 0%, transparent 55%),
+            repeating-linear-gradient(0deg, transparent, transparent 40px, rgba(255,255,255,0.008) 41px),
+            repeating-linear-gradient(90deg, transparent, transparent 40px, rgba(255,255,255,0.008) 41px);
+    }
+    #s18 .content-area {
+        flex: 1; min-height: 0; width: 100%;
+        justify-content: flex-start !important;
+        padding: 8px 20px 72px !important;
+    }
+    #s18 .vis-stack {
+        max-width: 1180px; width: 100%; margin: 0 auto;
+        display: flex; flex-direction: column; gap: 14px;
+        position: relative; z-index: 1;
+    }
+    #s18 .vis-subtitle {
+        text-align: center; font-family: var(--font-p); font-size: clamp(12px, 1.8vw, 14px);
+        color: rgba(255,244,232,0.5); margin: 0; line-height: 1.4;
+    }
+    #s18 .vis-hero {
+        display: grid; grid-template-columns: 1.65fr 1fr; gap: 18px;
+        align-items: stretch;
+    }
+    #s18 .vis-scene-wrap {
+        position: relative; border-radius: 14px; overflow: hidden;
+        border: 1px solid rgba(230,81,0,0.25);
+        box-shadow: 0 0 40px rgba(230,81,0,0.12), 0 20px 50px rgba(0,0,0,0.75);
+        background: #050302; width: 100%;
+        height: clamp(320px, 44vh, 460px); min-height: 300px;
+    }
+    #s18 .vis-scene-wrap img {
+        width: 100%; height: 100%; object-fit: cover; display: block;
+        transition: filter 0.6s ease;
+    }
+    #s18 .vis-fog {
+        position: absolute; inset: 0; pointer-events: none;
+        background: linear-gradient(180deg, rgba(180,190,200,0) 0%, rgba(160,170,185,0.4) 100%);
+        opacity: 0; transition: opacity 0.6s ease;
+    }
+    #s18 .vis-dark {
+        position: absolute; inset: 0; pointer-events: none;
+        background: rgba(0,0,0,0); transition: background 0.6s ease;
+    }
+    #s18 .vis-rain {
+        position: absolute; inset: 0; pointer-events: none; opacity: 0;
+        background-image:
+            linear-gradient(180deg, transparent 0%, rgba(200,210,230,0.08) 100%),
+            repeating-linear-gradient(90deg, transparent, transparent 3px, rgba(255,255,255,0.04) 3px, rgba(255,255,255,0.04) 4px);
+        transition: opacity 0.5s ease;
+    }
+    #s18 .vis-rain::before, #s18 .vis-rain::after {
+        content: ''; position: absolute; inset: -100% 0 0 0;
+        background: repeating-linear-gradient(180deg, transparent 0px, transparent 8px, rgba(255,255,255,0.12) 9px, transparent 10px);
+        animation: s18-rain 0.35s linear infinite;
+    }
+    #s18 .vis-rain::after { animation-duration: 0.5s; opacity: 0.6; left: 30%; }
+    @keyframes s18-rain { 0% { transform: translateY(-10%); } 100% { transform: translateY(10%); } }
+    #s18 .vis-headlights {
+        position: absolute; bottom: 18%; left: 50%; transform: translateX(-50%);
+        width: 70%; height: 45%; pointer-events: none; opacity: 0;
+        transition: opacity 0.6s ease;
+        background:
+            radial-gradient(ellipse 18% 35% at 38% 85%, rgba(255,230,150,0.55) 0%, transparent 70%),
+            radial-gradient(ellipse 18% 35% at 62% 85%, rgba(255,230,150,0.55) 0%, transparent 70%),
+            radial-gradient(ellipse 50% 60% at 50% 90%, rgba(255,200,100,0.15) 0%, transparent 75%);
+        filter: blur(2px);
+    }
+    #s18 .vis-scene-wrap.vis-l75 img { filter: brightness(0.92) contrast(0.95) saturate(0.9); }
+    #s18 .vis-scene-wrap.vis-l75 .vis-fog { opacity: 0.28; }
+    #s18 .vis-scene-wrap.vis-l50 img { filter: brightness(0.72) contrast(0.88) saturate(0.75); }
+    #s18 .vis-scene-wrap.vis-l50 .vis-fog { opacity: 0.48; }
+    #s18 .vis-scene-wrap.vis-l50 .vis-dark { background: rgba(0,0,0,0.18); }
+    #s18 .vis-scene-wrap.vis-l25 img { filter: brightness(0.58) contrast(0.82) saturate(0.65); }
+    #s18 .vis-scene-wrap.vis-l25 .vis-fog { opacity: 0.32; }
+    #s18 .vis-scene-wrap.vis-l25 .vis-dark { background: rgba(0,0,0,0.28); }
+    #s18 .vis-scene-wrap.vis-l25 .vis-rain { opacity: 1; }
+    #s18 .vis-scene-wrap.vis-l10 img { filter: brightness(0.42) contrast(0.78) saturate(0.55); }
+    #s18 .vis-scene-wrap.vis-l10 .vis-fog { opacity: 0.72; }
+    #s18 .vis-scene-wrap.vis-l10 .vis-dark { background: rgba(0,0,0,0.38); }
+    #s18 .vis-scene-wrap.vis-l10 .vis-rain { opacity: 1; }
+    #s18 .vis-scene-wrap.vis-l10 .vis-headlights { opacity: 1; }
+    #s18 .vis-scene-label {
+        position: absolute; top: 10px; left: 12px; z-index: 2;
+        font-family: var(--font-h); font-size: 9px; font-weight: 800;
+        letter-spacing: 2px; text-transform: uppercase;
+        color: rgba(230,81,0,0.85); background: rgba(0,0,0,0.65);
+        padding: 4px 10px; border-radius: 4px; border: 1px solid rgba(230,81,0,0.25);
+    }
+    #s18 .vis-side {
+        display: flex; flex-direction: column; gap: 12px; min-height: 0;
+    }
+    #s18 .vis-control-card {
+        flex: 1; display: flex; flex-direction: column;
+        background: rgba(5,3,2,0.82); border: 1px solid rgba(230,81,0,0.2);
+        border-radius: 14px; padding: 18px 20px;
+        box-shadow: 0 12px 32px rgba(0,0,0,0.5), inset 0 0 20px rgba(230,81,0,0.04);
+        backdrop-filter: blur(12px);
+    }
+    #s18 .vis-slider-head {
+        display: flex; align-items: center; justify-content: space-between; margin-bottom: 12px;
+    }
+    #s18 .vis-slider-title {
+        font-family: var(--font-h); font-size: 13px; font-weight: 800;
+        letter-spacing: 2.5px; text-transform: uppercase; color: rgba(230,81,0,0.9);
+    }
+    #s18 .vis-slider-value {
+        font-family: var(--font-h); font-size: 28px; font-weight: 900;
+        color: #FFF4E8; text-shadow: 0 0 12px rgba(230,81,0,0.4);
+    }
+    #s18 .vis-range {
+        -webkit-appearance: none; appearance: none; width: 100%; height: 6px;
+        border-radius: 6px; outline: none; cursor: pointer;
+        background: linear-gradient(90deg, rgba(230,81,0,0.8) 0%, rgba(255,255,255,0.08) 0%);
+        margin: 8px 0 6px;
+    }
+    #s18 .vis-range::-webkit-slider-thumb {
+        -webkit-appearance: none; width: 22px; height: 22px; border-radius: 50%;
+        background: radial-gradient(circle, #FFF4E8 30%, rgba(230,81,0,1) 100%);
+        border: 2px solid rgba(255,255,255,0.3);
+        box-shadow: 0 0 14px rgba(230,81,0,0.6); cursor: pointer;
+    }
+    #s18 .vis-range::-moz-range-thumb {
+        width: 22px; height: 22px; border-radius: 50%; border: 2px solid rgba(255,255,255,0.3);
+        background: radial-gradient(circle, #FFF4E8 30%, rgba(230,81,0,1) 100%);
+        box-shadow: 0 0 14px rgba(230,81,0,0.6); cursor: pointer;
+    }
+    #s18 .vis-ticks {
+        display: flex; justify-content: space-between; margin-top: 4px;
+    }
+    #s18 .vis-tick {
+        font-family: var(--font-h); font-size: 13px; font-weight: 700;
+        color: rgba(255,244,232,0.35); letter-spacing: 0.5px; cursor: pointer;
+        padding: 4px 2px; transition: color 0.3s ease, text-shadow 0.3s ease;
+        background: none; border: none;
+    }
+    #s18 .vis-tick.active { color: rgba(230,81,0,1); text-shadow: 0 0 8px rgba(230,81,0,0.5); }
+    #s18 .vis-alerts-divider {
+        height: 1px; margin: 14px 0 12px;
+        background: linear-gradient(90deg, transparent, rgba(230,81,0,0.25), transparent);
+    }
+    #s18 .vis-alert-box {
+        border-radius: 10px; padding: 12px 14px;
+        background: rgba(230,81,0,0.06); border: 1px solid rgba(230,81,0,0.2);
+        transition: all 0.35s ease;
+    }
+    #s18 .vis-alert-box.caution {
+        background: rgba(230,81,0,0.1); border-color: rgba(230,81,0,0.35);
+    }
+    #s18 .vis-alert-box.warning {
+        background: rgba(230,120,0,0.12); border-color: rgba(255,140,40,0.4);
+    }
+    #s18 .vis-alert-box.critical {
+        background: rgba(200,40,30,0.14); border-color: rgba(255,80,60,0.45);
+        box-shadow: 0 0 20px rgba(200,40,30,0.15);
+    }
+    #s18 .vis-alert-box.normal {
+        background: rgba(255,255,255,0.03); border-color: rgba(255,255,255,0.1);
+    }
+    #s18 .vis-alert-label {
+        font-family: var(--font-h); font-size: 13px; font-weight: 800;
+        letter-spacing: 2px; text-transform: uppercase;
+        color: rgba(230,81,0,0.85); margin-bottom: 8px;
+    }
+    #s18 .vis-alert-box.critical .vis-alert-label { color: rgba(255,120,80,1); }
+    #s18 .vis-alert-current {
+        font-family: var(--font-p); font-size: 17px; font-weight: 600;
+        color: #FFF4E8; line-height: 1.5; min-height: 1.35em;
+        transition: opacity 0.25s ease;
+    }
+    #s18 .vis-alert-box.critical .vis-alert-current { color: rgba(255,210,190,1); }
+    #s18 .vis-tips {
+        display: flex; flex-direction: column; gap: 6px; margin-top: 12px;
+    }
+    #s18 .vis-tip {
+        display: flex; align-items: flex-start; gap: 10px;
+        font-size: 14px; line-height: 1.5; color: rgba(255,244,232,0.65);
+        padding: 8px 0; border-top: 1px solid rgba(255,255,255,0.05);
+    }
+    #s18 .vis-tip:first-child { border-top: none; padding-top: 0; }
+    #s18 .vis-tip-icon { flex-shrink: 0; font-size: 16px; line-height: 1.2; }
+    #s18 .vis-cta-wrap { width: 100%; margin-top: 2px; }
+    #s18 .vis-cta {
+        width: 100%; padding: 16px 24px; border-radius: 12px;
+        font-family: var(--font-h); font-size: 14px; font-weight: 800;
+        letter-spacing: 2px; text-transform: uppercase; cursor: pointer;
+        color: #FFF4E8;
+        background: linear-gradient(135deg, rgba(230,81,0,0.95) 0%, rgba(180,60,0,0.9) 100%);
+        border: 1px solid rgba(255,180,100,0.35);
+        box-shadow: 0 8px 28px rgba(230,81,0,0.4), inset 0 1px 0 rgba(255,255,255,0.15);
+        transition: all 0.3s ease;
+        animation: s18-cta-pulse 2.5s ease-in-out infinite;
+    }
+    @keyframes s18-cta-pulse {
+        0%, 100% { box-shadow: 0 6px 24px rgba(230,81,0,0.35), inset 0 1px 0 rgba(255,255,255,0.15); }
+        50% { box-shadow: 0 8px 32px rgba(230,81,0,0.5), 0 0 0 3px rgba(230,81,0,0.12), inset 0 1px 0 rgba(255,255,255,0.15); }
+    }
+    #s18 .vis-cta:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 10px 36px rgba(230,81,0,0.45), inset 0 1px 0 rgba(255,255,255,0.2);
+    }
+    #s18 .vis-cta.req-done {
+        background: linear-gradient(135deg, rgba(46,140,70,0.9) 0%, rgba(30,100,50,0.85) 100%);
+        border-color: rgba(80,200,100,0.4);
+        animation: none;
+        box-shadow: 0 6px 20px rgba(46,160,80,0.3);
+    }
+    #s18-modal {
+        position: fixed; inset: 0; z-index: 9999;
+        background: rgba(0,0,0,0.75); backdrop-filter: blur(8px);
+        display: flex; align-items: center; justify-content: center;
+        padding: 24px; opacity: 0; pointer-events: none;
+        transition: opacity 0.35s ease;
+    }
+    #s18-modal.active { opacity: 1; pointer-events: auto; }
+    #s18-modal .vis-modal-box {
+        max-width: 480px; width: 100%; border-radius: 16px;
+        background: linear-gradient(160deg, rgba(20,12,8,0.98) 0%, rgba(8,5,3,0.98) 100%);
+        border: 1px solid rgba(230,81,0,0.35);
+        box-shadow: 0 24px 60px rgba(0,0,0,0.8), 0 0 40px rgba(230,81,0,0.12);
+        padding: 36px 32px 28px; position: relative;
+        transform: scale(0.92) translateY(12px); transition: transform 0.35s ease;
+    }
+    #s18-modal.active .vis-modal-box { transform: scale(1) translateY(0); }
+    #s18-modal .vis-modal-close {
+        position: absolute; top: 12px; right: 14px; width: 32px; height: 32px;
+        border-radius: 50%; border: 1px solid rgba(255,255,255,0.15);
+        background: rgba(255,255,255,0.06); color: rgba(255,244,232,0.7);
+        font-size: 20px; line-height: 1; cursor: pointer; transition: all 0.2s ease;
+    }
+    #s18-modal .vis-modal-close:hover { background: rgba(230,81,0,0.2); color: #FFF4E8; }
+    #s18-modal .vis-modal-title {
+        font-family: var(--font-h); font-size: clamp(20px, 3vw, 26px); font-weight: 900;
+        color: #FFF4E8; margin: 0 0 16px; text-shadow: 0 0 20px rgba(230,81,0,0.3);
+    }
+    #s18-modal .vis-modal-text {
+        font-size: 15px; line-height: 1.6; color: rgba(255,244,232,0.75); margin: 0 0 12px;
+    }
+    #s18-modal .vis-modal-text:last-child { margin-bottom: 0; }
+    #s18-modal .vis-modal-text em { color: rgba(230,81,0,0.95); font-style: normal; font-weight: 600; }
+    @media (max-width: 900px) {
+        #s18 .vis-hero { grid-template-columns: 1fr; gap: 14px; }
+        #s18 .vis-scene-wrap { height: clamp(220px, 36vw, 300px); min-height: 200px; }
+    }
+    #s18 .vis-effects-head {
+        font-family: var(--font-h); font-size: 13px; font-weight: 800;
+        letter-spacing: 2px; text-transform: uppercase;
+        color: rgba(230,81,0,0.85); margin: 10px 0 0; padding-top: 2px;
+    }
+    #s18 .vis-mobile-hints { display: none; text-align: center; }
+    #s18 .visibility-success {
+        width: fit-content; margin: 14px auto 10px auto;
+        padding: 10px 18px; border-radius: 999px;
+        background: rgba(46,204,113,0.12); border: 1px solid rgba(46,204,113,0.35);
+        color: #2ECC71; font-weight: 700; font-size: 14px;
+        box-shadow: 0 0 16px rgba(46,204,113,0.15);
+        font-family: var(--font-h);
+    }
+    #s18 .scroll-hint {
+        width: fit-content; margin: 0 auto;
+        padding: 10px 18px; border-radius: 999px;
+        background: rgba(230,81,0,0.08); border: 1px solid rgba(230,81,0,0.25);
+        color: #FF6B00; font-weight: 700; font-size: 14px;
+        animation: scrollHint 1.8s infinite;
+        font-family: var(--font-h);
+    }
+    @keyframes scrollHint {
+        0% { transform: translateY(0); opacity: 0.65; }
+        50% { transform: translateY(8px); opacity: 1; }
+        100% { transform: translateY(0); opacity: 0.65; }
+    }
+    @media (max-width: 768px) {
+        #s18 { overflow: hidden !important; }
+        #s18 .content-area.s18-mobile-scroll {
+            flex: 1 1 auto !important;
+            min-height: 0 !important;
+            height: calc(100vh - 140px) !important;
+            max-height: calc(100vh - 140px) !important;
+            overflow-y: auto !important;
+            overflow-x: hidden !important;
+            -webkit-overflow-scrolling: touch !important;
+            touch-action: pan-y !important;
+            padding: 6px 14px 180px !important;
+        }
+        #s18 .vis-stack { gap: 10px; }
+        #s18 .vis-scene-wrap {
+            height: clamp(155px, 26vh, 190px) !important;
+            min-height: 155px !important;
+            max-height: 190px !important;
+        }
+        #s18 .vis-subtitle { font-size: 15px !important; margin-bottom: 6px !important; }
+        #s18 .vis-control-card { padding: 14px 16px 10px; }
+        #s18 .vis-mobile-hints.visible { display: block; }
+        #s18 .vis-effects-head { margin-top: 6px; }
+        #s18 .vis-cta { padding: 14px 18px; font-size: 13px; }
+        #s18-modal .vis-modal-box { padding: 28px 22px 22px; }
+        #s18 .wave { pointer-events: none; }
+    }
+</style>
+
+<div class="hud-bg"></div>
+
+<div class="top-bar" style="position:relative;z-index:2;">
+    <div class="section-tag" style="background:var(--red);color:var(--black);font-size:16px;padding:6px 16px;font-weight:800;box-shadow:0 0 12px rgba(230,81,0,0.4);">MÓDULO 3</div>
+    <h2 class="slide-title" style="font-size:clamp(24px,3.8vw,40px);letter-spacing:-0.01em;text-shadow:0 0 15px rgba(230,81,0,0.4);">Condições Adversas de <span>Operação</span></h2>
+</div>
+
+<div class="content-area s18-mobile-scroll" style="position:relative;z-index:1;display:flex;flex-direction:column;">
+    <div class="vis-stack">
+        <p class="vis-subtitle" style="width:100%; text-align:center; margin-top:8px; margin-bottom:8px; font-size:20px; color:rgba(230,81,0,1); font-weight:800; letter-spacing:1px; text-shadow:0 0 16px rgba(230,81,0,0.6); animation:pulse 1.5s infinite;">👆 Ajuste a visibilidade para observar como as condições climáticas afetam a operação.</p>
+
+        <div class="vis-hero">
+            <div class="vis-scene-wrap vis-l100" id="s18-scene">
+                <span class="vis-scene-label">Simulação operacional</span>
+                <img src="https://i.imgur.com/6eyOizn.jpg" alt="Operação de empilhadeira em ambiente logístico">
+                <div class="vis-dark"></div>
+                <div class="vis-fog"></div>
+                <div class="vis-rain"></div>
+                <div class="vis-headlights"></div>
+            </div>
+
+            <div class="vis-side">
+                <div class="vis-control-card">
+                    <div class="vis-slider-head">
+                        <span class="vis-slider-title">Visibilidade</span>
+                        <span class="vis-slider-value" id="s18-vis-value">100%</span>
+                    </div>
+                    <input type="range" class="vis-range" id="s18-slider" min="0" max="4" step="1" value="0" aria-label="Nível de visibilidade">
+                    <div class="vis-ticks" id="s18-ticks">
+                        <button type="button" class="vis-tick active" data-idx="0">100%</button>
+                        <button type="button" class="vis-tick" data-idx="1">75%</button>
+                        <button type="button" class="vis-tick" data-idx="2">50%</button>
+                        <button type="button" class="vis-tick" data-idx="3">25%</button>
+                        <button type="button" class="vis-tick" data-idx="4">10%</button>
+                    </div>
+
+                    <div class="vis-mobile-hints" id="s18-mobile-hints">
+                        <div class="visibility-success" id="s18-vis-success">✓ Visibilidade ajustada!</div>
+                        <div class="scroll-hint" id="s18-scroll-hint">↓ Role para continuar a análise</div>
+                    </div>
+
+                    <div class="vis-effects-head">EFEITOS DA CONDIÇÃO CLIMÁTICA</div>
+                    <div class="vis-alerts-divider"></div>
+
+                    <div class="vis-alert-box normal" id="s18-alert-box">
+                        <div class="vis-alert-label">⚠ Alerta Atual</div>
+                        <div class="vis-alert-current" id="s18-alert-current">Visibilidade plena. Operação normal.</div>
+                    </div>
+
+                    <div class="vis-tips">
+                        <div class="vis-tip"><span class="vis-tip-icon">🌧</span><span>Chuva reduz aderência — diminua a velocidade.</span></div>
+                        <div class="vis-tip"><span class="vis-tip-icon">💡</span><span>Faróis acesos alertam pedestres e melhoram a visão.</span></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="vis-cta-wrap">
+            <button type="button" class="vis-cta req-item" id="s18-blind-btn" onclick="if(typeof playBeep==='function')playBeep('ok'); s18OpenBlind()">👁 Fator Cegueira</button>
+        </div>
+
+        <span class="req-item" id="s18-req-slider" style="display:none" aria-hidden="true"></span>
+    </div>
+</div>
+
+<script>
+(function () {
+    function initS18() {
+        var LEVELS = [100, 75, 50, 25, 10];
+        var scene = document.getElementById('s18-scene');
+        var slider = document.getElementById('s18-slider');
+        if (!scene || !slider) return;
+
+        var valueEl = document.getElementById('s18-vis-value');
+        var ticks = document.querySelectorAll('#s18-ticks .vis-tick');
+        var reqSlider = document.getElementById('s18-req-slider');
+        var alertBox = document.getElementById('s18-alert-box');
+        var alertCurrent = document.getElementById('s18-alert-current');
+        var sliderMovedOnce = false;
+        var mobileHints = document.getElementById('s18-mobile-hints');
+        var scrollContainer = document.querySelector('#s18 .content-area');
+
+        function s18IsMobile() {
+            return window.matchMedia('(max-width: 768px)').matches;
+        }
+
+        function s18OnFirstSliderMove() {
+            if (sliderMovedOnce || !s18IsMobile()) return;
+            sliderMovedOnce = true;
+            if (mobileHints) mobileHints.classList.add('visible');
+            if (scrollContainer) {
+                setTimeout(function () {
+                    scrollContainer.scrollBy({ top: 100, behavior: 'smooth' });
+                }, 300);
+            }
+        }
+        var ALERT_MSG = {
+            100: 'Visibilidade plena. Operação normal.',
+            75: 'Reduza a velocidade.',
+            50: 'Piso molhado exige atenção redobrada.',
+            25: 'Aumente a distância de segurança.',
+            10: 'Visibilidade crítica. Utilize os faróis.'
+        };
+
+        function updateRangeFill(idx) {
+            var pct = (idx / 4) * 100;
+            slider.style.background = 'linear-gradient(90deg, rgba(230,81,0,0.85) ' + pct + '%, rgba(255,255,255,0.08) ' + pct + '%)';
+        }
+
+        function setLevel(idx) {
+            idx = Math.max(0, Math.min(4, idx));
+            var val = LEVELS[idx];
+            scene.className = 'vis-scene-wrap vis-l' + val;
+            if (valueEl) valueEl.textContent = val + '%';
+            slider.value = idx;
+            ticks.forEach(function (t) {
+                t.classList.toggle('active', parseInt(t.dataset.idx, 10) === idx);
+            });
+            updateRangeFill(idx);
+            if (alertCurrent) {
+                alertCurrent.style.opacity = '0';
+                setTimeout(function () {
+                    alertCurrent.textContent = ALERT_MSG[val] || '';
+                    alertCurrent.style.opacity = '1';
+                }, 120);
+            }
+            if (alertBox) {
+                alertBox.className = 'vis-alert-box';
+                if (val === 100) alertBox.classList.add('normal');
+                else if (val <= 10) alertBox.classList.add('critical');
+                else if (val <= 50) alertBox.classList.add('warning');
+                else alertBox.classList.add('caution');
+            }
+            if (val <= 10 && reqSlider && !reqSlider.classList.contains('req-done')) {
+                reqSlider.classList.add('req-done');
+                try { updateNextButton(); } catch (e) {}
+            }
+        }
+
+        slider.addEventListener('input', function () {
+            s18OnFirstSliderMove();
+            setLevel(parseInt(this.value, 10));
+        });
+        ticks.forEach(function (t) {
+            t.addEventListener('click', function () {
+                s18OnFirstSliderMove();
+                setLevel(parseInt(this.dataset.idx, 10));
+            });
+        });
+        updateRangeFill(0);
+        setLevel(0);
+    }
+
+    window.s18OpenBlind = function () {
+        var modal = document.getElementById('s18-modal');
+        var btn = document.getElementById('s18-blind-btn');
+        if (modal) modal.classList.add('active');
+        if (btn && !btn.classList.contains('req-done')) {
+            btn.classList.add('req-done');
+            try { updateNextButton(); } catch (e) {}
+        }
+    };
+    window.s18CloseBlind = function (e) {
+        if (e && e.target && e.target.id === 's18-modal') {
+            document.getElementById('s18-modal').classList.remove('active');
+        } else if (!e || !e.target || e.target.classList.contains('vis-modal-close')) {
+            var m = document.getElementById('s18-modal');
+            if (m) m.classList.remove('active');
+        }
+    };
+
+    if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', initS18);
+    } else {
+        initS18();
+    }
+})();
+</script>
+
+<div class="wave"><svg viewBox="0 0 1440 100" preserveAspectRatio="none">
+    <path d="M0,50 C480,10 960,85 1440,30 L1440,100 L0,100 Z" fill="rgba(230,81,0,0.07)" />
+</svg></div>
+            </div>
+
+            <div class="slide" id="s19"
+                style="background: radial-gradient(ellipse at center, rgba(40, 18, 5, 1) 0%, rgba(13, 10, 8, 1) 65%, rgba(8, 6, 4, 1) 100%); overflow: hidden;">
+                <div
+                    style="position: absolute; inset: 0; pointer-events: none; z-index: 0; background: radial-gradient(ellipse at 50% 50%, rgba(230, 81, 0, 0.12) 0%, transparent 65%); animation: s1b-glow 4s infinite alternate ease-in-out;">
+                </div>
+                <div
+                    style="position: absolute; inset: 0; pointer-events: none; z-index: 0; background-image: repeating-linear-gradient(0deg, transparent, transparent 2px, rgba(46, 204, 113, 0.03) 3px, rgba(46, 204, 113, 0.03) 4px);">
+                </div>
+                <div
+                    style="position: absolute; inset: 0; pointer-events: none; z-index: 0; opacity: 0.4; background-image: radial-gradient(rgba(255,255,255,0.15) 1px, transparent 1px); background-size: 60px 60px; animation: s1b-smoke 30s infinite linear;">
+                </div>
+                <div class="top-bar" style="position: relative; z-index: 2;">
+                    <div class="section-tag"
+                        style="background: var(--red); color: var(--black); font-size: 16px; padding: 6px 16px; font-weight: 800; box-shadow: 0 0 12px rgba(46, 204, 113, 0.4);">
+                        Módulo 3</div>
+                    <h2 class="slide-title"
+                        style="font-size: clamp(28px, 4vw, 42px); letter-spacing: -0.01em; text-shadow: 0 0 15px rgba(46, 204, 113, 0.4);">
+                        Prevenção de <span>Colisões</span></h2>
+                </div>
+                <div class="content-area"
+                    style="align-items: center; text-align: center; justify-content: flex-start; position: relative; z-index: 2;">
+                    <div class="video-wrap req-item"
+                        style="max-width: 1240px; margin-top: 40px; box-shadow: 0 40px 80px rgba(0,0,0,0.9), 0 0 60px rgba(230,81,0,0.2); border: 1px solid rgba(230,81,0,0.3); border-radius: 12px; transform: translateZ(0);">
+                        <iframe
+                            src="https://player.vimeo.com/video/1197704297?title=0&byline=0&portrait=0&badge=0&autopause=0&player_id=0&app_id=58479&controls=1&transparent=0&dnt=1"
+                            frameborder="0"
+                            allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media; web-share"
+                            referrerpolicy="strict-origin-when-cross-origin"
+                            allowfullscreen
+                            title="Prevenção de Colisões"></iframe>
+                    </div>
+                </div>
+                <div class="wave" style="position: absolute; bottom: 0; left: 0; right: 0; z-index: 1;"><svg
+                        viewBox="0 0 1440 100" preserveAspectRatio="none">
+                        <path d="M0,60 C360,20 720,90 1080,35 L1440,55 L1440,100 L0,100 Z"
+                            fill="rgba(230, 81, 0, 0.07)" />
+                    </svg></div>
+            </div>
+
+            <div class="slide" id="s20"
+                style="background: radial-gradient(ellipse at center, rgba(40, 18, 5, 1) 0%, rgba(13, 10, 8, 1) 65%, rgba(8, 6, 4, 1) 100%); overflow: hidden;">
+                <div
+                    style="position: absolute; inset: 0; pointer-events: none; z-index: 0; background: radial-gradient(ellipse at 50% 50%, rgba(230, 81, 0, 0.12) 0%, transparent 65%); animation: s1b-glow 4s infinite alternate ease-in-out;">
+                </div>
+                <div
+                    style="position: absolute; inset: 0; pointer-events: none; z-index: 0; background-image: repeating-linear-gradient(0deg, transparent, transparent 2px, rgba(46, 204, 113, 0.03) 3px, rgba(46, 204, 113, 0.03) 4px);">
+                </div>
+                <div
+                    style="position: absolute; inset: 0; pointer-events: none; z-index: 0; opacity: 0.4; background-image: radial-gradient(rgba(255,255,255,0.15) 1px, transparent 1px); background-size: 60px 60px; animation: s1b-smoke 30s infinite linear;">
+                </div>
+                <div class="top-bar" style="position: relative; z-index: 2;">
+                    <div class="section-tag"
+                        style="background: var(--red); color: var(--black); font-size: 16px; padding: 6px 16px; font-weight: 800; box-shadow: 0 0 12px rgba(46, 204, 113, 0.4);">
+                        Módulo 3</div>
+                    <h2 class="slide-title"
+                        style="font-size: clamp(28px, 4vw, 42px); letter-spacing: -0.01em; text-shadow: 0 0 15px rgba(46, 204, 113, 0.4);">
+                        Prevenções para <span>Tombamentos</span></h2>
+                </div>
+                <div class="content-area"
+                    style="align-items: center; text-align: center; justify-content: flex-start; position: relative; z-index: 2;">
+                    <div class="video-wrap req-item"
+                        style="max-width: 1240px; margin-top: 40px; box-shadow: 0 40px 80px rgba(0,0,0,0.9), 0 0 60px rgba(230,81,0,0.2); border: 1px solid rgba(230,81,0,0.3); border-radius: 12px; transform: translateZ(0);">
+                        <iframe
+                            src="https://player.vimeo.com/video/1197704402?title=0&byline=0&portrait=0&badge=0&autopause=0&player_id=0&app_id=58479&controls=1&transparent=0&dnt=1"
+                            frameborder="0"
+                            allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media; web-share"
+                            referrerpolicy="strict-origin-when-cross-origin"
+                            allowfullscreen
+                            title="Prevenções para Tombamentos"></iframe>
+                    </div>
+                </div>
+                <div class="wave" style="position: absolute; bottom: 0; left: 0; right: 0; z-index: 1;"><svg
+                        viewBox="0 0 1440 100" preserveAspectRatio="none">
+                        <path d="M0,60 C360,20 720,90 1080,35 L1440,55 L1440,100 L0,100 Z"
+                            fill="rgba(230, 81, 0, 0.07)" />
+                    </svg></div>
+            </div>
+
+            <div class="slide" id="s21">
+                <style>
+                #s21 #q3-text::before { display: none; content: none; }
+                @media (min-width: 769px) {
+                    #s21 #q3-text {
+                        font-size: clamp(17px, 2.2vw, 20px) !important;
+                        line-height: 1.7 !important;
+                    }
+                    #s21 .q-opt span { font-size: 16px !important; }
+                    #s21 .opt-l {
+                        font-size: 15px !important;
+                        width: 30px !important;
+                        height: 30px !important;
+                    }
+                }
+                @media (max-width: 768px) {
+                    #s21 { overflow: hidden !important; }
+                    #s21 .top-bar { padding-bottom: 4px !important; }
+                    #s21 .slide-title { font-size: 18px !important; margin-bottom: 0 !important; }
+                    #s21 .content-area {
+                        padding: 8px 10px 180px !important;
+                        overflow-y: auto !important;
+                        overflow-x: hidden !important;
+                        -webkit-overflow-scrolling: touch !important;
+                        touch-action: pan-y !important;
+                        flex: 1 1 auto !important;
+                        min-height: 0 !important;
+                        height: calc(100vh - 140px) !important;
+                        max-height: calc(100vh - 140px) !important;
+                    }
+                    #s21 .quiz-wrap { padding: 0 !important; max-width: 100% !important; }
+                    #s21 #q3-intro-panel { padding: 10px 0 !important; }
+                    #s21 #q3-intro-panel .hud-anim-enter:first-of-type {
+                        padding: 20px 16px !important;
+                        margin-bottom: 14px !important;
+                    }
+                    #s21 #q3-intro-panel h3 { font-size: 20px !important; margin-bottom: 8px !important; }
+                    #s21 #q3-intro-panel p { font-size: 13px !important; }
+                    #s21 #q3-intro-panel .hud-anim-enter:nth-of-type(2) { margin-top: 16px !important; margin-bottom: 16px !important; font-size: 12px !important; padding: 8px 14px !important; }
+                    #s21 .btn-tf-verify {
+                        font-size: 15px !important;
+                        padding: 14px 30px !important;
+                        width: 100% !important;
+                        justify-content: center !important;
+                    }
+                    #s21 #q3-question-panel .q-meta { margin-bottom: 14px !important; }
+                    #s21 #q3-text {
+                        font-size: 16px !important;
+                        line-height: 1.45 !important;
+                        padding: 24px 16px 20px !important;
+                        margin-bottom: 12px !important;
+                    }
+                    #s21 #q3-text .q3-badge { font-size: 11px !important; padding: 2px 8px !important; }
+                    #s21 #q3-text > div:first-child > div:not(.q3-badge) {
+                        font-size: 15px !important;
+                        line-height: 1.4 !important;
+                    }
+                    #s21 #q3-text > div:nth-child(2) { font-size: 13px !important; margin-top: 10px !important; }
+                    #s21 .q-options { gap: 10px !important; }
+                    #s21 .q-opt {
+                        padding: 10px 14px !important;
+                        font-size: 15px !important;
+                        width: 100% !important;
+                    }
+                    #s21 .q-opt span { font-size: 15px !important; }
+                    #s21 .opt-l {
+                        width: 32px !important;
+                        height: 32px !important;
+                        font-size: 17px !important;
+                    }
+                    #s21 .q-feedback {
+                        padding: 12px 14px !important;
+                        font-size: 15px !important;
+                        line-height: 1.45 !important;
+                        margin-top: 10px !important;
+                        margin-bottom: 8px !important;
+                        max-height: 180px;
+                        overflow-y: auto;
+                        -webkit-overflow-scrolling: touch;
+                    }
+                    #s21 .btn-next-q {
+                        width: 100% !important;
+                        display: none;
+                        font-size: 15px !important;
+                        padding: 14px 30px !important;
+                        letter-spacing: 1px;
+                        text-transform: uppercase;
+                    }
+                    #s21 .btn-next-q.show {
+                        display: block !important;
+                        width: 100% !important;
+                        min-height: 52px !important;
+                        margin-top: 12px !important;
+                        position: relative !important;
+                        z-index: 100 !important;
+                        animation: quizNextPulse 1.8s infinite;
+                    }
+                    @keyframes quizNextPulse {
+                        0% { transform: scale(1); }
+                        50% { transform: scale(1.03); }
+                        100% { transform: scale(1); }
+                    }
+                    #s21 .wave { pointer-events: none; }
+                }
+                @keyframes spin { to { transform: rotate(360deg); } }
+                </style>
+                <div class="top-bar">
+                    <div class="section-tag"
+                        style="background: var(--red); color: var(--black); font-size: 16px; padding: 6px 16px; font-weight: 800; box-shadow: 0 0 12px rgba(230, 81, 0, 0.4);">
+                        🎯 Quiz · Módulo 3</div>
+                    <h2 class="slide-title"
+                        style="font-size: clamp(32px, 5vw, 48px); letter-spacing: 0.02em; text-shadow: 0 0 20px rgba(230, 81, 0, 0.6); position: relative; display: inline-block;">
+                        <div
+                            style="position: absolute; inset: -20px; background: radial-gradient(circle, rgba(230,81,0,0.15) 0%, transparent 70%); z-index: -1; filter: blur(10px);">
+                        </div>
+                        Hora do <span>Desafio</span>
+                    </h2>
+                </div>
+                <div class="content-area">
+                    <div class="quiz-wrap">
+                        <div id="q3-intro-panel" style="text-align: center; padding: 40px 20px; position: relative;">
+                            <!-- Efeitos Visuais Sutis HUD -->
+                            <div
+                                style="position: absolute; inset: 0; pointer-events: none; z-index: 0; background: radial-gradient(ellipse at center, rgba(46, 204, 113, 0.05) 0%, transparent 60%);">
+                            </div>
+                            <div
+                                style="position: absolute; top: 20px; left: 50%; transform: translateX(-50%); width: 200px; height: 1px; background: linear-gradient(90deg, transparent, rgba(46,204,113,0.3), transparent);">
+                            </div>
+                            <div
+                                style="position: absolute; bottom: 20px; left: 50%; transform: translateX(-50%); width: 200px; height: 1px; background: linear-gradient(90deg, transparent, rgba(46,204,113,0.3), transparent);">
+                            </div>
+
+                            <div class="hud-anim-enter"
+                                style="position: relative; z-index: 1; max-width: 680px; margin: 0 auto 30px; padding: 40px 30px; border-radius: 8px; background: linear-gradient(180deg, rgba(28,10,6,0.96) 0%, rgba(12,5,4,0.98) 100%); border: 1px solid rgba(255,106,26,0.14); box-shadow: 0 0 40px rgba(255,106,26,0.08), 0 20px 60px rgba(0,0,0,0.45); backdrop-filter: blur(12px); animation-delay: 0.2s; opacity: 0; overflow: hidden;">
+                                <!-- Efeitos Visuais HUD Premium Internos -->
+                                <div
+                                    style="position: absolute; inset: 0; pointer-events: none; background: repeating-linear-gradient(0deg, transparent, transparent 2px, rgba(255,106,26,0.03) 3px, rgba(255,106,26,0.03) 4px);">
+                                </div>
+                                <div
+                                    style="position: absolute; inset: 0; pointer-events: none; opacity: 0.3; background-image: radial-gradient(rgba(255,255,255,0.1) 1px, transparent 1px); background-size: 20px 20px; animation: s1b-smoke 40s infinite linear;">
+                                </div>
+                                <div
+                                    style="position: absolute; top: 0; left: 50%; transform: translateX(-50%); width: 60%; height: 1px; background: linear-gradient(90deg, transparent, rgba(255,106,26,0.4), transparent);">
+                                </div>
+                                <div
+                                    style="position: absolute; bottom: 0; left: 50%; transform: translateX(-50%); width: 60%; height: 1px; background: linear-gradient(90deg, transparent, rgba(255,106,26,0.4), transparent);">
+                                </div>
+                                <div
+                                    style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); width: 80%; height: 80%; background: radial-gradient(circle, rgba(255,106,26,0.08) 0%, transparent 70%); pointer-events: none; animation: pulse 4s infinite;">
+                                </div>
+
+                                <div class="hud-anim-enter"
+                                    style="animation-delay: 0.2s; opacity: 0; margin-bottom: 20px;">
+                                    <div style="font-family:var(--font-h);font-size:12px;font-weight:700;color:rgba(255,106,26,0.8);letter-spacing:4px;text-transform:uppercase;margin-bottom:16px;display:flex;align-items:center;justify-content:center;gap:12px;">
+                                        <span style="width:30px;height:1px;background:rgba(255,106,26,0.4);"></span>
+                                        PROTOCOLO DE AVALIAÇÃO
+                                        <span style="width:30px;height:1px;background:rgba(255,106,26,0.4);"></span>
+                                    </div>
+                                    <h3
+                                        style="position: relative; font-family: var(--font-h); font-size: clamp(24px, 3.5vw, 36px); font-weight: 800; color: #FFF4E8; text-transform: uppercase; letter-spacing: 1px; line-height: 1.2; margin-bottom: 16px; text-shadow: 0 0 15px rgba(255,106,26,0.4);">
+                                        VALIDAÇÃO TÉCNICA
+                                    </h3>
+                                    <p
+                                        style="position: relative; font-size: clamp(16px, 2vw, 18px); color: rgba(255,244,232,0.78); max-width: 500px; margin: 0 auto; line-height: 1.5; font-weight: 300;">
+                                        Riscos operacionais, condições climáticas e condução segura.
+                                    </p>
+                                </div>
+
+                                <!-- Badge Premium -->
+                                <div class="hud-anim-enter"
+                                    style="position: relative; z-index: 1; font-family: var(--font-h); font-size: 14px; font-weight: 700; color: rgba(255,255,255,0.75); letter-spacing: 2px; text-transform: uppercase; margin-bottom: 40px; animation-delay: 0.3s; opacity: 0; display: inline-flex; align-items: center; gap: 8px; background: rgba(255,255,255,0.05); padding: 10px 20px; border: 1px solid rgba(255,255,255,0.15); border-radius: 8px;">
+                                    <span
+                                        style="display:inline-block; width:6px; height:6px; background:var(--red); border-radius:50%; box-shadow:0 0 6px var(--red);"></span>
+                                    5 PERGUNTAS &middot; MÍNIMO DE 70% DE ACERTOS
+                                </div><br>
+
+                                <!-- Botão -->
+                                <div class="hud-anim-enter"
+                                    style="position: relative; display: inline-block; z-index: 2; animation-delay: 0.4s; opacity: 0;">
+                                    <div
+                                        style="position: absolute; inset: -15px; border-radius: 99px; border: 1px dashed rgba(255,106,26,0.3); pointer-events: none;">
+                                    </div>
+                                    <div
+                                        style="position: absolute; inset: -5px; border-radius: 99px; background: rgba(255,106,26,0.15); filter: blur(10px); animation: pulse 2s infinite; pointer-events: none;">
+                                    </div>
+
+                                    <button class="btn-tf-verify"
+                                        style="position:relative; font-size:18px; padding:15px 40px; border-radius:99px; display:inline-flex; align-items:center; gap:10px; background:#ffffff; border:none; color:#0d0a08; text-transform:uppercase; letter-spacing:1px; font-weight:800; box-shadow:0 0 30px rgba(255,255,255,0.2); transition:all 0.3s ease;"
+                                        onclick="startQuiz3Intro()">
+                                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none"
+                                            stroke="currentColor" stroke-width="2.5" stroke-linecap="round"
+                                            stroke-linejoin="round"
+                                            style="filter: drop-shadow(0 0 4px rgba(255,106,26,0.5));">
+                                            <polygon points="5 3 19 12 5 21"></polygon>
+                                        </svg>
+                                        COMEÇAR
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div id="q3-question-panel" class="q3-quiz-panel" style="display:none; transition: opacity 0.5s ease;">
+                            <div class="q-meta">
+                                <div class="q-dots" id="q3-dots"></div>
+                                <div class="q-lbl" id="q3-counter">Pergunta 1 de 5</div>
+                            </div>
+                            <div class="q-text" id="q3-text"></div>
+                            <div class="q-options" id="q3-options"></div>
+                            <div id="q3-verify-container"
+                                style="text-align: center; opacity: 0; visibility: hidden; transition: all 0.3s ease; display: none;">
+                                <button class="btn-tf-verify" id="btn-tf-verify-q3" onclick="verifyAnswer3()">✔
+                                    Verificar
+                                    Resposta</button>
+                            </div>
+                            <div class="q-feedback" id="q3-feedback"></div>
+                            <button class="btn-next-q" id="btn-next-q3" onclick="nextQuestion3()">Próxima Chamada
+                                ▶</button>
+                        </div>
+
+                        <div id="q3-result-panel" style="display:none;text-align:center;">
+                            <div class="result-pct green" id="q3-pct">--</div>
+                            <div class="r-stars" id="q3-stars">⭐⭐⭐</div>
+                            <div class="r-status" id="q3-status"></div>
+                            <div class="r-sub" id="q3-sub"></div>
+                            <button class="btn-retry" onclick="resetQuiz3()">↺ Tentar Novamente</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="wave"><svg viewBox="0 0 1440 100" preserveAspectRatio="none">
+                        <path d="M0,50 C480,10 960,85 1440,30 L1440,100 L0,100 Z" fill="rgba(230,81,0,0.07)" />
+                    </svg></div>
+            </div>
+
+        </div>
+
+        <div id="nav">
+            <button class="nav-btn" id="btn-back" onclick="modulePrev()" disabled>
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"
+                    stroke-linejoin="round">
+                    <polyline points="15 18 9 12 15 6" />
+                </svg>
+                ANTERIOR
+            </button>
+            <button class="nav-btn" id="btn-fwd" onclick="moduleNext()">
+                PRÓXIMO
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"
+                    stroke-linejoin="round">
+                    <polyline points="9 18 15 12 9 6" />
+                </svg>
+            </button>
+        </div>
+
+        <div class="vis-modal-overlay" id="s18-modal" onclick="s18CloseBlind(event)">
+            <div class="vis-modal-box" onclick="event.stopPropagation()">
+                <button type="button" class="vis-modal-close" onclick="s18CloseBlind()" aria-label="Fechar">×</button>
+                <h3 class="vis-modal-title">Você Sabia?</h3>
+                <p class="vis-modal-text">A visão humana pode levar cerca de <em>7 segundos</em> para se recuperar após um ofuscamento intenso.</p>
+                <p class="vis-modal-text">Durante esse período, a percepção dos riscos pode ficar seriamente comprometida.</p>
+                <p class="vis-modal-text">Nunca direcione faróis diretamente para o rosto de outros trabalhadores.</p>
+            </div>
+        </div>
+
+        <div class="img-modal-overlay" id="imgModal" onclick="closeImageModal(event)">
+            <div class="img-modal-content" onclick="event.stopPropagation()">
+                <button class="img-modal-close" onclick="closeImageModal()">×</button>
+                <img id="modalImg" alt="Imagem Ampliada">
+            </div>
+        </div>
+
+    </div>
+
+    <script src="audio-data.js"></script>
+    <script src="shared.js?v=3"></script>
+</body>
+
+</html>

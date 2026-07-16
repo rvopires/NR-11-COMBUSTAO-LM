@@ -1,0 +1,1343 @@
+﻿<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <title>Módulo 5 - Procedimentos Seguros</title>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;900&family=Open+Sans:wght@400;600&display=swap"
+        rel="stylesheet">
+    <script src="https://player.vimeo.com/api/player.js"></script>
+    <link rel="stylesheet" href="shared.css?v=3">
+    <script>
+        window.MODULE_NAV = {
+            id: "modulo-5",
+            prev: "modulo-4.html",
+            next: "modulo-6.html",
+            label: "Módulo 5 - Procedimentos Seguros"
+        };
+    </script>
+</head>
+<body>
+
+    <button id="btn-demo" type="button" onclick="toggleDemoMode()" title="Modo Simulação" aria-label="Modo simulação">SIMULAÇÃO</button>
+    <div id="demo-indicator"
+        style="position: fixed; top: 15px; right: 15px; z-index: 9999; background: var(--gold); color: var(--black); padding: 5px 15px; font-size: 12px; font-weight: bold; font-family: var(--font-h); border-radius: 99px; box-shadow: 0 0 15px rgba(241,196,15,0.5); opacity: 0; pointer-events: none; transition: all 0.3s; transform: translateY(-20px);">
+        Modo Simulação Ativado</div>
+
+    <div id="app">
+
+        <div id="pbar-wrap">
+            <div id="pbar" style="width:2.56%"></div>
+        </div>
+
+        <div id="slide-counter"></div>
+
+        <div id="logo">
+            <img src="https://i.imgur.com/c1m4CIy.png" alt="Tecno-Cursos"
+                onerror="this.onerror=null;this.src='https://imgur.com/c1m4CIy.png'">
+        </div>
+
+        <div id="slides">
+            <div class="slide active" id="s27">
+                <div class="mod-intro">
+                    <div class="mod-intro-pill">INÍCIO</div>
+                    <div class="mod-intro-num">MÓDULO 5</div>
+                    <div class="mod-intro-title">Procedimentos Seguros</div>
+                </div>
+                <div class="wave">
+                    <svg viewBox="0 0 1440 100" preserveAspectRatio="none">
+                        <path d="M0,50 C480,10 960,85 1440,30 L1440,100 L0,100 Z" fill="rgba(230,81,0,0.07)" />
+                    </svg>
+                </div>
+            </div>
+
+            <div class="slide" id="s28">
+                <style>
+                    #s28 { background: radial-gradient(circle at center, rgba(20,10,7,1) 0%, rgba(13,10,8,1) 100%); overflow: hidden; }
+                    #s28 .ck-layout { display:flex; gap:20px; max-width:960px; width:100%; margin:0 auto; align-items:stretch; }
+                    #s28 .ck-col-img { flex:0 0 42%; border-radius:16px; overflow:hidden; box-shadow:0 30px 80px rgba(0,0,0,0.8); position:relative; }
+                    #s28 .ck-col-img img { width:100%; height:100%; object-fit:cover; display:block; min-height:320px; }
+                    #s28 .ck-col-img-overlay { position:absolute; inset:0; background:linear-gradient(to right, transparent 60%, rgba(13,10,8,0.6) 100%); pointer-events:none; }
+                    #s28 .ck-col-img-text { position:absolute; bottom:20px; left:20px; right:20px; }
+                    #s28 .ck-col-img-title { font-family:var(--font-h); font-size:clamp(18px,2.5vw,26px); font-weight:900; color:#FFF4E8; line-height:1.2; text-shadow:0 2px 20px rgba(0,0,0,0.8); }
+                    #s28 .ck-col-img-title span { color:rgba(46,204,113,1); }
+                    #s28 .ck-col-img-sub { font-size:13px; color:rgba(255,244,232,0.7); margin-top:6px; text-shadow:0 1px 10px rgba(0,0,0,0.9); line-height:1.4; }
+                    #s28 .ck-col-img-sub em { color:rgba(46,204,113,0.9); font-style:normal; font-weight:700; }
+                    #s28 .ck-col-right { flex:1; display:flex; flex-direction:column; gap:10px; }
+                    #s28 .ck-header { margin-bottom:4px; }
+                    #s28 .ck-header-title { font-family:var(--font-h); font-size:15px; font-weight:800; letter-spacing:2px; color:#FFF4E8; display:flex; align-items:center; gap:10px; margin-bottom:3px; }
+                    #s28 .ck-header-title svg { width:22px; height:22px; color:rgba(230,81,0,0.9); flex-shrink:0; }
+                    #s28 .ck-header-sub { font-size:13px; color:rgba(255,244,232,0.4); letter-spacing:1px; padding-left:32px; }
+                    #s28 .ck-items { display:flex; flex-direction:column; gap:7px; }
+                    #s28 .ck-item { display:flex; align-items:center; gap:12px; padding:13px 14px; border-radius:10px; border:1px solid rgba(255,255,255,0.06); background:rgba(255,255,255,0.02); cursor:pointer; transition:all 0.25s ease; user-select:none; }
+                    #s28 .ck-item:hover { background:rgba(255,255,255,0.04); border-color:rgba(255,255,255,0.12); }
+                    #s28 .ck-item.checked { background:rgba(46,204,113,0.08); border-color:rgba(46,204,113,0.3); }
+                    #s28 .ck-box { width:20px; height:20px; border-radius:5px; border:2px solid rgba(255,255,255,0.2); flex-shrink:0; display:flex; align-items:center; justify-content:center; transition:all 0.25s ease; }
+                    #s28 .ck-item.checked .ck-box { background:rgba(46,204,113,1); border-color:rgba(46,204,113,1); }
+                    #s28 .ck-box-check { display:none; width:11px; height:11px; }
+                    #s28 .ck-item.checked .ck-box-check { display:block; }
+                    #s28 .ck-item-icon { font-size:18px; flex-shrink:0; }
+                    #s28 .ck-item-text { font-size:15px; color:rgba(255,244,232,0.7); line-height:1.3; transition:color 0.25s; }
+                    #s28 .ck-item.checked .ck-item-text { color:rgba(255,244,232,0.95); }
+                    #s28 .ck-status { border-radius:12px; padding:14px 16px; display:flex; align-items:center; gap:12px; transition:all 0.4s ease; margin-top:4px; }
+                    #s28 .ck-status.locked { background:rgba(220,50,50,0.08); border:1px solid rgba(220,50,50,0.25); }
+                    #s28 .ck-status.unlocked { background:rgba(46,204,113,0.12); border:1px solid rgba(46,204,113,0.4); box-shadow:0 0 20px rgba(46,204,113,0.15); }
+                    #s28 .ck-status-icon { font-size:24px; flex-shrink:0; }
+                    #s28 .ck-status-label { font-family:var(--font-h); font-size:13px; font-weight:800; letter-spacing:2px; margin-bottom:2px; }
+                    #s28 .ck-status.locked .ck-status-label { color:rgba(220,80,80,0.9); }
+                    #s28 .ck-status.unlocked .ck-status-label { color:rgba(46,204,113,1); }
+                    #s28 .ck-status-desc { font-size:13px; color:rgba(255,244,232,0.55); line-height:1.3; }
+                    #s28 .ck-gold { max-width:960px; width:100%; border-radius:14px; padding:14px 20px; background:linear-gradient(135deg,rgba(230,81,0,0.1) 0%,rgba(230,81,0,0.04) 100%); border:1px solid rgba(230,81,0,0.25); display:flex; align-items:center; gap:14px; margin-top:12px; }
+                    #s28 .ck-gold-icon { font-size:24px; flex-shrink:0; }
+                    #s28 .ck-gold-label { font-family:var(--font-h); font-size:10px; font-weight:800; letter-spacing:3px; color:rgba(230,81,0,0.9); margin-bottom:3px; }
+                    #s28 .ck-gold-text { font-size:13px; color:rgba(255,244,232,0.75); font-weight:600; }
+                    #s28 .ck-mobile-only { display: none; }
+                    #s28 .ck-item-verified {
+                        display: none; font-size: 11px; font-weight: 800; letter-spacing: 1px;
+                        color: #2ECC71; font-family: var(--font-h); flex-shrink: 0; white-space: nowrap;
+                    }
+                    #s28 .ck-item.checked .ck-item-verified { display: block; }
+                    /* MOBILE s28 */
+                    #s28 .ck-m-divider {
+                        width: 100%; height: 1px; margin: 16px 0;
+                        background: linear-gradient(90deg, transparent, rgba(255,107,0,0.35), transparent);
+                    }
+                    #s28 .scroll-hint {
+                        width: fit-content; margin: 14px auto 4px;
+                        padding: 10px 18px; border-radius: 999px;
+                        background: rgba(255,107,0,0.08);
+                        border: 1px solid rgba(255,107,0,0.25);
+                        color: #FF6B00; font-size: 13px; font-weight: 700;
+                        text-align: center; font-family: var(--font-h);
+                        animation: s28ScrollHint 1.8s infinite;
+                    }
+                    @keyframes s28ScrollHint {
+                        0% { transform: translateY(0); opacity: 0.6; }
+                        50% { transform: translateY(6px); opacity: 1; }
+                        100% { transform: translateY(0); opacity: 0.6; }
+                    }
+                    #s28 .ck-m-zoom {
+                        position: absolute; bottom: 12px; right: 12px; z-index: 5;
+                        padding: 6px 12px; background: rgba(0,0,0,0.8);
+                        border: 1px solid rgba(230,81,0,0.6); border-radius: 6px;
+                        color: rgba(230,81,0,1); font-size: 10px; font-weight: 700;
+                        cursor: pointer; letter-spacing: 1px; backdrop-filter: blur(6px);
+                        text-transform: uppercase; font-family: var(--font-h);
+                    }
+                    #s28 .ck-m-progress { width: 100%; margin-bottom: 14px; }
+                    #s28 .ck-m-prog-lbl {
+                        font-family: var(--font-h); font-size: 11px; font-weight: 800;
+                        letter-spacing: 2px; color: rgba(255,107,0,0.85); text-transform: uppercase;
+                        margin-bottom: 6px;
+                    }
+                    #s28 .ck-m-prog-count {
+                        font-family: var(--font-h); font-size: 18px; font-weight: 800;
+                        color: rgba(255,244,232,0.9); margin-bottom: 8px;
+                    }
+                    #s28 .ck-m-prog-bar {
+                        width: 100%; height: 6px; border-radius: 999px;
+                        background: rgba(255,255,255,0.08); overflow: hidden;
+                        border: 1px solid rgba(255,107,0,0.15);
+                    }
+                    #s28 .ck-m-prog-fill {
+                        height: 100%; width: 0%; border-radius: 999px;
+                        background: linear-gradient(90deg, rgba(46,204,113,0.7), rgba(46,204,113,1));
+                        box-shadow: 0 0 12px rgba(46,204,113,0.4);
+                        transition: width 0.35s ease;
+                    }
+                    @media (max-width: 768px) {
+                        #s28 { overflow: hidden !important; }
+                        #s28 .top-bar { padding-bottom: 4px !important; }
+                        #s28 .slide-title { font-size: 20px !important; margin-bottom: 0 !important; }
+                        #s28 .content-area {
+                            padding: 8px 14px 180px !important;
+                            overflow-y: auto !important;
+                            overflow-x: hidden !important;
+                            -webkit-overflow-scrolling: touch !important;
+                            touch-action: pan-y !important;
+                            height: calc(100vh - 140px) !important;
+                            max-height: calc(100vh - 140px) !important;
+                            align-items: stretch !important;
+                        }
+                        #s28 .ck-layout { flex-direction: column; gap: 0; max-width: 100%; }
+                        #s28 .ck-desktop-only { display: none !important; }
+                        #s28 .ck-mobile-only { display: block !important; }
+                        #s28 .ck-col-img {
+                            flex: none; width: 100%; border-radius: 18px;
+                            box-shadow: 0 20px 50px rgba(0,0,0,0.75), 0 0 24px rgba(230,81,0,0.08);
+                            margin-bottom: 0;
+                        }
+                        #s28 .ck-col-img img {
+                            width: 100%; min-height: 280px; max-height: none;
+                            height: 280px; object-fit: cover; border-radius: 18px;
+                        }
+                        #s28 .ck-col-right { gap: 12px; width: 100%; }
+                        #s28 .ck-header { margin-bottom: 8px; margin-top: 4px; }
+                        #s28 .ck-header-title { font-size: 14px; letter-spacing: 1.5px; }
+                        #s28 .ck-header-sub { padding-left: 0; font-size: 13px; color: rgba(255,244,232,0.55); margin-top: 4px; }
+                        #s28 .ck-items { gap: 12px; }
+                        #s28 .ck-item {
+                            min-height: 64px; border-radius: 14px; padding: 14px 16px;
+                            background: rgba(255,255,255,0.03);
+                            border: 1px solid rgba(255,255,255,0.08);
+                        }
+                        #s28 .ck-item.checked {
+                            border-color: #2ECC71;
+                            box-shadow: 0 0 16px rgba(46,204,113,0.15);
+                            background: rgba(46,204,113,0.08);
+                        }
+                        #s28 .ck-item-text { font-size: 15px; flex: 1; }
+                        #s28 .ck-status { border-radius: 14px; padding: 18px 16px; margin-top: 8px; }
+                        #s28 .ck-status.unlocked {
+                            background: rgba(5,25,12,0.95);
+                            border: 1px solid rgba(46,204,113,0.45);
+                            box-shadow: 0 0 28px rgba(46,204,113,0.2);
+                        }
+                        #s28 .ck-status.unlocked .ck-status-icon { font-size: 32px; }
+                        #s28 .ck-status.unlocked .ck-status-label { font-size: 14px; }
+                        #s28 .scroll-hint.is-done { display: none !important; }
+                        #s28 .wave { pointer-events: none; }
+                    }
+                    @media (min-width: 769px) {
+                        #s28 .ck-mobile-only { display: none !important; }
+                    }
+                </style>
+
+                <div style="position:absolute;inset:0;pointer-events:none;z-index:0;background:radial-gradient(ellipse at 50% 40%,rgba(230,81,0,0.05) 0%,transparent 60%);"></div>
+                <div style="position:absolute;inset:0;pointer-events:none;z-index:0;background-image:repeating-linear-gradient(0deg,transparent,transparent 40px,rgba(255,255,255,0.008) 41px),repeating-linear-gradient(90deg,transparent,transparent 40px,rgba(255,255,255,0.008) 41px);"></div>
+
+                <div class="top-bar" style="position:relative;z-index:2;">
+                    <div class="section-tag" style="background:var(--red);color:var(--black);font-size:16px;padding:6px 16px;font-weight:800;box-shadow:0 0 12px rgba(230,81,0,0.4);">Módulo 5</div>
+                    <h2 class="slide-title" style="font-size:clamp(20px,3vw,32px);letter-spacing:-0.01em;text-shadow:0 0 15px rgba(230,81,0,0.4);">Você Está Pronto para <span>Operar?</span></h2>
+                </div>
+
+                <div class="content-area" style="position:relative;z-index:2;display:flex;flex-direction:column;align-items:center;justify-content:flex-start;padding-top:8px !important;">
+
+                    <div class="ck-layout">
+                        <div class="ck-col-img">
+                            <img src="https://i.imgur.com/82sIpot.jpeg" alt="Inspeção pré-operacional" onerror="this.onerror=null;this.src='https://i.imgur.com/82sIpot.png'">
+                            <div class="ck-desktop-only" style="position:absolute;inset:0;background:linear-gradient(to bottom, rgba(13,10,8,0.15) 0%, rgba(13,10,8,0.0) 40%, rgba(13,10,8,0.85) 100%);pointer-events:none;"></div>
+                            <div class="ck-col-img-overlay ck-desktop-only"></div>
+                            <div class="ck-col-img-text ck-desktop-only">
+                                <div class="ck-col-img-title">VOCÊ ESTÁ PRONTO<br>PARA <span>OPERAR?</span></div>
+                                <div class="ck-col-img-sub">Antes de ligar a empilhadeira, confirme os <em>itens obrigatórios.</em></div>
+                            </div>
+                            <button type="button" class="ck-m-zoom ck-mobile-only" onclick="openImageModal('https://i.imgur.com/82sIpot.jpeg')">🔍 AMPLIAR</button>
+                        </div>
+
+                        <div class="scroll-hint ck-mobile-only" id="s28-scroll-hint">↓ Role para realizar o checklist</div>
+
+                        <div class="ck-col-right">
+                            <div class="ck-m-divider ck-mobile-only"></div>
+
+                            <div class="ck-header">
+                                <div class="ck-header-title">
+                                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2"/><rect x="9" y="3" width="6" height="4" rx="1"/><path d="M9 12l2 2 4-4"/></svg>
+                                    CHECKLIST DE LIBERAÇÃO
+                                </div>
+                                <div class="ck-header-sub">Marque todos os itens para liberar a operação.</div>
+                            </div>
+
+                            <div class="ck-m-progress ck-mobile-only">
+                                <div class="ck-m-prog-lbl">PROGRESSO DA LIBERAÇÃO</div>
+                                <div class="ck-m-prog-count" id="s28-m-progress">0 / 6</div>
+                                <div class="ck-m-prog-bar"><div class="ck-m-prog-fill" id="s28-m-prog-fill"></div></div>
+                            </div>
+
+                            <div class="ck-items" id="s28-checklist">
+                                <div class="ck-item req-item" onclick="s28Check(this)">
+                                    <div class="ck-box"><svg class="ck-box-check" viewBox="0 0 12 12" fill="none"><polyline points="2,6 5,9 10,3" stroke="white" stroke-width="2" stroke-linecap="round"/></svg></div>
+                                    <div class="ck-item-icon">🩺</div>
+                                    <div class="ck-item-text">Estou apto medicamente</div>
+                                    <span class="ck-item-verified">✓ Verificado</span>
+                                </div>
+                                <div class="ck-item req-item" onclick="s28Check(this)">
+                                    <div class="ck-box"><svg class="ck-box-check" viewBox="0 0 12 12" fill="none"><polyline points="2,6 5,9 10,3" stroke="white" stroke-width="2" stroke-linecap="round"/></svg></div>
+                                    <div class="ck-item-icon">🎓</div>
+                                    <div class="ck-item-text">Realizei o treinamento obrigatório</div>
+                                    <span class="ck-item-verified">✓ Verificado</span>
+                                </div>
+                                <div class="ck-item req-item" onclick="s28Check(this)">
+                                    <div class="ck-box"><svg class="ck-box-check" viewBox="0 0 12 12" fill="none"><polyline points="2,6 5,9 10,3" stroke="white" stroke-width="2" stroke-linecap="round"/></svg></div>
+                                    <div class="ck-item-icon">📋</div>
+                                    <div class="ck-item-text">Fiz o Check List da empilhadeira</div>
+                                    <span class="ck-item-verified">✓ Verificado</span>
+                                </div>
+                                <div class="ck-item req-item" onclick="s28Check(this)">
+                                    <div class="ck-box"><svg class="ck-box-check" viewBox="0 0 12 12" fill="none"><polyline points="2,6 5,9 10,3" stroke="white" stroke-width="2" stroke-linecap="round"/></svg></div>
+                                    <div class="ck-item-icon">💺</div>
+                                    <div class="ck-item-text">Estou utilizando o cinto de segurança</div>
+                                    <span class="ck-item-verified">✓ Verificado</span>
+                                </div>
+                                <div class="ck-item req-item" onclick="s28Check(this)">
+                                    <div class="ck-box"><svg class="ck-box-check" viewBox="0 0 12 12" fill="none"><polyline points="2,6 5,9 10,3" stroke="white" stroke-width="2" stroke-linecap="round"/></svg></div>
+                                    <div class="ck-item-icon">📵</div>
+                                    <div class="ck-item-text">Não utilizarei celular durante a operação</div>
+                                    <span class="ck-item-verified">✓ Verificado</span>
+                                </div>
+                                <div class="ck-item req-item" onclick="s28Check(this)">
+                                    <div class="ck-box"><svg class="ck-box-check" viewBox="0 0 12 12" fill="none"><polyline points="2,6 5,9 10,3" stroke="white" stroke-width="2" stroke-linecap="round"/></svg></div>
+                                    <div class="ck-item-icon">🚫</div>
+                                    <div class="ck-item-text">Não transportarei passageiros</div>
+                                    <span class="ck-item-verified">✓ Verificado</span>
+                                </div>
+                            </div>
+
+                            <div class="ck-status locked" id="s28-status">
+                                <div class="ck-status-icon" id="s28-status-icon">🔒</div>
+                                <div>
+                                    <div class="ck-status-label" id="s28-status-label">EQUIPAMENTO BLOQUEADO</div>
+                                    <div class="ck-status-desc" id="s28-status-desc">Marque todos os itens para liberar a operação.</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+
+                <div class="wave" style="position:absolute;bottom:0;left:0;right:0;z-index:1;"><svg viewBox="0 0 1440 100" preserveAspectRatio="none"><path d="M0,65 C360,20 720,90 1080,40 C1260,15 1390,70 1440,60 L1440,100 L0,100 Z" fill="rgba(230,81,0,0.07)"/></svg></div>
+
+                <script>
+                function s28IsMobile() {
+                    return window.matchMedia('(max-width: 768px)').matches;
+                }
+
+                function s28UpdateProgress(done, total) {
+                    var prog = document.getElementById('s28-m-progress');
+                    var fill = document.getElementById('s28-m-prog-fill');
+                    if (prog) prog.textContent = done + ' / ' + total;
+                    if (fill) fill.style.width = ((done / total) * 100) + '%';
+                }
+
+                function s28Check(item) {
+                    if (typeof playTechClick === 'function') playTechClick();
+                    item.classList.toggle('checked');
+                    if (item.classList.contains('checked')) item.classList.add('req-done');
+                    else item.classList.remove('req-done');
+                    var items = document.querySelectorAll('#s28-checklist .ck-item');
+                    var total = items.length;
+                    var done = document.querySelectorAll('#s28-checklist .ck-item.checked').length;
+                    var status = document.getElementById('s28-status');
+                    var icon = document.getElementById('s28-status-icon');
+                    var label = document.getElementById('s28-status-label');
+                    var desc = document.getElementById('s28-status-desc');
+                    var scrollHint = document.getElementById('s28-scroll-hint');
+                    s28UpdateProgress(done, total);
+                    if (done === total) {
+                        status.className = 'ck-status unlocked req-item req-done';
+                        icon.textContent = s28IsMobile() ? '🛡' : '✅';
+                        label.textContent = 'EQUIPAMENTO LIBERADO';
+                        desc.textContent = 'Todos os requisitos de segurança foram atendidos. Liberado para operação.';
+                        if (scrollHint) scrollHint.classList.add('is-done');
+                        try { playBeep('end'); } catch (e) {}
+                        if (typeof updateNextButton === 'function') updateNextButton();
+                        if (s28IsMobile() && status) {
+                            setTimeout(function () {
+                                status.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                            }, 300);
+                        }
+                    } else {
+                        status.className = 'ck-status locked';
+                        icon.textContent = '🔒';
+                        label.textContent = 'EQUIPAMENTO BLOQUEADO';
+                        desc.textContent = 'Marque todos os itens para liberar a operação. (' + done + '/' + total + ')';
+                        if (scrollHint) scrollHint.classList.remove('is-done');
+                        if (typeof updateNextButton === 'function') updateNextButton();
+                    }
+                }
+
+                s28UpdateProgress(0, document.querySelectorAll('#s28-checklist .ck-item').length);
+                </script>
+            </div>
+
+            <div class="slide" id="s29">
+                <style>
+                    #s29 { background: radial-gradient(circle at center, rgba(20,10,7,1) 0%, rgba(13,10,8,1) 100%); overflow:hidden; }
+                    #s29 .ps-subtitle { font-size:clamp(14px,1.8vw,17px); color:rgba(255,244,232,0.65); line-height:1.6; margin-bottom:0; max-width:760px; padding-top:16px; }
+                    #s29 .ps-subtitle em { color:rgba(230,81,0,0.9); font-style:normal; font-weight:700; }
+
+                    /* Comparação lado a lado */
+                    #s29 .ps-compare { display:flex; gap:16px; max-width:960px; width:100%; margin:14px auto 0; border-radius:14px; overflow:hidden; border:none; }
+                    #s29 .ps-side { flex:1; display:flex; flex-direction:column; }
+                    #s29 .ps-side-label { padding:10px 16px; font-family:var(--font-h); font-size:13px; font-weight:800; letter-spacing:2px; }
+                    #s29 .ps-side--ok  .ps-side-label { background:rgba(46,204,113,0.15); color:rgba(46,204,113,1); border-bottom:1px solid rgba(46,204,113,0.2); }
+                    #s29 .ps-side--bad .ps-side-label { background:rgba(220,50,50,0.15);  color:rgba(220,80,80,1);   border-bottom:1px solid rgba(220,50,50,0.2); }
+                    #s29 .ps-side-img-wrap { position:relative; overflow:hidden; }
+                    #s29 .ps-side-img { width:100%; height:230px; object-fit:cover; display:block; object-position:center 30%; }
+                    #s29 .ps-ampliar { position:absolute; bottom:8px; right:10px; z-index:3; padding:5px 12px; background:rgba(0,0,0,0.75); border:1px solid rgba(230,81,0,0.6); border-radius:6px; color:rgba(230,81,0,1); font-size:11px; font-weight:700; cursor:pointer; letter-spacing:1px; text-transform:uppercase; backdrop-filter:blur(6px); }
+                    #s29 .ps-side-hint { font-size:16px; color:rgba(255,244,232,0.65); padding:12px 14px; margin:0; background:rgba(255,255,255,0.02); border-top:1px solid rgba(255,255,255,0.04); }
+                    #s29 .ps-side--ok  .ps-side-hint { border-left:3px solid rgba(46,204,113,0.4); }
+                    #s29 .ps-side--bad .ps-side-hint { border-left:3px solid rgba(220,50,50,0.4); }
+
+                    /* Divisor central */
+                    #s29 .ps-divider { flex:0 0 60px; display:flex; flex-direction:column; align-items:center; justify-content:center; gap:8px; background:rgba(255,255,255,0.02); border-left:1px solid rgba(255,255,255,0.06); border-right:1px solid rgba(255,255,255,0.06); }
+                    #s29 .ps-div-ok  { font-family:var(--font-h); font-size:9px; font-weight:800; letter-spacing:1px; color:rgba(46,204,113,0.7); writing-mode:vertical-rl; }
+                    #s29 .ps-div-sep { color:rgba(255,255,255,0.15); font-size:16px; }
+                    #s29 .ps-div-bad { font-family:var(--font-h); font-size:9px; font-weight:800; letter-spacing:1px; color:rgba(220,80,80,0.7); writing-mode:vertical-rl; }
+
+                    /* Regra de ouro */
+                    #s29 .ps-rule { max-width:700px; width:100%; margin:14px auto 0; border-radius:16px; padding:22px 28px; background:linear-gradient(135deg,rgba(230,81,0,0.12) 0%,rgba(180,50,0,0.06) 100%); border:1px solid rgba(230,81,0,0.35); display:flex; flex-direction:column; align-items:center; gap:14px; text-align:center; box-shadow:0 0 30px rgba(230,81,0,0.12), 0 8px 30px rgba(0,0,0,0.3); position:relative; overflow:hidden; }
+                    #s29 .ps-rule::before { content:''; position:absolute; top:0; left:50%; transform:translateX(-50%); width:60%; height:2px; background:linear-gradient(90deg,transparent,rgba(230,81,0,0.8),transparent); }
+                    #s29 .ps-rule-head { display:flex; align-items:center; gap:10px; justify-content:center; }
+                    #s29 .ps-rule-icon { font-size:26px; filter:drop-shadow(0 0 8px rgba(230,81,0,0.5)); }
+                    #s29 .ps-rule-title { font-family:var(--font-h); font-size:13px; font-weight:800; letter-spacing:3px; color:rgba(230,81,0,1); text-shadow:0 0 12px rgba(230,81,0,0.4); }
+                    #s29 .ps-rule-list { display:flex; gap:0; flex-wrap:wrap; justify-content:center; width:100%; border-top:1px solid rgba(230,81,0,0.15); padding-top:12px; }
+                    #s29 .ps-rule-item { font-size:14px; color:rgba(255,244,232,0.85); display:flex; align-items:center; gap:8px; padding:6px 16px; border-right:1px solid rgba(230,81,0,0.15); }
+                    #s29 .ps-rule-item:last-child { border-right:none; }
+                    #s29 .ps-rule-item::before { content:'✓'; color:rgba(46,204,113,1); font-weight:800; font-size:16px; text-shadow:0 0 8px rgba(46,204,113,0.5); }
+
+                    /* Alerta */
+                    #s29 .ps-alert { max-width:700px; width:100%; margin:10px auto 0; border-radius:14px; padding:16px 24px; background:rgba(220,50,50,0.06); border:1px solid rgba(220,50,50,0.25); border-top:3px solid rgba(220,50,50,0.8); display:flex; align-items:center; gap:14px; justify-content:center; text-align:center; box-shadow:0 0 16px rgba(220,50,50,0.08); }
+                    #s29 .ps-alert-icon { font-size:24px; flex-shrink:0; }
+                    #s29 .ps-alert-text { font-size:14px; color:rgba(255,244,232,0.85); font-weight:600; line-height:1.5; }
+
+                    /* Mensagem rodapé */
+                    #s29 .ps-msg { max-width:960px; width:100%; margin:8px auto 0; text-align:center; font-family:var(--font-h); font-size:11px; font-weight:700; letter-spacing:2px; color:rgba(230,81,0,0.6); display:flex; align-items:center; justify-content:center; gap:8px; }
+                    #s29 .ps-msg::before, #s29 .ps-msg::after { content:''; flex:1; max-width:100px; height:1px; background:rgba(230,81,0,0.15); }
+
+                    /* MOBILE s29 */
+                    #s29 .ps-mobile { display: none; width: 100%; max-width: 420px; margin: 0 auto; flex-direction: column; align-items: center; gap: 14px; }
+                    #s29 .ps-m-meta { width: 100%; text-align: center; }
+                    #s29 .ps-m-step { font-family: var(--font-h); font-size: 13px; font-weight: 800; letter-spacing: 2px; color: rgba(255,244,232,0.85); margin-bottom: 8px; }
+                    #s29 .ps-m-dots { display: flex; gap: 8px; justify-content: center; align-items: center; }
+                    #s29 .ps-m-dot {
+                        width: 10px; height: 10px; border-radius: 50%;
+                        background: rgba(255,255,255,0.12); border: 1px solid rgba(255,255,255,0.2);
+                        transition: all 0.35s ease;
+                    }
+                    #s29 .ps-m-dot.on { background: #FF6B00; border-color: #FF6B00; box-shadow: 0 0 10px rgba(255,107,0,0.55); transform: scale(1.15); }
+                    #s29 .ps-m-intro {
+                        width: 100%; text-align: center; font-size: 14px; line-height: 1.55;
+                        color: rgba(255,244,232,0.65); padding: 0 4px;
+                    }
+                    #s29 .ps-m-scenario { width: 100%; display: flex; flex-direction: column; gap: 12px; transition: opacity 0.4s ease; }
+                    #s29 .ps-m-scenario.is-reveal { animation: s29FadeUp 0.45s ease forwards; }
+                    @keyframes s29FadeUp {
+                        from { opacity: 0; transform: translateY(12px); }
+                        to { opacity: 1; transform: translateY(0); }
+                    }
+                    #s29 .ps-m-label {
+                        padding: 10px 16px; font-family: var(--font-h); font-size: 13px;
+                        font-weight: 800; letter-spacing: 2px; border-radius: 10px; text-align: center;
+                    }
+                    #s29 .ps-m-scenario.ok .ps-m-label { background: rgba(46,204,113,0.15); color: rgba(46,204,113,1); border: 1px solid rgba(46,204,113,0.25); }
+                    #s29 .ps-m-scenario.bad .ps-m-label { background: rgba(220,50,50,0.15); color: rgba(220,80,80,1); border: 1px solid rgba(220,50,50,0.25); }
+                    #s29 .ps-m-img-wrap {
+                        position: relative; width: 100%; border-radius: 14px; overflow: hidden;
+                        box-shadow: 0 16px 40px rgba(0,0,0,0.65);
+                    }
+                    #s29 .ps-m-scenario.ok .ps-m-img-wrap { border: 1px solid rgba(46,204,113,0.25); box-shadow: 0 16px 40px rgba(0,0,0,0.65), 0 0 24px rgba(46,204,113,0.12); }
+                    #s29 .ps-m-scenario.bad .ps-m-img-wrap { border: 1px solid rgba(220,50,50,0.25); box-shadow: 0 16px 40px rgba(0,0,0,0.65), 0 0 24px rgba(220,50,50,0.12); }
+                    #s29 .ps-m-img-wrap img { width: 100%; height: 260px; display: block; object-fit: cover; object-position: center 30%; }
+                    #s29 .ps-m-zoom {
+                        position: absolute; bottom: 12px; right: 12px; z-index: 5;
+                        padding: 6px 12px; background: rgba(0,0,0,0.8);
+                        border: 1px solid rgba(230,81,0,0.6); border-radius: 6px;
+                        color: rgba(230,81,0,1); font-size: 10px; font-weight: 700;
+                        cursor: pointer; letter-spacing: 1px; backdrop-filter: blur(6px);
+                        text-transform: uppercase; font-family: var(--font-h);
+                    }
+                    #s29 .ps-m-hint {
+                        font-size: 15px; color: rgba(255,244,232,0.75); padding: 14px 16px; margin: 0;
+                        border-radius: 14px; text-align: center; line-height: 1.5;
+                    }
+                    #s29 .ps-m-scenario.ok .ps-m-hint { background: rgba(46,204,113,0.08); border: 1px solid rgba(46,204,113,0.25); border-left: 3px solid rgba(46,204,113,0.5); }
+                    #s29 .ps-m-scenario.bad .ps-m-hint { background: rgba(220,50,50,0.08); border: 1px solid rgba(220,50,50,0.25); border-left: 3px solid rgba(220,50,50,0.5); }
+                    #s29 .ps-m-next {
+                        display: block; width: 100%; min-height: 52px;
+                        font-size: 15px !important; padding: 14px 30px !important;
+                        letter-spacing: 1px; text-transform: uppercase;
+                        animation: s29NextPulse 1.8s infinite;
+                    }
+                    @keyframes s29NextPulse {
+                        0% { transform: scale(1); }
+                        50% { transform: scale(1.03); }
+                        100% { transform: scale(1); }
+                    }
+                    #s29 .ps-m-next.is-hidden { display: none !important; }
+                    #s29 .comparison-done {
+                        display: none; width: 100%; padding: 14px 16px; border-radius: 12px;
+                        text-align: center; font-family: var(--font-h); font-size: 14px; font-weight: 700;
+                        color: #2ECC71; background: rgba(46,204,113,0.12);
+                        border: 1px solid rgba(46,204,113,0.35);
+                        box-shadow: 0 0 20px rgba(46,204,113,0.12);
+                    }
+                    #s29 .comparison-done.visible { display: block; animation: s29FadeUp 0.45s ease forwards; }
+                    #s29 .ps-m-rule { display: none; width: 100%; }
+                    #s29 .ps-m-rule.visible { display: flex; animation: s29FadeUp 0.5s ease forwards; }
+                    #s29 .ps-m-rule .ps-rule-list { flex-direction: column; gap: 8px; border-top: none; padding-top: 0; }
+                    #s29 .ps-m-rule .ps-rule-item { border-right: none; justify-content: center; padding: 8px 12px; }
+                    @media (max-width: 768px) {
+                        #s29 { overflow: hidden !important; }
+                        #s29 .top-bar { padding-bottom: 4px !important; }
+                        #s29 .slide-title { font-size: 20px !important; margin-bottom: 0 !important; }
+                        #s29 .content-area {
+                            padding: 8px 14px 180px !important;
+                            overflow-y: auto !important;
+                            overflow-x: hidden !important;
+                            -webkit-overflow-scrolling: touch !important;
+                            touch-action: pan-y !important;
+                            height: calc(100vh - 140px) !important;
+                            max-height: calc(100vh - 140px) !important;
+                            align-items: stretch !important;
+                        }
+                        #s29 .ps-subtitle { display: none !important; }
+                        #s29 .ps-desktop { display: none !important; }
+                        #s29 .ps-mobile { display: flex !important; }
+                        #s29 .wave { pointer-events: none; }
+                    }
+                    @media (min-width: 769px) {
+                        #s29 .ps-mobile { display: none !important; }
+                    }
+                </style>
+
+                <div style="position:absolute;inset:0;pointer-events:none;z-index:0;background:radial-gradient(ellipse at 50% 40%,rgba(230,81,0,0.05) 0%,transparent 60%);"></div>
+                <div style="position:absolute;inset:0;pointer-events:none;z-index:0;background-image:repeating-linear-gradient(0deg,transparent,transparent 40px,rgba(255,255,255,0.008) 41px),repeating-linear-gradient(90deg,transparent,transparent 40px,rgba(255,255,255,0.008) 41px);"></div>
+
+                <div class="top-bar" style="position:relative;z-index:2;">
+                    <div class="section-tag" style="background:var(--red);color:var(--black);font-size:16px;padding:6px 16px;font-weight:800;box-shadow:0 0 12px rgba(230,81,0,0.4);">Módulo 5</div>
+                    <h2 class="slide-title" style="font-size:clamp(20px,3vw,32px);letter-spacing:-0.01em;text-shadow:0 0 15px rgba(230,81,0,0.4);">Condução e <span>Parada Segura</span></h2>
+                </div>
+
+                <div class="content-area" style="position:relative;z-index:2;display:flex;flex-direction:column;align-items:center;justify-content:flex-start;padding-top:8px !important;">
+
+                    <!-- MOBILE: jornada guiada de comparação -->
+                    <div class="ps-mobile">
+
+                        <div class="ps-m-meta">
+                            <div class="ps-m-step" id="s29-m-step">COMPARAÇÃO 1 DE 2</div>
+                            <div class="ps-m-dots" id="s29-m-dots">
+                                <span class="ps-m-dot on"></span><span class="ps-m-dot"></span>
+                            </div>
+                        </div>
+
+                        <p class="ps-m-intro" id="s29-m-intro">Analise o cenário correto antes de comparar com o cenário incorreto.</p>
+
+                        <section class="ps-m-scenario ok" id="s29-m-ok">
+                            <div class="ps-m-label">🟢 ESTACIONAMENTO CORRETO</div>
+                            <div class="ps-m-img-wrap">
+                                <img src="https://i.imgur.com/jWzGvIN.jpeg" alt="Estacionamento correto: garfos abaixados, área demarcada, corredor livre">
+                                <button type="button" class="ps-m-zoom" onclick="openImageModal('https://i.imgur.com/jWzGvIN.jpeg')">🔍 AMPLIAR</button>
+                            </div>
+                            <p class="ps-m-hint">Garfos abaixados · chave na mão · corredor livre</p>
+                        </section>
+
+                        <button type="button" class="btn-next-q show ps-m-next" id="s29-m-next" onclick="s29NextScenario()">PRÓXIMO CENÁRIO →</button>
+
+                        <section class="ps-m-scenario bad" id="s29-m-bad" style="display:none;">
+                            <div class="ps-m-label">🔴 ESTACIONAMENTO INCORRETO</div>
+                            <div class="ps-m-img-wrap">
+                                <img src="https://i.imgur.com/bBXcy5g.jpeg" alt="Estacionamento incorreto: garfos levantados, corredor obstruído">
+                                <button type="button" class="ps-m-zoom" onclick="openImageModal('https://i.imgur.com/bBXcy5g.jpeg')">🔍 AMPLIAR</button>
+                            </div>
+                            <p class="ps-m-hint">Garfos levantados · chave na ignição · área bloqueada</p>
+                        </section>
+
+                        <div class="comparison-done" id="s29-comparison-done">✓ Comparação concluída</div>
+
+                        <div class="ps-rule ps-m-rule" id="s29-m-rule">
+                            <div class="ps-rule-head">
+                                <span class="ps-rule-icon">🛡</span>
+                                <span class="ps-rule-title">REGRA DE ESTACIONAMENTO</span>
+                            </div>
+                            <div class="ps-rule-list">
+                                <span class="ps-rule-item">Garfos totalmente abaixados</span>
+                                <span class="ps-rule-item">Chave removida</span>
+                                <span class="ps-rule-item">Área permitida</span>
+                                <span class="ps-rule-item">Corredores livres</span>
+                            </div>
+                        </div>
+
+                        <div id="s29-mobile-tracker" class="req-item" style="display:none;"></div>
+                    </div>
+
+                    <!-- DESKTOP: comparação lado a lado -->
+                    <div class="ps-desktop" style="width:100%;display:flex;flex-direction:column;align-items:center;">
+
+                    <p class="ps-subtitle req-item req-done" id="s29-subtitle-desktop">Preferência a pedestres. Evite conversões bruscas. É sua <em>obrigação diária.</em></p>
+
+                    <div class="ps-compare">
+                        <div class="ps-side ps-side--ok">
+                            <div class="ps-side-label">🟢 ESTACIONAMENTO CORRETO</div>
+                            <div class="ps-side-img-wrap">
+                                <img class="ps-side-img" src="https://i.imgur.com/jWzGvIN.jpeg" alt="Estacionamento correto: garfos abaixados, área demarcada, corredor livre">
+                                <button class="ps-ampliar" onclick="openImageModal('https://i.imgur.com/jWzGvIN.jpeg')">🔍 AMPLIAR</button>
+                            </div>
+                            <p class="ps-side-hint">Garfos abaixados · chave na mão · corredor livre</p>
+                        </div>
+
+                        <div class="ps-side ps-side--bad">
+                            <div class="ps-side-label">🔴 ESTACIONAMENTO INCORRETO</div>
+                            <div class="ps-side-img-wrap">
+                                <img class="ps-side-img" src="https://i.imgur.com/bBXcy5g.jpeg" alt="Estacionamento incorreto: garfos levantados, corredor obstruído">
+                                <button class="ps-ampliar" onclick="openImageModal('https://i.imgur.com/bBXcy5g.jpeg')">🔍 AMPLIAR</button>
+                            </div>
+                            <p class="ps-side-hint">Garfos levantados · chave na ignição · área bloqueada</p>
+                        </div>
+                    </div>
+
+                    <div class="ps-rule">
+                        <div class="ps-rule-head">
+                            <span class="ps-rule-icon">🛡</span>
+                            <span class="ps-rule-title">REGRA DE ESTACIONAMENTO</span>
+                        </div>
+                        <div class="ps-rule-list">
+                            <span class="ps-rule-item">Garfos totalmente abaixados</span>
+                            <span class="ps-rule-item">Chave removida</span>
+                            <span class="ps-rule-item">Área permitida</span>
+                            <span class="ps-rule-item">Corredores livres</span>
+                        </div>
+                    </div>
+
+                    </div><!-- /ps-desktop -->
+
+                </div>
+
+                <div class="wave" style="position:absolute;bottom:0;left:0;right:0;z-index:1;"><svg viewBox="0 0 1440 100" preserveAspectRatio="none"><path d="M0,65 C360,20 720,90 1080,40 C1260,15 1390,70 1440,60 L1440,100 L0,100 Z" fill="rgba(230,81,0,0.07)"/></svg></div>
+
+                <script>
+                (function () {
+                    var s29MobStep = 0;
+                    var s29MobDone = false;
+
+                    function s29IsMobile() {
+                        return window.matchMedia('(max-width: 768px)').matches;
+                    }
+
+                    window.s29NextScenario = function () {
+                        if (!s29IsMobile() || s29MobStep >= 1) return;
+                        s29MobStep = 1;
+                        try { if (typeof playTechClick === 'function') playTechClick(); } catch (e) {}
+
+                        var stepEl = document.getElementById('s29-m-step');
+                        var dots = document.querySelectorAll('#s29-m-dots .ps-m-dot');
+                        var intro = document.getElementById('s29-m-intro');
+                        var nextBtn = document.getElementById('s29-m-next');
+                        var bad = document.getElementById('s29-m-bad');
+                        var doneCard = document.getElementById('s29-comparison-done');
+                        var rule = document.getElementById('s29-m-rule');
+
+                        if (stepEl) stepEl.textContent = 'COMPARAÇÃO 2 DE 2';
+                        dots.forEach(function (d) { d.classList.add('on'); });
+                        if (intro) intro.style.display = 'none';
+                        if (nextBtn) nextBtn.classList.add('is-hidden');
+
+                        if (bad) {
+                            bad.style.display = 'flex';
+                            bad.classList.add('is-reveal');
+                        }
+                        if (doneCard) doneCard.classList.add('visible');
+                        if (rule) rule.classList.add('visible');
+
+                        s29MobDone = true;
+                        var tracker = document.getElementById('s29-mobile-tracker');
+                        if (tracker) {
+                            tracker.style.display = 'block';
+                            tracker.classList.add('req-done');
+                        }
+                        try { if (typeof playBeep === 'function') playBeep('end'); } catch (e) {}
+                        setTimeout(function () {
+                            if (typeof updateNextButton === 'function') updateNextButton();
+                            if (bad) bad.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                        }, 300);
+                    };
+
+                    function s29InitMode() {
+                        var subtitle = document.getElementById('s29-subtitle-desktop');
+                        var tracker = document.getElementById('s29-mobile-tracker');
+                        if (s29IsMobile()) {
+                            if (subtitle) subtitle.classList.remove('req-item');
+                            if (!s29MobDone && tracker) {
+                                tracker.classList.remove('req-done');
+                                tracker.style.display = 'none';
+                            }
+                        } else {
+                            if (subtitle) subtitle.classList.add('req-item', 'req-done');
+                            if (tracker) {
+                                tracker.style.display = 'block';
+                                tracker.classList.add('req-done');
+                            }
+                        }
+                        if (typeof updateNextButton === 'function') updateNextButton();
+                    }
+
+                    s29InitMode();
+                    window.addEventListener('resize', s29InitMode);
+                })();
+                </script>
+            </div>
+
+            <div class="slide" id="s30"
+                style="background: radial-gradient(circle at center, rgba(20,10,7,1) 0%, rgba(13,10,8,1) 100%); overflow: hidden;">
+                <!-- Fundo HUD Cinematográfico -->
+                <div
+                    style="position: absolute; inset: 0; pointer-events: none; z-index: 0; background: radial-gradient(ellipse at 50% 50%, rgba(230, 81, 0, 0.08) 0%, transparent 65%); animation: s1b-glow 4s infinite alternate ease-in-out;">
+                </div>
+                <div
+                    style="position: absolute; inset: 0; pointer-events: none; z-index: 0; background-image: repeating-linear-gradient(0deg, transparent, transparent 2px, rgba(46, 204, 113, 0.03) 3px, rgba(46, 204, 113, 0.03) 4px);">
+                </div>
+                <div
+                    style="position: absolute; inset: 0; pointer-events: none; z-index: 0; opacity: 0.4; background-image: radial-gradient(rgba(255,255,255,0.15) 1px, transparent 1px); background-size: 60px 60px; animation: s1b-smoke 30s infinite linear;">
+                </div>
+                <div class="top-bar" style="position: relative; z-index: 2;">
+                    <div class="section-tag"
+                        style="background: var(--red); color: var(--black); font-size: 16px; padding: 6px 16px; font-weight: 800; box-shadow: 0 0 12px rgba(46, 204, 113, 0.4);">
+                        Módulo 5</div>
+                    <h2 class="slide-title"
+                        style="font-size: clamp(28px, 4vw, 42px); letter-spacing: -0.01em; text-shadow: 0 0 15px rgba(46, 204, 113, 0.4);">
+                        Trânsito <span>Seguro</span></h2>
+
+                </div>
+                <div class="content-area"
+                    style="align-items: center; text-align: center; justify-content: flex-start; position: relative; z-index: 2;">
+                    <div class="video-wrap req-item"
+                        style="max-width: 1240px; margin-top: 40px; box-shadow: 0 40px 80px rgba(0,0,0,0.9), 0 0 60px rgba(230,81,0,0.2); border: 1px solid rgba(230,81,0,0.3); border-radius: 12px; transform: translateZ(0);">
+                        <iframe
+                            src="https://player.vimeo.com/video/1200064349?title=0&byline=0&portrait=0&badge=0&autopause=0&player_id=0&app_id=58479&controls=1&transparent=0&dnt=1"
+                            frameborder="0"
+                            allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media; web-share"
+                            referrerpolicy="strict-origin-when-cross-origin"
+                            allowfullscreen
+                            title="Trânsito Seguro"></iframe>
+                    </div>
+                </div>
+                <div class="wave" style="position: absolute; bottom: 0; left: 0; right: 0; z-index: 1;"><svg
+                        viewBox="0 0 1440 100" preserveAspectRatio="none">
+                        <path d="M0,65 C360,20 720,90 1080,40 C1260,15 1390,70 1440,60 L1440,100 L0,100 Z"
+                            fill="rgba(230,81,0,0.07)" />
+                    </svg></div>
+            </div>
+
+            <div class="slide" id="s31"
+                style="background: radial-gradient(circle at center, rgba(20,10,7,1) 0%, rgba(13,10,8,1) 100%); overflow: hidden;">
+                <!-- Fundo HUD Cinematográfico -->
+                <div
+                    style="position: absolute; inset: 0; pointer-events: none; z-index: 0; background: radial-gradient(ellipse at 50% 50%, rgba(230, 81, 0, 0.08) 0%, transparent 65%); animation: s1b-glow 4s infinite alternate ease-in-out;">
+                </div>
+                <div
+                    style="position: absolute; inset: 0; pointer-events: none; z-index: 0; background-image: repeating-linear-gradient(0deg, transparent, transparent 2px, rgba(46, 204, 113, 0.03) 3px, rgba(46, 204, 113, 0.03) 4px);">
+                </div>
+                <div
+                    style="position: absolute; inset: 0; pointer-events: none; z-index: 0; opacity: 0.4; background-image: radial-gradient(rgba(255,255,255,0.15) 1px, transparent 1px); background-size: 60px 60px; animation: s1b-smoke 30s infinite linear;">
+                </div>
+                <div class="top-bar" style="position: relative; z-index: 2;">
+                    <div class="section-tag"
+                        style="background: var(--red); color: var(--black); font-size: 16px; padding: 6px 16px; font-weight: 800; box-shadow: 0 0 12px rgba(46, 204, 113, 0.4);">
+                        Módulo 5</div>
+                    <h2 class="slide-title"
+                        style="font-size: clamp(28px, 4vw, 42px); letter-spacing: -0.01em; text-shadow: 0 0 15px rgba(46, 204, 113, 0.4);">
+                        Estacionamento e <span>Emergência</span></h2>
+
+                </div>
+                <div class="content-area"
+                    style="align-items: center; text-align: center; justify-content: flex-start; position: relative; z-index: 2;">
+                    <div class="video-wrap req-item"
+                        style="max-width: 1240px; margin-top: 40px; box-shadow: 0 40px 80px rgba(0,0,0,0.9), 0 0 60px rgba(230,81,0,0.2); border: 1px solid rgba(230,81,0,0.3); border-radius: 12px; transform: translateZ(0);">
+                        <iframe
+                            src="https://player.vimeo.com/video/1200065132?title=0&byline=0&portrait=0&badge=0&autopause=0&player_id=0&app_id=58479&controls=1&transparent=0&dnt=1"
+                            frameborder="0"
+                            allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media; web-share"
+                            referrerpolicy="strict-origin-when-cross-origin"
+                            allowfullscreen
+                            title="Estacionamento e Emergência"></iframe>
+                    </div>
+                </div>
+                <div class="wave" style="position: absolute; bottom: 0; left: 0; right: 0; z-index: 1;"><svg
+                        viewBox="0 0 1440 100" preserveAspectRatio="none">
+                        <path d="M0,65 C360,20 720,90 1080,40 C1260,15 1390,70 1440,60 L1440,100 L0,100 Z"
+                            fill="rgba(230,81,0,0.07)" />
+                    </svg></div>
+            </div>
+
+            <div class="slide" id="s35">
+                <style>
+                    .btn-nr11-start { position:relative; font-size:18px; padding:15px 40px; border-radius:99px; display:inline-flex; align-items:center; gap:10px; background:#ffffff; border:none; color:#0d0a08; text-transform:uppercase; letter-spacing:1px; font-weight:800; box-shadow:0 0 30px rgba(255,255,255,0.2); transition:all 0.3s ease; cursor:pointer; }
+                    .btn-nr11-start:hover { background:rgba(255,255,255,0.9); box-shadow:0 0 40px rgba(255,255,255,0.3); }
+                    #s35 .s35-oc-card {
+                        width: 100%;
+                        max-width: 840px;
+                        padding: 20px 28px;
+                        display: flex;
+                        flex-direction: column;
+                        gap: 10px;
+                        border-radius: 16px;
+                        border: 1px solid rgba(230,81,0,0.35);
+                        background: linear-gradient(180deg, rgba(28,14,6,0.96) 0%, rgba(18,9,3,0.98) 100%);
+                        box-shadow: 0 20px 60px rgba(0,0,0,0.7), 0 0 40px rgba(230,81,0,0.08);
+                        transition: box-shadow 0.3s, border-color 0.3s;
+                    }
+                    #s35 .s35-oc-main {
+                        display: flex;
+                        gap: 16px;
+                        align-items: flex-start;
+                    }
+                    #s35 .s35-img-wrap {
+                        position: relative;
+                        flex: 0 0 50%;
+                        max-width: 380px;
+                        width: 50%;
+                        margin: 0;
+                    }
+                    #s35 .oc-img {
+                        width: 100%;
+                        height: clamp(240px, 34vh, 320px);
+                        object-fit: cover;
+                        display: block;
+                        border-radius: 12px;
+                        border: 1px solid rgba(230,81,0,0.25);
+                        box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+                    }
+                    #s35 .s35-oc-right {
+                        flex: 1;
+                        min-width: 0;
+                        display: flex;
+                        flex-direction: column;
+                        gap: 10px;
+                    }
+                    #s35 .s35-oc-body { display: flex; flex-direction: column; gap: 8px; }
+                    #s35 #s35-tag { font-size: 12px !important; }
+                    #s35 #s35-situation { font-size: clamp(16px, 2vw, 18px) !important; line-height: 1.6 !important; }
+                    #s35 #s35-question { font-size: clamp(18px, 2.4vw, 22px) !important; margin-top: 2px !important; }
+                    #s35 #s35-btns button { padding: 13px 16px !important; font-size: 15px !important; }
+                    #s35 #s35-ok, #s35 #s35-bad { padding: 14px 16px !important; gap: 10px !important; }
+                    #s35 #s35-ok > div:first-child, #s35 #s35-bad > div:first-child { font-size: 13px !important; }
+                    #s35 #s35-ok-text, #s35 #s35-bad-text { font-size: clamp(15px, 1.8vw, 17px) !important; line-height: 1.55 !important; }
+                    #s35 #s35-ok button, #s35 #s35-bad .s35-next-btn { align-self: center !important; margin-top: 4px !important; font-size: 13px !important; padding: 10px 20px !important; }
+                    #s35 .s35-quiz-mobile { display: none; width: 100%; }
+                    #s35 .s35-m-img-wrap {
+                        position: relative; width: 100%; border-radius: 10px; overflow: hidden;
+                        border: 1px solid rgba(230,81,0,0.2); margin-bottom: 14px;
+                        box-shadow: 0 12px 32px rgba(0,0,0,0.5);
+                    }
+                    #s35 .s35-m-img-wrap img { width: 100%; height: 200px; display: block; object-fit: cover; object-position: center center; }
+                    #s35 .s35-m-img-wrap button {
+                        position: absolute; bottom: 12px; right: 12px; z-index: 5;
+                        padding: 6px 12px; background: rgba(0,0,0,0.8);
+                        border: 1px solid rgba(230,81,0,0.6); border-radius: 6px;
+                        color: rgba(230,81,0,1); font-size: 10px; font-weight: 700;
+                        cursor: pointer; letter-spacing: 1px; backdrop-filter: blur(6px);
+                        text-transform: uppercase; font-family: var(--font-h);
+                    }
+                    #s35 .s35-m-tag {
+                        font-family: var(--font-h); font-size: 11px; font-weight: 800;
+                        letter-spacing: 2px; color: rgba(230,81,0,0.85); margin-bottom: 10px;
+                    }
+                    #s35 .s35-m-sit {
+                        font-size: 15px; line-height: 1.55; color: rgba(255,244,232,0.9);
+                        border-left: 3px solid rgba(230,81,0,0.45); padding-left: 14px; margin-bottom: 12px;
+                    }
+                    #s35 .s35-m-q {
+                        font-family: var(--font-h); font-size: 16px; font-weight: 800;
+                        color: #FFF4E8; margin-top: 4px;
+                    }
+                    @media (max-width: 768px) {
+                        #s35 { overflow: hidden !important; }
+                        #s35 .top-bar { padding-bottom: 4px !important; }
+                        #s35 .slide-title { font-size: 18px !important; margin-bottom: 0 !important; }
+                        #s35 .content-area {
+                            padding: 8px 10px 180px !important;
+                            overflow-y: auto !important;
+                            overflow-x: hidden !important;
+                            -webkit-overflow-scrolling: touch !important;
+                            touch-action: pan-y !important;
+                            flex: 1 1 auto !important;
+                            min-height: 0 !important;
+                            height: calc(100vh - 140px) !important;
+                            max-height: calc(100vh - 140px) !important;
+                        }
+                        #s35 .quiz-wrap { padding: 0 !important; max-width: 100% !important; }
+                        #s35 #q5-intro-panel { padding: 10px 0 !important; }
+                        #s35 #q5-intro-panel .hud-anim-enter:first-of-type {
+                            padding: 20px 16px !important;
+                            margin-bottom: 14px !important;
+                        }
+                        #s35 #q5-intro-panel h3 { font-size: 20px !important; margin-bottom: 8px !important; }
+                        #s35 #q5-intro-panel p { font-size: 13px !important; }
+                        #s35 #q5-intro-panel .hud-anim-enter:nth-of-type(2) { margin-top: 16px !important; margin-bottom: 16px !important; font-size: 12px !important; padding: 8px 14px !important; }
+                        #s35 .btn-nr11-start {
+                            font-size: 15px !important;
+                            padding: 14px 30px !important;
+                            width: 100% !important;
+                            justify-content: center !important;
+                        }
+                        #s35 .s35-quiz-desktop { display: none !important; }
+                        #s35 .s35-quiz-mobile { display: block !important; }
+                        #s35 #s35-quiz-panel .q-meta { margin-bottom: 14px !important; }
+                        #s35 #s35-m-counter { font-size: 13px !important; letter-spacing: 1.5px !important; }
+                        #s35 #s35-m-text {
+                            font-size: 16px !important;
+                            line-height: 1.45 !important;
+                            padding: 24px 16px 20px !important;
+                            margin-bottom: 12px !important;
+                        }
+                        #s35 .q-options { gap: 10px !important; }
+                        #s35 .s35-quiz-mobile .q-opt {
+                            padding: 10px 14px !important;
+                            font-size: 15px !important;
+                            width: 100% !important;
+                        }
+                        #s35 .s35-quiz-mobile .q-opt span { font-size: 15px !important; }
+                        #s35 .s35-quiz-mobile .opt-l {
+                            width: 32px !important;
+                            height: 32px !important;
+                            font-size: 17px !important;
+                        }
+                        #s35 .s35-quiz-mobile .q-feedback {
+                            padding: 12px 14px !important;
+                            font-size: 15px !important;
+                            line-height: 1.45 !important;
+                            margin-top: 10px !important;
+                            margin-bottom: 8px !important;
+                            max-height: 180px;
+                            overflow-y: auto;
+                            -webkit-overflow-scrolling: touch;
+                        }
+                        #s35 .s35-quiz-mobile .btn-next-q {
+                            width: 100% !important;
+                            display: none;
+                            font-size: 15px !important;
+                            padding: 14px 30px !important;
+                            letter-spacing: 1px;
+                            text-transform: uppercase;
+                        }
+                        #s35 .s35-quiz-mobile .btn-next-q.show {
+                            display: block !important;
+                            width: 100% !important;
+                            min-height: 52px !important;
+                            margin-top: 12px !important;
+                            position: relative !important;
+                            z-index: 100 !important;
+                            animation: s35NextPulse 1.8s infinite;
+                        }
+                        @keyframes s35NextPulse {
+                            0% { transform: scale(1); }
+                            50% { transform: scale(1.03); }
+                            100% { transform: scale(1); }
+                        }
+                        #s35 .wave { pointer-events: none; }
+                    }
+                    @media (min-width: 769px) {
+                        #s35 .s35-quiz-mobile { display: none !important; }
+                    }
+                    #s35 .s35-ampliar {
+                        position: absolute;
+                        bottom: 10px;
+                        right: 10px;
+                        z-index: 3;
+                        padding: 6px 14px;
+                        background: rgba(0,0,0,0.78);
+                        border: 1px solid rgba(230,81,0,0.6);
+                        border-radius: 6px;
+                        color: rgba(230,81,0,1);
+                        font-size: 11px;
+                        font-weight: 700;
+                        cursor: pointer;
+                        letter-spacing: 1px;
+                        text-transform: uppercase;
+                        backdrop-filter: blur(6px);
+                    }
+                </style>
+                <div class="top-bar">
+                    <div class="section-tag"
+                        style="background: var(--red); color: var(--black); font-size: 16px; padding: 6px 16px; font-weight: 800; box-shadow: 0 0 12px rgba(46, 204, 113, 0.4);">
+                        🎯 Quiz · Módulo 5</div>
+                    <h2 class="slide-title"
+                        style="font-size: clamp(28px, 4vw, 42px); letter-spacing: -0.01em; text-shadow: 0 0 15px rgba(46, 204, 113, 0.4); text-transform: none !important;">
+                        Avaliação de <span>Ocorrências</span></h2>
+
+                </div>
+                <div class="content-area">
+                    <div class="quiz-wrap">
+
+                        <!-- ABERTURA -->
+                        <div id="q5-intro-panel" style="text-align: center; padding: 40px 20px; position: relative;">
+                            <!-- Efeitos Visuais Sutis HUD -->
+                            <div
+                                style="position: absolute; inset: 0; pointer-events: none; z-index: 0; background: radial-gradient(ellipse at center, rgba(46, 204, 113, 0.05) 0%, transparent 60%);">
+                            </div>
+                            <div
+                                style="position: absolute; top: 20px; left: 50%; transform: translateX(-50%); width: 200px; height: 1px; background: linear-gradient(90deg, transparent, rgba(46,204,113,0.3), transparent);">
+                            </div>
+                            <div
+                                style="position: absolute; bottom: 20px; left: 50%; transform: translateX(-50%); width: 200px; height: 1px; background: linear-gradient(90deg, transparent, rgba(46,204,113,0.3), transparent);">
+                            </div>
+
+                            <div class="hud-anim-enter"
+                                style="position: relative; z-index: 1; max-width: 850px; margin: 0 auto 30px; padding: 50px 30px; border-radius: 8px; background: rgba(20, 8, 3, 0.6); border: 1px solid rgba(230, 81, 0, 0.15); box-shadow: 0 10px 40px rgba(0,0,0,0.5), inset 0 0 20px rgba(230,81,0,0.05); backdrop-filter: blur(12px); animation-delay: 0.2s; opacity: 0; overflow: hidden;">
+                                <!-- Efeitos Visuais HUD Premium Internos -->
+                                <div
+                                    style="position: absolute; inset: 0; pointer-events: none; background: repeating-linear-gradient(0deg, transparent, transparent 2px, rgba(46,204,113,0.03) 3px, rgba(46,204,113,0.03) 4px);">
+                                </div>
+                                <div
+                                    style="position: absolute; inset: 0; pointer-events: none; opacity: 0.3; background-image: radial-gradient(rgba(255,255,255,0.1) 1px, transparent 1px); background-size: 20px 20px; animation: s1b-smoke 40s infinite linear;">
+                                </div>
+                                <div
+                                    style="position: absolute; top: 0; left: 50%; transform: translateX(-50%); width: 60%; height: 1px; background: linear-gradient(90deg, transparent, rgba(230,81,0,0.4), transparent);">
+                                </div>
+                                <div
+                                    style="position: absolute; bottom: 0; left: 50%; transform: translateX(-50%); width: 60%; height: 1px; background: linear-gradient(90deg, transparent, rgba(230,81,0,0.4), transparent);">
+                                </div>
+                                <div
+                                    style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); width: 80%; height: 80%; background: radial-gradient(circle, rgba(230,81,0,0.08) 0%, transparent 70%); pointer-events: none; animation: pulse 4s infinite;">
+                                </div>
+
+                                <!-- PROTOCOLO DE AVALIAÇÃO -->
+                                <div
+                                    style="position: relative; font-family: var(--font-h); font-size: 12px; font-weight: 700; color: rgba(230,81,0,0.8); letter-spacing: 4px; text-transform: uppercase; margin-bottom: 16px; display: flex; align-items: center; justify-content: center; gap: 12px;">
+                                    <span style="width: 30px; height: 1px; background: rgba(230,81,0,0.4);"></span>
+                                    PROTOCOLO DE AVALIAÇÃO
+                                    <span style="width: 30px; height: 1px; background: rgba(230,81,0,0.4);"></span>
+                                </div>
+
+                                <!-- CENTRAL DE SEGURANÇA -->
+                                <h3
+                                    style="position: relative; font-family: var(--font-h); font-size: clamp(24px, 3.5vw, 36px); font-weight: 800; color: var(--white); text-transform: uppercase; letter-spacing: 1px; line-height: 1.2; margin-bottom: 16px; text-shadow: 0 0 15px rgba(46,204,113,0.5);">
+                                    AVALIAÇÃO DE OCORRÊNCIAS
+                                </h3>
+
+                                <!-- Texto Inferior -->
+                                <p
+                                    style="position: relative; font-size: clamp(16px, 2vw, 18px); color: rgba(255,255,255,0.7); max-width: 500px; margin: 0 auto; line-height: 1.5; font-weight: 300;">
+                                    Analise cada situação e decida se a atitude do operador foi correta ou incorreta.
+                                </p>
+
+                                <!-- Badge Premium -->
+                                <div class="hud-anim-enter"
+                                    style="position: relative; z-index: 1; font-family: var(--font-h); font-size: 14px; font-weight: 700; color: #ffffff; letter-spacing: 2px; text-transform: uppercase; margin-top: 40px; margin-bottom: 40px; animation-delay: 0.3s; opacity: 0; display: inline-flex; align-items: center; gap: 8px; background: rgba(30, 10, 3, 0.9); padding: 10px 20px; border: 1px solid rgba(230, 81, 0, 0.4); border-radius: 8px; box-shadow: 0 0 15px rgba(230, 81, 0, 0.3);">
+                                    <span
+                                        style="display:inline-block; width:6px; height:6px; background:var(--red); border-radius:50%; box-shadow:0 0 6px var(--red);"></span>
+                                    3 OCORRÊNCIAS &middot; MÍNIMO DE 70% DE ACERTOS
+                                </div><br>
+
+                                <!-- Botão -->
+                                <div class="hud-anim-enter"
+                                    style="position: relative; display: inline-block; z-index: 2; animation-delay: 0.4s; opacity: 0;">
+                                    <div
+                                        style="position: absolute; inset: -15px; border-radius: 99px; border: 1px dashed rgba(46,204,113,0.3); pointer-events: none;">
+                                    </div>
+                                    <div
+                                        style="position: absolute; inset: -5px; border-radius: 99px; background: rgba(46,204,113,0.15); filter: blur(10px); animation: pulse 2s infinite; pointer-events: none;">
+                                    </div>
+
+                                    <button class="btn-nr11-start req-item"
+                                        onclick="this.classList.add('req-done');if(typeof updateNextButton==='function')updateNextButton();document.getElementById('q5-intro-panel').style.display='none';document.getElementById('s35-quiz-panel').style.display='flex';">
+                                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none"
+                                            stroke="currentColor" stroke-width="2.5" stroke-linecap="round"
+                                            stroke-linejoin="round"
+                                            style="filter: drop-shadow(0 0 4px rgba(46,204,113,0.5));">
+                                            <polygon points="5 3 19 12 5 21"></polygon>
+                                        </svg>
+                                        INICIAR SIMULAÇÃO
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div id="s35-quiz-panel" style="display:none;flex-direction:column;align-items:center;width:100%;">
+
+                            <!-- MOBILE: padrão quiz M1/M2/M3 -->
+                            <div class="s35-quiz-mobile">
+                                <div class="q-meta">
+                                    <div class="q-dots" id="s35-m-dots">
+                                        <div class="qdot2 cur" id="s35mdot0"></div>
+                                        <div class="qdot2" id="s35mdot1"></div>
+                                        <div class="qdot2" id="s35mdot2"></div>
+                                    </div>
+                                    <div class="q-lbl" id="s35-m-counter">1 DE 3</div>
+                                </div>
+                                <div class="q-text" id="s35-m-text"></div>
+                                <div class="q-options" id="s35-m-options">
+                                    <div class="q-opt" id="s35-m-opt-ok" onclick="s35Answer(true)">
+                                        <div class="opt-l">A</div><span>✅ APROVADO</span>
+                                    </div>
+                                    <div class="q-opt" id="s35-m-opt-bad" onclick="s35Answer(false)">
+                                        <div class="opt-l">B</div><span>❌ ADVERTÊNCIA</span>
+                                    </div>
+                                </div>
+                                <div class="q-feedback" id="s35-m-feedback"></div>
+                                <button class="btn-next-q" id="btn-next-s35" onclick="s35Next()">PRÓXIMA PERGUNTA →</button>
+                            </div>
+
+                            <!-- DESKTOP: layout original -->
+                            <div class="s35-quiz-desktop" style="display:flex;align-items:center;justify-content:center;width:100%;max-width:860px;margin:0 auto;">
+                                <div id="s35-card" class="s35-oc-card">
+                                    <div style="display:flex;gap:6px;" id="s35-progress">
+                                        <div style="width:28px;height:4px;border-radius:2px;background:rgba(230,81,0,0.8);" id="s35-d0"></div>
+                                        <div style="width:28px;height:4px;border-radius:2px;background:rgba(255,255,255,0.1);" id="s35-d1"></div>
+                                        <div style="width:28px;height:4px;border-radius:2px;background:rgba(255,255,255,0.1);" id="s35-d2"></div>
+                                    </div>
+                                    <div class="s35-oc-main">
+                                        <div id="s35-img-wrap" class="s35-img-wrap">
+                                            <img id="s35-img" src="" alt="Cenário" class="oc-img">
+                                            <button type="button" id="s35-ampliar" class="s35-ampliar">🔍 AMPLIAR</button>
+                                        </div>
+                                        <div class="s35-oc-right">
+                                            <div class="s35-oc-body">
+                                                <div id="s35-tag" style="font-family:var(--font-h);font-size:12px;font-weight:800;letter-spacing:3px;color:rgba(230,81,0,0.85);"></div>
+                                                <div id="s35-situation" style="font-size:clamp(16px,2vw,18px);color:rgba(255,244,232,0.9);line-height:1.6;border-left:3px solid rgba(230,81,0,0.45);padding-left:14px;"></div>
+                                                <div id="s35-question" style="font-family:var(--font-h);font-size:clamp(18px,2.4vw,22px);font-weight:800;color:#FFF4E8;margin-top:4px;">Qual sua decisão?</div>
+                                            </div>
+                                            <div id="s35-btns" style="display:flex;gap:12px;">
+                                                <button onclick="try{playBeep('ok');}catch(e){}s35Answer(true)" style="flex:1;padding:13px 16px;border-radius:12px;font-family:var(--font-h);font-size:15px;font-weight:800;letter-spacing:1.5px;cursor:pointer;background:rgba(46,204,113,0.12);border:1px solid rgba(46,204,113,0.5);color:rgba(46,204,113,1);">✅ APROVADO</button>
+                                                <button onclick="try{playBeep('nok');}catch(e){}s35Answer(false)" style="flex:1;padding:13px 16px;border-radius:12px;font-family:var(--font-h);font-size:15px;font-weight:800;letter-spacing:1.5px;cursor:pointer;background:rgba(220,50,50,0.12);border:1px solid rgba(220,50,50,0.5);color:rgba(220,80,80,1);">❌ ADVERTÊNCIA</button>
+                                            </div>
+                                            <div id="s35-ok" style="display:none;flex-direction:column;gap:10px;border-radius:12px;padding:14px 16px;background:rgba(10,28,12,0.95);border:1px solid rgba(46,204,113,0.35);border-left:3px solid rgba(46,204,113,1);">
+                                                <div style="font-family:var(--font-h);font-size:13px;font-weight:800;letter-spacing:2px;color:rgba(46,204,113,1);">✅ DECISÃO CORRETA</div>
+                                                <div id="s35-ok-text" style="font-size:clamp(15px,1.8vw,17px);color:rgba(255,244,232,0.85);line-height:1.55;"></div>
+                                                <button onclick="s35Next()" style="align-self:center;padding:10px 20px;border-radius:8px;font-family:var(--font-h);font-size:13px;font-weight:800;cursor:pointer;background:rgba(46,204,113,0.15);border:1px solid rgba(46,204,113,0.5);color:rgba(46,204,113,1);">➡ PRÓXIMA OCORRÊNCIA</button>
+                                            </div>
+                                            <div id="s35-bad" style="display:none;flex-direction:column;gap:10px;border-radius:12px;padding:14px 16px;background:rgba(28,5,4,0.95);border:1px solid rgba(220,50,50,0.35);border-left:3px solid rgba(220,50,50,1);">
+                                                <div style="font-family:var(--font-h);font-size:13px;font-weight:800;letter-spacing:2px;color:rgba(220,80,80,1);">❌ DECISÃO INCORRETA</div>
+                                                <div id="s35-bad-text" style="font-size:clamp(15px,1.8vw,17px);color:rgba(255,244,232,0.85);line-height:1.55;"></div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div><!-- /s35-quiz-desktop -->
+                        </div>
+
+                        <!-- RESULTADO FINAL -->
+                        <div id="s35-result-panel" class="req-item" style="display:none;text-align:center;">
+                            <div class="result-pct green" id="s35-pct">--</div>
+                            <div class="r-stars" id="s35-stars">⭐⭐⭐</div>
+                            <div class="r-status" id="s35-status"></div>
+                            <div class="r-sub" id="s35-sub"></div>
+                            <button class="btn-retry" onclick="s35Retry()">↺ Tentar Novamente</button>
+                        </div>
+
+                        <div id="q5-result-panel" style="display:none;text-align:center;">
+                            <div class="result-pct green" id="q5-pct">--</div>
+                            <div class="r-stars" id="q5-stars">⭐⭐⭐</div>
+                            <div class="r-status" id="q5-status"></div>
+                            <div class="r-sub" id="q5-sub"></div>
+                            <button class="btn-retry" onclick="resetQuiz5()">↺ Tentar Novamente</button>
+                        </div>
+
+                        <script>
+                        var s35Scenarios = [
+                            { tag:'OCORRÊNCIA 01', img:'https://i.imgur.com/rzLV2uK.jpeg', situation:'O operador está com uma carga muito alta e volumosa que tampa sua visão frontal, então ele decide conduzir a empilhadeira de marcha à ré para enxergar o caminho.', correct:true, feedback_ok:'A regra exige que o operador transite sempre de ré quando estiver conduzindo uma carga que atrapalhe a visão.', feedback_bad:'Na verdade, isso está correto! A NR-11 determina que o operador deve transitar de marcha à ré quando a carga bloquear a visão frontal.' },
+                            { tag:'OCORRÊNCIA 02', img:'https://i.imgur.com/X3o5ASP.jpeg', situation:'Para adiantar o serviço, o operador deu uma carona rápida para o ajudante ir em pé na lateral da empilhadeira até o outro lado do galpão.', correct:false, feedback_ok:'Na verdade, isso está errado! O veículo não é um meio de transporte para pessoas. Nunca dê caronas ou permita pessoas em pé na máquina.', feedback_bad:'O veículo não é um meio de transporte para pessoas. Nunca dê caronas ou permita pessoas em pé na máquina.' },
+                            { tag:'OCORRÊNCIA 03', img:'https://i.imgur.com/9qtKZUV.jpeg', situation:'O operador foi para o horário de almoço. Estacionou no local correto e abaixou os garfos até o chão, mas deixou a chave na ignição para facilitar na volta.', correct:false, feedback_ok:'Na verdade, isso está errado! Ao estacionar, a regra é clara: nunca deixe a chave na ignição.', feedback_bad:'Ao estacionar, a regra é clara: nunca deixe a chave na ignição.' }
+                        ];
+                        var s35Idx = 0;
+                        var s35Score = 0;
+                        var s35Answered = false;
+
+                        function s35IsMobile() {
+                            return window.matchMedia('(max-width: 768px)').matches;
+                        }
+
+                        function s35UpdateMobileDots() {
+                            for (var i = 0; i < s35Scenarios.length; i++) {
+                                var d = document.getElementById('s35mdot' + i);
+                                if (d) d.className = 'qdot2' + (i < s35Idx ? ' done' : '') + (i === s35Idx ? ' cur' : '');
+                            }
+                        }
+
+                        function s35RenderMobile() {
+                            var s = s35Scenarios[s35Idx];
+                            s35Answered = false;
+                            var counter = document.getElementById('s35-m-counter');
+                            var text = document.getElementById('s35-m-text');
+                            var fb = document.getElementById('s35-m-feedback');
+                            var nextBtn = document.getElementById('btn-next-s35');
+                            var optOk = document.getElementById('s35-m-opt-ok');
+                            var optBad = document.getElementById('s35-m-opt-bad');
+                            if (counter) counter.textContent = (s35Idx + 1) + ' DE ' + s35Scenarios.length;
+                            if (text) {
+                                text.innerHTML =
+                                    (s.img ? '<div class="s35-m-img-wrap"><img src="' + s.img + '" alt="Cenário"><button type="button" onclick="openImageModal(\'' + s.img + '\')">🔍 AMPLIAR</button></div>' : '') +
+                                    '<div class="s35-m-tag">' + s.tag + '</div>' +
+                                    '<div class="s35-m-sit">' + s.situation + '</div>' +
+                                    '<div class="s35-m-q">Qual sua decisão?</div>';
+                            }
+                            if (fb) { fb.className = 'q-feedback'; fb.textContent = ''; }
+                            if (nextBtn) nextBtn.className = 'btn-next-q';
+                            [optOk, optBad].forEach(function (o) {
+                                if (!o) return;
+                                o.className = 'q-opt';
+                                o.style.pointerEvents = '';
+                            });
+                            s35UpdateMobileDots();
+                            var area = document.querySelector('#s35 .content-area');
+                            if (area) area.scrollTop = 0;
+                        }
+
+                        function s35Render() {
+                            document.getElementById('s35-result-panel').style.display = 'none';
+                            if (s35IsMobile()) {
+                                s35RenderMobile();
+                                return;
+                            }
+                            var s = s35Scenarios[s35Idx];
+                            document.getElementById('s35-tag').textContent = s.tag;
+                            document.getElementById('s35-situation').textContent = s.situation;
+                            var imgEl = document.getElementById('s35-img');
+                            if(imgEl) imgEl.src = s.img || '';
+                            var imgWrap = document.getElementById('s35-img-wrap');
+                            if(imgWrap) imgWrap.style.display = s.img ? 'block' : 'none';
+                            var ampliar = document.getElementById('s35-ampliar');
+                            if(ampliar && s.img) ampliar.onclick = function(){ openImageModal(s.img); };
+                            document.getElementById('s35-question').style.display = 'block';
+                            document.getElementById('s35-btns').style.display = 'flex';
+                            document.getElementById('s35-ok').style.display = 'none';
+                            document.getElementById('s35-bad').style.display = 'none';
+                            for(var i=0;i<3;i++){ var d=document.getElementById('s35-d'+i); d.style.background = i<s35Idx?'rgba(46,204,113,0.8)':i===s35Idx?'rgba(230,81,0,0.8)':'rgba(255,255,255,0.1)'; }
+                        }
+                        function s35Answer(isOk) {
+                            if (s35IsMobile()) {
+                                if (s35Answered) return;
+                                s35Answered = true;
+                                var s = s35Scenarios[s35Idx];
+                                var correct = isOk === s.correct;
+                                var optOk = document.getElementById('s35-m-opt-ok');
+                                var optBad = document.getElementById('s35-m-opt-bad');
+                                var fb = document.getElementById('s35-m-feedback');
+                                var nextBtn = document.getElementById('btn-next-s35');
+                                var chosen = isOk ? optOk : optBad;
+                                var correctOpt = s.correct ? optOk : optBad;
+                                [optOk, optBad].forEach(function (o) { if (o) o.style.pointerEvents = 'none'; });
+                                if (correct) {
+                                    s35Score++;
+                                    if (chosen) chosen.classList.add('correct');
+                                    if (fb) { fb.textContent = s.feedback_ok; fb.className = 'q-feedback ok'; }
+                                    try { playBeep('ok'); } catch (e) {}
+                                } else {
+                                    if (chosen) chosen.classList.add('wrong');
+                                    if (correctOpt) correctOpt.classList.add('correct');
+                                    if (fb) { fb.textContent = s.feedback_bad; fb.className = 'q-feedback nok'; }
+                                    try { playBeep('nok'); } catch (e) {}
+                                }
+                                if (nextBtn) nextBtn.className = 'btn-next-q show';
+                                setTimeout(function () {
+                                    if (nextBtn) nextBtn.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                                }, 300);
+                                return;
+                            }
+                            var s = s35Scenarios[s35Idx];
+                            var card = document.getElementById('s35-card');
+                            document.getElementById('s35-btns').style.display = 'none';
+                            document.getElementById('s35-question').style.display = 'none';
+                            if(isOk === s.correct) {
+                                s35Score++;
+                                try{ playBeep('ok'); }catch(e){}
+                                document.getElementById('s35-ok-text').textContent = s.feedback_ok;
+                                document.getElementById('s35-ok').style.display = 'flex';
+                            } else {
+                                card.style.boxShadow = '0 0 0 3px rgba(220,50,50,0.8),0 20px 60px rgba(220,50,50,0.3)';
+                                card.style.borderColor = 'rgba(220,50,50,0.8)';
+                                setTimeout(function(){ card.style.boxShadow=''; card.style.borderColor=''; },600);
+                                try{ playBeep('nok'); }catch(e){}
+                                document.getElementById('s35-bad-text').textContent = s.feedback_bad;
+                                var badEl = document.getElementById('s35-bad');
+                                badEl.style.display = 'flex';
+                                var retryBtn = badEl.querySelector('.s35-retry-btn');
+                                if(retryBtn) retryBtn.style.display = 'none';
+                                var existingNext = badEl.querySelector('.s35-next-btn');
+                                if(!existingNext) {
+                                    var nextBtn = document.createElement('button');
+                                    nextBtn.className = 's35-next-btn';
+                                    nextBtn.textContent = '➡ PRÓXIMA OCORRÊNCIA';
+                                    nextBtn.style.cssText = 'align-self:center;padding:9px 18px;border-radius:8px;font-family:var(--font-h);font-size:11px;font-weight:800;cursor:pointer;background:rgba(220,50,50,0.15);border:1px solid rgba(220,50,50,0.5);color:rgba(220,80,80,1);margin-top:4px;';
+                                    nextBtn.onclick = s35Next;
+                                    badEl.appendChild(nextBtn);
+                                } else {
+                                    existingNext.style.display = '';
+                                }
+                            }
+                        }
+                        function s35Next() {
+                            if (s35IsMobile() && !s35Answered) return;
+                            s35Idx++;
+                            if(s35Idx < s35Scenarios.length) { s35Render(); }
+                            else {
+                                var total = s35Scenarios.length;
+                                var pct = Math.round((s35Score/total)*100);
+                                var approved = pct >= 70;
+                                var stars = pct === 100 ? '⭐⭐⭐' : pct >= 70 ? '⭐⭐' : '⭐';
+                                try{ playBeep('end'); }catch(e){}
+                                document.getElementById('s35-quiz-panel').style.display = 'none';
+                                var resultPanel = document.getElementById('s35-result-panel');
+                                resultPanel.style.display = 'block';
+                                document.getElementById('s35-pct').textContent = pct+'%';
+                                document.getElementById('s35-pct').className = 'result-pct '+(approved?'green':'red-c');
+                                document.getElementById('s35-stars').textContent = stars;
+                                document.getElementById('s35-status').textContent = approved ? '✅ Aprovado!' : '❌ Quase lá!';
+                                document.getElementById('s35-status').className = 'r-status '+(approved?'ap':'ref');
+                                document.getElementById('s35-sub').textContent = 'Você acertou '+s35Score+' de '+total+' ocorrências.'+(approved?' Parabéns!':' Revise o módulo e tente novamente.');
+                                resultPanel.classList.add('req-done');
+                                if(typeof updateNextButton==='function') updateNextButton();
+                            }
+                        }
+                        function s35Reset() {
+                            var existingNext = document.querySelector('#s35-bad .s35-next-btn');
+                            if(existingNext) existingNext.style.display = 'none';
+                            var card = document.getElementById('s35-card');
+                            card.style.boxShadow=''; card.style.borderColor='';
+                            var ocBodyR = document.querySelector('#s35-card .s35-oc-body');
+                            if(ocBodyR) ocBodyR.style.display = 'flex';
+                            document.getElementById('s35-question').style.display='block';
+                            document.getElementById('s35-btns').style.display='flex';
+                            document.getElementById('s35-ok').style.display='none';
+                            document.getElementById('s35-bad').style.display='none';
+                        }
+                        function s35Retry() {
+                            s35Idx = 0;
+                            s35Score = 0;
+                            s35Answered = false;
+                            var resultPanel = document.getElementById('s35-result-panel');
+                            resultPanel.style.display = 'none';
+                            resultPanel.classList.remove('req-done');
+                            document.querySelectorAll('#s35-bad button:last-child').forEach(function(b){ if(b.textContent.includes('PRÓXIMA')) b.remove(); });
+                            s35Render();
+                            document.getElementById('s35-quiz-panel').style.display = 'flex';
+                            if(typeof updateNextButton==='function') updateNextButton();
+                        }
+                        s35Render();
+                        </script>
+
+                    </div>
+                </div>
+                <div class="wave"><svg viewBox="0 0 1440 100" preserveAspectRatio="none">
+                        <path d="M0,65 C360,20 720,90 1080,40 C1260,15 1390,70 1440,60 L1440,100 L0,100 Z"
+                            fill="rgba(230,81,0,0.07)" />
+                    </svg></div>
+            </div>
+
+        </div>
+
+        <div id="nav">
+            <button class="nav-btn" id="btn-back" onclick="modulePrev()" disabled>
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"
+                    stroke-linejoin="round">
+                    <polyline points="15 18 9 12 15 6" />
+                </svg>
+                ANTERIOR
+            </button>
+            <button class="nav-btn" id="btn-fwd" onclick="moduleNext()">
+                PRÓXIMO
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"
+                    stroke-linejoin="round">
+                    <polyline points="9 18 15 12 9 6" />
+                </svg>
+            </button>
+        </div>
+
+        <div class="img-modal-overlay" id="imgModal" onclick="closeImageModal(event)">
+            <div class="img-modal-content" onclick="event.stopPropagation()">
+                <button class="img-modal-close" onclick="closeImageModal()">×</button>
+                <img id="modalImg" alt="Imagem Ampliada">
+            </div>
+        </div>
+
+    </div>
+
+    <script src="audio-data.js"></script>
+    <script src="shared.js?v=3"></script>
+</body>
+
+</html>

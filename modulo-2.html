@@ -1,0 +1,1775 @@
+﻿<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="referrer" content="no-referrer">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <title>Módulo 2 - O Equipamento</title>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;900&family=Open+Sans:wght@400;600&display=swap"
+        rel="stylesheet">
+    <script src="https://player.vimeo.com/api/player.js"></script>
+    <link rel="stylesheet" href="shared.css?v=3">
+    <script>
+        window.MODULE_NAV = {
+            id: "modulo-2",
+            prev: "modulo-1.html",
+            next: "modulo-3.html",
+            label: "Módulo 2 - O Equipamento"
+        };
+    </script>
+</head>
+
+<body>
+
+    <button id="btn-demo" type="button" onclick="toggleDemoMode()" title="Modo Simulação" aria-label="Modo simulação">SIMULAÇÃO</button>
+    <div id="demo-indicator"
+        style="position: fixed; top: 15px; right: 15px; z-index: 9999; background: var(--gold); color: var(--black); padding: 5px 15px; font-size: 12px; font-weight: bold; font-family: var(--font-h); border-radius: 99px; box-shadow: 0 0 15px rgba(241,196,15,0.5); opacity: 0; pointer-events: none; transition: all 0.3s; transform: translateY(-20px);">
+        Modo Simulação Ativado</div>
+
+    <div id="app">
+
+        <div id="pbar-wrap">
+            <div id="pbar" style="width:2.56%"></div>
+        </div>
+
+        <div id="slide-counter"></div>
+
+        <div id="logo">
+            <img src="https://imgur.com/c1m4CIy.png" alt="Tecno-Cursos"
+                onerror="this.onerror=null;this.src='https://imgur.com/c1m4CIy.png'">
+        </div>
+
+        <div id="slides">
+            <div class="slide active" id="s10">
+                <div class="mod-intro">
+                    <div class="mod-intro-pill">INÍCIO</div>
+                    <div class="mod-intro-num">MÓDULO 2</div>
+                    <div class="mod-intro-title">O Equipamento</div>
+                </div>
+                <div class="wave"><svg viewBox="0 0 1440 100" preserveAspectRatio="none">
+                        <path d="M0,50 C480,10 960,85 1440,30 L1440,100 L0,100 Z" fill="rgba(230,81,0,0.07)" />
+                    </svg></div>
+            </div>
+
+            <div class="slide" id="s11"
+                style="background: radial-gradient(ellipse at center, rgba(40, 18, 5, 1) 0%, rgba(13, 10, 8, 1) 65%, rgba(8, 6, 4, 1) 100%); overflow: hidden;">
+                <div
+                    style="position: absolute; inset: 0; pointer-events: none; z-index: 0; background: radial-gradient(ellipse at 50% 50%, rgba(230, 81, 0, 0.12) 0%, transparent 65%); animation: s1b-glow 4s infinite alternate ease-in-out;">
+                </div>
+                <div
+                    style="position: absolute; inset: 0; pointer-events: none; z-index: 0; background-image: repeating-linear-gradient(0deg, transparent, transparent 2px, rgba(46, 204, 113, 0.03) 3px, rgba(46, 204, 113, 0.03) 4px);">
+                </div>
+                <div
+                    style="position: absolute; inset: 0; pointer-events: none; z-index: 0; opacity: 0.4; background-image: radial-gradient(rgba(255,255,255,0.15) 1px, transparent 1px); background-size: 60px 60px; animation: s1b-smoke 30s infinite linear;">
+                </div>
+                <div class="top-bar" style="position: relative; z-index: 2;">
+                    <div class="section-tag"
+                        style="background: var(--red); color: var(--black); font-size: 16px; padding: 6px 16px; font-weight: 800; box-shadow: 0 0 12px rgba(46, 204, 113, 0.4);">
+                        Módulo 2</div>
+                    <h2 class="slide-title"
+                        style="font-size: clamp(28px, 4vw, 42px); letter-spacing: -0.01em; text-shadow: 0 0 15px rgba(46, 204, 113, 0.4);">
+                        Conhecendo a <span>Máquina</span></h2>
+                </div>
+                <div class="content-area"
+                    style="align-items: center; text-align: center; justify-content: flex-start; position: relative; z-index: 2;">
+                    <div class="video-wrap req-item"
+                        style="max-width: 1240px; margin-top: 40px; box-shadow: 0 40px 80px rgba(0,0,0,0.9), 0 0 60px rgba(230, 81, 0, 0.3); border: 1px solid rgba(230, 81, 0, 0.4); border-radius: 12px; transform: translateZ(0);">
+                        <iframe
+                            src="https://player.vimeo.com/video/1210577303?badge=0&autopause=0&player_id=0&app_id=58479&controls=1&transparent=0&dnt=1"
+                            frameborder="0" allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen title="CONHECENDO A MÁQUINA - NR 11"></iframe>
+                    </div>
+                </div>
+                <div class="wave" style="position: absolute; bottom: 0; left: 0; right: 0; z-index: 1;"><svg
+                        viewBox="0 0 1440 100" preserveAspectRatio="none">
+                        <path d="M0,60 C360,20 720,90 1080,35 L1440,55 L1440,100 L0,100 Z"
+                            fill="rgba(230, 81, 0, 0.07)" />
+                    </svg></div>
+                <style>
+                @media (max-width: 768px) {
+                    #s11 .top-bar { padding-bottom:6px !important; }
+                    #s11 .slide-title { font-size:22px !important; line-height:1.2 !important; }
+                    #s11 .content-area { padding:6px 10px !important; justify-content:flex-start !important; }
+                    #s11 .video-wrap {
+                        max-width:100% !important;
+                        width:100% !important;
+                        margin-top:40px !important;
+                        border-radius:12px !important;
+                        box-shadow:0 40px 80px rgba(0,0,0,0.9), 0 0 60px rgba(230,81,0,0.3) !important;
+                        border:1px solid rgba(230,81,0,0.4) !important;
+                    }
+                    #s11 .video-wrap iframe {
+                        width:100% !important;
+                        height:auto !important;
+                        aspect-ratio:16/9 !important;
+                        display:block !important;
+                    }
+                }
+                </style>
+            </div>
+
+            <div class="slide" id="s12">
+                <style>
+                    #s12 { background: radial-gradient(ellipse at 30% 50%, rgba(230,81,0,0.04) 0%, transparent 55%), repeating-linear-gradient(0deg, transparent, transparent 40px, rgba(255,255,255,0.012) 41px), repeating-linear-gradient(90deg, transparent, transparent 40px, rgba(255,255,255,0.012) 41px), #0d0a08; }
+                    #s12 .split-grid { display:flex; gap:16px; width:100%; max-width:960px; margin:0 auto; align-items:stretch; }
+                    #s12 .split-card { flex:1; border-radius:16px; overflow:hidden; display:flex; flex-direction:column; transition:all 0.4s cubic-bezier(0.18,1,0.26,1); }
+                    #s12 .split-card.electric { background:linear-gradient(145deg,rgba(5,15,30,0.97),rgba(12,5,2,0.99)); border:1px solid rgba(100,180,255,0.2); border-top:3px solid rgba(100,180,255,0.5); }
+                    #s12 .split-card.combustion { background:linear-gradient(145deg,rgba(28,6,4,0.97),rgba(12,3,2,0.99)); border:1px solid rgba(180,30,20,0.2); border-top:3px solid rgba(180,30,20,0.7); }
+                    #s12 .split-card:hover { transform:translateY(-5px); box-shadow:0 20px 50px rgba(0,0,0,0.7); }
+                    #s12 .split-card.electric:hover { border-color:rgba(100,180,255,0.5); box-shadow:0 0 40px rgba(100,180,255,0.12), 0 20px 50px rgba(0,0,0,0.7); }
+                    #s12 .split-card.combustion:hover { border-color:rgba(230,81,0,0.5); box-shadow:0 0 40px rgba(230,81,0,0.15), 0 20px 50px rgba(0,0,0,0.7); }
+                    #s12 .card-img { width:100%; height:165px; border-radius:16px 16px 0 0; overflow:hidden; position:relative; }
+                    #s12 .card-img::after { content:''; position:absolute; inset:0; background:linear-gradient(to bottom, transparent 50%, rgba(0,0,0,0.6) 100%); }
+                    #s12 .card-img img { width:100%; height:100%; object-fit:cover; object-position:center center; transition:transform 0.6s ease; }
+                    #s12 .split-card:hover .card-img img { transform:scale(1.06); }
+                    #s12 .card-body { padding:10px 14px; }
+                    #s12 .card-title { font-family:var(--font-h); font-size:20px; font-weight:800; margin-bottom:14px; letter-spacing:0.5px; }
+                    #s12 .electric .card-title { color:rgba(140,200,255,1); text-shadow:0 0 10px rgba(100,180,255,0.3); }
+                    #s12 .combustion .card-title { color:rgba(220,80,70,1); text-shadow:0 0 10px rgba(180,30,20,0.3); }
+                    #s12 .card-bullets { list-style:none; padding:0; margin:0; display:flex; flex-direction:column; gap:4px; }
+                    #s12 .card-bullets li { font-size:15px; color:rgba(255,244,232,0.75); padding:4px 8px 4px 18px; position:relative; border-radius:6px; background:rgba(255,255,255,0.02); border:1px solid rgba(255,255,255,0.05); }
+                    #s12 .electric .card-bullets li::before { content:'◆'; position:absolute; left:7px; color:rgba(100,180,255,0.8); font-size:8px; top:9px; }
+                    #s12 .combustion .card-bullets li::before { content:'◆'; position:absolute; left:7px; color:rgba(200,60,50,0.9); font-size:8px; top:9px; }
+                    #s12 .alert-box { max-width:960px; margin:14px auto 0; padding:18px 24px 18px 0; border-radius:10px; background:linear-gradient(90deg, rgba(230,81,0,0.0) 0%, rgba(20,8,3,0.97) 8%); border:1px solid rgba(230,81,0,0.25); border-left:4px solid rgba(230,81,0,0.9); display:flex; align-items:flex-start; gap:14px; box-shadow:0 0 30px rgba(230,81,0,0.1); }
+                    #s12 .alert-box p { font-size:15px; }
+                    @media (max-width:768px) {
+                        #s12 .split-grid { flex-direction:column !important; }
+                        #s12 .card-img { height:160px !important; }
+                        #s12 .card-body { padding:14px !important; }
+                        #s12 .card-title { font-size:16px !important; }
+                        #s12 .card-bullets li { font-size:12px !important; }
+                        #s12 .alert-box p { font-size:12px !important; }
+                    }
+                </style>
+
+                <div class="top-bar">
+                    <div class="section-tag" style="background:var(--red);color:var(--black);font-size:16px;padding:6px 16px;font-weight:800;box-shadow:0 0 12px rgba(230,81,0,0.4);">Módulo 2</div>
+                    <h2 class="slide-title" style="font-size:clamp(22px,3vw,36px);letter-spacing:-0.01em;text-shadow:0 0 15px rgba(230,81,0,0.4);">Características Técnicas dos <span>Equipamentos</span></h2>
+                </div>
+
+                <div class="content-area" style="padding-top:8px;">
+                    <div class="split-grid">
+
+                        <div class="split-card electric">
+                            <div class="card-img">
+                                <img src="https://i.imgur.com/k1IvW6e.jpg" alt="Empilhadeira Elétrica">
+                                <button onclick="event.stopPropagation(); openImageModal('https://i.imgur.com/k1IvW6e.jpg')" style="position:absolute; bottom:10px; right:10px; z-index:10; padding:6px 12px; background:rgba(0,0,0,0.75); border:1px solid rgba(100,180,255,0.5); border-radius:8px; color:rgba(100,180,255,1); font-size:11px; font-weight:700; letter-spacing:1px; cursor:pointer; text-transform:uppercase; display:flex; align-items:center; gap:5px; backdrop-filter:blur(4px); transition:all 0.3s;" onmouseover="this.style.background='rgba(100,180,255,0.2)'" onmouseout="this.style.background='rgba(0,0,0,0.75)'">🔍 Ampliar</button>
+                            </div>
+                            <div class="card-body">
+                                <div class="card-title">⚡ Empilhadeira Elétrica</div>
+                                <ul class="card-bullets">
+                                    <li>Baixo ruído operacional</li>
+                                    <li>Sem emissão de gases</li>
+                                    <li>Ideal para ambientes internos</li>
+                                    <li>Alta precisão de manobra</li>
+                                    <li>Bateria como contrapeso</li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <div class="split-card combustion">
+                            <div class="card-img">
+                                <img src="https://i.imgur.com/qSPydF6.jpg" alt="Empilhadeira a Combustão">
+                                <button onclick="event.stopPropagation(); openImageModal('https://i.imgur.com/qSPydF6.jpg')" style="position:absolute; bottom:10px; right:10px; z-index:10; padding:6px 12px; background:rgba(0,0,0,0.75); border:1px solid rgba(200,140,20,0.5); border-radius:8px; color:rgba(200,140,20,1); font-size:11px; font-weight:700; letter-spacing:1px; cursor:pointer; text-transform:uppercase; display:flex; align-items:center; gap:5px; backdrop-filter:blur(4px); transition:all 0.3s;" onmouseover="this.style.background='rgba(200,140,20,0.2)'" onmouseout="this.style.background='rgba(0,0,0,0.75)'">🔍 Ampliar</button>
+                            </div>
+                            <div class="card-body">
+                                <div class="card-title">⛽ Empilhadeira a Combustão</div>
+                                <ul class="card-bullets">
+                                    <li>Alta potência e robustez</li>
+                                    <li>Operação em pátios externos</li>
+                                    <li>Grande capacidade de carga</li>
+                                    <li>Uso versátil e contínuo</li>
+                                    <li>Motor a GLP ou diesel</li>
+                                </ul>
+                            </div>
+                        </div>
+
+                    </div>
+
+                    <div class="alert-box">
+                        <span style="font-size:32px;flex-shrink:0;padding-left:16px;filter:drop-shadow(0 0 8px rgba(230,81,0,0.6));">⚠️</span>
+                        <p style="margin:0;font-size:15px;color:rgba(255,244,232,0.8);line-height:1.6;"><strong style="color:rgba(230,81,0,0.95);">IMPORTANTE:</strong> A bateria da empilhadeira elétrica é utilizada como contrapeso. O operador deve ter treinamento específico para cada modelo e marca que irá operar.</p>
+                    </div>
+                </div>
+
+                <div class="wave"><svg viewBox="0 0 1440 100" preserveAspectRatio="none">
+                    <path d="M0,60 C360,20 720,90 1080,35 L1440,55 L1440,100 L0,100 Z" fill="rgba(230,81,0,0.07)" />
+                </svg></div>
+            </div>
+
+            
+            <div class="slide" id="s13">
+                <style>
+                    #s13 {
+                        background: radial-gradient(ellipse at 50% 30%, rgba(230,81,0,0.05) 0%, transparent 60%),
+                            repeating-linear-gradient(0deg, transparent, transparent 40px, rgba(255,255,255,0.012) 41px),
+                            repeating-linear-gradient(90deg, transparent, transparent 40px, rgba(255,255,255,0.012) 41px),
+                            #0d0a08;
+                    }
+                    #s13 .anatomy-layout {
+                        display: flex;
+                        gap: 32px;
+                        width: 100%;
+                        max-width: 1100px;
+                        margin: 0 auto;
+                        align-items: center;
+                        height: 100%;
+                    }
+                    #s13 .anatomy-img-wrap {
+                        flex: 1.2;
+                        position: relative;
+                        border-radius: 16px;
+                        overflow: hidden;
+                        border: 1px solid rgba(230,81,0,0.2);
+                        border-color: rgba(230,81,0,0.3);
+                        box-shadow: 0 0 70px rgba(230,81,0,0.18), 0 0 140px rgba(230,81,0,0.08), 0 25px 70px rgba(0,0,0,0.8);
+                    }
+                    #s13 .anatomy-img-wrap img {
+                        width: 100%;
+                        height: 100%;
+                        object-fit: cover;
+                        display: block;
+                        transition: filter 0.4s ease;
+                    }
+                    #s13 .anatomy-overlay {
+                        position: absolute;
+                        inset: 0;
+                        pointer-events: none;
+                        background: linear-gradient(to right, transparent 60%, rgba(13,10,8,0.4) 100%);
+                    }
+                    #s13 .anatomy-highlight {
+                        position: absolute;
+                        inset: 0;
+                        pointer-events: none;
+                        border-radius: 16px;
+                        opacity: 0;
+                        transition: opacity 0.4s ease;
+                        box-shadow: inset 0 0 60px rgba(230,81,0,0.25);
+                        border: 2px solid rgba(230,81,0,0.6);
+                    }
+                    #s13 .anatomy-img-wrap.active .anatomy-highlight { opacity: 1; }
+                    #s13 .anatomy-panel {
+                        flex: 1;
+                        display: flex;
+                        flex-direction: column;
+                        gap: 8px;
+                    }
+                    #s13 .anatomy-instruction {
+                        width: 100%;
+                        text-align: center;
+                        margin-bottom: 12px;
+                        font-size: 20px;
+                        color: rgba(230,81,0,1);
+                        font-weight: 800;
+                        letter-spacing: 1px;
+                        text-shadow: 0 0 16px rgba(230,81,0,0.6);
+                        animation: pulse 1.5s infinite;
+                        opacity: 1;
+                        text-transform: none;
+                    }
+                    #s13 .anatomy-item {
+                        display: flex;
+                        align-items: flex-start;
+                        gap: 14px;
+                        padding: 13px 16px;
+                        border-radius: 10px;
+                        border: 1px solid rgba(230,81,0,0.12);
+                        background: linear-gradient(145deg, rgba(20,10,4,0.95), rgba(10,5,2,0.98));
+                        cursor: pointer;
+                        transition: all 0.35s cubic-bezier(0.18,1,0.26,1);
+                        position: relative;
+                        overflow: hidden;
+                    }
+                    #s13 .anatomy-item::before {
+                        content: '';
+                        position: absolute;
+                        left: 0; top: 0; bottom: 0;
+                        width: 3px;
+                        background: rgba(230,81,0,0.3);
+                        transition: all 0.3s ease;
+                    }
+                    #s13 .anatomy-item:hover,
+                    #s13 .anatomy-item.active {
+                        border-color: rgba(230,81,0,0.5);
+                        background: linear-gradient(145deg, rgba(35,14,4,0.97), rgba(18,7,2,0.99));
+                        box-shadow: 0 0 20px rgba(230,81,0,0.15), 0 8px 20px rgba(0,0,0,0.5);
+                        transform: translateX(4px);
+                    }
+                    #s13 .anatomy-item:hover::before,
+                    #s13 .anatomy-item.active::before {
+                        background: rgba(230,81,0,1);
+                        box-shadow: 0 0 8px rgba(230,81,0,0.8);
+                    }
+                    #s13 .anatomy-item.req-done::before {
+                        background: rgba(46,204,113,1);
+                        box-shadow: 0 0 8px rgba(46,204,113,0.6);
+                    }
+                    #s13 .anatomy-num {
+                        font-family: var(--font-h);
+                        font-size: 12px;
+                        font-weight: 800;
+                        color: rgba(230,81,0,0.85);
+                        letter-spacing: 2px;
+                        flex-shrink: 0;
+                        min-width: 28px;
+                    }
+                    #s13 .anatomy-name {
+                        font-family: var(--font-h);
+                        font-size: 16px;
+                        font-weight: 700;
+                        color: rgba(255,244,232,0.85);
+                        flex: 1;
+                        line-height: 1.3;
+                        letter-spacing: 0.2px;
+                    }
+                    #s13 .anatomy-check {
+                        font-size: 16px;
+                        opacity: 0;
+                        transition: opacity 0.3s ease;
+                        color: rgba(46,204,113,1);
+                        flex-shrink: 0;
+                        min-width: 20px;
+                        text-align: center;
+                    }
+                    #s13 .anatomy-item.req-done .anatomy-check { opacity: 1; }
+                    #s13 .anatomy-item.req-done {
+                        border-color: rgba(46,204,113,0.4) !important;
+                        background: linear-gradient(145deg, rgba(5,25,12,0.97), rgba(3,15,8,0.99)) !important;
+                    }
+                    #s13 .anatomy-item.req-done .anatomy-name {
+                        color: rgba(46,204,113,0.9);
+                    }
+                    #s13 .anatomy-desc {
+                        font-size: 14px;
+                        line-height: 1.5;
+                        color: rgba(255,244,232,0.65);
+                        max-height: 0;
+                        overflow: hidden;
+                        transition: max-height 0.3s ease, opacity 0.3s ease;
+                        opacity: 0;
+                        width: 100%;
+                        padding-left: 0;
+                        margin-left: 0;
+                        text-align: left;
+                    }
+                    #s13 .anatomy-item.active .anatomy-desc {
+                        max-height: 40px;
+                        opacity: 1;
+                        margin-top: 4px;
+                    }
+                    #s13 .anatomy-progress {
+                        margin-top: 12px;
+                        padding: 10px 16px;
+                        border-radius: 8px;
+                        background: rgba(230,81,0,0.06);
+                        border: 1px solid rgba(230,81,0,0.15);
+                        display: flex;
+                        align-items: center;
+                        gap: 12px;
+                    }
+                    #s13 .anatomy-progress-bar {
+                        flex: 1;
+                        height: 4px;
+                        background: rgba(255,255,255,0.08);
+                        border-radius: 4px;
+                        overflow: hidden;
+                    }
+                    #s13 .anatomy-progress-fill {
+                        height: 100%;
+                        background: rgba(230,81,0,0.8);
+                        border-radius: 4px;
+                        width: 0%;
+                        transition: width 0.5s ease;
+                        box-shadow: 0 0 8px rgba(230,81,0,0.5);
+                    }
+                    #s13 .anatomy-progress-label {
+                        font-family: var(--font-h);
+                        font-size: 11px;
+                        color: rgba(230,81,0,0.8);
+                        letter-spacing: 1px;
+                        flex-shrink: 0;
+                    }
+                    @media (max-width: 768px) {
+                        #s13 .anatomy-layout { display:none !important; }
+                        #s13 .s13-mobile { display:flex !important; }
+                        #s13,
+                        #s13 .content-area {
+                            overflow-y:auto !important;
+                            height:auto !important;
+                            min-height:100% !important;
+                        }
+                        #s13 .content-area {
+                            padding:8px 10px !important;
+                            padding-bottom:120px !important;
+                            justify-content:flex-start !important;
+                        }
+                        #s13 .slide-title { font-size:22px !important; }
+                    }
+                    @media (min-width: 769px) {
+                        #s13 .s13-mobile { display:none !important; }
+                        #s13 .s13-mobile-tracker { display:none !important; }
+                    }
+                </style>
+
+                <div class="top-bar">
+                    <div class="section-tag" style="background:var(--red);color:var(--black);font-size:16px;padding:6px 16px;font-weight:800;box-shadow:0 0 12px rgba(230,81,0,0.4);">Módulo 2</div>
+                    <h2 class="slide-title" style="font-size:clamp(24px,3.5vw,38px);letter-spacing:-0.01em;text-shadow:0 0 15px rgba(230,81,0,0.4);">Anatomia da <span>Empilhadeira</span></h2>
+                </div>
+
+                <div class="content-area" style="padding-top:8px;">
+                    <div class="anatomy-layout">
+
+                        <!-- Imagem lateral -->
+                        <div class="anatomy-img-wrap" id="anatomy-img">
+                            <img src="https://i.imgur.com/HR51uS3.jpg" alt="NR 11 — Empilhadeira Elétrica Retrátil e Combustão">
+                            <div class="anatomy-overlay"></div>
+                            <div class="anatomy-highlight" id="anatomy-highlight"></div>
+                            <button onclick="openImageModal('https://i.imgur.com/HR51uS3.jpg')" style="position:absolute; bottom:12px; right:12px; z-index:10; padding:7px 14px; background:rgba(0,0,0,0.75); border:1px solid rgba(230,81,0,0.5); border-radius:8px; color:rgba(230,81,0,1); font-size:12px; font-weight:700; letter-spacing:1px; cursor:pointer; text-transform:uppercase; display:flex; align-items:center; gap:6px; backdrop-filter:blur(4px); transition:all 0.3s;" onmouseover="this.style.background='rgba(230,81,0,0.2)'" onmouseout="this.style.background='rgba(0,0,0,0.75)'">🔍 Ampliar</button>
+                        </div>
+
+                        <!-- Painel de itens -->
+                        <div class="anatomy-panel">
+                            <p class="anatomy-instruction">👆 Toque nos componentes da máquina</p>
+
+                            <div class="anatomy-item req-item" onclick="anatomySelect(this, 0)">
+                                <span class="anatomy-num">01</span>
+                                <div style="flex:1; display:flex; flex-direction:column; align-items:flex-start;">
+                                    <div class="anatomy-name">Protetor do Operador</div>
+                                    <div class="anatomy-desc">Estrutura que protege o operador contra queda de objetos.</div>
+                                </div>
+                                <span class="anatomy-check">✔</span>
+                            </div>
+
+                            <div class="anatomy-item req-item" onclick="anatomySelect(this, 1)">
+                                <span class="anatomy-num">02</span>
+                                <div style="flex:1; display:flex; flex-direction:column; align-items:flex-start;">
+                                    <div class="anatomy-name">Faróis, Lanternas e Luzes</div>
+                                    <div class="anatomy-desc">Faróis, lanternas, luz de freio e marcha-à-ré.</div>
+                                </div>
+                                <span class="anatomy-check">✔</span>
+                            </div>
+
+                            <div class="anatomy-item req-item" onclick="anatomySelect(this, 2)">
+                                <span class="anatomy-num">03</span>
+                                <div style="flex:1; display:flex; flex-direction:column; align-items:flex-start;">
+                                    <div class="anatomy-name">Assento, Volante e Freio</div>
+                                    <div class="anatomy-desc">Assento ergonômico, volante de direção e freio de estacionamento.</div>
+                                </div>
+                                <span class="anatomy-check">✔</span>
+                            </div>
+
+                            <div class="anatomy-item req-item" onclick="anatomySelect(this, 3)">
+                                <span class="anatomy-num">04</span>
+                                <div style="flex:1; display:flex; flex-direction:column; align-items:flex-start;">
+                                    <div class="anatomy-name">Contrapeso</div>
+                                    <div class="anatomy-desc">Bloco traseiro que equilibra o peso da carga elevada.</div>
+                                </div>
+                                <span class="anatomy-check">✔</span>
+                            </div>
+
+                            <div class="anatomy-item req-item" onclick="anatomySelect(this, 4)">
+                                <span class="anatomy-num">05</span>
+                                <div style="flex:1; display:flex; flex-direction:column; align-items:flex-start;">
+                                    <div class="anatomy-name">Torre (Mastro de Elevação)</div>
+                                    <div class="anatomy-desc">Estrutura frontal responsável pela elevação vertical da carga.</div>
+                                </div>
+                                <span class="anatomy-check">✔</span>
+                            </div>
+
+                            <div class="anatomy-item req-item" onclick="anatomySelect(this, 5)">
+                                <span class="anatomy-num">06</span>
+                                <div style="flex:1; display:flex; flex-direction:column; align-items:flex-start;">
+                                    <div class="anatomy-name">Garfos, Carro Suporte e Grade</div>
+                                    <div class="anatomy-desc">Garfos de elevação, carro suporte e grade de encosto de carga.</div>
+                                </div>
+                                <span class="anatomy-check">✔</span>
+                            </div>
+
+                            <!-- Barra de progresso -->
+                            <div class="anatomy-progress">
+                                <div class="anatomy-progress-bar">
+                                    <div class="anatomy-progress-fill" id="anatomy-progress-fill"></div>
+                                </div>
+                                <span class="anatomy-progress-label" id="anatomy-progress-label">0 / 6</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- MOBILE ONLY s13 -->
+                    <div class="s13-mobile" style="display:none;flex-direction:column;align-items:center;width:100%;max-width:380px;margin:0 auto;">
+
+                        <div class="s13-mobile-card">
+
+                            <div id="s13-counter">COMPONENTE 1 DE 6</div>
+
+                            <div id="s13-dots"></div>
+
+                            <div class="s13-mobile-image">
+                                <img src="https://i.imgur.com/HR51uS3.jpg" alt="Empilhadeira">
+                                <button class="s13-expand-btn" onclick="openImageModal('https://i.imgur.com/HR51uS3.jpg')">🔍 Ampliar</button>
+                            </div>
+
+                            <div class="s13-component-card">
+
+                                <div class="s13-number" id="s13-number">01</div>
+
+                                <div id="s13-name"></div>
+
+                                <div id="s13-desc"></div>
+
+                            </div>
+
+                            <div class="s13-nav">
+                                <button id="s13-prev-btn" onclick="s13Prev()">← ANTERIOR</button>
+                                <button id="s13-next-btn" onclick="s13Next()">PRÓXIMO →</button>
+                            </div>
+
+                        </div>
+
+                        <div id="s13-mobile-tracker" class="req-item" style="display:none;"></div>
+                    </div>
+
+                    <style>
+                    #s13 .s13-mobile-card {
+                        display:flex;flex-direction:column;align-items:center;gap:8px;width:100%;
+                    }
+                    #s13 #s13-counter {
+                        font-family:var(--font-h);font-size:11px;font-weight:800;letter-spacing:3px;
+                        color:rgba(230,81,0,0.9);text-align:center;width:100%;
+                    }
+                    #s13 #s13-dots {
+                        display:flex;gap:8px;justify-content:center;width:100%;
+                    }
+                    #s13 .s13-mobile-image {
+                        width:100%;position:relative;border-radius:14px;overflow:hidden;
+                        border:1px solid rgba(230,81,0,0.35);
+                        box-shadow:0 0 24px rgba(230,81,0,0.2),0 0 48px rgba(230,81,0,0.08);
+                    }
+                    #s13 .s13-mobile-image img {
+                        width:100%;height:220px;max-height:220px;display:block;object-fit:cover;
+                    }
+                    #s13 .s13-expand-btn {
+                        position:absolute;bottom:10px;right:10px;z-index:10;
+                        padding:6px 10px;border-radius:8px;
+                        background:rgba(0,0,0,0.75);border:1px solid rgba(230,81,0,0.5);
+                        color:rgba(230,81,0,1);font-family:var(--font-h);
+                        font-size:10px;font-weight:700;letter-spacing:0.5px;
+                        cursor:pointer;backdrop-filter:blur(4px);
+                        box-shadow:0 0 10px rgba(230,81,0,0.2);
+                        transition:all 0.3s;
+                    }
+                    @keyframes s13FadeCard {
+                        from { opacity:0; transform:translateY(12px); }
+                        to { opacity:1; transform:translateY(0); }
+                    }
+                    @keyframes s13PulseBtn {
+                        0% { transform:scale(1); }
+                        50% { transform:scale(1.03); }
+                        100% { transform:scale(1); }
+                    }
+                    #s13 .s13-component-card {
+                        width:100%;border-radius:16px;padding:14px;
+                        background:linear-gradient(145deg,rgba(25,12,5,0.97),rgba(15,8,3,0.99));
+                        border:1px solid rgba(230,81,0,0.25);
+                        box-shadow:0 0 20px rgba(230,81,0,0.1);
+                        display:flex;flex-direction:column;align-items:center;gap:8px;text-align:center;
+                    }
+                    #s13 .s13-component-card.s13-card-enter {
+                        animation:s13FadeCard 0.4s ease forwards;
+                    }
+                    #s13 .s13-number {
+                        display:inline-flex;align-items:center;justify-content:center;
+                        min-width:44px;height:44px;padding:0 12px;border-radius:10px;
+                        background:rgba(230,81,0,0.15);border:1px solid rgba(230,81,0,0.4);
+                        font-family:var(--font-h);font-size:16px;font-weight:800;color:rgba(230,81,0,1);
+                        letter-spacing:1px;box-shadow:0 0 12px rgba(230,81,0,0.2);
+                    }
+                    #s13 #s13-name {
+                        font-family:var(--font-h);font-size:18px;font-weight:800;color:#FFF4E8;
+                        letter-spacing:0.5px;line-height:1.2;
+                    }
+                    #s13 #s13-desc {
+                        font-size:13px;color:rgba(255,244,232,0.75);line-height:1.6;
+                    }
+                    #s13 .s13-nav {
+                        display:flex;gap:10px;width:100%;margin-top:12px;
+                    }
+                    #s13 #s13-prev-btn {
+                        flex:1;height:48px;padding:0 12px;border-radius:10px;
+                        background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.12);
+                        color:rgba(255,244,232,0.85);font-family:var(--font-h);
+                        font-size:12px;font-weight:700;letter-spacing:0.5px;
+                        cursor:pointer;transition:all 0.3s;
+                    }
+                    #s13 #s13-prev-btn.s13-prev-disabled {
+                        opacity:0.4;pointer-events:none;
+                    }
+                    #s13 #s13-next-btn {
+                        flex:2;height:48px;padding:0 16px;border-radius:12px;
+                        background:linear-gradient(135deg,#FF7A1A,#E65100);
+                        border:1px solid rgba(255,160,80,0.35);color:#FFF4E8;
+                        font-family:var(--font-h);font-size:13px;font-weight:800;letter-spacing:1px;
+                        cursor:pointer;
+                        box-shadow:0 0 20px rgba(230,81,0,0.45),0 0 40px rgba(230,81,0,0.18);
+                        animation:s13PulseBtn 1.8s infinite;
+                        transition:box-shadow 0.3s;
+                    }
+                    #s13 #s13-next-btn.s13-btn-done {
+                        flex:1;animation:none;
+                        background:linear-gradient(135deg,rgba(46,204,113,0.9),rgba(31,160,90,1));
+                        border-color:rgba(46,204,113,0.4);
+                        box-shadow:0 0 20px rgba(46,204,113,0.35);
+                    }
+                    #s13 .s13-nav.s13-nav-done #s13-prev-btn { display:none; }
+                    </style>
+                </div>
+
+                <script>
+                    let anatomyDone = 0;
+                    const anatomyTotal = 6;
+                    function anatomySelect(el, idx) {
+                        document.querySelectorAll('#s13 .anatomy-item').forEach(i => i.classList.remove('active'));
+                        el.classList.add('active');
+                        document.getElementById('anatomy-img').classList.add('active');
+                        if (!el.classList.contains('req-done')) {
+                            el.classList.add('req-done');
+                            anatomyDone++;
+                            const pct = Math.round((anatomyDone / anatomyTotal) * 100);
+                            document.getElementById('anatomy-progress-fill').style.width = pct + '%';
+                            document.getElementById('anatomy-progress-label').textContent = anatomyDone + ' / ' + anatomyTotal;
+                            if (typeof playTechClick === 'function') playTechClick();
+                            if (typeof updateNextButton === 'function') updateNextButton();
+                        }
+                    }
+
+                    // MOBILE s13
+                    var s13Items = [
+                        { num:'01', name:'Protetor do Operador',         desc:'Estrutura que protege o operador contra queda de objetos.' },
+                        { num:'02', name:'Faróis, Lanternas e Luzes',    desc:'Faróis, lanternas, luz de freio e marcha-à-ré.' },
+                        { num:'03', name:'Assento, Volante e Freio',      desc:'Assento ergonômico, volante de direção e freio de estacionamento.' },
+                        { num:'04', name:'Contrapeso',                   desc:'Bloco traseiro que equilibra o peso da carga elevada.' },
+                        { num:'05', name:'Torre (Mastro de Elevação)',    desc:'Estrutura frontal responsável pela elevação vertical da carga.' },
+                        { num:'06', name:'Garfos, Carro Suporte e Grade', desc:'Garfos de elevação, carro suporte e grade de encosto de carga.' }
+                    ];
+                    var s13Idx = 0, s13MaxIdx = 0, s13Completed = false;
+                    function s13Render() {
+                        var q = s13Items[s13Idx];
+                        var card = document.querySelector('#s13 .s13-component-card');
+                        document.getElementById('s13-counter').textContent = 'COMPONENTE '+(s13Idx+1)+' DE 6';
+                        var dots = document.getElementById('s13-dots');
+                        dots.innerHTML = '';
+                        for(var i=0;i<6;i++){
+                            var d=document.createElement('div');
+                            var dotStyle = 'width:12px;height:12px;border-radius:50%;transition:all 0.3s;';
+                            if(s13Completed){
+                                dotStyle += 'background:#2ECC71;box-shadow:0 0 12px rgba(46,204,113,0.5);';
+                            } else if(i <= s13MaxIdx && i !== s13Idx){
+                                dotStyle += 'background:#2ECC71;box-shadow:0 0 12px rgba(46,204,113,0.5);';
+                            } else if(i === s13Idx){
+                                dotStyle += 'background:#FF6B00;box-shadow:0 0 12px rgba(230,81,0,0.6);';
+                            } else {
+                                dotStyle += 'background:rgba(255,255,255,0.2);';
+                            }
+                            d.style.cssText = dotStyle;
+                            dots.appendChild(d);
+                        }
+                        document.getElementById('s13-number').textContent = q.num;
+                        document.getElementById('s13-name').textContent = q.name;
+                        document.getElementById('s13-desc').textContent = q.desc;
+                        card.classList.remove('s13-card-enter');
+                        void card.offsetWidth;
+                        card.classList.add('s13-card-enter');
+                        var prevBtn = document.getElementById('s13-prev-btn');
+                        var nextBtn = document.getElementById('s13-next-btn');
+                        var nav = document.querySelector('#s13 .s13-nav');
+                        if(s13Completed){
+                            nav.classList.add('s13-nav-done');
+                            nextBtn.textContent = '✓ COMPONENTES CONCLUÍDOS';
+                            nextBtn.classList.add('s13-btn-done');
+                        } else {
+                            nav.classList.remove('s13-nav-done');
+                            if(s13Idx === 0){
+                                prevBtn.classList.add('s13-prev-disabled');
+                            } else {
+                                prevBtn.classList.remove('s13-prev-disabled');
+                            }
+                            nextBtn.textContent = s13Idx === 5 ? '✓ CONCLUIR' : 'PRÓXIMO →';
+                            nextBtn.classList.remove('s13-btn-done');
+                        }
+                    }
+                    function s13Prev() {
+                        if(s13Completed || s13Idx <= 0) return;
+                        try{ if(typeof playTechClick==='function') playTechClick(); }catch(e){}
+                        s13Idx--;
+                        s13Render();
+                    }
+                    function s13Next() {
+                        if(s13Completed) return;
+                        if(s13Idx === 5){
+                            try{ if(typeof playTechClick==='function') playTechClick(); else if(typeof playBeep==='function') playBeep('ok'); }catch(e){}
+                            try{ if(typeof playBeep==='function') playBeep('end'); }catch(e){}
+                            s13Completed = true;
+                            var nav = document.querySelector('#s13 .s13-nav');
+                            var nextBtn = document.getElementById('s13-next-btn');
+                            nav.classList.add('s13-nav-done');
+                            nextBtn.textContent = '✓ COMPONENTES CONCLUÍDOS';
+                            nextBtn.classList.add('s13-btn-done');
+                            var dots = document.getElementById('s13-dots');
+                            dots.innerHTML = '';
+                            for(var i=0;i<6;i++){
+                                var d=document.createElement('div');
+                                d.style.cssText='width:12px;height:12px;border-radius:50%;background:#2ECC71;box-shadow:0 0 12px rgba(46,204,113,0.5);';
+                                dots.appendChild(d);
+                            }
+                            var t = document.getElementById('s13-mobile-tracker');
+                            if(t){ t.style.display='block'; t.classList.add('req-done'); }
+                            if(typeof updateNextButton==='function') updateNextButton();
+                            return;
+                        }
+                        if(s13Idx < s13Items.length - 1){
+                            try{ if(typeof playTechClick==='function') playTechClick(); else if(typeof playBeep==='function') playBeep('ok'); }catch(e){}
+                            s13Idx++;
+                            s13MaxIdx = Math.max(s13MaxIdx, s13Idx);
+                            s13Render();
+                        }
+                    }
+                    if(window.innerWidth <= 768) {
+                        document.querySelectorAll('#s13 .anatomy-layout .req-item').forEach(function(el){ el.classList.remove('req-item'); });
+                        s13Render();
+                    }
+                    if(window.innerWidth > 768){
+                        var t=document.getElementById('s13-mobile-tracker');
+                        if(t){ t.style.display='block'; t.classList.add('req-done'); }
+                    }
+                </script>
+
+                <div class="wave"><svg viewBox="0 0 1440 100" preserveAspectRatio="none">
+                    <path d="M0,60 C360,20 720,90 1080,35 L1440,55 L1440,100 L0,100 Z" fill="rgba(230,81,0,0.07)" />
+                </svg></div>
+            </div>
+
+<div class="slide" id="s14"
+                style="background: radial-gradient(circle at center, rgba(20, 10, 7, 1) 0%, rgba(13, 10, 8, 1) 100%); overflow: hidden;">
+                <!-- Fundo HUD Cinematográfico -->
+                <div
+                    style="position: absolute; inset: 0; pointer-events: none; z-index: 0; background: radial-gradient(ellipse at 50% 50%, rgba(230, 81, 0, 0.12) 0%, transparent 65%); animation: s1b-glow 4s infinite alternate ease-in-out;">
+                </div>
+                <div
+                    style="position: absolute; inset: 0; pointer-events: none; z-index: 0; background-image: repeating-linear-gradient(0deg, transparent, transparent 2px, rgba(230, 81, 0, 0.03) 3px, rgba(230, 81, 0, 0.03) 4px);">
+                </div>
+                <div
+                    style="position: absolute; inset: 0; pointer-events: none; z-index: 0; opacity: 0.4; background-image: radial-gradient(rgba(255,255,255,0.15) 1px, transparent 1px); background-size: 60px 60px; animation: s1b-smoke 30s infinite linear;">
+                </div>
+                <div class="top-bar" style="position: relative; z-index: 2;">
+                    <div class="section-tag"
+                        style="background: var(--red); color: var(--black); font-size: 16px; padding: 6px 16px; font-weight: 800; box-shadow: 0 0 12px rgba(230, 81, 0, 0.4);">
+                        Módulo 2</div>
+                    <h2 class="slide-title"
+                        style="font-size: clamp(28px, 4vw, 42px); letter-spacing: -0.01em; text-shadow: 0 0 15px rgba(230, 81, 0, 0.4);">
+                        A Importância da <span>Inspeção</span></h2>
+
+                </div>
+                <div class="content-area"
+                    style="align-items: center; text-align: center; justify-content: flex-start; position: relative; z-index: 2;">
+                    <div class="video-wrap req-item"
+                        style="max-width: 1240px; margin-top: 40px; box-shadow: 0 40px 80px rgba(0,0,0,0.9), 0 0 60px rgba(230,81,0,0.3); border: 1px solid rgba(230,81,0,0.4); border-radius: 12px; transform: translateZ(0);">
+                        <!-- URL DO VÍDEO A INSERIR -->
+                        <iframe
+                            src="https://player.vimeo.com/video/1197704298?controls=1&title=0&byline=0&portrait=0&badge=0&autopause=0&transparent=0&dnt=1"
+                            frameborder="0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen title="Inspeção e Checklist"></iframe>
+                    </div>
+                </div>
+                <div class="wave" style="position: absolute; bottom: 0; left: 0; right: 0; z-index: 1;"><svg
+                        viewBox="0 0 1440 100" preserveAspectRatio="none">
+                        <path d="M0,65 C360,20 720,90 1080,40 C1260,15 1390,70 1440,60 L1440,100 L0,100 Z"
+                            fill="rgba(230,81,0,0.07)" />
+                    </svg></div>
+            </div>
+
+            <div class="slide" id="s14b">
+                <style>
+                    #s14b { background: #0d0a08; overflow: hidden; position: relative; }
+                    #s14b .hud-bg {
+                        position: absolute; inset: 0; z-index: 0; pointer-events: none;
+                        background:
+                            radial-gradient(ellipse at 50% 50%, rgba(230,81,0,0.08) 0%, transparent 55%),
+                            radial-gradient(ellipse at 20% 50%, rgba(46,160,80,0.04) 0%, transparent 40%),
+                            radial-gradient(ellipse at 80% 50%, rgba(200,40,30,0.04) 0%, transparent 40%),
+                            repeating-linear-gradient(0deg, transparent, transparent 40px, rgba(255,255,255,0.008) 41px),
+                            repeating-linear-gradient(90deg, transparent, transparent 40px, rgba(255,255,255,0.008) 41px);
+                    }
+                    #s14b .page-title-wrap {
+                        text-align: center; position: relative; z-index: 2; margin-bottom: 8px;
+                    }
+                    #s14b .page-title-wrap h2 {
+                        font-family: var(--font-h); font-size: clamp(28px, 4vw, 44px);
+                        font-weight: 900; color: #fff; margin: 0;
+                        text-shadow: 0 0 30px rgba(230,81,0,0.4);
+                    }
+                    #s14b .page-title-wrap h2 span { color: #FF6A1A; }
+                    #s14b .page-title-wrap::before, #s14b .page-title-wrap::after {
+                        content: ''; position: absolute; top: 50%; width: 60px; height: 2px;
+                        background: linear-gradient(90deg, transparent, rgba(230,81,0,0.6));
+                    }
+                    #s14b .page-title-wrap::before { right: calc(50% + 220px); transform: scaleX(-1); }
+                    #s14b .page-title-wrap::after { left: calc(50% + 220px); }
+                    #s14b .page-subtitle {
+                        text-align: center; font-size: 13px; color: rgba(255,244,232,0.45);
+                        margin-bottom: 12px; position: relative; z-index: 2;
+                    }
+                    #s14b .main-layout {
+                        display: flex; gap: 0; width: 100%; max-width: 1050px;
+                        margin: 0 auto; margin-top: 40px !important; align-items: center; position: relative; z-index: 1;
+                    }
+                    #s14b .side-col { flex: 1; display: flex; flex-direction: column; gap: 6px; }
+                    #s14b .side-title {
+                        font-family: var(--font-h); font-size: 14px; font-weight: 900;
+                        letter-spacing: 2px; text-transform: uppercase;
+                        text-align: center; padding: 8px; margin-bottom: 4px;
+                    }
+                    #s14b .side-title.green { color: rgba(80,200,100,1); text-shadow: 0 0 12px rgba(46,160,80,0.5); }
+                    #s14b .side-title.red { color: rgba(220,80,70,1); text-shadow: 0 0 12px rgba(200,40,30,0.5); }
+                    #s14b .side-item {
+                        display: flex; align-items: center; gap: 14px;
+                        padding: 14px 16px; border-radius: 12px; cursor: pointer;
+                        transition: all 0.35s cubic-bezier(0.18,1,0.26,1);
+                        position: relative;
+                    }
+                    #s14b .side-item.green {
+                        background: linear-gradient(145deg, rgba(5,20,8,0.95), rgba(3,14,5,0.98));
+                        border: 1px solid rgba(46,160,80,0.25);
+                    }
+                    #s14b .side-item.red {
+                        background: linear-gradient(145deg, rgba(22,5,4,0.95), rgba(15,3,2,0.98));
+                        border: 1px solid rgba(200,40,30,0.25);
+                    }
+                    #s14b .side-item.green:hover, #s14b .side-item.green.req-done {
+                        border-color: rgba(46,160,80,0.6);
+                        box-shadow: 0 0 20px rgba(46,160,80,0.2);
+                        transform: translateX(-4px);
+                    }
+                    #s14b .side-item.red:hover, #s14b .side-item.red.req-done {
+                        border-color: rgba(200,40,30,0.6);
+                        box-shadow: 0 0 20px rgba(200,40,30,0.2);
+                        transform: translateX(4px);
+                    }
+                    #s14b .item-ico {
+                        width: 48px; height: 48px; border-radius: 50%; flex-shrink: 0;
+                        display: flex; align-items: center; justify-content: center; font-size: 26px;
+                    }
+                    #s14b .side-item.green .item-ico { background: rgba(46,160,80,0.15); border: 1px solid rgba(46,160,80,0.4); }
+                    #s14b .side-item.red .item-ico { background: rgba(200,40,30,0.15); border: 1px solid rgba(200,40,30,0.4); }
+                    #s14b .item-body { flex: 1; }
+                    #s14b .item-name { font-family: var(--font-h); font-size: 19px; font-weight: 800; margin-bottom: 4px; }
+                    #s14b .side-item.green .item-name { color: rgba(80,200,100,1); }
+                    #s14b .side-item.red .item-name { color: rgba(220,80,70,1); }
+                    #s14b .item-desc { font-size: 15px; color: rgba(255,244,232,0.65); line-height: 1.4; }
+                    #s14b .item-mark { font-size: 16px; flex-shrink: 0; opacity: 0; transition: opacity 0.3s ease; }
+                    #s14b .side-item.green .item-mark { color: rgba(80,200,100,1); }
+                    #s14b .side-item.red .item-mark { color: rgba(220,80,70,1); }
+                    #s14b .side-item.req-done .item-mark { opacity: 1; }
+                    #s14b .center-col {
+                        flex: 0 0 280px; display: flex; flex-direction: column;
+                        align-items: center; justify-content: center; gap: 10px; padding: 0 10px;
+                    }
+                    #s14b .hud-circle {
+                        position: relative; width: 220px; height: 220px;
+                        display: flex; align-items: center; justify-content: center;
+                    }
+                    #s14b .hud-circle svg { position: absolute; inset: 0; }
+                    #s14b .hud-circle-content {
+                        position: relative; z-index: 2; text-align: center;
+                        display: flex; flex-direction: column; align-items: center; gap: 6px;
+                    }
+                    #s14b .hud-forklift { font-size: 52px; filter: drop-shadow(0 0 12px rgba(230,81,0,0.6)); }
+                    #s14b .hud-label {
+                        font-family: var(--font-h); font-size: 13px; font-weight: 900;
+                        letter-spacing: 2px; color: #FF6A1A;
+                        text-shadow: 0 0 12px rgba(230,81,0,0.6); text-transform: uppercase;
+                    }
+                    #s14b .connector-green { stroke: rgba(46,160,80,0.5); stroke-width: 1; stroke-dasharray: 4,3; }
+                    #s14b .connector-red { stroke: rgba(200,40,30,0.5); stroke-width: 1; stroke-dasharray: 4,3; }
+                    #s14b .risk-panel {
+                        width: 100%; max-width: 1050px; margin: 10px auto 0;
+                        padding: 12px 20px; border-radius: 10px;
+                        background: linear-gradient(145deg, rgba(20,10,4,0.97), rgba(12,6,2,0.99));
+                        border: 1px solid rgba(230,81,0,0.2);
+                        display: flex; align-items: center; gap: 16px;
+                        position: relative; z-index: 2;
+                    }
+                    #s14b .risk-icon { font-size: 28px; flex-shrink: 0; }
+                    #s14b .risk-content { flex: 1; }
+                    #s14b .risk-title {
+                        font-family: var(--font-h); font-size: 11px; font-weight: 800;
+                        letter-spacing: 3px; color: rgba(230,81,0,0.7); text-transform: uppercase; margin-bottom: 6px;
+                    }
+                    #s14b .risk-track {
+                        position: relative; height: 8px; border-radius: 8px; overflow: visible;
+                        background: linear-gradient(90deg, #2ea850 0%, #e6b800 45%, #c82820 100%);
+                    }
+                    #s14b .risk-labels {
+                        display: flex; justify-content: space-between; margin-top: 4px;
+                        font-family: var(--font-h); font-size: 9px; font-weight: 800;
+                        letter-spacing: 1px; color: rgba(255,244,232,0.4); text-transform: uppercase;
+                    }
+                    #s14b .risk-needle {
+                        position: absolute; top: -4px; left: 50%;
+                        width: 16px; height: 16px; border-radius: 50%;
+                        background: #fff; border: 2px solid rgba(230,81,0,0.8);
+                        box-shadow: 0 0 10px rgba(230,81,0,0.8);
+                        transition: left 0.6s ease, border-color 0.5s ease, box-shadow 0.5s ease;
+                    }
+                    #s14b .risk-phrase {
+                        text-align: center; font-size: 11px; color: rgba(255,244,232,0.3);
+                        font-style: italic; flex-shrink: 0;
+                    }
+                    #s14b .risk-warn { font-size: 24px; flex-shrink: 0; opacity: 0.5; }
+                    /* MOBILE s14b */
+                    #s14b .s14b-mobile { display:none;flex-direction:column;align-items:center;gap:10px;width:100%;max-width:400px;margin:0 auto; }
+                    #s14b .s14b-m-hud-wrap { display:flex;flex-direction:column;align-items:center;gap:8px;width:100%; }
+                    #s14b .s14b-m-hud { position:relative;width:140px;height:140px;display:flex;align-items:center;justify-content:center; }
+                    #s14b .s14b-m-hud svg { position:absolute;inset:0;width:140px;height:140px; }
+                    #s14b .s14b-m-hud-content { position:relative;z-index:2;text-align:center;display:flex;flex-direction:column;align-items:center;gap:4px; }
+                    @keyframes s14Attention {
+                        0%{opacity:.7;} 50%{opacity:1;} 100%{opacity:.7;}
+                    }
+                    @keyframes s14ScrollTip {
+                        0%{transform:translateY(0);} 50%{transform:translateY(4px);} 100%{transform:translateY(0);}
+                    }
+                    #s14b .s14-mobile-instruction {
+                        width:100%;text-align:center;padding:12px;border-radius:10px;
+                        background:rgba(230,81,0,0.08);border:1px solid rgba(230,81,0,0.20);
+                        color:rgba(230,81,0,1);font-weight:800;font-size:13px;letter-spacing:1px;
+                        margin-bottom:12px;animation:s14Attention 2s infinite;
+                    }
+                    #s14b .s14-mobile-instruction.s14-instruction-done {
+                        animation:none;color:#2ECC71;
+                        background:rgba(5,25,12,0.9);border:1px solid rgba(46,204,113,0.35);
+                        box-shadow:0 0 20px rgba(46,204,113,0.25);
+                    }
+                    #s14b #s14-progress-mobile {
+                        width:100%;text-align:center;font-family:var(--font-h);
+                        font-size:14px;font-weight:800;color:rgba(255,244,232,0.85);
+                        margin-bottom:8px;
+                    }
+                    #s14b .s14-scroll-tip {
+                        text-align:center;font-size:11px;color:rgba(255,244,232,0.45);
+                        margin-bottom:12px;animation:s14ScrollTip 1.8s infinite;
+                    }
+                    #s14b .s14b-m-divider { width:100%;height:1px;background:linear-gradient(90deg,transparent,rgba(230,81,0,0.35),transparent);margin:4px 0; }
+                    #s14b .s14b-m-section { width:100%;display:flex;flex-direction:column;gap:8px; }
+                    #s14b .s14b-m-card {
+                        width:100%;display:flex;align-items:flex-start;gap:12px;padding:12px 14px;
+                        border-radius:12px;cursor:pointer;transition:all 0.35s cubic-bezier(0.18,1,0.26,1);
+                        position:relative;
+                    }
+                    #s14b .s14b-m-card.green { background:linear-gradient(145deg,rgba(5,20,8,0.95),rgba(3,14,5,0.98));border:1px solid rgba(46,160,80,0.25); }
+                    #s14b .s14b-m-card.red { background:linear-gradient(145deg,rgba(22,5,4,0.95),rgba(15,3,2,0.98));border:1px solid rgba(200,40,30,0.25); }
+                    #s14b .s14b-m-card.s14b-m-expanded { transform:scale(1.02); }
+                    #s14b .s14b-m-card.green.s14b-m-viewed { border-color:rgba(46,160,80,0.6);box-shadow:0 0 20px rgba(46,204,113,0.25); }
+                    #s14b .s14b-m-card.red.s14b-m-viewed { border-color:rgba(200,40,30,0.6);box-shadow:0 0 20px rgba(220,80,70,0.25); }
+                    #s14b .s14b-m-card .item-ico { width:40px;height:40px;border-radius:50%;flex-shrink:0;display:flex;align-items:center;justify-content:center;font-size:22px; }
+                    #s14b .s14b-m-card.green .item-ico { background:rgba(46,160,80,0.15);border:1px solid rgba(46,160,80,0.4); }
+                    #s14b .s14b-m-card.red .item-ico { background:rgba(200,40,30,0.15);border:1px solid rgba(200,40,30,0.4); }
+                    #s14b .s14b-m-card .item-body { flex:1;min-width:0; }
+                    #s14b .s14b-m-card .item-name { font-family:var(--font-h);font-size:15px;font-weight:800;margin-bottom:3px; }
+                    #s14b .s14b-m-card.green .item-name { color:rgba(80,200,100,1); }
+                    #s14b .s14b-m-card.red .item-name { color:rgba(220,80,70,1); }
+                    #s14b .s14b-m-card .item-desc { font-size:12px;color:rgba(255,244,232,0.65);line-height:1.4; }
+                    #s14b .s14b-m-badge { font-size:10px;font-weight:700;opacity:0;transition:opacity 0.3s;flex-shrink:0;align-self:center;white-space:nowrap; }
+                    #s14b .s14b-m-card.green .s14b-m-badge { color:rgba(80,200,100,1); }
+                    #s14b .s14b-m-card.red .s14b-m-badge { color:rgba(220,80,70,1); }
+                    #s14b .s14b-m-card.s14b-m-viewed .s14b-m-badge { opacity:1; }
+                    #s14b .s14b-m-complete {
+                        display:none;width:100%;padding:14px;border-radius:12px;text-align:center;
+                        font-family:var(--font-h);font-size:12px;font-weight:800;letter-spacing:1px;
+                        color:rgba(46,204,113,1);background:rgba(5,25,12,0.9);
+                        border:1px solid rgba(46,204,113,0.35);box-shadow:0 0 20px rgba(46,204,113,0.25);
+                    }
+                    @media (max-width: 768px) {
+                        #s14b .s14b-desktop { display:none !important; }
+                        #s14b { overflow:hidden !important; }
+                        #s14b .content-area {
+                            flex:1 1 auto !important;
+                            min-height:0 !important;
+                            height:calc(100vh - 140px) !important;
+                            max-height:calc(100vh - 140px) !important;
+                            overflow-y:auto !important;
+                            overflow-x:hidden !important;
+                            -webkit-overflow-scrolling:touch !important;
+                            display:block !important;
+                            padding-bottom:220px !important;
+                            touch-action:pan-y !important;
+                            justify-content:flex-start !important;
+                            padding-top:8px !important;
+                        }
+                        #s14b .s14b-mobile-scroll { width:100%;display:block; }
+                        #s14b .s14b-mobile {
+                            display:flex !important;
+                            flex-direction:column;
+                            width:100%;
+                        }
+                        #s14b .slide-title { font-size:22px !important; }
+                        #s14b .wave { display:none !important; }
+                        #s14b .hud-bg { pointer-events:none; }
+                    }
+                    @media (min-width: 769px) {
+                        #s14b .s14b-mobile { display:none !important; }
+                    }
+                </style>
+
+                <div class="hud-bg"></div>
+
+                <div class="top-bar" style="position:relative;z-index:2;">
+                    <div class="section-tag" style="background:var(--red);color:var(--black);font-size:16px;padding:6px 16px;font-weight:800;box-shadow:0 0 12px rgba(230,81,0,0.4);">Módulo 2</div>
+                    <h2 class="slide-title" style="font-size:clamp(22px,3.5vw,36px);letter-spacing:-0.01em;text-shadow:0 0 15px rgba(230,81,0,0.4);">O Que Fazer e <span>Evitar</span></h2>
+                </div>
+
+                <div class="content-area" style="padding-top:24px;flex:1;display:flex;flex-direction:column;justify-content:flex-start;position:relative;z-index:1;">
+
+                    <!-- MOBILE ONLY s14b -->
+                    <div class="s14b-mobile-scroll">
+                    <div class="s14b-mobile">
+
+                        <div class="s14b-m-hud-wrap">
+                            <div class="s14b-m-hud">
+                                <svg viewBox="0 0 220 220" width="140" height="140">
+                                    <circle cx="110" cy="110" r="105" fill="none" stroke="rgba(230,81,0,0.15)" stroke-width="1" stroke-dasharray="6,4"/>
+                                    <circle cx="110" cy="110" r="95" fill="none" stroke="rgba(230,81,0,0.5)" stroke-width="3" stroke-dasharray="8,3"/>
+                                    <circle cx="110" cy="110" r="80" fill="rgba(230,81,0,0.04)" stroke="rgba(230,81,0,0.2)" stroke-width="1"/>
+                                    <circle cx="110" cy="110" r="60" fill="none" stroke="rgba(230,81,0,0.1)" stroke-width="1" stroke-dasharray="4,6"/>
+                                    <line x1="110" y1="15" x2="110" y2="205" stroke="rgba(230,81,0,0.06)" stroke-width="1"/>
+                                    <line x1="15" y1="110" x2="205" y2="110" stroke="rgba(230,81,0,0.06)" stroke-width="1"/>
+                                </svg>
+                                <div class="s14b-m-hud-content">
+                                    <div class="hud-forklift" style="font-size:36px;filter:drop-shadow(0 0 12px rgba(230,81,0,0.6));">🏬</div>
+                                    <div class="hud-label" style="font-family:var(--font-h);font-size:10px;font-weight:900;letter-spacing:2px;color:#FF6A1A;text-transform:uppercase;">Operação<br>Segura</div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="s14-mobile-instruction" id="s14-mobile-instruction">
+                            👆 Toque em TODOS os tópicos para liberar o próximo módulo
+                        </div>
+                        <div id="s14-progress-mobile">0 de 6 tópicos analisados</div>
+                        <div class="s14-scroll-tip" id="s14-scroll-tip">
+                            ↓ Role para visualizar todos os tópicos
+                        </div>
+
+                        <div class="s14b-m-divider"></div>
+
+                        <div class="s14b-m-section">
+                            <div class="side-title green">✓ Faça Sempre</div>
+                            <div class="s14b-m-card green" onclick="s14bMobAct(this,'green')">
+                                <div class="item-ico">🛞</div>
+                                <div class="item-body">
+                                    <div class="item-name">Aderência</div>
+                                    <div class="item-desc">Verifique rodas e superfície.</div>
+                                </div>
+                                <span class="s14b-m-badge">✓ Entendido</span>
+                            </div>
+                            <div class="s14b-m-card green" onclick="s14bMobAct(this,'green')">
+                                <div class="item-ico">🏔️</div>
+                                <div class="item-body">
+                                    <div class="item-name">Controle em Rampas</div>
+                                    <div class="item-desc">Reduza a velocidade.</div>
+                                </div>
+                                <span class="s14b-m-badge">✓ Entendido</span>
+                            </div>
+                            <div class="s14b-m-card green" onclick="s14bMobAct(this,'green')">
+                                <div class="item-ico">📦</div>
+                                <div class="item-body">
+                                    <div class="item-name">Controle da Carga</div>
+                                    <div class="item-desc">Transporte cargas estáveis e seguras.</div>
+                                </div>
+                                <span class="s14b-m-badge">✓ Entendido</span>
+                            </div>
+                        </div>
+
+                        <div class="s14b-m-divider"></div>
+
+                        <div class="s14b-m-section">
+                            <div class="side-title red">✓ Evite Sempre</div>
+                            <div class="s14b-m-card red" onclick="s14bMobAct(this,'red')">
+                                <div class="item-ico">🚫</div>
+                                <div class="item-body">
+                                    <div class="item-name">Manobras Perigosas</div>
+                                    <div class="item-desc">Não vire em declive.</div>
+                                </div>
+                                <span class="s14b-m-badge">✓ Entendido</span>
+                            </div>
+                            <div class="s14b-m-card red" onclick="s14bMobAct(this,'red')">
+                                <div class="item-ico">🅿️</div>
+                                <div class="item-body">
+                                    <div class="item-name">Estacionamento</div>
+                                    <div class="item-desc">Use apenas superfície plana.</div>
+                                </div>
+                                <span class="s14b-m-badge">✓ Entendido</span>
+                            </div>
+                            <div class="s14b-m-card red" onclick="s14bMobAct(this,'red')">
+                                <div class="item-ico">🔧</div>
+                                <div class="item-body">
+                                    <div class="item-name">Manutenção</div>
+                                    <div class="item-desc">Somente equipe autorizada.</div>
+                                </div>
+                                <span class="s14b-m-badge">✓ Entendido</span>
+                            </div>
+                        </div>
+
+                        <div class="s14b-m-divider"></div>
+
+                        <div class="risk-panel" style="width:100%;margin-top:4px;">
+                            <span class="risk-icon">🛡️</span>
+                            <div class="risk-content">
+                                <div class="risk-title">Nível de Risco Operacional</div>
+                                <div class="risk-track">
+                                    <div class="risk-needle" id="risk-needle-mob"></div>
+                                </div>
+                                <div class="risk-labels">
+                                    <span>Baixo</span><span>Moderado</span><span>Alto</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="s14b-m-complete" id="s14b-m-complete">✓ TODOS OS TÓPICOS FORAM ANALISADOS</div>
+                        <div id="s14b-mobile-tracker" class="req-item" style="display:none;"></div>
+                    </div>
+                    </div><!-- /s14b-mobile-scroll -->
+
+                    <div class="s14b-desktop">
+
+                    <div style="width:100%;text-align:center;margin-bottom:12px;font-size:20px;color:rgba(230,81,0,1);font-weight:800;letter-spacing:1px;text-shadow:0 0 16px rgba(230,81,0,0.6);animation:pulse 1.5s infinite;">
+                        👆 Toque nos cards para interagir
+                    </div>
+
+                    <div class="main-layout">
+
+                        <!-- Esquerda -->
+                        <div class="side-col">
+                            <div class="side-title green">Faça Sempre</div>
+                            <div class="side-item green req-item" onclick="opsAct(this,'green')">
+                                <div class="item-ico">🛞</div>
+                                <div class="item-body">
+                                    <div class="item-name">Aderência</div>
+                                    <div class="item-desc">Verifique rodas e superfície.</div>
+                                </div>
+                                <span class="item-mark">✔</span>
+                            </div>
+                            <div class="side-item green req-item" onclick="opsAct(this,'green')">
+                                <div class="item-ico">🏔️</div>
+                                <div class="item-body">
+                                    <div class="item-name">Controle em Rampas</div>
+                                    <div class="item-desc">Reduza a velocidade.</div>
+                                </div>
+                                <span class="item-mark">✔</span>
+                            </div>
+                            <div class="side-item green req-item" onclick="opsAct(this,'green')">
+                                <div class="item-ico">📦</div>
+                                <div class="item-body">
+                                    <div class="item-name">Controle da Carga</div>
+                                    <div class="item-desc">Transporte cargas estáveis e seguras.</div>
+                                </div>
+                                <span class="item-mark">✔</span>
+                            </div>
+                        </div>
+
+                        <!-- Centro HUD -->
+                        <div class="center-col">
+                            <div class="hud-circle">
+                                <svg viewBox="0 0 220 220" width="220" height="220">
+                                    <!-- Arco externo dashed -->
+                                    <circle cx="110" cy="110" r="105" fill="none" stroke="rgba(230,81,0,0.15)" stroke-width="1" stroke-dasharray="6,4"/>
+                                    <!-- Arco principal laranja -->
+                                    <circle cx="110" cy="110" r="95" fill="none" stroke="rgba(230,81,0,0.5)" stroke-width="3" stroke-dasharray="8,3"/>
+                                    <!-- Círculo interno -->
+                                    <circle cx="110" cy="110" r="80" fill="rgba(230,81,0,0.04)" stroke="rgba(230,81,0,0.2)" stroke-width="1"/>
+                                    <circle cx="110" cy="110" r="60" fill="none" stroke="rgba(230,81,0,0.1)" stroke-width="1" stroke-dasharray="4,6"/>
+                                    <!-- Linhas cruzadas -->
+                                    <line x1="110" y1="15" x2="110" y2="205" stroke="rgba(230,81,0,0.06)" stroke-width="1"/>
+                                    <line x1="15" y1="110" x2="205" y2="110" stroke="rgba(230,81,0,0.06)" stroke-width="1"/>
+                                    <!-- Dots de conexão esquerda (verde) -->
+                                    <circle cx="15" cy="80" r="4" fill="rgba(46,160,80,0.8)" class="connector-dot"/>
+                                    <circle cx="15" cy="110" r="4" fill="rgba(46,160,80,0.8)" class="connector-dot"/>
+                                    <circle cx="15" cy="140" r="4" fill="rgba(46,160,80,0.8)" class="connector-dot"/>
+                                    <line x1="15" y1="80" x2="30" y2="80" stroke="rgba(46,160,80,0.4)" stroke-width="1" stroke-dasharray="3,2"/>
+                                    <line x1="15" y1="110" x2="30" y2="110" stroke="rgba(46,160,80,0.4)" stroke-width="1" stroke-dasharray="3,2"/>
+                                    <line x1="15" y1="140" x2="30" y2="140" stroke="rgba(46,160,80,0.4)" stroke-width="1" stroke-dasharray="3,2"/>
+                                    <!-- Dots de conexão direita (vermelho) -->
+                                    <circle cx="205" cy="80" r="4" fill="rgba(200,40,30,0.8)" class="connector-dot"/>
+                                    <circle cx="205" cy="110" r="4" fill="rgba(200,40,30,0.8)" class="connector-dot"/>
+                                    <circle cx="205" cy="140" r="4" fill="rgba(200,40,30,0.8)" class="connector-dot"/>
+                                    <line x1="205" y1="80" x2="190" y2="80" stroke="rgba(200,40,30,0.4)" stroke-width="1" stroke-dasharray="3,2"/>
+                                    <line x1="205" y1="110" x2="190" y2="110" stroke="rgba(200,40,30,0.4)" stroke-width="1" stroke-dasharray="3,2"/>
+                                    <line x1="205" y1="140" x2="190" y2="140" stroke="rgba(200,40,30,0.4)" stroke-width="1" stroke-dasharray="3,2"/>
+                                </svg>
+                                <div class="hud-circle-content">
+                                    <div class="hud-forklift">🏬</div>
+                                    <div class="hud-label">Operação<br>Segura</div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Direita -->
+                        <div class="side-col">
+                            <div class="side-title red">Evite Sempre</div>
+                            <div class="side-item red req-item" onclick="opsAct(this,'red')">
+                                <div class="item-ico">🚫</div>
+                                <div class="item-body">
+                                    <div class="item-name">Manobras Perigosas</div>
+                                    <div class="item-desc">Não vire em declive.</div>
+                                </div>
+                                <span class="item-mark">✗</span>
+                            </div>
+                            <div class="side-item red req-item" onclick="opsAct(this,'red')">
+                                <div class="item-ico">🅿️</div>
+                                <div class="item-body">
+                                    <div class="item-name">Estacionamento</div>
+                                    <div class="item-desc">Use apenas superfície plana.</div>
+                                </div>
+                                <span class="item-mark">✗</span>
+                            </div>
+                            <div class="side-item red req-item" onclick="opsAct(this,'red')">
+                                <div class="item-ico">🔧</div>
+                                <div class="item-body">
+                                    <div class="item-name">Manutenção</div>
+                                    <div class="item-desc">Somente equipe autorizada.</div>
+                                </div>
+                                <span class="item-mark">✗</span>
+                            </div>
+                        </div>
+
+                    </div>
+
+                    <!-- Barra de Risco -->
+                    <div class="risk-panel">
+                        <span class="risk-icon">🛡️</span>
+                        <div class="risk-content">
+                            <div class="risk-title">Nível de Risco Operacional</div>
+                            <div class="risk-track">
+                                <div class="risk-needle" id="risk-needle"></div>
+                            </div>
+                            <div class="risk-labels">
+                                <span>Baixo</span><span>Moderado</span><span>Alto</span>
+                            </div>
+                        </div>
+                        <div class="risk-phrase">Suas escolhas definem<br>a segurança da operação.</div>
+                        <span class="risk-warn">⚠️</span>
+                    </div>
+
+                    </div><!-- /s14b-desktop -->
+
+                </div>
+
+                <script>
+                    let opsGreenCount = 0, opsRedCount = 0;
+                    function opsAct(el, col) {
+                        if (!el.classList.contains('req-done')) {
+                            el.classList.add('req-done');
+                            if (typeof playTechClick === 'function') playTechClick();
+                            if (col === 'red') opsRedCount++;
+                            else opsGreenCount++;
+                        }
+                        const needle = document.getElementById('risk-needle');
+                        if (needle) {
+                            // Centro = 50%. Verde puxa pra esquerda, vermelho puxa pra direita.
+                            // Cada clique move 12% na direção correspondente
+                            var pos = 50 + (opsRedCount * 12) - (opsGreenCount * 12);
+                            pos = Math.max(5, Math.min(90, pos));
+                            needle.style.left = pos + '%';
+                            if (pos < 35) {
+                                needle.style.borderColor = 'rgba(46,160,80,0.9)';
+                                needle.style.boxShadow = '0 0 10px rgba(46,160,80,0.8)';
+                            } else if (pos > 65) {
+                                needle.style.borderColor = 'rgba(200,40,30,0.9)';
+                                needle.style.boxShadow = '0 0 10px rgba(200,40,30,0.8)';
+                            } else {
+                                needle.style.borderColor = 'rgba(230,81,0,0.8)';
+                                needle.style.boxShadow = '0 0 10px rgba(230,81,0,0.6)';
+                            }
+                        }
+                        const allDone = document.querySelectorAll('#s14b .req-item.req-done').length;
+                        const allItems = document.querySelectorAll('#s14b .req-item').length;
+                        if (allDone >= allItems && typeof updateNextButton === 'function') updateNextButton();
+                    }
+
+                    // MOBILE s14b
+                    var s14bMobGreen = 0, s14bMobRed = 0, s14bMobViewed = 0, s14bMobDone = false;
+                    function s14bMobUpdateNeedle() {
+                        var needle = document.getElementById('risk-needle-mob');
+                        if(!needle) return;
+                        var pos = 50 + (s14bMobRed * 12) - (s14bMobGreen * 12);
+                        pos = Math.max(5, Math.min(90, pos));
+                        needle.style.left = pos + '%';
+                        if(pos < 35){
+                            needle.style.borderColor = 'rgba(46,160,80,0.9)';
+                            needle.style.boxShadow = '0 0 10px rgba(46,160,80,0.8)';
+                        } else if(pos > 65){
+                            needle.style.borderColor = 'rgba(200,40,30,0.9)';
+                            needle.style.boxShadow = '0 0 10px rgba(200,40,30,0.8)';
+                        } else {
+                            needle.style.borderColor = 'rgba(230,81,0,0.8)';
+                            needle.style.boxShadow = '0 0 10px rgba(230,81,0,0.6)';
+                        }
+                    }
+                    function s14bMobAct(el, col) {
+                        if(s14bMobDone) return;
+                        el.classList.add('s14b-m-expanded');
+                        if(!el.classList.contains('s14b-m-viewed')){
+                            el.classList.add('s14b-m-viewed');
+                            s14bMobViewed++;
+                            if(col === 'red') s14bMobRed++; else s14bMobGreen++;
+                            try{ if(typeof playTechClick==='function') playTechClick(); }catch(e){}
+                            document.getElementById('s14-progress-mobile').textContent = s14bMobViewed + ' de 6 tópicos analisados';
+                            s14bMobUpdateNeedle();
+                            if(s14bMobViewed >= 6){
+                                s14bMobDone = true;
+                                try{ if(typeof playBeep==='function') playBeep('end'); }catch(e){}
+                                var instr = document.getElementById('s14-mobile-instruction');
+                                instr.textContent = '✓ TODOS OS TÓPICOS FORAM ANALISADOS';
+                                instr.classList.add('s14-instruction-done');
+                                var scrollTip = document.getElementById('s14-scroll-tip');
+                                if(scrollTip) scrollTip.style.display = 'none';
+                                var t = document.getElementById('s14b-mobile-tracker');
+                                if(t){ t.style.display='block'; t.classList.add('req-done'); }
+                                setTimeout(function(){
+                                    if(typeof updateNextButton==='function') updateNextButton();
+                                }, 300);
+                            }
+                        }
+                    }
+                    function s14bInitMode(){
+                        var desktopReqs = document.querySelectorAll('#s14b .s14b-desktop .req-item');
+                        var mobTracker = document.getElementById('s14b-mobile-tracker');
+                        if(window.innerWidth <= 768){
+                            desktopReqs.forEach(function(el){ el.classList.remove('req-item'); });
+                            if(mobTracker && !s14bMobDone){ mobTracker.classList.remove('req-done'); }
+                        } else {
+                            desktopReqs.forEach(function(el){ el.classList.add('req-item'); });
+                            if(mobTracker){ mobTracker.style.display='block'; mobTracker.classList.add('req-done'); }
+                        }
+                        if(typeof updateNextButton==='function') updateNextButton();
+                    }
+                    s14bInitMode();
+                </script>
+
+                <div class="wave" style="position:relative;z-index:1;"><svg viewBox="0 0 1440 100" preserveAspectRatio="none">
+                    <path d="M0,60 C360,20 720,90 1080,35 L1440,55 L1440,100 L0,100 Z" fill="rgba(230,81,0,0.07)" />
+                </svg></div>
+            </div>
+
+
+<div class="slide" id="s15">
+                <style>
+                @media (max-width: 768px) {
+                    #s15 .top-bar { padding-bottom:4px !important; }
+                    #s15 .slide-title { font-size:18px !important; margin-bottom:0 !important; }
+                    #s15 .content-area { padding:8px 10px 120px !important; overflow-y:auto !important; }
+                    #s15 .quiz-wrap { padding:0 !important; }
+                    #s15 #sq2-intro-panel { padding:10px 0 !important; }
+                    #s15 #sq2-intro-panel .hud-anim-enter:first-of-type {
+                        padding:20px 16px !important;
+                        margin-bottom:14px !important;
+                    }
+                    #s15 #sq2-intro-panel h3 { font-size:20px !important; margin-bottom:8px !important; }
+                    #s15 #sq2-intro-panel p { font-size:13px !important; }
+                    #s15 #sq2-intro-panel .hud-anim-enter:nth-of-type(2) { margin-top:16px !important; margin-bottom:16px !important; font-size:12px !important; padding:8px 14px !important; }
+                    #s15 .btn-tf-verify { font-size:15px !important; padding:14px 30px !important; width:100% !important; justify-content:center !important; }
+                    #s15 .sq2-cctv-desktop { display:none !important; }
+                    #s15 .sq2-quiz-mobile { display:block !important; }
+                    #s15 .sq2-quiz-mobile .q-feedback {
+                        padding:12px 14px !important;
+                        font-size:15px !important;
+                        line-height:1.45 !important;
+                        margin-top:10px !important;
+                        margin-bottom:8px !important;
+                        max-height:220px;
+                        overflow-y:auto;
+                        -webkit-overflow-scrolling:touch;
+                    }
+                    #s15 .quiz-feedback {
+                        font-family:var(--font-h);
+                        font-weight:800;
+                        font-size:14px;
+                        letter-spacing:1px;
+                        padding:10px 14px;
+                        border-radius:8px;
+                        margin-bottom:10px;
+                        animation:pop-in 0.4s ease forwards;
+                    }
+                    #s15 .quiz-feedback.success {
+                        background:rgba(46,204,113,0.2);
+                        border:1px solid rgba(46,204,113,0.7);
+                        color:rgba(46,204,113,1);
+                    }
+                    #s15 .quiz-feedback.error {
+                        background:rgba(220,50,50,0.15);
+                        border:1px solid rgba(220,50,50,0.6);
+                        color:rgba(220,80,80,1);
+                    }
+                    #s15 .quiz-feedback-exp {
+                        font-size:14px;
+                        font-weight:500;
+                        line-height:1.55;
+                        color:rgba(255,244,232,0.9);
+                    }
+                    #s15 .sq2-quiz-mobile .btn-next-q {
+                        width:100% !important;
+                        display:none;
+                        font-size:15px !important;
+                        padding:14px 30px !important;
+                        letter-spacing:1px;
+                        text-transform:uppercase;
+                    }
+                    #s15 .sq2-quiz-mobile .btn-next-q.show {
+                        display:block !important;
+                        width:100% !important;
+                        min-height:52px !important;
+                        margin-top:12px !important;
+                        position:relative !important;
+                        z-index:100 !important;
+                        animation:quizNextPulse 1.8s infinite;
+                    }
+                    @keyframes quizNextPulse {
+                        0% { transform:scale(1); }
+                        50% { transform:scale(1.03); }
+                        100% { transform:scale(1); }
+                    }
+                }
+                @media (min-width: 769px) {
+                    #s15 .sq2-quiz-mobile { display:none !important; }
+                }
+                </style>
+                <div class="top-bar">
+                    <div class="section-tag"
+                        style="background: var(--red); color: var(--black); font-size: 16px; padding: 6px 16px; font-weight: 800; box-shadow: 0 0 12px rgba(230, 81, 0, 0.4);">
+                        🎯 Quiz · Módulo 2</div>
+                    <h2 class="slide-title"
+                        style="font-size: clamp(32px, 5vw, 48px); letter-spacing: 0.02em; text-shadow: 0 0 20px rgba(230, 81, 0, 0.6); position: relative; display: inline-block;">
+                        <div
+                            style="position: absolute; inset: -20px; background: radial-gradient(circle, rgba(230,81,0,0.15) 0%, transparent 70%); z-index: -1; filter: blur(10px);">
+                        </div>
+                        Inspeção de <span>Segurança</span>
+                    </h2>
+
+                </div>
+                <div class="content-area">
+                    <div class="quiz-wrap">
+
+                        <!-- INTRO PANEL FOR SQ2 -->
+                        <div id="sq2-intro-panel"
+                            style="display:none; text-align: center; padding: 40px 20px; position: relative;">
+                            <!-- Efeitos Visuais Sutis HUD -->
+                            <div
+                                style="position: absolute; inset: 0; pointer-events: none; z-index: 0; background: radial-gradient(ellipse at center, rgba(230, 81, 0, 0.05) 0%, transparent 60%);">
+                            </div>
+                            <div
+                                style="position: absolute; top: 20px; left: 50%; transform: translateX(-50%); width: 200px; height: 1px; background: linear-gradient(90deg, transparent, rgba(230,81,0,0.3), transparent);">
+                            </div>
+                            <div
+                                style="position: absolute; bottom: 20px; left: 50%; transform: translateX(-50%); width: 200px; height: 1px; background: linear-gradient(90deg, transparent, rgba(230,81,0,0.3), transparent);">
+                            </div>
+
+                            <div class="hud-anim-enter"
+                                style="position: relative; z-index: 1; max-width: 850px; margin: 0 auto 30px; padding: 50px 30px; border-radius: 8px; background: linear-gradient(180deg, rgba(28,10,6,0.96) 0%, rgba(12,5,4,0.98) 100%); border: 1px solid rgba(255,106,26,0.14); box-shadow: 0 0 40px rgba(255,106,26,0.08), 0 20px 60px rgba(0,0,0,0.45); backdrop-filter: blur(12px); animation-delay: 0.2s; opacity: 0; overflow: hidden;">
+                                <!-- Efeitos Visuais HUD Premium Internos -->
+                                <div
+                                    style="position: absolute; inset: 0; pointer-events: none; background: repeating-linear-gradient(0deg, transparent, transparent 2px, rgba(230,81,0,0.03) 3px, rgba(230,81,0,0.03) 4px);">
+                                </div>
+                                <div
+                                    style="position: absolute; inset: 0; pointer-events: none; opacity: 0.3; background-image: radial-gradient(rgba(255,255,255,0.1) 1px, transparent 1px); background-size: 20px 20px; animation: s1b-smoke 40s infinite linear;">
+                                </div>
+                                <div
+                                    style="position: absolute; top: 0; left: 50%; transform: translateX(-50%); width: 60%; height: 1px; background: linear-gradient(90deg, transparent, rgba(230,81,0,0.4), transparent);">
+                                </div>
+                                <div
+                                    style="position: absolute; bottom: 0; left: 50%; transform: translateX(-50%); width: 60%; height: 1px; background: linear-gradient(90deg, transparent, rgba(230,81,0,0.4), transparent);">
+                                </div>
+                                <div
+                                    style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); width: 80%; height: 80%; background: radial-gradient(circle, rgba(230,81,0,0.08) 0%, transparent 70%); pointer-events: none; animation: pulse 4s infinite;">
+                                </div>
+
+                                <!-- PROTOCOLO DE AVALIAÇÃO -->
+                                <div
+                                    style="position: relative; font-family: var(--font-h); font-size: 12px; font-weight: 700; color: rgba(230,81,0,0.8); letter-spacing: 4px; text-transform: uppercase; margin-bottom: 16px; display: flex; align-items: center; justify-content: center; gap: 12px;">
+                                    <span style="width: 30px; height: 1px; background: rgba(230,81,0,0.4);"></span>
+                                    PROTOCOLO DE AVALIAÇÃO
+                                    <span style="width: 30px; height: 1px; background: rgba(230,81,0,0.4);"></span>
+                                </div>
+
+                                <!-- TESTE SEUS CONHECIMENTOS -->
+                                <h3
+                                    style="position: relative; font-family: var(--font-h); font-size: clamp(24px, 3.5vw, 36px); font-weight: 800; color: var(--white); text-transform: uppercase; letter-spacing: 1px; line-height: 1.2; margin-bottom: 16px; text-shadow: 0 0 15px rgba(230,81,0,0.5);">
+                                    TESTE SEUS CONHECIMENTOS
+                                </h3>
+
+                                <!-- Texto Inferior -->
+                                <p
+                                    style="position: relative; font-size: clamp(16px, 2vw, 18px); color: rgba(255,255,255,0.7); max-width: 500px; margin: 0 auto; line-height: 1.5; font-weight: 300;">
+                                    Você é o inspetor! Leia cada situação e decida: operação segura ou ato inseguro?
+                                </p>
+
+                                <!-- Badge Premium -->
+                                <div class="hud-anim-enter"
+                                    style="position: relative; z-index: 1; font-family: var(--font-h); font-size: 14px; font-weight: 700; color: rgba(255,255,255,0.75); letter-spacing: 2px; text-transform: uppercase; margin-top: 40px; margin-bottom: 40px; animation-delay: 0.3s; opacity: 0; display: inline-flex; align-items: center; gap: 8px; background: rgba(255,255,255,0.05); padding: 10px 20px; border: 1px solid rgba(255,255,255,0.15); border-radius: 8px;">
+                                    <span
+                                        style="display:inline-block; width:6px; height:6px; background:var(--red); border-radius:50%; box-shadow:0 0 6px var(--red);"></span>
+                                    5 SITUAÇÕES &middot; MÍNIMO DE 70% DE ACERTOS
+                                </div><br>
+
+                                <!-- Botão -->
+                                <div class="hud-anim-enter"
+                                    style="position: relative; display: inline-block; z-index: 2; animation-delay: 0.4s; opacity: 0;">
+                                    <div
+                                        style="position: absolute; inset: -15px; border-radius: 99px; border: 1px dashed rgba(230,81,0,0.3); pointer-events: none;">
+                                    </div>
+                                    <div
+                                        style="position: absolute; inset: -5px; border-radius: 99px; background: rgba(230,81,0,0.15); filter: blur(10px); animation: pulse 2s infinite; pointer-events: none;">
+                                    </div>
+
+                                    <button class="btn-tf-verify"
+                                        style="position: relative; font-size: 18px; padding: 15px 40px; border-radius: 99px; display: inline-flex; align-items: center; gap: 10px; background: #ffffff; color: #0d0a08; border: none; font-weight: 800; box-shadow: 0 0 30px rgba(255,255,255,0.2); transition: all 0.3s ease; text-transform: uppercase; letter-spacing: 1px;"
+                                        onmouseover="this.style.boxShadow='0 0 50px rgba(255,255,255,0.4)'; this.style.transform='scale(1.03)';"
+                                        onmouseout="this.style.boxShadow='0 0 30px rgba(255,255,255,0.2)'; this.style.transform='scale(1)';"
+                                        onclick="if(typeof playTechClick==='function')playTechClick(); startQuiz2Intro();">
+                                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none"
+                                            stroke="currentColor" stroke-width="2.5" stroke-linecap="round"
+                                            stroke-linejoin="round"
+                                            style="filter: drop-shadow(0 0 4px rgba(230,81,0,0.5));">
+                                            <polygon points="5 3 19 12 5 21"></polygon>
+                                        </svg>
+                                        COMEÇAR
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div id="sq2-question-panel" style="display:none; transition: opacity 0.5s ease;">
+
+                            <!-- Mobile: mesmo layout do quiz Módulo 1 -->
+                            <div class="sq2-quiz-mobile" style="display:none;">
+                                <div class="q-meta">
+                                    <div class="q-dots">
+                                        <div class="qdot2 cur" id="sq2mdot0"></div>
+                                        <div class="qdot2" id="sq2mdot1"></div>
+                                        <div class="qdot2" id="sq2mdot2"></div>
+                                        <div class="qdot2" id="sq2mdot3"></div>
+                                        <div class="qdot2" id="sq2mdot4"></div>
+                                    </div>
+                                    <div class="q-lbl" id="sq2-m-counter">1 DE 5</div>
+                                </div>
+                                <div class="q-text" id="sq2-m-text"></div>
+                                <div class="q-options" id="sq2-m-options">
+                                    <div class="q-opt" id="sq2-m-opt-true" onclick="sq2Answer(true)">
+                                        <div class="opt-l">A</div><span>🔵 OPERAÇÃO SEGURA</span>
+                                    </div>
+                                    <div class="q-opt" id="sq2-m-opt-false" onclick="sq2Answer(false)">
+                                        <div class="opt-l">B</div><span>🟠 ATO INSEGURO</span>
+                                    </div>
+                                </div>
+                                <div class="q-feedback" id="sq2-m-feedback"></div>
+                                <button class="btn-next-q" id="btn-next-sq2" onclick="sq2NextQuestion()">PRÓXIMA ANÁLISE →</button>
+                            </div>
+
+                            <!-- Desktop: layout CCTV original -->
+                            <div class="sq2-cctv-desktop">
+                                <style>
+                                    .sq2-cctv-desktop {
+                                        max-width: 680px; margin: 0 auto;
+                                        background: radial-gradient(ellipse at 50% 40%, rgba(230,81,0,0.05) 0%, transparent 60%),
+                                            repeating-linear-gradient(0deg, transparent, transparent 40px, rgba(255,255,255,0.008) 41px);
+                                    }
+                                    .sq2-cctv-desktop .cctv-monitor {
+                                        border-radius: 10px; overflow: hidden; position: relative;
+                                        border: none; border-bottom: 1px solid rgba(230,81,0,0.2);
+                                        background: transparent; margin-bottom: 8px; height: auto; padding: 0;
+                                        display: flex; align-items: center; justify-content: space-between;
+                                        padding: 8px 0;
+                                    }
+                                    .sq2-cctv-desktop .cctv-monitor img { width:100%; height:100%; object-fit:cover; filter:brightness(0.8) contrast(1.1); }
+                                    .sq2-cctv-desktop .cctv-overlay {
+                                        position:absolute; inset:0; pointer-events:none;
+                                        background: repeating-linear-gradient(0deg, transparent, transparent 2px, rgba(0,0,0,0.08) 3px, rgba(0,0,0,0.08) 4px);
+                                    }
+                                    .sq2-cctv-desktop #sq2-counter {
+                                        text-align: center; font-family: var(--font-h); font-size: 20px;
+                                        font-weight: 800; letter-spacing: 1px; color: rgba(230,81,0,1);
+                                        text-transform: uppercase; margin-bottom: 12px;
+                                        text-shadow: 0 0 16px rgba(230,81,0,0.6);
+                                        animation: pulse 1.5s infinite;
+                                    }
+                                    .sq2-cctv-desktop .cctv-question {
+                                        font-family: var(--font-p, sans-serif); font-size: clamp(18px,3vw,24px);
+                                        font-weight: 600; color: #FFF4E8; text-align: center;
+                                        line-height: 1.6; margin-bottom: 20px; max-width: 580px; margin-left: auto; margin-right: auto;
+                                        text-shadow: 0 2px 20px rgba(0,0,0,0.5);
+                                        padding: 20px; border-radius: 12px;
+                                        background: linear-gradient(145deg, rgba(20,10,4,0.8), rgba(12,6,2,0.9));
+                                        border: 1px solid rgba(230,81,0,0.12);
+                                    }
+                                    .sq2-cctv-desktop .cctv-btns { display:flex; gap:12px; }
+                                    .sq2-cctv-desktop .cctv-btn {
+                                        flex:1; padding:18px 16px; border-radius:14px; cursor:pointer;
+                                        font-family:var(--font-h); font-size:17px; font-weight:900;
+                                        letter-spacing:1px; text-align:center; border:2px solid transparent;
+                                        transition:all 0.35s cubic-bezier(0.18,1,0.26,1);
+                                        display:flex; align-items:center; justify-content:center; gap:10px;
+                                    }
+                                    .sq2-cctv-desktop .cctv-btn.safe {
+                                        background: linear-gradient(180deg, #1FA971 0%, #157A52 100%);
+                                        border-color: rgba(31,169,113,0.3);
+                                        color: #F4FFF8;
+                                        box-shadow: 0 0 25px rgba(31,169,113,0.22);
+                                    }
+                                    .sq2-cctv-desktop .cctv-btn.danger {
+                                        background: linear-gradient(180deg, #B3261E 0%, #8E1C16 100%);
+                                        border-color: rgba(255,90,90,0.25);
+                                        color: #FFECEC;
+                                        box-shadow: 0 0 25px rgba(179,38,30,0.25);
+                                    }
+                                    .sq2-cctv-desktop .cctv-btn.safe:hover {
+                                        box-shadow: 0 0 35px rgba(31,169,113,0.35);
+                                        transform: translateY(-3px);
+                                    }
+                                    .sq2-cctv-desktop .cctv-btn.danger:hover {
+                                        box-shadow: 0 0 35px rgba(179,38,30,0.4);
+                                        transform: translateY(-3px);
+                                    }
+                                    .sq2-cctv-desktop .cctv-btn.flash-correct { animation:flash-green 0.5s ease; }
+                                    .sq2-cctv-desktop .cctv-btn.flash-wrong { animation:flash-red 0.5s ease; }
+                                    @keyframes flash-green {
+                                        0%,100% { box-shadow:none; }
+                                        50% { box-shadow:0 0 40px rgba(46,160,80,0.6), 0 0 80px rgba(46,160,80,0.3); }
+                                    }
+                                    @keyframes flash-red {
+                                        0%,100% { box-shadow:none; }
+                                        25%,75% { box-shadow:0 0 40px rgba(200,40,30,0.6), 0 0 80px rgba(200,40,30,0.3); }
+                                    }
+                                    .sq2-cctv-desktop .cctv-feedback {
+                                        margin-top:12px; padding:16px 20px; border-radius:10px;
+                                        font-size:16px; line-height:1.7; display:none;
+                                        color:rgba(255,244,232,0.85);
+                                    }
+                                    .sq2-cctv-desktop .cctv-feedback.correct { background:rgba(10,28,12,0.95); border:1px solid rgba(46,160,80,0.4); display:block; box-shadow: 0 0 20px rgba(31,169,113,0.15); }
+                                    .sq2-cctv-desktop .cctv-feedback.wrong { background:rgba(28,5,4,0.95); border:1px solid rgba(200,40,30,0.4); display:block; box-shadow: 0 0 20px rgba(179,38,30,0.15); }
+                                    .sq2-cctv-desktop .quiz-feedback {
+                                        font-family:var(--font-h);
+                                        font-weight:800;
+                                        font-size:15px;
+                                        letter-spacing:1px;
+                                        padding:10px 14px;
+                                        border-radius:8px;
+                                        margin-bottom:10px;
+                                        animation:pop-in 0.4s ease forwards;
+                                    }
+                                    .sq2-cctv-desktop .quiz-feedback.success {
+                                        background:rgba(46,204,113,0.2);
+                                        border:1px solid rgba(46,204,113,0.7);
+                                        color:rgba(46,204,113,1);
+                                    }
+                                    .sq2-cctv-desktop .quiz-feedback.error {
+                                        background:rgba(220,50,50,0.15);
+                                        border:1px solid rgba(220,50,50,0.6);
+                                        color:rgba(220,80,80,1);
+                                    }
+                                    .sq2-cctv-desktop .quiz-feedback-exp {
+                                        font-size:15px;
+                                        font-weight:500;
+                                        line-height:1.6;
+                                        color:rgba(255,244,232,0.88);
+                                    }
+                                    .sq2-cctv-desktop .btn-next-q {
+                                        margin-top:14px;
+                                        font-family:var(--font-h);
+                                        letter-spacing:1px;
+                                    }
+                                    .sq2-cctv-desktop .btn-next-q.show {
+                                        display:inline-block;
+                                        animation:quizNextPulse 1.8s infinite;
+                                    }
+                                    .sq2-cctv-desktop .cctv-dots { display:flex; gap:8px; justify-content:center; margin-bottom:12px; }
+                                    .sq2-cctv-desktop .cctv-dot {
+                                        width: 10px; height: 10px; border-radius: 50%;
+                                        background: rgba(255,255,255,0.1); transition: all 0.4s ease;
+                                        border: 1px solid rgba(255,255,255,0.1);
+                                    }
+                                    .sq2-cctv-desktop .cctv-dot.active {
+                                        background: rgba(230,81,0,0.9); box-shadow: 0 0 10px rgba(230,81,0,0.7);
+                                        border-color: rgba(230,81,0,0.5); transform: scale(1.2);
+                                    }
+                                    .sq2-cctv-desktop .cctv-dot.done { background: rgba(31,169,113,0.8); border-color: rgba(31,169,113,0.4); }
+                                </style>
+
+                                <div id="sq2-counter">CÂMERA 1 DE 5</div>
+                                <div class="cctv-dots" id="sq2-dots">
+                                    <div class="cctv-dot active" id="sq2d0"></div>
+                                    <div class="cctv-dot" id="sq2d1"></div>
+                                    <div class="cctv-dot" id="sq2d2"></div>
+                                    <div class="cctv-dot" id="sq2d3"></div>
+                                    <div class="cctv-dot" id="sq2d4"></div>
+                                </div>
+                                <div class="cctv-monitor">
+                                    <div style="height:1px;flex:1;background:linear-gradient(90deg,transparent,rgba(230,81,0,0.4),transparent);"></div>
+                                    <div class="cctv-rec" style="position:relative;top:auto;right:auto;margin:0 12px;background:rgba(230,81,0,0.15);color:rgba(230,81,0,0.9);border:1px solid rgba(230,81,0,0.3);font-size:9px;padding:3px 10px;border-radius:4px;letter-spacing:2px;">● AO VIVO</div>
+                                    <div style="height:1px;flex:1;background:linear-gradient(90deg,transparent,rgba(230,81,0,0.4),transparent);"></div>
+                                </div>
+                                <div class="cctv-question" id="sq2-text"></div>
+                                <div class="cctv-btns">
+                                    <button class="cctv-btn safe" id="sq2-btn-true" onclick="sq2Answer(true)">🔵 OPERAÇÃO SEGURA</button>
+                                    <button class="cctv-btn danger" id="sq2-btn-false" onclick="sq2Answer(false)">🟠 ATO INSEGURO</button>
+                                </div>
+                                <div class="cctv-feedback" id="sq2-feedback"></div>
+                                <button class="btn-next-q" id="btn-next-sq2-desktop" onclick="sq2NextQuestion()">PRÓXIMA ANÁLISE →</button>
+                            </div>
+                        </div>
+
+                        <div id="sq2-result-panel" style="display:none;text-align:center;">
+                            <div class="result-pct green" id="sq2-pct">--</div>
+                            <div class="r-stars" id="sq2-stars">⭐⭐⭐</div>
+                            <div class="r-status" id="sq2-status"></div>
+                            <div class="r-sub" id="sq2-sub"></div>
+                            <button class="btn-retry" onclick="sq2Retry()">↺ Tentar Novamente</button>
+                        </div>
+
+                    </div>
+                </div>
+                <div class="wave"><svg viewBox="0 0 1440 100" preserveAspectRatio="none">
+                        <path d="M0,55 C480,15 960,85 1440,35 L1440,100 L0,100 Z" fill="rgba(230,81,0,0.07)" />
+                    </svg></div>
+            </div>
+
+        </div>
+
+        <div id="nav">
+            <button class="nav-btn" id="btn-back" onclick="modulePrev()" disabled>
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"
+                    stroke-linejoin="round">
+                    <polyline points="15 18 9 12 15 6" />
+                </svg>
+                ANTERIOR
+            </button>
+            <button class="nav-btn" id="btn-fwd" onclick="moduleNext()">
+                PRÓXIMO
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"
+                    stroke-linejoin="round">
+                    <polyline points="9 18 15 12 9 6" />
+                </svg>
+            </button>
+        </div>
+
+        <div class="img-modal-overlay" id="imgModal" onclick="closeImageModal(event)">
+            <div class="img-modal-content" onclick="event.stopPropagation()">
+                <button class="img-modal-close" onclick="closeImageModal()">×</button>
+                <img id="modalImg" alt="Imagem Ampliada">
+            </div>
+        </div>
+
+    </div>
+
+    <script src="audio-data.js"></script>
+    <script src="shared.js?v=3"></script>
+</body>
+
+</html>
