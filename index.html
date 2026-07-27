@@ -7,12 +7,12 @@
     <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
     <meta http-equiv="Pragma" content="no-cache">
     <meta http-equiv="Expires" content="0">
-    <meta name="referrer" content="no-referrer">
+    <meta name="referrer" content="strict-origin-when-cross-origin">
     <meta name="mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <title>NR 11 — Empilhadeira Elétrica Retrátil e Combustão</title>
     <link
-        href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;900&family=Open+Sans:wght@400;600&display=swap"
+        href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800;900&family=Open+Sans:wght@400;600&display=swap"
         rel="stylesheet">
     <script src="https://player.vimeo.com/api/player.js"></script>
     <link rel="stylesheet" href="shared.css?v=3">
@@ -117,6 +117,362 @@
         #tutorialModal #btnTutorialClose:hover {
             transform: translateY(-1px);
             box-shadow: 0 18px 38px rgba(0, 0, 0, 0.28) !important;
+        }
+
+        /* ── Modal Aviso Importante ── */
+        #avisoModal {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: rgba(0, 0, 0, 0.92) !important;
+            backdrop-filter: blur(8px);
+            -webkit-backdrop-filter: blur(8px);
+            z-index: 10001;
+            font-family: var(--font-b), 'Open Sans', sans-serif;
+        }
+
+        #avisoModal .aviso-card {
+            width: 90vw;
+            max-width: 560px;
+            max-height: min(90vh, 720px);
+            overflow: hidden;
+            padding: 0;
+            border-radius: 20px;
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            background:
+                radial-gradient(ellipse at 12% 0%, rgba(255, 106, 26, 0.18) 0%, transparent 42%),
+                radial-gradient(ellipse at 100% 100%, rgba(238, 73, 9, 0.12) 0%, transparent 45%),
+                linear-gradient(160deg, #1B0D09 0%, #140A07 55%, #0d0a08 100%);
+            border: 1px solid rgba(255, 106, 26, 0.28);
+            box-shadow:
+                0 0 0 1px rgba(255, 255, 255, 0.04) inset,
+                0 28px 80px rgba(0, 0, 0, 0.75),
+                0 0 60px rgba(255, 106, 26, 0.08);
+        }
+
+        #avisoModal.active .aviso-card {
+            animation: avisoCardIn 0.45s cubic-bezier(0.22, 1, 0.36, 1) both;
+        }
+
+        @keyframes avisoCardIn {
+            from {
+                opacity: 0;
+                transform: translateY(18px) scale(0.96);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0) scale(1);
+            }
+        }
+
+        #avisoModal .aviso-accent {
+            height: 4px;
+            width: 100%;
+            flex-shrink: 0;
+            background: linear-gradient(90deg, #FF6A1A 0%, #FFB07A 40%, #EE4909 100%);
+        }
+
+        #avisoModal .aviso-inner {
+            padding: 28px 30px 26px;
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+            min-height: 0;
+            flex: 1;
+            overflow: visible;
+            align-items: center;
+        }
+
+        #avisoModal .aviso-header {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            gap: 12px;
+            flex-shrink: 0;
+        }
+
+        #avisoModal .aviso-icon {
+            width: 64px;
+            height: 64px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 4px;
+            background: #1B0D09;
+            border: 2px solid #FF6A1A;
+            box-shadow:
+                0 0 0 5px rgba(255, 106, 26, 0.12),
+                0 10px 24px rgba(0, 0, 0, 0.45);
+            color: #FF6A1A;
+            flex-shrink: 0;
+        }
+
+        #avisoModal .aviso-icon svg {
+            width: 30px;
+            height: 30px;
+            display: block;
+        }
+
+        #avisoModal .aviso-badge {
+            display: inline-block;
+            margin-top: 2px;
+            padding: 5px 12px;
+            border-radius: 20px;
+            border: 1px solid rgba(255, 106, 26, 0.4);
+            color: #FF6A1A;
+            font-family: var(--font-h), 'Montserrat', sans-serif;
+            font-size: 11px;
+            font-weight: 800;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            background: rgba(255, 106, 26, 0.12);
+        }
+
+        #avisoModal .aviso-title {
+            margin: 0;
+            color: #fff;
+            font-family: var(--font-h), 'Montserrat', sans-serif;
+            font-size: clamp(24px, 4vw, 32px);
+            font-weight: 800;
+            letter-spacing: -0.5px;
+            line-height: 1.15;
+            text-align: center;
+        }
+
+        #avisoModal .aviso-list {
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            margin: 0;
+        }
+
+        #avisoModal .aviso-item {
+            margin: 0;
+            padding: 14px 16px;
+            border-radius: 12px;
+            background: rgba(255, 255, 255, 0.04);
+            border: 1px solid rgba(255, 255, 255, 0.07);
+            border-left: 3px solid rgba(255, 106, 26, 0.55);
+            color: rgba(255, 255, 255, 0.7);
+            font-family: var(--font-b), 'Open Sans', sans-serif;
+            font-size: clamp(14px, 2vw, 16px);
+            font-weight: 400;
+            line-height: 1.5;
+            text-align: left;
+        }
+
+        #avisoModal .aviso-item:nth-child(2) {
+            border-left-color: rgba(255, 176, 122, 0.65);
+        }
+
+        #avisoModal .aviso-item:nth-child(3) {
+            border-left-color: rgba(238, 73, 9, 0.75);
+        }
+
+        #avisoModal .aviso-footer {
+            display: flex;
+            justify-content: center;
+            padding-top: 4px;
+            width: 100%;
+            flex-shrink: 0;
+        }
+
+        #avisoModal #btnAvisoClose {
+            width: 100%;
+            max-width: 280px;
+            border: none;
+            padding: 12px 24px;
+            border-radius: 8px;
+            font-family: var(--font-b), 'Open Sans', sans-serif;
+            font-weight: 700;
+            font-size: 15px;
+            letter-spacing: normal;
+            cursor: pointer;
+            color: #0d0a08;
+            background: linear-gradient(180deg, #FF8A3D 0%, #FF6A1A 45%, #EE4909 100%);
+            box-shadow:
+                0 0 0 0 rgba(255, 106, 26, 0.45),
+                0 10px 28px rgba(255, 106, 26, 0.5),
+                inset 0 1px 0 rgba(255, 255, 255, 0.35);
+            transition: transform 0.2s, box-shadow 0.2s, filter 0.2s;
+            animation: avisoBtnPulse 1.8s ease-in-out infinite;
+        }
+
+        #avisoModal #btnAvisoClose:hover {
+            transform: translateY(-2px) scale(1.02);
+            filter: brightness(1.08);
+            box-shadow:
+                0 0 0 4px rgba(255, 106, 26, 0.22),
+                0 14px 34px rgba(255, 106, 26, 0.6),
+                inset 0 1px 0 rgba(255, 255, 255, 0.4);
+            animation: none;
+        }
+
+        @keyframes avisoBtnPulse {
+            0%, 100% {
+                box-shadow:
+                    0 0 0 0 rgba(255, 106, 26, 0.35),
+                    0 10px 28px rgba(255, 106, 26, 0.45),
+                    inset 0 1px 0 rgba(255, 255, 255, 0.35);
+            }
+            50% {
+                box-shadow:
+                    0 0 0 8px rgba(255, 106, 26, 0.12),
+                    0 14px 36px rgba(255, 106, 26, 0.65),
+                    inset 0 1px 0 rgba(255, 255, 255, 0.4);
+            }
+        }
+
+        /* Ícone de aviso na capa — ao lado do tutorial */
+        #s1 .s1-secondary-actions {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-top: 18px;
+            align-self: flex-start;
+        }
+
+        #s1 .s1-secondary-actions .btn-tutorial {
+            margin-top: 0;
+            align-self: auto;
+        }
+
+        #s1 .s1-session-info {
+            flex-shrink: 0;
+            width: 42px;
+            height: 42px;
+            padding: 0;
+            margin-top: 0;
+            border-radius: 15px;
+            border: 1px solid rgba(255, 106, 26, 0.45);
+            background: rgba(27, 13, 9, 0.45);
+            backdrop-filter: blur(8px);
+            -webkit-backdrop-filter: blur(8px);
+            color: #FF6A1A;
+            font-size: 0;
+            font-weight: 700;
+            line-height: 1;
+            font-family: var(--font-h), Montserrat, sans-serif;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            box-shadow:
+                0 4px 14px rgba(0, 0, 0, 0.18),
+                inset 0 0 0 1px rgba(255, 106, 26, 0.08);
+            transition: all 0.22s ease;
+        }
+
+        #s1 .s1-session-info svg {
+            width: 20px;
+            height: 20px;
+            display: block;
+        }
+
+        #s1 .s1-session-info:hover {
+            transform: translateY(-1px);
+            border-color: rgba(255, 106, 26, 0.75);
+            background: rgba(255, 106, 26, 0.14);
+            box-shadow:
+                0 8px 20px rgba(0, 0, 0, 0.24),
+                inset 0 0 0 1px rgba(255, 106, 26, 0.12);
+        }
+
+        #s1 .s1-session-info:focus-visible {
+            outline: 2px solid #FF6A1A;
+            outline-offset: 3px;
+        }
+
+        @media (max-width: 768px) {
+            #avisoModal {
+                align-items: center;
+                padding: 10px;
+            }
+
+            #avisoModal .aviso-card {
+                width: 94vw !important;
+                max-width: 94vw;
+                height: calc(100dvh - 24px);
+                max-height: calc(100dvh - 24px);
+                border-radius: 16px;
+            }
+
+            #avisoModal .aviso-inner {
+                padding: 14px 14px 16px;
+                gap: 10px;
+                flex: 1 1 auto;
+                min-height: 0;
+                overflow-y: auto;
+                -webkit-overflow-scrolling: touch;
+            }
+
+            #avisoModal .aviso-icon {
+                width: 52px;
+                height: 52px;
+            }
+
+            #avisoModal .aviso-icon svg {
+                width: 26px;
+                height: 26px;
+            }
+
+            #avisoModal .aviso-badge {
+                font-size: 10px;
+                padding: 4px 10px;
+            }
+
+            #avisoModal .aviso-title {
+                font-size: 20px;
+            }
+
+            #avisoModal .aviso-list {
+                gap: 8px;
+            }
+
+            #avisoModal .aviso-item {
+                padding: 10px 12px;
+                font-size: 13px;
+                line-height: 1.4;
+                border-radius: 10px;
+            }
+
+            #avisoModal #btnAvisoClose {
+                max-width: none;
+                padding: 12px 16px;
+                font-size: 14px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            #s1 .s1-secondary-actions {
+                margin-top: 14px;
+                gap: 8px;
+                flex-wrap: nowrap;
+                align-self: center !important;
+                justify-content: center;
+                width: 100%;
+            }
+
+            #s1 .s1-secondary-actions .btn-tutorial {
+                align-self: center !important;
+                margin-left: 0 !important;
+                margin-top: 0 !important;
+            }
+
+            #s1 .s1-session-info {
+                width: 40px;
+                height: 40px;
+            }
+
+            #s1 .s1-session-info svg {
+                width: 18px;
+                height: 18px;
+            }
         }
 
         #tutorialModal [style*="56.25%"] {
@@ -286,9 +642,9 @@
                 padding: 15px 32px !important;
                 font-size: clamp(15px, 4vw, 17px) !important;
                 box-shadow:
-                    0 8px 28px rgba(255, 107, 0, 0.45),
-                    0 0 22px rgba(255, 107, 0, 0.35) !important;
-                animation: pulseStart 2.5s ease-in-out infinite !important;
+                    0 8px 28px rgba(255, 106, 26, 0.55),
+                    0 0 40px rgba(255, 106, 26, 0.35) !important;
+                animation: btn-pulse-s1 2.2s ease-in-out infinite !important;
             }
 
             #s1 .btn-start::after {
@@ -330,8 +686,8 @@
         <div id="slide-counter"></div>
 
         <div id="logo">
-            <img src="https://i.imgur.com/c1m4CIy.png" alt="Tecno-Cursos" referrerpolicy="no-referrer"
-                onerror="this.onerror=null;this.src='https://imgur.com/c1m4CIy.png'">
+            <img src="imagens/c1m4CIy.png" alt="Tecno-Cursos" referrerpolicy="no-referrer"
+                onerror="this.onerror=null;this.src='imagens/c1m4CIy.png'">
         </div>
 
         <div id="slides">
@@ -343,8 +699,8 @@
                     <p style="line-height: 1.5 !important;">Operação segura, prevenção de riscos e procedimentos corretos para os dois principais modelos de empilhadeira contrabalançada.
                     </p>
                     <div class="s1-hero-img">
-                        <img src="https://i.imgur.com/YDreo6Y.jpg" alt="Capa Treinamento" referrerpolicy="no-referrer"
-                            onerror="this.onerror=null;this.src='https://imgur.com/YDreo6Y.jpg'">
+                        <img src="imagens/YDreo6Y.jpg" alt="Capa Treinamento" referrerpolicy="no-referrer"
+                            onerror="this.onerror=null;this.src='imagens/YDreo6Y.jpg'">
                     </div>
                     <button class="btn-start" onclick="startCourse()">
                         <svg viewBox="0 0 20 20" fill="currentColor" width="18" height="18">
@@ -415,7 +771,7 @@
                     <div class="video-wrap req-item"
                         style="max-width: 1240px; margin-top: 40px; box-shadow: 0 40px 80px rgba(0,0,0,0.9), 0 0 60px rgba(230, 81, 0, 0.3); border: 1px solid rgba(230, 81, 0, 0.4); border-radius: 12px; transform: translateZ(0);">
                         <iframe id="vimeo-s1b"
-                            src="https://player.vimeo.com/video/1210571162?title=0&byline=0&portrait=0&badge=0&autopause=0&player_id=0&app_id=58479&controls=1&transparent=0&dnt=1"
+                            src="https://www.youtube.com/embed/uuhBLx38efc?enablejsapi=1&rel=0&modestbranding=1&playsinline=1"
                             frameborder="0" allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen title="INTRODUÇÃO"></iframe>
                     </div>
 
@@ -550,14 +906,15 @@
                     class="tutorial-video-wrap"
                     style="padding:56.25% 0 0 0;position:relative; border-radius: 8px; overflow: hidden; margin: 5px 0;">
                     <iframe
-                        src="https://player.vimeo.com/video/1200401221?badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479"
+                        id="tutorial-yt"
+                        src="https://www.youtube.com/embed/OWapmAu3780?enablejsapi=1&rel=0&modestbranding=1&playsinline=1"
                         frameborder="0"
-                        allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media; web-share"
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
                         referrerpolicy="strict-origin-when-cross-origin"
                         style="position:absolute;top:0;left:0;width:100%;height:100%;"
-                        title="TUTORIAL TREINAMENTOS V2 LIBRAS"></iframe>
+                        allowfullscreen
+                        title="TUTORIAL TREINAMENTOS"></iframe>
                 </div>
-                <script src="https://player.vimeo.com/api/player.js"></script>
 
                 <!-- FOOTER -->
                 <div
@@ -578,17 +935,69 @@
             </div>
         </div>
 
+        <!-- Modal Aviso Importante (depois do tutorial) -->
+        <div class="img-modal-overlay" id="avisoModal" style="z-index: 10001;">
+            <div class="aviso-card" role="dialog" aria-modal="true" aria-labelledby="avisoModalTitle">
+                <div class="aviso-accent" aria-hidden="true"></div>
+                <div class="aviso-inner">
+                    <div class="aviso-header">
+                        <div class="aviso-icon" aria-hidden="true">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"
+                                stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M12 9v4" />
+                                <path d="M12 17h.01" />
+                                <path d="M10.29 3.86 1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z" />
+                            </svg>
+                        </div>
+                        <div class="aviso-badge">Aviso importante</div>
+                        <h2 class="aviso-title" id="avisoModalTitle">Atenção</h2>
+                    </div>
+                    <div class="aviso-list">
+                        <p class="aviso-item">Para garantir o registro correto da sua conclusão, este treinamento deve ser assistido e concluído integralmente em uma única sessão.</p>
+                        <p class="aviso-item">Caso o treinamento seja fechado antes da conclusão, o progresso poderá não ser salvo, sendo necessário iniciá-lo novamente.</p>
+                        <p class="aviso-item">Antes de iniciar, certifique-se de que possui tempo suficiente para concluir o treinamento e uma conexão estável com a internet, evitando interrupções durante a realização.</p>
+                    </div>
+                    <div class="aviso-footer">
+                        <button type="button" id="btnAvisoClose"
+                            onclick="try{if(window.playTechClick) playTechClick();}catch(e){} closeAvisoModal()">
+                            Eu compreendo
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
         <script>
+            function openAvisoModal() {
+                const aviso = document.getElementById('avisoModal');
+                if (!aviso) return;
+                aviso.classList.add('active');
+                setTimeout(() => { if (typeof playBeep === 'function') playBeep('flip'); }, 200);
+            }
+            window.openAvisoModal = openAvisoModal;
+
+            function closeAvisoModal() {
+                const aviso = document.getElementById('avisoModal');
+                if (aviso) aviso.classList.remove('active');
+            }
+
+            // Só no fluxo inicial: fechar tutorial → abrir aviso.
+            // Depois, cada botão abre só o próprio modal.
+            let chainWarningAfterTutorial = true;
+
             function closeTutorialModal(e) {
                 const modal = document.getElementById('tutorialModal');
                 if (modal) {
                     modal.classList.remove('active');
-                    // Stop iframe video when closed
                     const iframe = modal.querySelector('iframe');
                     if (iframe) {
                         const src = iframe.src;
                         iframe.src = src;
                     }
+                }
+                if (chainWarningAfterTutorial) {
+                    chainWarningAfterTutorial = false;
+                    setTimeout(openAvisoModal, 280);
                 }
             }
 
@@ -605,13 +1014,36 @@
                 }, 800);
             });
 
-            // Script do Vimeo Player para reset e pause
-            const tutorialPlayer = new Vimeo.Player(document.querySelector('#tutorialModal iframe'));
-            tutorialPlayer.on('ended', function () {
-                tutorialPlayer.setCurrentTime(0).then(() => {
-                    tutorialPlayer.pause();
-                });
-            });
+            // YouTube Player — ao terminar, volta ao início e pausa
+            (function setupTutorialYouTube() {
+                function bindPlayer() {
+                    if (!window.YT || !YT.Player) return false;
+                    new YT.Player('tutorial-yt', {
+                        events: {
+                            onStateChange: function (e) {
+                                if (e.data === YT.PlayerState.ENDED) {
+                                    try {
+                                        e.target.seekTo(0, true);
+                                        e.target.pauseVideo();
+                                    } catch (err) { }
+                                }
+                            }
+                        }
+                    });
+                    return true;
+                }
+                if (bindPlayer()) return;
+                var prev = window.onYouTubeIframeAPIReady;
+                window.onYouTubeIframeAPIReady = function () {
+                    if (typeof prev === 'function') prev();
+                    bindPlayer();
+                };
+                if (!document.querySelector('script[src*="youtube.com/iframe_api"]')) {
+                    var tag = document.createElement('script');
+                    tag.src = 'https://www.youtube.com/iframe_api';
+                    document.head.appendChild(tag);
+                }
+            })();
         </script>
 
     </div><!-- fecha #app -->

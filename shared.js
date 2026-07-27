@@ -1,4 +1,4 @@
-/* ============================================================
+﻿/* ============================================================
    NR 11 — EMPILHADEIRA ELÉTRICA RETRÁTIL E COMBUSTÃO — Shared logic (split refactor)
    ============================================================ */
 function openImageModal(src) {
@@ -14,6 +14,104 @@ function closeImageModal(e) {
     modal.classList.remove('active');
 }
 
+/* ── Mobile: setinha para rolar conteúdo cortado ── */
+const _slideScrollBtns = {};
+const _SCROLL_BTN_SVG = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="6 9 12 15 18 9"/></svg>';
+
+window.scrollSlideDown = function (slideId) {
+    const cfg = _slideScrollBtns[slideId];
+    const area = cfg ? cfg.area : document.querySelector('#' + slideId + ' .content-area');
+    if (!area) return;
+    area.scrollTo({ top: area.scrollHeight, behavior: 'smooth' });
+};
+
+function updateSlideScrollBtn(slideId) {
+    const cfg = _slideScrollBtns[slideId];
+    if (!cfg) return;
+    if (!window.matchMedia('(max-width: 768px)').matches) {
+        cfg.btn.classList.add('is-hidden');
+        return;
+    }
+    // Páginas que são só carrossel (sem precisar rolar verticalmente) escondem a setinha.
+    // Páginas mistas (ex.: imagem + carrossel) continuam mostrando quando há overflow.
+    const slide = document.getElementById(slideId);
+    const hasCarousel = !!(slide && slide.querySelector('[class*="-carousel-nav"]'));
+    const needsScroll = cfg.area.scrollHeight > cfg.area.clientHeight + 8;
+    if (hasCarousel && !needsScroll) {
+        cfg.btn.classList.add('is-hidden');
+        return;
+    }
+    const atBottom = cfg.area.scrollTop + cfg.area.clientHeight >= cfg.area.scrollHeight - 8;
+    cfg.btn.classList.toggle('is-hidden', !needsScroll || atBottom);
+}
+
+window.updateSlideScrollBtn = updateSlideScrollBtn;
+
+function refreshActiveSlideScrollBtn() {
+    const active = document.querySelector('.slide.active');
+    if (active && active.id) updateSlideScrollBtn(active.id);
+}
+
+function scheduleScrollBtnRefresh() {
+    requestAnimationFrame(refreshActiveSlideScrollBtn);
+    setTimeout(refreshActiveSlideScrollBtn, 80);
+    setTimeout(refreshActiveSlideScrollBtn, 320);
+}
+
+window.refreshActiveSlideScrollBtn = refreshActiveSlideScrollBtn;
+window.scheduleScrollBtnRefresh = scheduleScrollBtnRefresh;
+
+function registerSlideScrollBtn(slideId, btn, area) {
+    if (_slideScrollBtns[slideId]) return;
+    _slideScrollBtns[slideId] = { btn, area };
+    if (!btn.onclick) {
+        btn.addEventListener('click', function (e) {
+            e.preventDefault();
+            scrollSlideDown(slideId);
+        });
+    }
+    area.addEventListener('scroll', function () { updateSlideScrollBtn(slideId); }, { passive: true });
+    if (typeof ResizeObserver !== 'undefined') {
+        const ro = new ResizeObserver(function () { updateSlideScrollBtn(slideId); });
+        ro.observe(area);
+    }
+    if (typeof MutationObserver !== 'undefined') {
+        const mo = new MutationObserver(function () { scheduleScrollBtnRefresh(); });
+        mo.observe(area, { childList: true, subtree: true, attributes: true, characterData: true });
+    }
+    updateSlideScrollBtn(slideId);
+}
+
+function ensureSlideScrollBtn(slide) {
+    const slideId = slide.id;
+    if (!slideId) return;
+    const area = slide.querySelector('.content-area');
+    if (!area) return;
+
+    let btn = slide.querySelector(':scope > .slide-scroll-btn');
+    if (!btn) {
+        btn = document.createElement('button');
+        btn.type = 'button';
+        btn.className = 'slide-scroll-btn is-hidden';
+        btn.setAttribute('aria-label', 'Rolar para baixo');
+        btn.innerHTML = _SCROLL_BTN_SVG;
+        slide.appendChild(btn);
+    }
+    registerSlideScrollBtn(slideId, btn, area);
+}
+
+function initAllSlideScrollBtns() {
+    document.querySelectorAll('.slide').forEach(ensureSlideScrollBtn);
+}
+
+initAllSlideScrollBtns();
+window.addEventListener('resize', refreshActiveSlideScrollBtn);
+const _scrollBtnMq = window.matchMedia('(max-width: 768px)');
+if (_scrollBtnMq.addEventListener) {
+    _scrollBtnMq.addEventListener('change', refreshActiveSlideScrollBtn);
+} else if (_scrollBtnMq.addListener) {
+    _scrollBtnMq.addListener(refreshActiveSlideScrollBtn);
+}
 
 /* ════════════════════════════════════════
    NAVIGATION CORE
@@ -245,6 +343,11 @@ window.addEventListener('keydown', (e) => {
     }
 });
 
+function isCourseVideoSrc(src) {
+    src = src || '';
+    return src.indexOf('youtube.com') !== -1 || src.indexOf('youtu.be') !== -1 || src.indexOf('vimeo.com') !== -1;
+}
+
 function slideHasVimeoVideo(slide) {
     if (!slide) return false;
     var wrap = slide.querySelector('.video-wrap');
@@ -252,7 +355,7 @@ function slideHasVimeoVideo(slide) {
     var iframe = wrap.querySelector('iframe');
     if (!iframe) return false;
     var src = iframe.getAttribute('src') || '';
-    return !!(iframe.dataset.vimeoSrc || iframe.dataset.vimeoPrepared || src.indexOf('vimeo') !== -1);
+    return !!(iframe.dataset.vimeoSrc || iframe.dataset.vimeoPrepared || isCourseVideoSrc(src));
 }
 
 function isVideoSlidePending(slide) {
@@ -264,7 +367,7 @@ function isVideoSlidePending(slide) {
 function ensureVideoSlideReqItems() {
     document.querySelectorAll('.slide .video-wrap iframe').forEach(function (iframe) {
         var src = iframe.getAttribute('src') || '';
-        if (!iframe.dataset.vimeoSrc && !iframe.dataset.vimeoPrepared && src.indexOf('vimeo') === -1) return;
+        if (!iframe.dataset.vimeoSrc && !iframe.dataset.vimeoPrepared && !isCourseVideoSrc(src)) return;
         var wrap = iframe.closest('.video-wrap');
         if (wrap) wrap.classList.add('req-item');
     });
@@ -305,28 +408,60 @@ function updateNextButton() {
     btnFwd.setAttribute('aria-disabled', btnFwd.disabled ? 'true' : 'false');
 }
 
-/* ── Slide video lazy load (Vimeo iframes + video preload) ── */
+/* ── Slide video lazy load (YouTube iframes + video preload) ── */
 var SLIDE_VIDEO_BLANK = 'about:blank';
 var _videoWrapInited = new Set();
+var _ytApiPromise = null;
+var VIDEO_UNLOCK_REMAINING_SECONDS = 3;
+
+function getYouTubeIdFromSrc(src) {
+    src = src || '';
+    var m = src.match(/youtube\.com\/embed\/([^?&/"']+)/) ||
+        src.match(/youtu\.be\/([^?&/"']+)/) ||
+        src.match(/[?&]v=([^?&/"']+)/);
+    return m ? m[1] : null;
+}
 
 function getVimeoIdFromSrc(src) {
     var m = (src || '').match(/vimeo\.com\/video\/(\d+)/);
     return m ? m[1] : null;
 }
 
-function isLoadedVimeoIframe(iframe) {
+function isLoadedCourseVideoIframe(iframe) {
     var src = iframe.getAttribute('src') || '';
-    return src.indexOf('vimeo') !== -1 && src !== SLIDE_VIDEO_BLANK;
+    return isCourseVideoSrc(src) && src !== SLIDE_VIDEO_BLANK;
 }
 
-function ensureVideoPoster(wrap, vimeoSrc) {
+function ensureYouTubeApi() {
+    if (window.YT && window.YT.Player) return Promise.resolve();
+    if (_ytApiPromise) return _ytApiPromise;
+    _ytApiPromise = new Promise(function (resolve) {
+        var prev = window.onYouTubeIframeAPIReady;
+        window.onYouTubeIframeAPIReady = function () {
+            if (typeof prev === 'function') prev();
+            resolve();
+        };
+        if (!document.querySelector('script[src*="youtube.com/iframe_api"]')) {
+            var tag = document.createElement('script');
+            tag.src = 'https://www.youtube.com/iframe_api';
+            document.head.appendChild(tag);
+        }
+        if (window.YT && window.YT.Player) resolve();
+    });
+    return _ytApiPromise;
+}
+
+function ensureVideoPoster(wrap, videoSrc) {
     if (!wrap || wrap.querySelector('.video-poster')) return;
-    var id = getVimeoIdFromSrc(vimeoSrc);
-    if (!id) return;
+    var ytId = getYouTubeIdFromSrc(videoSrc);
+    var vimeoId = getVimeoIdFromSrc(videoSrc);
+    if (!ytId && !vimeoId) return;
     var poster = document.createElement('img');
     poster.className = 'video-poster';
     poster.alt = '';
-    poster.src = 'https://vumbnail.com/' + id + '.jpg';
+    poster.src = ytId
+        ? ('https://img.youtube.com/vi/' + ytId + '/hqdefault.jpg')
+        : ('https://vumbnail.com/' + vimeoId + '.jpg');
     poster.decoding = 'async';
     var iframe = wrap.querySelector('iframe');
     if (iframe) wrap.insertBefore(poster, iframe);
@@ -338,11 +473,24 @@ function setVideoPosterVisible(wrap, visible) {
     if (poster) poster.style.display = visible ? 'block' : 'none';
 }
 
+function normalizeCourseVideoSrc(src) {
+    src = src || '';
+    if (src.indexOf('youtube.com') === -1 && src.indexOf('youtu.be') === -1) return src;
+    try {
+        if (location.protocol !== 'file:' && src.indexOf('origin=') === -1) {
+            src += (src.indexOf('?') >= 0 ? '&' : '?') + 'origin=' + encodeURIComponent(location.origin);
+        }
+    } catch (e) { }
+    return src;
+}
+
 function prepareVimeoIframe(iframe) {
     if (!iframe || iframe.dataset.vimeoPrepared) return;
+    if (!iframe.closest('.video-wrap')) return;
     var src = iframe.getAttribute('src');
-    if (!src || src === SLIDE_VIDEO_BLANK || src.indexOf('vimeo') === -1) return;
-    iframe.dataset.vimeoSrc = src;
+    if (!src || src === SLIDE_VIDEO_BLANK || !isCourseVideoSrc(src)) return;
+    iframe.dataset.vimeoSrc = normalizeCourseVideoSrc(src);
+    iframe.setAttribute('referrerpolicy', 'strict-origin-when-cross-origin');
     iframe.removeAttribute('src');
     iframe.dataset.vimeoPrepared = '1';
     var wrap = iframe.closest('.video-wrap');
@@ -356,8 +504,11 @@ function prepareVimeoIframe(iframe) {
 function pauseVimeoIframe(iframe) {
     if (!iframe) return;
     try {
-        if (typeof Vimeo === 'undefined') return;
-        if (isLoadedVimeoIframe(iframe)) {
+        if (iframe._ytPlayer && typeof iframe._ytPlayer.pauseVideo === 'function') {
+            iframe._ytPlayer.pauseVideo();
+            return;
+        }
+        if (typeof Vimeo !== 'undefined' && isLoadedCourseVideoIframe(iframe) && (iframe.getAttribute('src') || '').indexOf('vimeo') !== -1) {
             new Vimeo.Player(iframe).pause().catch(function () { });
         }
     } catch (e) { }
@@ -375,16 +526,22 @@ function unloadVimeoIframe(iframe) {
     if (!iframe.dataset.vimeoSrc) return;
     var wrap = iframe.closest('.video-wrap');
     if (wrap) {
+        if (wrap._ytPoll) {
+            clearInterval(wrap._ytPoll);
+            wrap._ytPoll = null;
+        }
         _videoWrapInited.delete(wrap);
         wrap.classList.remove('req-done');
     }
+    try { iframe._ytPlayer = null; } catch (e) { }
     iframe.setAttribute('src', SLIDE_VIDEO_BLANK);
     setVideoPosterVisible(wrap, true);
 }
 
 function loadVimeoIframe(iframe) {
-    var src = iframe.dataset.vimeoSrc;
+    var src = normalizeCourseVideoSrc(iframe.dataset.vimeoSrc || '');
     if (!src) return;
+    iframe.setAttribute('referrerpolicy', 'strict-origin-when-cross-origin');
     var current = iframe.getAttribute('src') || '';
     if (current === src) {
         var wrapLoaded = iframe.closest('.video-wrap');
@@ -405,18 +562,24 @@ function loadVimeoIframe(iframe) {
     }
 }
 
+function markVideoWrapDone(wrap, warn) {
+    if (!wrap || wrap.classList.contains('req-done')) return;
+    wrap.classList.add('req-done');
+    if (warn) warn.style.display = 'none';
+    updateNextButton();
+    try { playBeep('end'); } catch (e) { }
+}
+
 function initVideoWrapPlayer(wrap) {
     if (!wrap) return;
     var iframe = wrap.querySelector('iframe');
-    if (!iframe || !isLoadedVimeoIframe(iframe)) return;
-    if (typeof Vimeo === 'undefined') return;
+    if (!iframe || !isLoadedCourseVideoIframe(iframe)) return;
 
     wrap.classList.add('req-item');
     wrap.classList.remove('req-done');
     updateNextButton();
 
     if (_videoWrapInited.has(wrap)) return;
-
     _videoWrapInited.add(wrap);
     wrap.style.cursor = 'default';
 
@@ -428,53 +591,83 @@ function initVideoWrapPlayer(wrap) {
         wrap.appendChild(warn);
     }
 
-    var player = new Vimeo.Player(iframe);
-    var maxWatched = 0;
-
-    var enforceTime = function (data) {
-        if (data.seconds > maxWatched + 1) {
-            player.setCurrentTime(maxWatched);
-        }
-    };
-
-    player.on('timeupdate', function (data) {
-        if (data.seconds > maxWatched + 1) {
-            player.setCurrentTime(maxWatched);
-            return;
-        }
-        if (data.seconds > maxWatched && (data.seconds - maxWatched) < 1.5) {
-            maxWatched = data.seconds;
-        }
-    });
-
-    player.on('seeking', enforceTime);
-    player.on('seeked', enforceTime);
-
-    player.on('play', function () {
-        warn.style.opacity = '0';
-        warn.style.pointerEvents = 'none';
-        player.getCurrentTime().then(function (seconds) {
-            if (seconds > maxWatched + 1) player.setCurrentTime(maxWatched);
-        });
-    });
-
-    player.on('pause', function () {
-        if (!wrap.classList.contains('req-done')) {
-            warn.style.opacity = '1';
-            warn.style.pointerEvents = 'auto';
-        }
-    });
-
-    player.on('ended', function () {
-        wrap.classList.add('req-done');
-        warn.style.display = 'none';
-        updateNextButton();
-        try { playBeep('end'); } catch (e) { }
-        try {
-            player.pause().then(function () {
-                return player.setCurrentTime(0);
+    var src = iframe.getAttribute('src') || '';
+    if (src.indexOf('youtube') === -1 && src.indexOf('youtu.be') === -1) {
+        // fallback Vimeo (não usado nos vídeos do curso)
+        if (typeof Vimeo === 'undefined') return;
+        var vPlayer = new Vimeo.Player(iframe);
+        var maxWatchedV = 0;
+        vPlayer.on('timeupdate', function (data) {
+            if (data.seconds > maxWatchedV + 1) {
+                vPlayer.setCurrentTime(maxWatchedV);
+                return;
+            }
+            if (data.seconds > maxWatchedV && (data.seconds - maxWatchedV) < 1.5) maxWatchedV = data.seconds;
+            vPlayer.getDuration().then(function (duration) {
+                if (duration > 0 && (duration - data.seconds) <= VIDEO_UNLOCK_REMAINING_SECONDS) {
+                    markVideoWrapDone(wrap, warn);
+                }
             }).catch(function () { });
-        } catch (e) { }
+        });
+        vPlayer.on('ended', function () { markVideoWrapDone(wrap, warn); });
+        return;
+    }
+
+    ensureYouTubeApi().then(function () {
+        if (!iframe.isConnected) return;
+        if (!iframe.id) iframe.id = 'yt-' + Math.random().toString(36).slice(2, 10);
+
+        var maxWatched = 0;
+        var player = new YT.Player(iframe.id, {
+            events: {
+                onReady: function (e) {
+                    iframe._ytPlayer = e.target;
+                    if (wrap._ytPoll) clearInterval(wrap._ytPoll);
+                    wrap._ytPoll = setInterval(function () {
+                        try {
+                            if (!iframe._ytPlayer || typeof iframe._ytPlayer.getCurrentTime !== 'function') return;
+                            var seconds = iframe._ytPlayer.getCurrentTime() || 0;
+                            var duration = iframe._ytPlayer.getDuration() || 0;
+                            var state = iframe._ytPlayer.getPlayerState();
+
+                            if (seconds > maxWatched + 1.25) {
+                                iframe._ytPlayer.seekTo(maxWatched, true);
+                                return;
+                            }
+                            if (state === YT.PlayerState.PLAYING) {
+                                if (seconds > maxWatched) maxWatched = seconds;
+                                warn.style.opacity = '0';
+                                warn.style.pointerEvents = 'none';
+                            } else if (state === YT.PlayerState.PAUSED && !wrap.classList.contains('req-done')) {
+                                warn.style.opacity = '1';
+                                warn.style.pointerEvents = 'auto';
+                            }
+
+                            if (duration > 0 && (duration - seconds) <= VIDEO_UNLOCK_REMAINING_SECONDS) {
+                                markVideoWrapDone(wrap, warn);
+                            }
+                            if (state === YT.PlayerState.ENDED) {
+                                markVideoWrapDone(wrap, warn);
+                            }
+                        } catch (err) { }
+                    }, 250);
+                },
+                onStateChange: function (e) {
+                    if (e.data === YT.PlayerState.ENDED) {
+                        markVideoWrapDone(wrap, warn);
+                    }
+                    if (e.data === YT.PlayerState.PLAYING) {
+                        warn.style.opacity = '0';
+                        warn.style.pointerEvents = 'none';
+                    }
+                    if (e.data === YT.PlayerState.PAUSED && !wrap.classList.contains('req-done')) {
+                        warn.style.opacity = '1';
+                        warn.style.pointerEvents = 'auto';
+                    }
+                }
+            }
+        });
+        iframe._ytPlayer = player;
     });
 }
 
@@ -483,16 +676,16 @@ function syncSlideVideos(activeIdx) {
     var slides = document.querySelectorAll('.slide');
     if (!slides.length) return;
     slides.forEach(function (slide, i) {
-        slide.querySelectorAll('iframe').forEach(prepareVimeoIframe);
+        slide.querySelectorAll('.video-wrap iframe').forEach(prepareVimeoIframe);
         if (i === activeIdx) {
             slide.querySelectorAll('.video-wrap').forEach(function (wrap) {
-                if (wrap.querySelector('iframe[data-vimeo-prepared], iframe[src*="vimeo"]')) {
+                if (wrap.querySelector('iframe[data-vimeo-prepared], iframe[src*="youtube"], iframe[src*="youtu.be"], iframe[src*="vimeo"]')) {
                     wrap.classList.add('req-item');
                     wrap.classList.remove('req-done');
                 }
             });
         }
-        slide.querySelectorAll('iframe[data-vimeo-prepared]').forEach(function (iframe) {
+        slide.querySelectorAll('.video-wrap iframe[data-vimeo-prepared]').forEach(function (iframe) {
             if (i === activeIdx) {
                 loadVimeoIframe(iframe);
             } else {
@@ -567,6 +760,7 @@ function goTo(idx, force = false, skipHistory = false) {
     try { syncSlideVideos(currentSlide); } catch (e) { }
     updateNextButton();
     try { window.updateQuizAudioHelper(); } catch (e) { }
+    try { scheduleScrollBtnRefresh(); } catch (e) { }
     // Slide index not persisted
 }
 
@@ -668,23 +862,24 @@ function playBeep(type) {
         gain.gain.exponentialRampToValueAtTime(0.01, now + 0.08);
         osc.start(now); osc.stop(now + 0.08);
     } else if (type === 'ok') {
-        // Feedback positivo (acorde arpejado moderno)
-        osc.type = 'triangle';
-        osc.frequency.setValueAtTime(440, now);
-        osc.frequency.setValueAtTime(554.37, now + 0.1);
-        osc.frequency.setValueAtTime(659.25, now + 0.2);
-        osc.frequency.setValueAtTime(880, now + 0.3);
-        gain.gain.setValueAtTime(0.1, now);
-        gain.gain.linearRampToValueAtTime(0.01, now + 0.6);
-        osc.start(now); osc.stop(now + 0.6);
-    } else if (type === 'nok') {
-        // Feedback negativo suave e não assustador
+        // Acerto: acorde ascendente claro (dó–mi–sol)
         osc.type = 'sine';
-        osc.frequency.setValueAtTime(300, now);
-        osc.frequency.exponentialRampToValueAtTime(250, now + 0.3);
-        gain.gain.setValueAtTime(0.1, now);
-        gain.gain.linearRampToValueAtTime(0.01, now + 0.4);
-        osc.start(now); osc.stop(now + 0.4);
+        osc.frequency.setValueAtTime(523.25, now);
+        osc.frequency.setValueAtTime(659.25, now + 0.09);
+        osc.frequency.setValueAtTime(783.99, now + 0.18);
+        gain.gain.setValueAtTime(0.0001, now);
+        gain.gain.exponentialRampToValueAtTime(0.16, now + 0.02);
+        gain.gain.exponentialRampToValueAtTime(0.0001, now + 0.4);
+        osc.start(now); osc.stop(now + 0.42);
+    } else if (type === 'nok') {
+        // Erro: tom descendente grave
+        osc.type = 'triangle';
+        osc.frequency.setValueAtTime(320, now);
+        osc.frequency.exponentialRampToValueAtTime(140, now + 0.28);
+        gain.gain.setValueAtTime(0.0001, now);
+        gain.gain.exponentialRampToValueAtTime(0.14, now + 0.02);
+        gain.gain.exponentialRampToValueAtTime(0.0001, now + 0.34);
+        osc.start(now); osc.stop(now + 0.36);
     } else if (type === 'end') {
         osc.type = 'sine';
         osc.frequency.setValueAtTime(440, now);
@@ -752,7 +947,7 @@ function initFlipCardInteractions() {
 initFlipCardInteractions();
 
 /* ── Reset de estado visual das respostas (quizzes/atividades) ── */
-var ANSWER_STATE_CLASSES = ['selected', 'active', 'correct', 'wrong', 'checked', 'selected-true', 'selected-false', 'selected-visual'];
+var ANSWER_STATE_CLASSES = ['selected', 'active', 'correct', 'wrong', 'checked', 'selected-true', 'selected-false', 'selected-visual', 'muted', 'answered'];
 
 function clearAnswerState(el) {
     if (!el) return;
@@ -785,6 +980,8 @@ function quizIsMobile() {
 
 function createQuizEngine(prefix, questions, numDots) {
     let idx = 0, answered = false, score = 0, selectedOptIdx = -1;
+    let wrongTopics = [];
+    const isM1Quiz = function () { return prefix === 'q1'; };
 
     const _stateKey = () => 'nr11_' + getPageKey() + '_' + prefix + '_state';
     function _saveState() {
@@ -792,6 +989,23 @@ function createQuizEngine(prefix, questions, numDots) {
     }
     function _loadState() {
         return null;
+    }
+
+    function uniqueTopics(list) {
+        const seen = {};
+        const out = [];
+        list.forEach(function (t) {
+            if (!t || seen[t]) return;
+            seen[t] = true;
+            out.push(t);
+        });
+        return out;
+    }
+
+    function getMinCorrect() {
+        if (prefix === 'q1') return 2;
+        if (prefix === 'q5') return Math.ceil(questions.length * 0.70);
+        return Math.ceil(questions.length * 0.60);
     }
 
     function start() {
@@ -960,12 +1174,20 @@ function createQuizEngine(prefix, questions, numDots) {
         allOpts.forEach(function (o) {
             clearAnswerState(o);
             o.style.pointerEvents = 'none';
+            o.classList.add('answered');
         });
         const fb = document.getElementById(prefix + '-feedback');
+
+        function setOptIcon(el, icon) {
+            if (!el) return;
+            const letter = el.querySelector('.opt-l');
+            if (letter) letter.textContent = icon;
+        }
 
         if (selectedOptIdx === q.correct) {
             // removed persistence
             allOpts[selectedOptIdx].classList.add('correct');
+            setOptIcon(allOpts[selectedOptIdx], '✓');
             if (fb) {
                 fb.textContent = q.feedback_ok;
                 fb.className = 'q-feedback ok';
@@ -975,7 +1197,12 @@ function createQuizEngine(prefix, questions, numDots) {
             score++; playBeep('ok');
         } else {
             allOpts[selectedOptIdx].classList.add('wrong');
-            if (allOpts[q.correct]) allOpts[q.correct].classList.add('correct');
+            setOptIcon(allOpts[selectedOptIdx], '✕');
+            if (allOpts[q.correct]) {
+                allOpts[q.correct].classList.add('correct');
+                setOptIcon(allOpts[q.correct], '✓');
+            }
+            if (q.topic || q.cat) wrongTopics.push(q.topic || q.cat);
             if (fb) {
                 fb.textContent = q.feedback_nok;
                 fb.className = 'q-feedback nok';
@@ -984,6 +1211,13 @@ function createQuizEngine(prefix, questions, numDots) {
             }
             playBeep('nok');
         }
+
+        allOpts.forEach(function (o) {
+            if (!o.classList.contains('correct') && !o.classList.contains('wrong')) {
+                o.classList.add('muted');
+            }
+        });
+
         const btn = document.getElementById('btn-next-' + prefix);
         if (btn) {
             btn.className = 'btn-next-q show';
@@ -993,6 +1227,8 @@ function createQuizEngine(prefix, questions, numDots) {
                 btn.textContent = quizIsMobile() ? 'PRÓXIMA PERGUNTA →' : 'Próximo Cenário ▶';
             }
         }
+
+        try { if (typeof scheduleScrollBtnRefresh === 'function') scheduleScrollBtnRefresh(); } catch (e) { }
 
         // Scroll após feedback
         setTimeout(function () {
@@ -1026,25 +1262,28 @@ function createQuizEngine(prefix, questions, numDots) {
         const rPanel = document.getElementById(prefix + '-result-panel');
         if (rPanel) {
             rPanel.style.display = 'block';
+            rPanel.classList.add('is-visible');
             rPanel.classList.remove('q-result-anim');
             void rPanel.offsetWidth;
             rPanel.classList.add('q-result-anim');
         }
+        const minCorrect = getMinCorrect();
+        const approved = score >= minCorrect;
         const pct = score / questions.length;
-        const approved = prefix === 'q5' ? pct >= 0.70 : pct >= 0.60;
         const pctEl = document.getElementById(prefix + '-pct');
         if (pctEl) { pctEl.textContent = Math.round(pct * 100) + '%'; pctEl.className = 'result-pct ' + (approved ? 'green' : 'red-c'); }
         const starsEl = document.getElementById(prefix + '-stars');
         if (starsEl) {
-            starsEl.textContent = pct === 1 ? '⭐⭐⭐' : pct >= 0.60 ? '⭐⭐' : '⭐';
+            starsEl.textContent = pct === 1 ? '⭐⭐⭐' : approved ? '⭐⭐' : '⭐';
             starsEl.classList.remove('stars-anim');
             void starsEl.offsetWidth;
             starsEl.classList.add('stars-anim');
         }
         const status = document.getElementById(prefix + '-status');
         if (status) {
-            if (false) {
-                // removido
+            if (isM1Quiz()) {
+                status.textContent = approved ? 'Desafio Concluído!' : 'Desafio não concluído';
+                status.className = 'quiz-result-title r-status ' + (approved ? 'ap' : 'ref');
             } else {
                 status.textContent = approved ? '✅ Aprovado!' : '❌ Quase lá!';
                 status.className = 'r-status ' + (approved ? 'ap' : 'ref');
@@ -1052,22 +1291,71 @@ function createQuizEngine(prefix, questions, numDots) {
         }
         const sub = document.getElementById(prefix + '-sub');
         if (sub) {
-            sub.textContent = `Você acertou ${score} de ${questions.length} questões.` + (approved ? ' Parabéns!' : ' Revise o módulo e tente novamente.');
+            if (isM1Quiz()) {
+                if (approved) {
+                    sub.textContent = 'Você acertou ' + score + ' de ' + questions.length + ' questões. Parabéns! Pode avançar para a próxima etapa.';
+                } else {
+                    sub.textContent = 'Você acertou ' + score + ' de ' + questions.length + ' questões. É necessário acertar pelo menos ' + minCorrect + ' questões. Estude e tente novamente.';
+                }
+            } else {
+                sub.textContent = 'Você acertou ' + score + ' de ' + questions.length + ' questões.' + (approved ? ' Parabéns!' : ' Revise o módulo e tente novamente.');
+            }
         }
+
+        if (isM1Quiz()) {
+            const reviewEl = document.getElementById(prefix + '-review');
+            const iconEl = document.getElementById(prefix + '-result-icon');
+            const retryBtn = document.getElementById(prefix + '-retry-btn');
+            const topics = uniqueTopics(wrongTopics);
+
+            if (iconEl) iconEl.textContent = approved ? '🏅' : '📚';
+            if (retryBtn) {
+                retryBtn.textContent = approved ? 'REVISAR DESAFIO' : 'JOGAR NOVAMENTE';
+                retryBtn.style.display = approved ? 'none' : 'inline-flex';
+            }
+
+            if (reviewEl) {
+                if (!approved && topics.length) {
+                    reviewEl.hidden = false;
+                    reviewEl.innerHTML = '<strong>Revise estes temas:</strong><ul>' +
+                        topics.map(function (t) { return '<li>' + t + '</li>'; }).join('') +
+                        '</ul>';
+                } else {
+                    reviewEl.hidden = true;
+                    reviewEl.innerHTML = '';
+                }
+            }
+
+            if (rPanel) {
+                rPanel.classList.toggle('is-approved', approved);
+                rPanel.classList.toggle('is-failed', !approved);
+            }
+        }
+
         // removed persistence
         updateNextButton();
         try { window.updateQuizAudioHelper(); } catch (e) { }
+        try { if (typeof scheduleScrollBtnRefresh === 'function') scheduleScrollBtnRefresh(); } catch (e) { }
     }
 
     function reset() {
         idx = 0; score = 0; answered = false; selectedOptIdx = -1;
+        wrongTopics = [];
         const introPanel = document.getElementById(prefix + '-intro-panel');
         const qPanel = document.getElementById(prefix + '-question-panel');
         const rPanel = document.getElementById(prefix + '-result-panel');
 
-        if (introPanel) introPanel.style.display = 'block';
-        if (qPanel) qPanel.style.display = 'none';
-        if (rPanel) rPanel.style.display = 'none';
+        if (qPanel) {
+            qPanel.style.display = 'none';
+            qPanel.style.opacity = '';
+        }
+        if (rPanel) {
+            rPanel.style.display = 'none';
+            rPanel.classList.remove('is-approved', 'is-failed', 'q-result-anim', 'is-visible');
+        }
+        if (introPanel) {
+            introPanel.style.display = isM1Quiz() ? 'flex' : 'block';
+        }
 
         const fb = document.getElementById(prefix + '-feedback');
         if (fb) { fb.className = 'q-feedback'; fb.textContent = ''; }
@@ -1078,10 +1366,14 @@ function createQuizEngine(prefix, questions, numDots) {
         const btn = document.getElementById('btn-next-' + prefix);
         if (btn) btn.className = 'btn-next-q';
 
+        const reviewEl = document.getElementById(prefix + '-review');
+        if (reviewEl) { reviewEl.hidden = true; reviewEl.innerHTML = ''; }
+
         // removed persistence
 
         render();
         try { window.updateQuizAudioHelper(); } catch (e) { }
+        try { if (typeof scheduleScrollBtnRefresh === 'function') scheduleScrollBtnRefresh(); } catch (e) { }
     }
 
     return { render, next, reset, selectAnswer, start, verify };
@@ -1094,6 +1386,7 @@ const q1_questions = [
     {
         q: "De acordo com a NR-11, qual é a validade do cartão de identificação do operador e o que é exigido para sua revalidação?",
         cat: "Habilitação",
+        topic: "Validade e revalidação do cartão de identificação",
         opts: [
             "Validade de 6 meses, com necessidade de novo teste prático.",
             "Validade de 1 (um) ano, devendo o empregado passar por exame de saúde completo.",
@@ -1106,6 +1399,7 @@ const q1_questions = [
     {
         q: "Na classificação de responsabilidade civil e criminal, como é definida a atitude de um operador que age sem a devida cautela (por exemplo, operando em excesso de velocidade)?",
         cat: "Responsabilidade e Culpa",
+        topic: "Tipos de culpa: Imprudência, Negligência e Imperícia",
         opts: [
             "Imprudência.",
             "Imperícia.",
@@ -1118,6 +1412,7 @@ const q1_questions = [
     {
         q: "Segundo o Artigo 482 da CLT, o que pode ocorrer com o operador que comete infrações ou atos inseguros de forma reincidente?",
         cat: "Penalidades Trabalhistas",
+        topic: "Penalidades trabalhistas (CLT Art. 482)",
         opts: [
             "Apenas a suspensão temporária do seu cartão de identificação.",
             "Receberá apenas advertências verbais, sem impacto no contrato.",
@@ -1201,6 +1496,7 @@ if (document.getElementById('q3-question-panel')) quiz3.render();
 try { syncSlideVideos(currentSlide); } catch (e) { }
 updateNextButton();
 try { window.updateQuizAudioHelper(); } catch (e) { }
+try { scheduleScrollBtnRefresh(); } catch (e) { }
 
 window.addEventListener('pagehide', pauseAllSlideVideos);
 
@@ -1367,165 +1663,238 @@ function playHUDBeep(type) {
 }
 
 const q2Data = [
-    { q: "Um operador transporta um palete com a carga a aproximadamente 15-20cm do solo durante todo o percurso.", ans: true, exp: "✅ Correto! A carga deve ser mantida baixa, a aproximadamente 15 a 20 cm do solo, garantindo equilíbrio e estabilidade." },
-    { q: "Uma empilhadeira opera em alta velocidade sob forte chuva com os faróis desligados.", ans: false, exp: "🟠 Ato inseguro! Na chuva, a velocidade deve ser reduzida e os faróis mantidos acesos para garantir visibilidade e avisar pedestres." },
-    { q: "Um colega de trabalho pega carona na lateral da empilhadeira durante a operação.", ans: false, exp: "🟠 Proibido! Não é permitido dar carona a outras pessoas. O veículo nunca deve ser usado como transporte de pedestres." },
-    { q: "Ao fim do expediente, o operador estaciona a empilhadeira em uma rampa.", ans: false, exp: "🟠 Ato inseguro! A norma proíbe terminantemente o estacionamento da empilhadeira em rampas e declives." },
-    { q: "Saindo fumaça do motor, o operador para a máquina, pede ajuda e usa o extintor da empilhadeira.", ans: true, exp: "✅ Correto! Em caso de incêndio, pedir ajuda e iniciar o combate com o extintor adequado é o procedimento correto." }
+    {
+        q: "Um operador transporta um palete com a carga a aproximadamente 15-20cm do solo durante todo o percurso.",
+        ans: true,
+        exp: "Correto! A carga deve ser mantida baixa, a aproximadamente 15 a 20 cm do solo, garantindo equilíbrio e estabilidade.",
+        topic: "Altura da carga durante o transporte",
+        img: "imagens/ioyL3zG.png"
+    },
+    {
+        q: "Uma empilhadeira opera em alta velocidade sob forte chuva com os faróis desligados.",
+        ans: false,
+        exp: "Ato inseguro! Na chuva, a velocidade deve ser reduzida e os faróis mantidos acesos para garantir visibilidade e avisar pedestres.",
+        topic: "Operação em condições climáticas adversas",
+        img: "imagens/5tuQ11z.jpg"
+    },
+    {
+        q: "Um colega de trabalho pega carona na lateral da empilhadeira durante a operação.",
+        ans: false,
+        exp: "Proibido! Não é permitido dar carona a outras pessoas. O veículo nunca deve ser usado como transporte de pedestres.",
+        topic: "Proibição de carona no equipamento",
+        img: "imagens/WIN4X4r.jpg"
+    },
+    {
+        q: "Ao fim do expediente, o operador estaciona a empilhadeira em uma rampa.",
+        ans: false,
+        exp: "Ato inseguro! A norma proíbe terminantemente o estacionamento da empilhadeira em rampas e declives.",
+        topic: "Estacionamento em rampas e declives",
+        img: "imagens/7vVEc2n.jpg"
+    },
+    {
+        q: "Saindo fumaça do motor, o operador para a máquina, pede ajuda e usa o extintor da empilhadeira.",
+        ans: true,
+        exp: "Correto! Em caso de incêndio, pedir ajuda e iniciar o combate com o extintor adequado é o procedimento correto.",
+        topic: "Procedimento em caso de princípio de incêndio",
+        img: "imagens/gpsz3rW.jpg"
+    }
 ];
 
 let currentQ2 = 0;
 let scoreQ2 = 0;
 let sq2Answered = false;
+let sq2Selected = null; // true | false | null
+let sq2WrongTopics = [];
 
-function sq2IsMobile() {
-    return window.matchMedia('(max-width: 768px)').matches;
-}
-
-function sq2ResetMobileOpts() {
-    const optTrue = document.getElementById('sq2-m-opt-true');
-    const optFalse = document.getElementById('sq2-m-opt-false');
+function sq2ResetOpts() {
+    const optTrue = document.getElementById('sq2-opt-true');
+    const optFalse = document.getElementById('sq2-opt-false');
     [optTrue, optFalse].forEach(function (o) {
         if (!o) return;
         o.className = 'q-opt';
         o.style.pointerEvents = '';
+        const letter = o.querySelector('.opt-l');
+        if (letter) letter.textContent = o.id === 'sq2-opt-true' ? 'A' : 'B';
     });
 }
 
-function sq2RenderMobileDots(idx) {
+function sq2HideVerify() {
+    const vCont = document.getElementById('sq2-verify-container');
+    if (!vCont) return;
+    vCont.style.display = 'none';
+    vCont.style.opacity = '0';
+    vCont.style.visibility = 'hidden';
+}
+
+function sq2ShowVerify() {
+    const vCont = document.getElementById('sq2-verify-container');
+    if (!vCont) return;
+    vCont.style.display = 'block';
+    setTimeout(function () {
+        vCont.style.opacity = '1';
+        vCont.style.visibility = 'visible';
+    }, 50);
+}
+
+function sq2RenderDots(idx) {
     for (let i = 0; i < q2Data.length; i++) {
-        const d = document.getElementById('sq2mdot' + i);
+        const d = document.getElementById('sq2dot' + i);
         if (!d) continue;
         d.className = 'qdot2' + (i < idx ? ' done' : '') + (i === idx ? ' cur' : '');
     }
 }
 
-function sq2FormatFeedback(correct, exp) {
-    const header = correct ? '✓ RESPOSTA CORRETA' : '✕ RESPOSTA INCORRETA';
-    const cls = correct ? 'success' : 'error';
-    return '<div class="quiz-feedback ' + cls + '">' + header + '</div>'
-        + '<div class="quiz-feedback-exp">' + exp + '</div>';
-}
-
 function startQuiz2Intro() {
     const intro = document.getElementById('sq2-intro-panel');
     const panel = document.getElementById('sq2-question-panel');
+    const result = document.getElementById('sq2-result-panel');
     if (intro) intro.style.display = 'none';
-    if (panel) panel.style.display = 'block';
-    currentQ2 = 0; scoreQ2 = 0; sq2Answered = false;
+    if (result) {
+        result.style.display = 'none';
+        result.classList.remove('is-visible', 'is-approved', 'is-failed', 'q-result-anim');
+    }
+    if (panel) {
+        panel.style.display = 'block';
+        panel.style.opacity = '0';
+        setTimeout(function () { panel.style.opacity = '1'; }, 50);
+    }
+    currentQ2 = 0;
+    scoreQ2 = 0;
+    sq2Answered = false;
+    sq2Selected = null;
+    sq2WrongTopics = [];
+    try { playBeep('click'); } catch (e) { }
     sq2Load(0);
+    try { window.updateQuizAudioHelper(); } catch (e) { }
 }
 
 function sq2Load(idx) {
     const q = q2Data[idx];
     sq2Answered = false;
-
-    if (sq2IsMobile()) {
-        const counter = document.getElementById('sq2-m-counter');
-        const text = document.getElementById('sq2-m-text');
-        const fb = document.getElementById('sq2-m-feedback');
-        const nextBtn = document.getElementById('btn-next-sq2');
-        if (counter) counter.textContent = (idx + 1) + ' DE ' + q2Data.length;
-        if (text) text.textContent = q.q;
-        if (fb) { fb.className = 'q-feedback'; fb.innerHTML = ''; }
-        if (nextBtn) nextBtn.className = 'btn-next-q';
-        const audioCounter = document.getElementById('sq2-counter');
-        const audioText = document.getElementById('sq2-text');
-        if (audioCounter) audioCounter.textContent = 'Pergunta ' + (idx + 1) + ' de ' + q2Data.length;
-        if (audioText) audioText.textContent = q.q;
-        sq2ResetMobileOpts();
-        sq2RenderMobileDots(idx);
-        return;
-    }
+    sq2Selected = null;
 
     const counter = document.getElementById('sq2-counter');
     const text = document.getElementById('sq2-text');
     const fb = document.getElementById('sq2-feedback');
-    const badge = document.getElementById('sq2-badge');
-    if (counter) counter.textContent = 'SITUAÇÃO ' + (idx + 1) + ' DE ' + q2Data.length;
+    const nextBtn = document.getElementById('btn-next-sq2');
+    const imgWrap = document.getElementById('sq2-img-wrap');
+    const imgEl = document.getElementById('sq2-img');
+    const expandBtn = document.getElementById('sq2-img-expand');
+
+    if (counter) counter.textContent = 'Pergunta ' + (idx + 1) + ' de ' + q2Data.length;
     if (text) text.textContent = q.q;
-    if (fb) { fb.className = 'cctv-feedback'; fb.innerHTML = ''; }
-    if (badge) badge.innerHTML = '📺 CÂMERA ' + (idx + 1);
-    const btnTrue = document.getElementById('sq2-btn-true');
-    const btnFalse = document.getElementById('sq2-btn-false');
-    const nextBtnDesktop = document.getElementById('btn-next-sq2-desktop');
-    if (btnTrue) { btnTrue.className = 'cctv-btn safe'; btnTrue.style.pointerEvents = ''; }
-    if (btnFalse) { btnFalse.className = 'cctv-btn danger'; btnFalse.style.pointerEvents = ''; }
-    if (nextBtnDesktop) nextBtnDesktop.className = 'btn-next-q';
-    document.querySelectorAll('.sq2-cctv-desktop .cctv-dot').forEach(function (d, i) {
-        d.className = 'cctv-dot' + (i < idx ? ' done' : '') + (i === idx ? ' active' : '');
+    if (fb) { fb.className = 'q-feedback'; fb.textContent = ''; }
+    if (nextBtn) {
+        nextBtn.className = 'btn-next-q';
+        nextBtn.textContent = 'Continuar →';
+    }
+    sq2HideVerify();
+
+    if (imgWrap && imgEl) {
+        if (q.img) {
+            imgWrap.hidden = false;
+            imgEl.src = q.img;
+            imgEl.alt = q.topic || 'Situação';
+            if (expandBtn) {
+                expandBtn.onclick = function (e) {
+                    e.stopPropagation();
+                    if (typeof openImageModal === 'function') openImageModal(q.img);
+                };
+            }
+        } else {
+            imgWrap.hidden = true;
+            imgEl.removeAttribute('src');
+            if (expandBtn) expandBtn.onclick = null;
+        }
+    }
+
+    sq2ResetOpts();
+    sq2RenderDots(idx);
+    try { window.updateQuizAudioHelper(); } catch (e) { }
+}
+
+function sq2Select(answer) {
+    if (sq2Answered) return;
+    sq2Selected = answer;
+
+    const optTrue = document.getElementById('sq2-opt-true');
+    const optFalse = document.getElementById('sq2-opt-false');
+    [optTrue, optFalse].forEach(function (o) {
+        if (!o) return;
+        o.classList.remove('selected', 'correct', 'wrong', 'muted', 'answered');
     });
+    const chosen = answer === true ? optTrue : optFalse;
+    if (chosen) chosen.classList.add('selected');
+
+    try { playBeep('click'); } catch (e) { }
+    sq2ShowVerify();
+}
+
+function sq2Verify() {
+    if (sq2Answered || sq2Selected === null) return;
+    const q = q2Data[currentQ2];
+    const correct = sq2Selected === q.ans;
+    sq2Answered = true;
+    sq2HideVerify();
+
+    const optTrue = document.getElementById('sq2-opt-true');
+    const optFalse = document.getElementById('sq2-opt-false');
+    const fb = document.getElementById('sq2-feedback');
+    const nextBtn = document.getElementById('btn-next-sq2');
+    const chosen = sq2Selected === true ? optTrue : optFalse;
+    const other = sq2Selected === true ? optFalse : optTrue;
+
+    [optTrue, optFalse].forEach(function (o) {
+        if (!o) return;
+        o.style.pointerEvents = 'none';
+        o.classList.add('answered');
+        o.classList.remove('selected', 'correct', 'wrong', 'muted');
+    });
+
+    function setOptIcon(el, icon) {
+        if (!el) return;
+        const letter = el.querySelector('.opt-l');
+        if (letter) letter.textContent = icon;
+    }
+
+    if (correct) {
+        scoreQ2++;
+        if (chosen) {
+            chosen.classList.add('correct');
+            setOptIcon(chosen, '✓');
+        }
+        if (other) other.classList.add('muted');
+        if (fb) {
+            fb.textContent = q.exp;
+            fb.className = 'q-feedback ok';
+        }
+        try { playBeep('ok'); } catch (e) { }
+    } else {
+        if (q.topic) sq2WrongTopics.push(q.topic);
+        if (chosen) {
+            chosen.classList.add('wrong');
+            setOptIcon(chosen, '✕');
+        }
+        if (other) other.classList.add('muted');
+        if (fb) {
+            fb.textContent = q.exp;
+            fb.className = 'q-feedback nok';
+        }
+        try { playBeep('nok'); } catch (e) { }
+    }
+
+    if (nextBtn) {
+        nextBtn.textContent = currentQ2 >= q2Data.length - 1 ? 'Ver resultado →' : 'Continuar →';
+        nextBtn.className = 'btn-next-q show';
+        setTimeout(function () {
+            nextBtn.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        }, 300);
+    }
 }
 
 function sq2Answer(answer) {
-    if (sq2Answered) return;
-    const q = q2Data[currentQ2];
-    const correct = answer === q.ans;
-
-    if (sq2IsMobile()) {
-        sq2Answered = true;
-        const optTrue = document.getElementById('sq2-m-opt-true');
-        const optFalse = document.getElementById('sq2-m-opt-false');
-        const fb = document.getElementById('sq2-m-feedback');
-        const nextBtn = document.getElementById('btn-next-sq2');
-        const chosen = answer === true ? optTrue : optFalse;
-        const other = answer === true ? optFalse : optTrue;
-        const correctOpt = q.ans === true ? optTrue : optFalse;
-
-        sq2ResetMobileOpts();
-        [optTrue, optFalse].forEach(function (o) { if (o) o.style.pointerEvents = 'none'; });
-
-        if (correct) {
-            scoreQ2++;
-            if (chosen) chosen.classList.add('correct');
-            if (fb) { fb.innerHTML = sq2FormatFeedback(true, q.exp); fb.className = 'q-feedback ok'; }
-            try { playBeep('ok'); } catch (e) { }
-        } else {
-            if (chosen) chosen.classList.add('wrong');
-            if (correctOpt) correctOpt.classList.add('correct');
-            if (fb) { fb.innerHTML = sq2FormatFeedback(false, q.exp); fb.className = 'q-feedback nok'; }
-            try { playBeep('nok'); } catch (e) { }
-        }
-        if (nextBtn) {
-            nextBtn.textContent = 'PRÓXIMA ANÁLISE →';
-            nextBtn.className = 'btn-next-q show';
-        }
-        setTimeout(function () {
-            if (nextBtn) {
-                nextBtn.scrollIntoView({ behavior: 'smooth', block: 'center' });
-            }
-        }, 300);
-        return;
-    }
-
-    sq2Answered = true;
-    const fb = document.getElementById('sq2-feedback');
-    const btnTrue = document.getElementById('sq2-btn-true');
-    const btnFalse = document.getElementById('sq2-btn-false');
-    const nextBtnDesktop = document.getElementById('btn-next-sq2-desktop');
-    if (btnTrue) btnTrue.style.pointerEvents = 'none';
-    if (btnFalse) btnFalse.style.pointerEvents = 'none';
-    if (correct) {
-        scoreQ2++;
-        if (answer === true && btnTrue) { btnTrue.className = 'cctv-btn safe flash-correct'; }
-        else if (btnFalse) { btnFalse.className = 'cctv-btn danger flash-correct'; }
-        if (fb) { fb.innerHTML = sq2FormatFeedback(true, q.exp); fb.className = 'cctv-feedback correct'; }
-        try { playBeep('ok'); } catch (e) { }
-    } else {
-        if (answer === true && btnTrue) { btnTrue.className = 'cctv-btn safe flash-wrong'; }
-        else if (btnFalse) { btnFalse.className = 'cctv-btn danger flash-wrong'; }
-        if (fb) { fb.innerHTML = sq2FormatFeedback(false, q.exp); fb.className = 'cctv-feedback wrong'; }
-        try { playBeep('nok'); } catch (e) { }
-    }
-    if (nextBtnDesktop) {
-        nextBtnDesktop.textContent = 'PRÓXIMA ANÁLISE →';
-        nextBtnDesktop.className = 'btn-next-q show';
-    }
-    setTimeout(function () {
-        if (nextBtnDesktop) {
-            nextBtnDesktop.scrollIntoView({ behavior: 'smooth', block: 'center' });
-        }
-    }, 300);
+    // compat: seleção + verificação no mesmo fluxo do módulo 1
+    sq2Select(answer);
 }
 
 function sq2NextQuestion() {
@@ -1538,26 +1907,93 @@ function sq2NextQuestion() {
     }
 }
 
+function sq2UniqueTopics(list) {
+    const seen = {};
+    const out = [];
+    list.forEach(function (t) {
+        if (!t || seen[t]) return;
+        seen[t] = true;
+        out.push(t);
+    });
+    return out;
+}
+
 function sq2ShowResult() {
-    document.getElementById('sq2-question-panel').style.display = 'none';
+    const qPanel = document.getElementById('sq2-question-panel');
     const rPanel = document.getElementById('sq2-result-panel');
+    if (qPanel) qPanel.style.display = 'none';
+    if (!rPanel) return;
+
+    const minCorrect = 4;
+    const approved = scoreQ2 >= minCorrect;
+
     rPanel.style.display = 'block';
-    const pct = Math.round((scoreQ2 / q2Data.length) * 100);
-    const approved = pct >= 70;
-    document.getElementById('sq2-pct').textContent = pct + '%';
-    document.getElementById('sq2-stars').textContent = pct >= 90 ? '⭐⭐⭐' : pct >= 70 ? '⭐⭐' : '⭐';
-    document.getElementById('sq2-status').textContent = approved ? '✅ Aprovado!' : '❌ Quase lá!';
-    document.getElementById('sq2-status').className = 'r-status ' + (approved ? 'ap' : 'ref');
-    document.getElementById('sq2-sub').textContent = `Você acertou ${scoreQ2} de 5 questões.` + (approved ? ' Parabéns!' : ' Revise o módulo e tente novamente.');
-    if (approved && typeof updateNextButton === 'function') updateNextButton();
+    rPanel.classList.add('is-visible');
+    rPanel.classList.remove('q-result-anim', 'is-approved', 'is-failed');
+    void rPanel.offsetWidth;
+    rPanel.classList.add('q-result-anim');
+    rPanel.classList.toggle('is-approved', approved);
+    rPanel.classList.toggle('is-failed', !approved);
+
+    const status = document.getElementById('sq2-status');
+    const sub = document.getElementById('sq2-sub');
+    const iconEl = document.getElementById('sq2-result-icon');
+    const retryBtn = document.getElementById('sq2-retry-btn');
+    const reviewEl = document.getElementById('sq2-review');
+
+    if (status) {
+        status.textContent = approved ? 'Desafio Concluído!' : 'Desafio não concluído';
+        status.className = 'quiz-result-title r-status ' + (approved ? 'ap' : 'ref');
+    }
+    if (sub) {
+        if (approved) {
+            sub.textContent = 'Você acertou ' + scoreQ2 + ' de ' + q2Data.length + ' questões. Parabéns! Pode avançar para a próxima etapa.';
+        } else {
+            sub.textContent = 'Você acertou ' + scoreQ2 + ' de ' + q2Data.length + ' questões. É necessário acertar pelo menos ' + minCorrect + ' questões. Estude e tente novamente.';
+        }
+    }
+    if (iconEl) iconEl.textContent = approved ? '🏅' : '📚';
+    if (retryBtn) {
+        retryBtn.textContent = approved ? 'REVISAR DESAFIO' : 'JOGAR NOVAMENTE';
+        retryBtn.style.display = approved ? 'none' : 'inline-flex';
+    }
+    if (reviewEl) {
+        const topics = sq2UniqueTopics(sq2WrongTopics);
+        if (!approved && topics.length) {
+            reviewEl.hidden = false;
+            reviewEl.innerHTML = '<strong>Revise estes temas:</strong><ul>' +
+                topics.map(function (t) { return '<li>' + t + '</li>'; }).join('') +
+                '</ul>';
+        } else {
+            reviewEl.hidden = true;
+            reviewEl.innerHTML = '';
+        }
+    }
+
+    if (typeof updateNextButton === 'function') updateNextButton();
+    try { window.updateQuizAudioHelper(); } catch (e) { }
     if (typeof playHUDBeep === 'function') playHUDBeep('conclusion');
 }
 
 function sq2Retry() {
-    currentQ2 = 0; scoreQ2 = 0; sq2Answered = false;
-    document.getElementById('sq2-result-panel').style.display = 'none';
-    document.getElementById('sq2-question-panel').style.display = 'block';
-    sq2Load(0);
+    currentQ2 = 0;
+    scoreQ2 = 0;
+    sq2Answered = false;
+    sq2Selected = null;
+    sq2WrongTopics = [];
+    const rPanel = document.getElementById('sq2-result-panel');
+    const intro = document.getElementById('sq2-intro-panel');
+    const qPanel = document.getElementById('sq2-question-panel');
+    if (rPanel) {
+        rPanel.style.display = 'none';
+        rPanel.classList.remove('is-visible', 'is-approved', 'is-failed', 'q-result-anim');
+    }
+    if (qPanel) qPanel.style.display = 'none';
+    if (intro) intro.style.display = 'flex';
+    const reviewEl = document.getElementById('sq2-review');
+    if (reviewEl) { reviewEl.hidden = true; reviewEl.innerHTML = ''; }
+    sq2HideVerify();
+    try { window.updateQuizAudioHelper(); } catch (e) { }
 }
 
 /* ════════════════════════════════════════
@@ -1708,7 +2144,7 @@ window.addEventListener('DOMContentLoaded', () => {
 // Initialize on load
 window.addEventListener('DOMContentLoaded', () => {
     const introPanel = document.getElementById('sq2-intro-panel');
-    if (introPanel) introPanel.style.display = 'block';
+    if (introPanel) introPanel.style.display = 'flex';
 
     const qPanel = document.getElementById('sq2-question-panel');
     if (qPanel) qPanel.style.display = 'none';
@@ -1743,25 +2179,25 @@ window.checkMod4Item = function (el) {
 
 const q4_questions = [
     {
-        img: 'https://i.imgur.com/RdlrAU8.jpeg',
+        img: 'imagens/RdlrAU8.jpeg',
         q: '<div class="q4-sit-title">CENÁRIO 1</div><div class="q4-sit-desc">O operador pegou a carga máxima permitida na máquina (capacidade nominal) e elevou a torre até o limite máximo de altura para tentar manobrar.</div>',
         opts: ['💥 VAI TOMBAR!', '✅ OPERAÇÃO SEGURA'],
         correct: 0, feedback_ok: '✅ DECISÃO CORRETA — O manual alerta que elevar a carga nominal até o limite máximo da torre compromete seriamente o equilíbrio da máquina.', feedback_nok: '❌ DECISÃO INCORRETA — Carga nominal com torre no limite máximo compromete seriamente o equilíbrio da máquina.'
     },
     {
-        img: 'https://i.imgur.com/DkzI2Zl.jpeg',
+        img: 'imagens/DkzI2Zl.jpeg',
         q: '<div class="q4-sit-title">CENÁRIO 2</div><div class="q4-sit-desc">O operador apanhou a caixa, posicionou a coluna na vertical e inclinou a carga ligeiramente para trás antes de começar a andar.</div>',
         opts: ['💥 VAI TOMBAR!', '✅ OPERAÇÃO SEGURA'],
         correct: 1, feedback_ok: '✅ DECISÃO CORRETA — Inclinar a carga para trás mantém o Centro de Gravidade protegido no meio do Triângulo da Estabilidade.', feedback_nok: '❌ DECISÃO INCORRETA — Inclinar a carga para trás é o procedimento correto e mantém o centro de gravidade dentro do triângulo.'
     },
     {
-        img: 'https://i.imgur.com/S2Yyyle.jpeg',
+        img: 'imagens/S2Yyyle.jpeg',
         q: '<div class="q4-sit-title">CENÁRIO 3</div><div class="q4-sit-desc">Durante o transporte, o operador decide fazer um giro muito rápido (curva fechada) para a esquerda para ganhar tempo na entrega.</div>',
         opts: ['💥 VAI TOMBAR!', '✅ OPERAÇÃO SEGURA'],
         correct: 0, feedback_ok: '✅ DECISÃO CORRETA — Giros rápidos jogam o ponto de equilíbrio para fora do Triângulo da Estabilidade, causando tombamento imediato.', feedback_nok: '❌ DECISÃO INCORRETA — Giros rápidos em curvas fechadas deslocam o centro de gravidade para fora do triângulo de estabilidade.'
     },
     {
-        img: 'https://i.imgur.com/OQJ0Uri.jpeg',
+        img: 'imagens/OQJ0Uri.jpeg',
         q: '<div class="q4-sit-title">CENÁRIO 4</div><div class="q4-sit-desc">Para não perder a viagem, o operador pega uma carga muito longa, deixando o centro de carga bem na ponta dos garfos (além do especificado).</div>',
         opts: ['💥 VAI TOMBAR!', '✅ OPERAÇÃO SEGURA'],
         correct: 0, feedback_ok: '✅ DECISÃO CORRETA — Centro de carga além do especificado causa desequilíbrio violento e tombamento.', feedback_nok: '❌ DECISÃO INCORRETA — Caso o centro de carga esteja além do especificado, ocorre desequilíbrio violento e tombamento.'
@@ -1776,27 +2212,27 @@ function resetQuiz4() { quiz4.reset(); }
 
 const q5_questions = [
     {
-        q: '<img src="https://i.imgur.com/YZ03elm.png" style="width:100%; height:180px; object-fit:cover; object-position:center; border-radius:8px; margin-bottom:10px; box-shadow:0 10px 20px rgba(0,0,0,0.5);"><div style="font-size:15px;color:var(--gold);margin-bottom:5px;text-transform:uppercase;letter-spacing:1px;font-family:var(--font-h);font-weight:700;">Corredor Obstruído</div><p style="font-size:13px;color:rgba(255,255,255,0.7);margin-bottom:10px;line-height:1.4;">O operador encontrou um corredor parcialmente bloqueado durante a movimentação da carga.</p><div style="font-size:clamp(16px, 2.2vw, 20px);color:var(--cream);font-family:var(--font-h);line-height:1.3;text-align:center;">Qual deve ser o procedimento correto?</div>',
+        q: '<img src="imagens/YZ03elm.png" style="width:100%; height:180px; object-fit:cover; object-position:center; border-radius:8px; margin-bottom:10px; box-shadow:0 10px 20px rgba(0,0,0,0.5);"><div style="font-size:15px;color:var(--gold);margin-bottom:5px;text-transform:uppercase;letter-spacing:1px;font-family:var(--font-h);font-weight:700;">Corredor Obstruído</div><p style="font-size:13px;color:rgba(255,255,255,0.7);margin-bottom:10px;line-height:1.4;">O operador encontrou um corredor parcialmente bloqueado durante a movimentação da carga.</p><div style="font-size:clamp(16px, 2.2vw, 20px);color:var(--cream);font-family:var(--font-h);line-height:1.3;text-align:center;">Qual deve ser o procedimento correto?</div>',
         opts: ['Continuar normalmente', 'Sinalizar e liberar o corredor antes da operação', 'Passar rapidamente pelo bloqueio', 'Ignorar o obstáculo'],
         correct: 1, feedback_ok: '✅ Correto! O corredor deve ser sinalizado e liberado antes de qualquer movimentação.', feedback_nok: '❌ Incorreto. É necessário sinalizar e liberar o corredor antes da operação.'
     },
     {
-        q: '<img src="https://i.imgur.com/jxIK2Rh.png" style="width:100%; height:180px; object-fit:cover; object-position:center; border-radius:8px; margin-bottom:10px; box-shadow:0 10px 20px rgba(0,0,0,0.5);"><div style="font-size:15px;color:var(--gold);margin-bottom:5px;text-transform:uppercase;letter-spacing:1px;font-family:var(--font-h);font-weight:700;">Carga Elevada</div><p style="font-size:13px;color:rgba(255,255,255,0.7);margin-bottom:10px;line-height:1.4;">A carga está sendo transportada acima da altura recomendada.</p><div style="font-size:clamp(16px, 2.2vw, 20px);color:var(--cream);font-family:var(--font-h);line-height:1.3;text-align:center;">Qual é o principal risco desta operação?</div>',
+        q: '<img src="imagens/jxIK2Rh.png" style="width:100%; height:180px; object-fit:cover; object-position:center; border-radius:8px; margin-bottom:10px; box-shadow:0 10px 20px rgba(0,0,0,0.5);"><div style="font-size:15px;color:var(--gold);margin-bottom:5px;text-transform:uppercase;letter-spacing:1px;font-family:var(--font-h);font-weight:700;">Carga Elevada</div><p style="font-size:13px;color:rgba(255,255,255,0.7);margin-bottom:10px;line-height:1.4;">A carga está sendo transportada acima da altura recomendada.</p><div style="font-size:clamp(16px, 2.2vw, 20px);color:var(--cream);font-family:var(--font-h);line-height:1.3;text-align:center;">Qual é o principal risco desta operação?</div>',
         opts: ['Melhor visibilidade', 'Maior estabilidade', 'Maior velocidade', 'Comprometimento da visibilidade e risco de colisão'],
         correct: 3, feedback_ok: '✅ Correto! Transportar cargas elevadas compromete a visibilidade e aumenta gravemente os riscos de colisão.', feedback_nok: '❌ Incorreto. O principal risco é o comprometimento da visibilidade e a colisão.'
     },
     {
-        q: '<img src="https://i.imgur.com/EwLaKkj.png" style="width:100%; height:180px; object-fit:cover; object-position:center; border-radius:8px; margin-bottom:10px; box-shadow:0 10px 20px rgba(0,0,0,0.5);"><div style="font-size:15px;color:var(--gold);margin-bottom:5px;text-transform:uppercase;letter-spacing:1px;font-family:var(--font-h);font-weight:700;">EPI Ausente</div><p style="font-size:13px;color:rgba(255,255,255,0.7);margin-bottom:10px;line-height:1.4;">O operador iniciou a movimentação sem todos os EPIs obrigatórios.</p><div style="font-size:clamp(16px, 2.2vw, 20px);color:var(--cream);font-family:var(--font-h);line-height:1.3;text-align:center;">Qual procedimento está correto?</div>',
+        q: '<img src="imagens/EwLaKkj.png" style="width:100%; height:180px; object-fit:cover; object-position:center; border-radius:8px; margin-bottom:10px; box-shadow:0 10px 20px rgba(0,0,0,0.5);"><div style="font-size:15px;color:var(--gold);margin-bottom:5px;text-transform:uppercase;letter-spacing:1px;font-family:var(--font-h);font-weight:700;">EPI Ausente</div><p style="font-size:13px;color:rgba(255,255,255,0.7);margin-bottom:10px;line-height:1.4;">O operador iniciou a movimentação sem todos os EPIs obrigatórios.</p><div style="font-size:clamp(16px, 2.2vw, 20px);color:var(--cream);font-family:var(--font-h);line-height:1.3;text-align:center;">Qual procedimento está correto?</div>',
         opts: ['Interromper a operação até regularizar os EPIs', 'Operar apenas em áreas vazias', 'Continuar se a operação for rápida', 'Solicitar ajuda apenas em caso de risco'],
         correct: 0, feedback_ok: '✅ Correto! Nenhuma operação deve prosseguir sem os EPIs regularizados e em conformidade.', feedback_nok: '❌ Incorreto. O procedimento correto é interromper a operação até regularizar os EPIs.'
     },
     {
-        q: '<img src="https://i.imgur.com/V9SVveG.png" style="width:100%; height:180px; object-fit:cover; object-position:center; border-radius:8px; margin-bottom:10px; box-shadow:0 10px 20px rgba(0,0,0,0.5);"><div style="font-size:15px;color:var(--gold);margin-bottom:5px;text-transform:uppercase;letter-spacing:1px;font-family:var(--font-h);font-weight:700;">Emergência Operacional</div><p style="font-size:13px;color:rgba(255,255,255,0.7);margin-bottom:10px;line-height:1.4;">Foi identificado um princípio de incêndio próximo à área de movimentação.</p><div style="font-size:clamp(16px, 2.2vw, 20px);color:var(--cream);font-family:var(--font-h);line-height:1.3;text-align:center;">Qual deve ser a primeira ação?</div>',
+        q: '<img src="imagens/V9SVveG.png" style="width:100%; height:180px; object-fit:cover; object-position:center; border-radius:8px; margin-bottom:10px; box-shadow:0 10px 20px rgba(0,0,0,0.5);"><div style="font-size:15px;color:var(--gold);margin-bottom:5px;text-transform:uppercase;letter-spacing:1px;font-family:var(--font-h);font-weight:700;">Emergência Operacional</div><p style="font-size:13px;color:rgba(255,255,255,0.7);margin-bottom:10px;line-height:1.4;">Foi identificado um princípio de incêndio próximo à área de movimentação.</p><div style="font-size:clamp(16px, 2.2vw, 20px);color:var(--cream);font-family:var(--font-h);line-height:1.3;text-align:center;">Qual deve ser a primeira ação?</div>',
         opts: ['Continuar a operação', 'Improvisar sozinho o combate', 'Parar a operação e afastar as pessoas', 'Mover a carga rapidamente'],
         correct: 2, feedback_ok: '✅ Correto! Parar a operação imediatamente e priorizar a vida afastando as pessoas é essencial.', feedback_nok: '❌ Incorreto. A primeira ação deve ser parar a operação e afastar as pessoas.'
     },
     {
-        q: '<img src="https://i.imgur.com/mAXUjMF.png" style="width:100%; height:180px; object-fit:cover; object-position:center; border-radius:8px; margin-bottom:10px; box-shadow:0 10px 20px rgba(0,0,0,0.5);"><div style="font-size:15px;color:var(--gold);margin-bottom:5px;text-transform:uppercase;letter-spacing:1px;font-family:var(--font-h);font-weight:700;">Distanciamento Seguro</div><p style="font-size:13px;color:rgba(255,255,255,0.7);margin-bottom:10px;line-height:1.4;">Durante a movimentação, o operador reduziu excessivamente a distância da estrutura lateral.</p><div style="font-size:clamp(16px, 2.2vw, 20px);color:var(--cream);font-family:var(--font-h);line-height:1.3;text-align:center;">Qual distância mínima deve ser mantida?</div>',
+        q: '<img src="imagens/mAXUjMF.png" style="width:100%; height:180px; object-fit:cover; object-position:center; border-radius:8px; margin-bottom:10px; box-shadow:0 10px 20px rgba(0,0,0,0.5);"><div style="font-size:15px;color:var(--gold);margin-bottom:5px;text-transform:uppercase;letter-spacing:1px;font-family:var(--font-h);font-weight:700;">Distanciamento Seguro</div><p style="font-size:13px;color:rgba(255,255,255,0.7);margin-bottom:10px;line-height:1.4;">Durante a movimentação, o operador reduziu excessivamente a distância da estrutura lateral.</p><div style="font-size:clamp(16px, 2.2vw, 20px);color:var(--cream);font-family:var(--font-h);line-height:1.3;text-align:center;">Qual distância mínima deve ser mantida?</div>',
         opts: ['20 cm', '50 cm', '30 cm', 'Não existe distância mínima'],
         correct: 1, feedback_ok: '✅ Correto! Deve-se manter no mínimo 50 cm de distância segura das estruturas.', feedback_nok: '❌ Incorreto. A distância mínima que deve ser mantida é de 50 cm.'
     }
@@ -2524,18 +2960,36 @@ window.q6Select = function(i, el) {
     }
 
     function addReplayButton() {
-        if (document.querySelector('.tutorial-replay')) return;
+        if (document.querySelector('.s1-secondary-actions')) return;
         const startBtn = document.querySelector('#s1 .btn-start');
         if (!startBtn) return;
+
+        const row = document.createElement('div');
+        row.className = 's1-secondary-actions';
+
         const replay = document.createElement('button');
         replay.type = 'button';
         replay.className = 'btn-tutorial tutorial-replay';
         replay.innerHTML = '▶ Ver tutorial';
-        replay.onclick = function() {
+        replay.onclick = function () {
             const staticModal = document.getElementById('tutorialModal');
             if (staticModal) staticModal.classList.add('active');
         };
-        startBtn.insertAdjacentElement('afterend', replay);
+        row.appendChild(replay);
+
+        const warn = document.createElement('button');
+        warn.type = 'button';
+        warn.className = 's1-session-info';
+        warn.setAttribute('aria-label', 'Aviso importante sobre a conclusão do treinamento');
+        warn.title = 'Aviso importante';
+        warn.innerHTML = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 9v4" /><path d="M12 17h.01" /><path d="M10.29 3.86 1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z" /></svg>';
+        warn.onclick = function () {
+            try { if (window.playTechClick) playTechClick(); } catch (e) { }
+            if (typeof window.openAvisoModal === 'function') window.openAvisoModal();
+        };
+        row.appendChild(warn);
+
+        startBtn.insertAdjacentElement('afterend', row);
     }
 
     function init() {

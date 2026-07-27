@@ -1,4 +1,4 @@
-const fs = require('fs');
+﻿const fs = require('fs');
 const file1 = 'c:/Users/Rhayanne Pires/Downloads/NR 11 - PATOLADA - REVISÃO/NR 11 - PATOLADA - REVISÃO/modulo-6.html';
 const file2 = 'c:/Users/Rhayanne Pires/Downloads/NR 11 - PATOLADA SEM SIMULAÇÃO/modulo-6.html';
 
@@ -131,7 +131,7 @@ const newSlide = `                        if (typeof updateNextButton === 'funct
                         <div class="comp-card-modern req-item" onclick="activatePreventiva(this)" style="cursor: pointer; position: relative;">
                             <div class="comp-card-content">
                                 <div class="comp-card-img-wrap" style="height: 250px; border-bottom: 2px solid #ff4757; overflow: hidden;">
-                                    <img src="https://i.imgur.com/gtuC8HP.png" alt="Operador Distraído" style="object-fit: cover; width: 100%; height: 100%; opacity: 0.7; filter: grayscale(50%);">
+                                    <img src="imagens/gtuC8HP.png" alt="Operador Distraído" style="object-fit: cover; width: 100%; height: 100%; opacity: 0.7; filter: grayscale(50%);">
                                 </div>
                                 <div class="comp-card-body" style="padding: 20px;">
                                     <h4 class="comp-card-title" style="color: #ff4757; font-size: 20px; font-weight: 800; margin-bottom: 15px; letter-spacing: 1px;">❌ INCORRETO</h4>
@@ -147,7 +147,7 @@ const newSlide = `                        if (typeof updateNextButton === 'funct
                         <div class="comp-card-modern req-item" onclick="activatePreventiva(this)" style="cursor: pointer; position: relative;">
                             <div class="comp-card-content">
                                 <div class="comp-card-img-wrap" style="height: 250px; border-bottom: 2px solid #2ecc71; overflow: hidden;">
-                                    <img src="https://i.imgur.com/7BJLUgg.png" alt="Operador Atento" style="object-fit: cover; width: 100%; height: 100%; opacity: 0.9;">
+                                    <img src="imagens/7BJLUgg.png" alt="Operador Atento" style="object-fit: cover; width: 100%; height: 100%; opacity: 0.9;">
                                 </div>
                                 <div class="comp-card-body" style="padding: 20px;">
                                     <h4 class="comp-card-title" style="color: var(--green); font-size: 20px; font-weight: 800; margin-bottom: 15px; letter-spacing: 1px;">✅ CORRETO</h4>
