@@ -250,9 +250,9 @@ function modulePrev(force) {
     try { playBeep && playBeep('click'); } catch (e) { }
     if (currentSlide === 0) {
         if (!window.MODULE_NAV.prev) return;
-        // Persistence removed for previous navigation
+        // Como na referência: volta para a ÚLTIMA página do módulo anterior
         pauseAllSlideVideos();
-        window.location.href = window.MODULE_NAV.prev;
+        window.location.href = window.MODULE_NAV.prev + '?last=1';
         return;
     }
     goTo(currentSlide - 1, true);
@@ -281,9 +281,9 @@ function buildDots() {
     }
 }
 
-window.demoMode = (function () {
-    try { return sessionStorage.getItem('nr11-demoMode') === '1'; } catch (e) { return false; }
-})();
+/* Modo simulação: sempre começa desligado; só liga via atalho/botão */
+window.demoMode = false;
+try { sessionStorage.setItem('nr11-demoMode', '0'); } catch (e) { }
 window._s44FinalizarUnlocked = false;
 
 function isDemoBtnRevealed() {
