@@ -5226,19 +5226,23 @@ body {
         height: 30px !important;
     }
 
-    /* ??? BOT?O SIMULA??O: ao lado do ?cone de acessibilidade ??? */
+    /* ??? BOT?O SIMULA??O: lado esquerdo no mobile ??? */
     #btn-demo {
+        top: calc(8px + env(safe-area-inset-top, 0px)) !important;
+        left: 8px !important;
+        right: auto !important;
+        bottom: auto !important;
         height: 32px;
         padding: 5px 14px;
         font-size: 10px;
         letter-spacing: 0.06em;
-        z-index: 902;
+        z-index: 902 !important;
     }
 
     #demo-indicator {
-        top: 50px !important;
-        right: 10px !important;
-        left: auto !important;
+        top: calc(46px + env(safe-area-inset-top, 0px)) !important;
+        left: 8px !important;
+        right: auto !important;
         font-size: 10px !important;
         padding: 4px 10px !important;
     }
@@ -6055,14 +6059,14 @@ body {
         text-align: center !important;
     }
 
-    /* ??? M?D 6 p?g 8 (s-quiz6): subir mais o bot?o m?sica ??? */
+    /* ??? M?D 6 p?g 8 (s-quiz6): bot?o m?sica um pouco mais abaixo no mobile ??? */
     #s43 #q6-btn-music-toggle {
-        top: -6px !important;
+        top: 6px !important;
         right: 6px !important;
         font-size: 9px !important;
         padding: 4px 8px !important;
         z-index: 100 !important;
-        transform: translateY(-18px);
+        transform: translateY(6px);
     }
 
     #s43 #q6-hud-status {
@@ -6225,20 +6229,36 @@ body {
 }
 
 .audio-helper{
-    margin-top:10px;
-    font-size:11px;
-    line-height:1.35;
-    opacity:.68;
-    text-align:center;
-    max-width:140px;
-    margin-left:auto;
-    margin-right:auto;
-    display:none;
-    pointer-events:none;
+    display: none;
+    pointer-events: none;
+    position: fixed;
+    z-index: 900;
+    margin: 0;
+    padding: 0;
+    font-family: var(--font-h), Montserrat, sans-serif;
+    font-size: 8px;
+    font-weight: 600;
+    letter-spacing: 0.02em;
+    line-height: 1.2;
+    opacity: 0.72;
+    text-align: right;
+    color: rgba(255, 255, 255, 0.78);
+    max-width: 120px;
+    white-space: normal;
+    text-shadow: 0 1px 3px rgba(0, 0, 0, 0.55);
 }
 
 #a11y-bar .audio-helper.is-active {
     display: block;
+}
+
+@media screen and (max-width: 768px) {
+    .audio-helper {
+        font-size: 7px;
+        max-width: 96px;
+        line-height: 1.15;
+        opacity: 0.7;
+    }
 }
 
 .a11y-btn {
@@ -6479,6 +6499,17 @@ body {
         display:block !important;
     }
     .slide-title { font-size:22px !important; line-height:1.2 !important; }
+
+    /* Páginas de vídeo: player mais ao centro (layout da referência) */
+    .slide .content-area:has(> .video-wrap--std) {
+        justify-content: center !important;
+        padding-top: 0 !important;
+    }
+
+    .slide .content-area:has(> .video-wrap--std) > .video-wrap--std {
+        margin-top: 0 !important;
+        margin-bottom: 48px !important;
+    }
 }
 
 /* Quiz M5 ? layout da ocorr?ncia dentro do card padr?o */

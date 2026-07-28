@@ -203,6 +203,7 @@ window.updateQuizAudioHelper = function updateQuizAudioHelper() {
 
     audioHelper.classList.toggle('is-active', show);
     if (bar) bar.classList.toggle('quiz-audio-helper', show);
+    try { if (typeof window.positionA11yBar === 'function') window.positionA11yBar(); } catch (e) { }
 };
 
 /* ════════════════════════════════════════
@@ -2873,13 +2874,36 @@ function resetQuiz6() { quiz6.reset(); }
             bar.style.right = rightPx + 'px';
 
             const btnDemo = document.getElementById('btn-demo');
-            if (btnDemo) {
+            if (btnDemo && window.matchMedia('(min-width: 769px)').matches) {
                 const btnGap = 8;
                 const btnH = btnDemo.offsetHeight || launcherSize;
+                btnDemo.style.position = 'fixed';
                 btnDemo.style.top = Math.max(8, r.top + (r.height - btnH) / 2) + 'px';
                 btnDemo.style.right = (rightPx + launcherSize + btnGap) + 'px';
                 btnDemo.style.left = 'auto';
                 btnDemo.style.bottom = 'auto';
+            } else if (btnDemo) {
+                btnDemo.style.removeProperty('position');
+                btnDemo.style.removeProperty('top');
+                btnDemo.style.removeProperty('right');
+                btnDemo.style.removeProperty('left');
+                btnDemo.style.removeProperty('bottom');
+            }
+
+            const audioHelper = bar.querySelector('.audio-helper');
+            if (audioHelper) {
+                if (audioHelper.classList.contains('is-active')) {
+                    const helperGap = 4;
+                    audioHelper.style.top = Math.round(r.bottom + helperGap) + 'px';
+                    audioHelper.style.right = Math.max(8, Math.round(window.innerWidth - r.right)) + 'px';
+                    audioHelper.style.left = 'auto';
+                    audioHelper.style.maxWidth = Math.max(72, Math.round(r.width)) + 'px';
+                } else {
+                    audioHelper.style.removeProperty('top');
+                    audioHelper.style.removeProperty('right');
+                    audioHelper.style.removeProperty('left');
+                    audioHelper.style.removeProperty('max-width');
+                }
             }
         }
         positionA11yBar();
@@ -3308,7 +3332,14 @@ function resetQuiz6() { quiz6.reset(); }
         replay.innerHTML = '▶ Ver tutorial';
         replay.onclick = function () {
             const staticModal = document.getElementById('tutorialModal');
-            if (staticModal) staticModal.classList.add('active');
+            if (staticModal) {
+                staticModal.classList.add('active');
+                try {
+                    if (typeof window.startTutorialUnlockTimer === 'function') {
+                        window.startTutorialUnlockTimer();
+                    }
+                } catch (e) { }
+            }
         };
         row.appendChild(replay);
 

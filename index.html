@@ -15,7 +15,7 @@
         href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800;900&family=Open+Sans:wght@400;600&display=swap"
         rel="stylesheet">
     <script src="https://player.pandavideo.com.br/api.v2.js"></script>
-    <link rel="stylesheet" href="shared.css?v=33">
+    <link rel="stylesheet" href="shared.css?v=38">
     <script>
         window.MODULE_NAV = {
             id: "index",
@@ -114,9 +114,16 @@
             transition: all 0.2s ease;
         }
 
-        #tutorialModal #btnTutorialClose:hover {
+        #tutorialModal #btnTutorialClose:hover:not(:disabled) {
             transform: translateY(-1px);
             box-shadow: 0 18px 38px rgba(0, 0, 0, 0.28) !important;
+        }
+
+        #tutorialModal #btnTutorialClose:disabled {
+            opacity: 0.45 !important;
+            cursor: not-allowed !important;
+            pointer-events: none !important;
+            transform: none !important;
         }
 
         /* ── Modal Aviso Importante ── */
@@ -819,7 +826,7 @@
                 <div class="content-area"
                     style="align-items: center; text-align: center; justify-content: flex-start; position: relative; z-index: 2;">
 
-                    <div class="video-wrap req-item"
+                    <div class="video-wrap video-wrap--std req-item"
                         style="max-width: 1240px; margin-top: 40px; box-shadow: 0 40px 80px rgba(0,0,0,0.9), 0 0 60px rgba(230, 81, 0, 0.3); border: 1px solid rgba(230, 81, 0, 0.4); border-radius: 12px; transform: translateZ(0);">
                         <iframe id="panda-66ed0ce1-856d-4aa0-b29e-b60ec527f1a2" src="https://player-vz-d35edf2a-8e7.tv.pandavideo.com.br/embed/?v=66ed0ce1-856d-4aa0-b29e-b60ec527f1a2&saveProgress=false" style="border:none;" allow="accelerometer;gyroscope;autoplay;encrypted-media;picture-in-picture" allowfullscreen="true" fetchpriority="high" referrerpolicy="strict-origin-when-cross-origin" title="INTRODUÇÃO"></iframe>
                     </div>
@@ -963,12 +970,14 @@
                     <div
                         class="tutorial-hint"
                         style="font-size: 13px; display: flex; align-items: center; gap: 8px;">
-                        <span class="tutorial-hint-dot" style="font-size: 10px;">●</span> Assista até o final para liberar o
-                        treinamento
+                        <span class="tutorial-hint-dot" style="font-size: 10px;">●</span>
+                        <span id="tutorialUnlockHint">Aguarde 5 segundos para liberar o botão</span>
                     </div>
                     <button id="btnTutorialClose"
                         onclick="try{if(window.playTechClick) playTechClick();}catch(e){} closeTutorialModal()"
-                        style="border: none; padding: 12px 24px; border-radius: 8px; font-weight: 700; font-size: 15px; cursor: pointer; display: flex; align-items: center; gap: 8px;">
+                        disabled
+                        aria-disabled="true"
+                        style="border: none; padding: 12px 24px; border-radius: 8px; font-weight: 700; font-size: 15px; cursor: not-allowed; display: flex; align-items: center; gap: 8px; opacity: 0.45; pointer-events: none;">
                         ✓ Entendi, vamos começar
                     </button>
                 </div>
@@ -977,7 +986,37 @@
         </div>
 
         <script>
+            let tutorialUnlockTimer = null;
+
+            function setTutorialButtonLocked(locked) {
+                const btn = document.getElementById('btnTutorialClose');
+                const hint = document.getElementById('tutorialUnlockHint');
+                if (!btn) return;
+                btn.disabled = locked;
+                btn.setAttribute('aria-disabled', locked ? 'true' : 'false');
+                btn.style.opacity = locked ? '0.45' : '1';
+                btn.style.cursor = locked ? 'not-allowed' : 'pointer';
+                btn.style.pointerEvents = locked ? 'none' : 'auto';
+                if (hint) {
+                    hint.textContent = locked
+                        ? 'Aguarde 5 segundos para liberar o botão'
+                        : 'Botão liberado — você pode continuar';
+                }
+            }
+
+            function startTutorialUnlockTimer() {
+                setTutorialButtonLocked(true);
+                if (tutorialUnlockTimer) clearTimeout(tutorialUnlockTimer);
+                tutorialUnlockTimer = setTimeout(function () {
+                    setTutorialButtonLocked(false);
+                    tutorialUnlockTimer = null;
+                }, 5000);
+            }
+            window.startTutorialUnlockTimer = startTutorialUnlockTimer;
+
             function closeTutorialModal(e) {
+                const btn = document.getElementById('btnTutorialClose');
+                if (btn && btn.disabled) return;
                 const modal = document.getElementById('tutorialModal');
                 if (modal) {
                     modal.classList.remove('active');
@@ -997,6 +1036,7 @@
                     const modal = document.getElementById('tutorialModal');
                     if (modal) {
                         modal.classList.add('active');
+                        startTutorialUnlockTimer();
                         setTimeout(() => { if (typeof playBeep === 'function') playBeep('flip'); }, 300);
                     }
                 }, 800);
@@ -1025,7 +1065,7 @@
     </div><!-- fecha #app -->
 
     <script src="audio-data.js"></script>
-    <script src="shared.js?v=34"></script>
+    <script src="shared.js?v=37"></script>
 </body>
 
 </html>
