@@ -6500,7 +6500,7 @@ body {
     }
     .slide-title { font-size:22px !important; line-height:1.2 !important; }
 
-    /* P�ginas de v�deo: player mais ao centro (layout da refer�ncia) */
+    /* Páginas de vídeo: player mais ao centro (layout da referência) */
     .slide .content-area:has(> .video-wrap--std) {
         justify-content: center !important;
         padding-top: 0 !important;
@@ -6616,7 +6616,7 @@ body {
     transition: color 0.2s, border-color 0.2s;
 }
 
-/* Esconder bot?o SIMULA??O at? o atalho qa1010 (ou modo simula??o ativo) */
+/* Esconder SIMULAÇÃO até o modo estar ativo (atalho qa1010 / 5 toques no logo) */
 html body #btn-demo,
 html body #demo-indicator {
     display: none !important;
@@ -6625,7 +6625,7 @@ html body #demo-indicator {
     opacity: 0 !important;
 }
 
-html body #btn-demo.demo-shortcut-visible {
+html body #btn-demo.demo-shortcut-visible.is-active {
     display: inline-flex !important;
     visibility: visible !important;
     pointer-events: auto !important;

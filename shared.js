@@ -281,9 +281,12 @@ function buildDots() {
     }
 }
 
-/* Modo simulação: sempre começa desligado; só liga via atalho/botão */
+/* Modo simulação: sempre começa oculto e desligado; só aparece/liga via atalho */
 window.demoMode = false;
-try { sessionStorage.setItem('nr11-demoMode', '0'); } catch (e) { }
+try {
+    sessionStorage.setItem('nr11-demoMode', '0');
+    sessionStorage.setItem('nr11-demoBtnVisible', '0');
+} catch (e) { }
 window._s44FinalizarUnlocked = false;
 
 function isDemoBtnRevealed() {
@@ -297,25 +300,27 @@ function setDemoBtnRevealed(visible) {
 function applyDemoModeUI() {
     const btn = document.getElementById('btn-demo');
     const ind = document.getElementById('demo-indicator');
-    var revealBtn = !!window.demoMode || isDemoBtnRevealed();
-
-    if (window.demoMode) {
-        setDemoBtnRevealed(true);
-        revealBtn = true;
-    }
+    // Só aparece quando o modo simulação está ATIVO
+    var show = !!window.demoMode;
 
     if (btn) {
-        btn.classList.toggle('demo-shortcut-visible', !!revealBtn);
-        btn.classList.toggle('is-active', !!window.demoMode);
+        btn.classList.toggle('demo-shortcut-visible', show);
+        btn.classList.toggle('is-active', show);
+        btn.setAttribute('aria-hidden', show ? 'false' : 'true');
+        if (!show) {
+            btn.classList.remove('is-active', 'demo-shortcut-visible');
+        }
     }
     if (ind) {
-        ind.classList.toggle('demo-shortcut-visible', !!window.demoMode);
-        if (window.demoMode) {
+        ind.classList.toggle('demo-shortcut-visible', show);
+        ind.setAttribute('aria-hidden', show ? 'false' : 'true');
+        if (show) {
             ind.style.opacity = '1';
             ind.style.transform = 'translateY(0)';
         } else {
             ind.style.opacity = '0';
             ind.style.transform = 'translateY(-20px)';
+            ind.classList.remove('demo-shortcut-visible');
         }
     }
     try { updateNextButton(); } catch (e) { }
@@ -377,19 +382,11 @@ window.addEventListener('keydown', (e) => {
 });
 
 function toggleDemoBtnReveal() {
-    var btn = document.getElementById('btn-demo');
-    if (!btn) return;
-    btn.classList.toggle('demo-shortcut-visible');
-    var visible = btn.classList.contains('demo-shortcut-visible');
-    setDemoBtnRevealed(visible);
-    if (!visible && window.demoMode) {
-        window.demoMode = false;
-        try { sessionStorage.setItem('nr11-demoMode', '0'); } catch (err) { }
-    }
-    applyDemoModeUI();
+    // Atalho liga/desliga o modo direto (sem deixar o botão cinza visível)
+    toggleDemoMode();
 }
 
-/* Atalho: digitar qa1010 → mostra/esconde o botão SIMULAÇÃO */
+/* Atalho: digitar qa1010 → ativa/desativa modo SIMULAÇÃO */
 (function initDemoShortcutReveal() {
     var seq = '';
     var target = 'qa1010';
@@ -403,41 +400,6 @@ function toggleDemoBtnReveal() {
         toggleDemoBtnReveal();
         seq = '';
     });
-})();
-
-/* Atalho mobile: 5 toques rápidos no logo → mostra/esconde SIMULAÇÃO */
-(function initDemoLogoTapReveal() {
-    var taps = 0;
-    var resetTimer = null;
-    var TAP_NEED = 5;
-    var TAP_WINDOW_MS = 2200;
-
-    function onLogoTap() {
-        taps += 1;
-        if (resetTimer) clearTimeout(resetTimer);
-        if (taps >= TAP_NEED) {
-            taps = 0;
-            toggleDemoBtnReveal();
-            try { playTechClick(); } catch (err) { }
-            return;
-        }
-        resetTimer = setTimeout(function () { taps = 0; }, TAP_WINDOW_MS);
-    }
-
-    function bind() {
-        var logo = document.getElementById('logo');
-        if (!logo || logo.dataset.demoTapBound) return;
-        logo.dataset.demoTapBound = '1';
-        logo.style.cursor = 'pointer';
-        logo.style.touchAction = 'manipulation';
-        logo.addEventListener('click', onLogoTap);
-    }
-
-    if (document.readyState === 'loading') {
-        document.addEventListener('DOMContentLoaded', bind);
-    } else {
-        bind();
-    }
 })();
 
 /* Atalho: digitar go + número (ex. go31) → pula para a página global; Esc cancela */
