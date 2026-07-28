@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="pt-BR">
 
 <head>
@@ -11,7 +11,7 @@
         href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;900&family=Open+Sans:wght@400;600&display=swap"
         rel="stylesheet">
     <script src="https://player.vimeo.com/api/player.js"></script>
-    <link rel="stylesheet" href="shared.css?v=3">
+    <link rel="stylesheet" href="shared.css?v=16">
     <script>
         window.MODULE_NAV = {
             id: "modulo-4",
@@ -95,35 +95,18 @@
                     #s23 #s23-card-top.req-done {
                         border-color: inherit !important;
                     }
-                    /* ─── Mobile premium ─── */
+                    /* ─── Mobile: carrossel de alturas ─── */
                     #s23 .eq-mobile { display: none; width: 100%; max-width: 100%; }
-                    #s23 .eq-m-status-card {
-                        width: 100%; margin: 0 auto 12px;
-                        background: rgba(255,255,255,0.03);
-                        border: 1px solid rgba(255,107,0,0.15);
-                        border-radius: 16px; padding: 16px; text-align: center;
-                        transition: border-color 0.35s ease, box-shadow 0.35s ease;
-                    }
-                    #s23 .eq-m-status-card.neutral { border-color: rgba(255,107,0,0.12); box-shadow: none; }
-                    #s23 .eq-m-status-card.baixa  { border-color: rgba(46,204,113,0.35); box-shadow: 0 0 20px rgba(46,204,113,0.12); }
-                    #s23 .eq-m-status-card.media  { border-color: rgba(255,200,0,0.35);  box-shadow: 0 0 20px rgba(255,200,0,0.12); }
-                    #s23 .eq-m-status-card.alta   { border-color: rgba(230,120,0,0.35);  box-shadow: 0 0 20px rgba(230,120,0,0.12); }
-                    #s23 .eq-m-status-card.maxima { border-color: rgba(220,50,50,0.35);  box-shadow: 0 0 20px rgba(220,50,50,0.12); }
-                    #s23 .eq-m-status-lbl {
-                        font-family: var(--font-h); font-size: 11px; font-weight: 800;
-                        letter-spacing: 3px; color: rgba(255,244,232,0.45); text-transform: uppercase; margin-bottom: 8px;
-                    }
-                    #s23 .eq-m-status-val {
-                        font-family: var(--font-h); font-size: 22px; font-weight: 900;
-                        letter-spacing: 2px; margin-bottom: 6px;
-                    }
-                    #s23 .eq-m-status-sub {
-                        font-family: var(--font-h); font-size: 13px; font-weight: 800;
-                        letter-spacing: 1.5px; text-transform: uppercase;
+                    #s23 .eq-m-intro {
+                        width: 100%; text-align: center;
+                        font-size: 14px; line-height: 1.5;
+                        color: rgba(255,244,232,0.65);
+                        margin: 0 0 12px; padding: 0 4px;
+                        font-family: var(--font-h);
                     }
                     #s23 .eq-m-progress {
                         display: flex; flex-direction: column; align-items: center; gap: 8px;
-                        margin-bottom: 14px; width: 100%;
+                        margin-bottom: 12px; width: 100%;
                     }
                     #s23 .eq-m-prog-lbl {
                         font-family: var(--font-h); font-size: 12px; font-weight: 700;
@@ -144,40 +127,8 @@
                         margin-bottom: 14px;
                     }
                     #s23 .eq-m-img-wrap img {
-                        width: 100%; height: 260px; display: block;
+                        width: 100%; height: 220px; display: block;
                         object-fit: cover; object-position: center center;
-                    }
-                    #s23 .m4-scroll-hint,
-                    #s23 .m4-start-hint {
-                        width: fit-content; margin: 12px auto;
-                        padding: 10px 18px; border-radius: 999px;
-                        background: rgba(255,107,0,0.08);
-                        border: 1px solid rgba(255,107,0,0.25);
-                        color: #FF6B00; font-size: 13px; font-weight: 700;
-                        text-align: center; font-family: var(--font-h);
-                        animation: m4ScrollHint 1.8s infinite;
-                    }
-                    #s23 .m4-scroll-success {
-                        display: none; width: 100%; margin: 0 auto 12px;
-                        padding: 12px 16px; border-radius: 12px; text-align: center;
-                        background: rgba(46,204,113,0.12);
-                        border: 1px solid rgba(46,204,113,0.35);
-                        box-shadow: 0 0 16px rgba(46,204,113,0.1);
-                    }
-                    #s23 .m4-scroll-success.visible { display: block; }
-                    #s23 .m4-scroll-success-ok {
-                        color: #2ECC71; font-weight: 700; font-size: 14px;
-                        font-family: var(--font-h);
-                    }
-                    #s23 .m4-scroll-success-hint {
-                        color: #FF6B00; font-size: 13px; font-weight: 700;
-                        margin-top: 8px; font-family: var(--font-h);
-                        animation: m4ScrollHint 1.8s infinite;
-                    }
-                    @keyframes m4ScrollHint {
-                        0% { transform: translateY(0); opacity: 0.6; }
-                        50% { transform: translateY(6px); opacity: 1; }
-                        100% { transform: translateY(0); opacity: 0.6; }
                     }
                     #s23 .eq-m-zoom {
                         position: absolute; top: 12px; right: 12px; z-index: 5;
@@ -187,36 +138,47 @@
                         cursor: pointer; letter-spacing: 1px; backdrop-filter: blur(6px);
                         text-transform: uppercase; font-family: var(--font-h);
                     }
-                    #s23 .eq-m-explain {
-                        width: 100%; border-radius: 14px; padding: 16px 18px;
-                        margin-bottom: 16px; transition: all 0.35s ease;
+                    #s23 .eq-m-carousel {
+                        width: 100%; display: flex; flex-direction: column; align-items: center; gap: 14px;
+                    }
+                    #s23 .eq-m-card {
+                        width: 100%; border-radius: 16px; padding: 20px 18px;
+                        text-align: center; transition: border-color 0.35s ease, background 0.35s ease, box-shadow 0.35s ease;
                         background: rgba(255,255,255,0.03);
-                        border: 1px solid rgba(255,107,0,0.12);
+                        border: 1px solid rgba(255,107,0,0.15);
+                        touch-action: pan-y;
                     }
-                    #s23 .eq-m-explain-title {
-                        font-family: var(--font-h); font-size: 14px; font-weight: 800;
-                        letter-spacing: 1.5px; text-transform: uppercase; margin-bottom: 10px;
+                    #s23 .eq-m-card.baixa  { border-color: rgba(46,204,113,0.4); background: rgba(46,204,113,0.07); box-shadow: 0 0 22px rgba(46,204,113,0.12); }
+                    #s23 .eq-m-card.media  { border-color: rgba(255,200,0,0.4);  background: rgba(255,200,0,0.07);  box-shadow: 0 0 22px rgba(255,200,0,0.12); }
+                    #s23 .eq-m-card.alta   { border-color: rgba(230,120,0,0.4);  background: rgba(230,120,0,0.07);  box-shadow: 0 0 22px rgba(230,120,0,0.12); }
+                    #s23 .eq-m-card.maxima { border-color: rgba(220,50,50,0.4);  background: rgba(220,50,50,0.07);  box-shadow: 0 0 22px rgba(220,50,50,0.12); }
+                    #s23 .eq-m-height {
+                        font-family: var(--font-h); font-size: 20px; font-weight: 900;
+                        letter-spacing: 2px; margin-bottom: 8px;
                     }
-                    #s23 .eq-m-explain-desc {
+                    #s23 .eq-m-pct {
+                        font-family: var(--font-h); font-size: 44px; font-weight: 900;
+                        line-height: 1; margin-bottom: 8px;
+                        text-shadow: 0 0 20px rgba(230,81,0,0.35);
+                    }
+                    #s23 .eq-m-label {
+                        font-family: var(--font-h); font-size: 13px; font-weight: 800;
+                        letter-spacing: 2px; text-transform: uppercase; margin-bottom: 12px;
+                    }
+                    #s23 .eq-m-desc {
                         font-size: 15px; color: rgba(255,244,232,0.78); line-height: 1.55;
                     }
-                    #s23 .eq-m-grid {
-                        display: grid; grid-template-columns: 1fr 1fr; gap: 10px;
-                        width: 100%; margin-bottom: 8px;
+                    #s23 .eq-m-carousel-nav {
+                        display: flex; align-items: center; justify-content: center;
+                        gap: 18px; width: 100%;
                     }
-                    #s23 .eq-m-btn {
-                        min-height: 70px; padding: 14px 10px; border-radius: 12px;
-                        font-family: var(--font-h); font-size: 14px; font-weight: 800;
-                        letter-spacing: 2px; cursor: pointer; text-transform: uppercase;
-                        border: 2px solid rgba(230,81,0,0.25);
-                        background: rgba(13,10,8,0.6); color: rgba(230,81,0,0.55);
-                        transition: all 0.3s ease;
+                    #s23 .eq-m-counter {
+                        font-family: var(--font-h); font-size: 15px; font-weight: 800;
+                        letter-spacing: 2px; color: rgba(255,244,232,0.85); min-width: 48px; text-align: center;
                     }
-                    #s23 .eq-m-btn.active.baixa  { background: rgba(46,204,113,0.2); border-color: rgba(46,204,113,1); color: #FFF4E8; box-shadow: 0 0 16px rgba(46,204,113,0.35); }
-                    #s23 .eq-m-btn.active.media  { background: rgba(255,200,0,0.2);  border-color: rgba(255,200,0,1);  color: #FFF4E8; box-shadow: 0 0 16px rgba(255,200,0,0.35); }
-                    #s23 .eq-m-btn.active.alta   { background: rgba(230,120,0,0.2);  border-color: rgba(230,120,0,1);  color: #FFF4E8; box-shadow: 0 0 16px rgba(230,120,0,0.35); }
-                    #s23 .eq-m-btn.active.maxima { background: rgba(220,50,50,0.2);  border-color: rgba(220,50,50,1);  color: #FFF4E8; box-shadow: 0 0 16px rgba(220,50,50,0.35); }
-                    #s23 .eq-m-btn.next-hint { animation: s23-hint 1.2s ease-in-out infinite; border-color: rgba(230,81,0,0.9) !important; color: rgba(230,81,0,1) !important; }
+                    #s23 .eq-m-nav-btn.m1o-nav-btn {
+                        min-width: 52px; min-height: 52px; width: 52px; height: 52px;
+                    }
                     @media (max-width: 768px) {
                         #s23 { overflow: hidden !important; }
                         #s23 .top-bar { padding-bottom: 4px !important; }
@@ -247,13 +209,9 @@
 
                 <div class="content-area" style="position:relative;z-index:2;display:flex;flex-direction:column;align-items:center;justify-content:flex-start;padding-top:8px !important;">
 
-                    <!-- Mobile: experiência premium -->
+                    <!-- Mobile: carrossel -->
                     <div class="eq-mobile">
-                        <div class="eq-m-status-card neutral" id="s23-m-status">
-                            <div class="eq-m-status-lbl">ALTURA ATUAL</div>
-                            <div class="eq-m-status-val" id="s23-m-height" style="color:rgba(255,244,232,0.6);">Nenhuma altura analisada</div>
-                            <div class="eq-m-status-sub" id="s23-m-stability" style="display:none;"></div>
-                        </div>
+                        <p class="eq-m-intro">Passe pelas 4 alturas e veja como cada uma afeta a estabilidade.</p>
                         <div class="eq-m-progress">
                             <div class="eq-m-prog-lbl" id="s23-m-prog-lbl">0 de 4 alturas analisadas</div>
                             <div class="eq-m-dots" id="s23-m-dots">
@@ -267,21 +225,18 @@
                             <img src="imagens/yE7LnZq.jpeg" alt="Empilhadeira">
                             <button type="button" class="eq-m-zoom" onclick="openImageModal('imagens/yE7LnZq.jpeg')">🔍 AMPLIAR</button>
                         </div>
-                        <div class="m4-start-hint" id="s23-m-start-hint">👇 Escolha uma altura para iniciar a análise</div>
-                        <div class="m4-scroll-hint" id="s23-m-scroll-hint" style="display:none;">↓ Role para continuar a análise da estabilidade</div>
-                        <div class="m4-scroll-success" id="s23-m-success">
-                            <div class="m4-scroll-success-ok">✓ Altura analisada</div>
-                            <div class="m4-scroll-success-hint">↓ Continue rolando para visualizar os efeitos na estabilidade</div>
-                        </div>
-                        <div class="eq-m-explain baixa" id="s23-m-explain" style="display:none;">
-                            <div class="eq-m-explain-title" id="s23-m-explain-title"></div>
-                            <div class="eq-m-explain-desc" id="s23-m-explain-desc"></div>
-                        </div>
-                        <div class="eq-m-grid">
-                            <button type="button" class="eq-m-btn baixa" data-idx="0" onclick="if(typeof playTechClick==='function')playTechClick();s23Set(0,this)">BAIXA</button>
-                            <button type="button" class="eq-m-btn media" data-idx="1" onclick="if(typeof playTechClick==='function')playTechClick();s23Set(1,this)">MÉDIA</button>
-                            <button type="button" class="eq-m-btn alta" data-idx="2" onclick="if(typeof playTechClick==='function')playTechClick();s23Set(2,this)">ALTA</button>
-                            <button type="button" class="eq-m-btn maxima" data-idx="3" onclick="if(typeof playTechClick==='function')playTechClick();s23Set(3,this)">MÁXIMA</button>
+                        <div class="eq-m-carousel">
+                            <div class="eq-m-card baixa" id="s23-m-card">
+                                <div class="eq-m-height" id="s23-m-height">🟢 BAIXA</div>
+                                <div class="eq-m-pct" id="s23-m-pct">100%</div>
+                                <div class="eq-m-label" id="s23-m-label">ESTABILIDADE IDEAL</div>
+                                <div class="eq-m-desc" id="s23-m-desc">A carga permanece próxima ao centro de gravidade da máquina. A máquina opera dentro das melhores condições de estabilidade.</div>
+                            </div>
+                            <div class="eq-m-carousel-nav">
+                                <button type="button" class="eq-m-nav-btn m1o-nav-btn" id="s23-m-prev" aria-label="Altura anterior" onclick="s23MPrev()">‹</button>
+                                <span class="eq-m-counter" id="s23-m-counter">1/4</span>
+                                <button type="button" class="eq-m-nav-btn m1o-nav-btn" id="s23-m-next" aria-label="Próxima altura" onclick="s23MNext()">›</button>
+                            </div>
                         </div>
                     </div>
 
@@ -323,59 +278,12 @@
                 <script>
                 var s23Clicked = new Set();
                 var s23CurrentIdx = -1;
-                var s23FirstScrollDone = false;
-                var s23MobileStarted = false;
+                var s23MIdx = 0;
 
                 function s23IsMobile() {
                     return window.matchMedia('(max-width: 768px)').matches;
                 }
 
-                function s23InitMobileNeutral() {
-                    if (!s23IsMobile()) return;
-                    s23MobileStarted = false;
-                    s23CurrentIdx = -1;
-                    var statusCard = document.getElementById('s23-m-status');
-                    if (statusCard) statusCard.className = 'eq-m-status-card neutral';
-                    var heightEl = document.getElementById('s23-m-height');
-                    if (heightEl) {
-                        heightEl.textContent = 'Nenhuma altura analisada';
-                        heightEl.style.color = 'rgba(255,244,232,0.6)';
-                    }
-                    var stabEl = document.getElementById('s23-m-stability');
-                    if (stabEl) { stabEl.textContent = ''; stabEl.style.display = 'none'; }
-                    var explain = document.getElementById('s23-m-explain');
-                    if (explain) explain.style.display = 'none';
-                    var startHint = document.getElementById('s23-m-start-hint');
-                    if (startHint) startHint.style.display = 'block';
-                    var scrollHint = document.getElementById('s23-m-scroll-hint');
-                    if (scrollHint) scrollHint.style.display = 'none';
-                    var success = document.getElementById('s23-m-success');
-                    if (success) success.classList.remove('visible');
-                    document.querySelectorAll('#s23 .eq-m-btn').forEach(function (b) {
-                        b.classList.remove('active');
-                        b.classList.remove('next-hint');
-                    });
-                    s23UpdateProgress(-1);
-                }
-
-                function s23OnFirstMobileInteraction() {
-                    if (!s23IsMobile()) return;
-                    if (!s23MobileStarted) {
-                        s23MobileStarted = true;
-                        var startHint = document.getElementById('s23-m-start-hint');
-                        if (startHint) startHint.style.display = 'none';
-                    }
-                    if (s23FirstScrollDone) return;
-                    s23FirstScrollDone = true;
-                    var success = document.getElementById('s23-m-success');
-                    if (success) success.classList.add('visible');
-                    var container = document.querySelector('#s23 .content-area');
-                    if (container) {
-                        setTimeout(function () {
-                            container.scrollBy({ top: 100, behavior: 'smooth' });
-                        }, 300);
-                    }
-                }
                 const s23HeightNames = ['BAIXA', 'MÉDIA', 'ALTA', 'MÁXIMA'];
                 const s23HeightEmoji = ['🟢', '🟡', '🟠', '🔴'];
                 const s23HeightClass = ['baixa', 'media', 'alta', 'maxima'];
@@ -385,44 +293,6 @@
                     { pct: '50%',  label: 'RISCO MODERADO',         labelColor: 'rgba(230,120,0,1)',   color: 'rgba(230,120,0',   desc: 'A estabilidade foi significativamente reduzida.',                  bottomLabel: 'CAPACIDADE RESIDUAL', bottomDesc: 'Evite curvas bruscas e movimentos repentinos.' },
                     { pct: '25%',  label: '⚠ RISCO DE TOMBAMENTO', labelColor: 'rgba(220,50,50,1)',   color: 'rgba(220,50,50',   desc: 'A estabilidade encontra-se criticamente reduzida.',                bottomLabel: 'IMPORTANTE',          bottomDesc: 'Mesmo dentro da capacidade nominal, a elevação excessiva pode comprometer o equilíbrio da empilhadeira.' }
                 ];
-
-                function s23UpdateMobile(idx) {
-                    var s = s23States[idx];
-                    var hClass = s23HeightClass[idx];
-                    var statusCard = document.getElementById('s23-m-status');
-                    var explainCard = document.getElementById('s23-m-explain');
-                    var heightEl = document.getElementById('s23-m-height');
-                    var stabEl = document.getElementById('s23-m-stability');
-                    var titleEl = document.getElementById('s23-m-explain-title');
-                    var descEl = document.getElementById('s23-m-explain-desc');
-                    if (statusCard) {
-                        statusCard.className = 'eq-m-status-card ' + hClass;
-                    }
-                    if (heightEl) {
-                        heightEl.textContent = s23HeightEmoji[idx] + ' ' + s23HeightNames[idx];
-                        heightEl.style.color = s.labelColor;
-                    }
-                    if (stabEl) {
-                        stabEl.style.display = '';
-                        stabEl.textContent = s.label;
-                        stabEl.style.color = s.labelColor;
-                    }
-                    if (explainCard) {
-                        explainCard.className = 'eq-m-explain ' + hClass;
-                        explainCard.style.borderColor = s.color + ',0.25)';
-                        explainCard.style.background = s.color + ',0.06)';
-                    }
-                    if (titleEl) {
-                        titleEl.textContent = s.label;
-                        titleEl.style.color = s.labelColor;
-                    }
-                    if (descEl) {
-                        descEl.textContent = s.desc + ' ' + s.bottomDesc;
-                    }
-                    if (explainCard && s23IsMobile() && s23MobileStarted) {
-                        explainCard.style.display = 'block';
-                    }
-                }
 
                 function s23UpdateProgress(idx) {
                     var lbl = document.getElementById('s23-m-prog-lbl');
@@ -434,20 +304,122 @@
                     }
                 }
 
+                function s23UpdateNav() {
+                    var prev = document.getElementById('s23-m-prev');
+                    var next = document.getElementById('s23-m-next');
+                    var counter = document.getElementById('s23-m-counter');
+                    if (counter) counter.textContent = (s23MIdx + 1) + '/4';
+                    if (prev) prev.disabled = s23MIdx <= 0;
+                    if (next) next.disabled = s23MIdx >= 3;
+                }
+
+                function s23RenderMobileCard(idx) {
+                    var s = s23States[idx];
+                    var hClass = s23HeightClass[idx];
+                    var card = document.getElementById('s23-m-card');
+                    var heightEl = document.getElementById('s23-m-height');
+                    var pctEl = document.getElementById('s23-m-pct');
+                    var labelEl = document.getElementById('s23-m-label');
+                    var descEl = document.getElementById('s23-m-desc');
+                    if (card) card.className = 'eq-m-card ' + hClass;
+                    if (heightEl) {
+                        heightEl.textContent = s23HeightEmoji[idx] + ' ' + s23HeightNames[idx];
+                        heightEl.style.color = s.labelColor;
+                    }
+                    if (pctEl) {
+                        pctEl.textContent = s.pct;
+                        pctEl.style.color = s.labelColor;
+                    }
+                    if (labelEl) {
+                        labelEl.textContent = s.label;
+                        labelEl.style.color = s.labelColor;
+                    }
+                    if (descEl) {
+                        descEl.textContent = s.desc + ' ' + s.bottomDesc;
+                    }
+                }
+
+                function s23MarkVisited(idx) {
+                    s23Clicked.add(idx);
+                    if (s23Clicked.size === 4) {
+                        var tracker = document.getElementById('s23-tracker');
+                        if (tracker) tracker.classList.add('req-done');
+                        if (typeof updateNextButton === 'function') updateNextButton();
+                    }
+                    s23UpdateProgress(idx);
+                }
+
+                function s23MGo(idx, fromUser) {
+                    if (idx < 0 || idx > 3) return;
+                    s23MIdx = idx;
+                    s23CurrentIdx = idx;
+                    s23RenderMobileCard(idx);
+                    s23UpdateNav();
+                    s23MarkVisited(idx);
+                    if (fromUser && typeof playTechClick === 'function') playTechClick();
+                    // Mantém desktop sincronizado (se redimensionar)
+                    document.querySelectorAll('#s23 .eq-btn').forEach(function (b) {
+                        b.classList.remove('active', 'next-hint');
+                    });
+                    document.querySelectorAll('#s23 .eq-btn[data-idx="' + idx + '"]').forEach(function (b) {
+                        b.classList.add('active');
+                    });
+                    for (var i = 0; i < 4; i++) {
+                        if (!s23Clicked.has(i)) {
+                            document.querySelectorAll('#s23 .eq-btn[data-idx="' + i + '"]').forEach(function (b) {
+                                b.classList.add('next-hint');
+                            });
+                            break;
+                        }
+                    }
+                    var wrap = document.getElementById('s23-cards-wrap');
+                    if (wrap && !s23IsMobile()) wrap.style.display = 'flex';
+                    if (!s23IsMobile()) {
+                        var cardTop = document.getElementById('s23-card-top');
+                        var cardBot = document.getElementById('s23-card-bottom');
+                        if (cardTop && cardBot) {
+                            var s = s23States[idx];
+                            document.getElementById('s23-pct').textContent = s.pct;
+                            document.getElementById('s23-pct').style.color = s.labelColor;
+                            document.getElementById('s23-pct').style.textShadow = '0 0 20px ' + s.color + ',0.4)';
+                            document.getElementById('s23-label').textContent = s.label;
+                            document.getElementById('s23-label').style.color = s.labelColor;
+                            document.getElementById('s23-desc').textContent = s.desc;
+                            document.getElementById('s23-bottom-label').textContent = s.bottomLabel;
+                            document.getElementById('s23-bottom-label').style.color = s.labelColor;
+                            document.getElementById('s23-bottom-desc').textContent = s.bottomDesc;
+                            cardTop.style.border = '1px solid ' + s.color + ',0.8)';
+                            cardTop.style.background = s.color + ',0.08)';
+                            cardTop.style.boxShadow = '0 0 24px ' + s.color + ',0.2)';
+                            cardBot.style.background = s.color + ',0.06)';
+                            cardBot.style.boxShadow = '0 0 24px ' + s.color + ',0.15)';
+                            cardBot.style.border = '1px solid ' + s.color + ',0.5)';
+                            cardBot.style.borderLeft = '3px solid ' + s.color + ',0.9)';
+                        }
+                    }
+                }
+
+                function s23MPrev() { s23MGo(s23MIdx - 1, true); }
+                function s23MNext() { s23MGo(s23MIdx + 1, true); }
+
+                function s23InitMobile() {
+                    if (!s23IsMobile()) return;
+                    s23MGo(s23MIdx >= 0 ? s23MIdx : 0, false);
+                }
+
                 function s23Set(idx, btn) {
                     s23CurrentIdx = idx;
-                    document.querySelectorAll('#s23 .eq-btn, #s23 .eq-m-btn').forEach(function (b) {
+                    document.querySelectorAll('#s23 .eq-btn').forEach(function (b) {
                         b.classList.remove('active');
                         b.classList.remove('next-hint');
                     });
-                    document.querySelectorAll('#s23 [data-idx="' + idx + '"]').forEach(function (b) {
+                    document.querySelectorAll('#s23 .eq-btn[data-idx="' + idx + '"]').forEach(function (b) {
                         b.classList.add('active');
                     });
                     s23Clicked.add(idx);
-                    s23OnFirstMobileInteraction();
                     for (var i = 0; i < 4; i++) {
                         if (!s23Clicked.has(i)) {
-                            document.querySelectorAll('#s23 [data-idx="' + i + '"]').forEach(function (b) {
+                            document.querySelectorAll('#s23 .eq-btn[data-idx="' + i + '"]').forEach(function (b) {
                                 b.classList.add('next-hint');
                             });
                             break;
@@ -458,12 +430,12 @@
                         if (tracker) tracker.classList.add('req-done');
                         if (typeof updateNextButton === 'function') updateNextButton();
                     }
-                    s23UpdateMobile(idx);
                     s23UpdateProgress(idx);
                     var wrap = document.getElementById('s23-cards-wrap');
                     if (wrap) wrap.style.display = window.matchMedia('(max-width: 768px)').matches ? 'none' : 'flex';
                     var cardTop = document.getElementById('s23-card-top');
                     var cardBot = document.getElementById('s23-card-bottom');
+                    if (!cardTop || !cardBot) return;
                     cardTop.classList.add('fade');
                     cardBot.classList.add('fade');
                     setTimeout(function () {
@@ -487,17 +459,47 @@
                         cardTop.classList.remove('fade');
                         cardBot.classList.remove('fade');
                     }, 220);
+                    if (s23IsMobile()) s23MGo(idx, false);
                 }
 
+                // Swipe no card mobile
+                (function () {
+                    var startX = 0, startY = 0, tracking = false;
+                    var card = null;
+                    function bind() {
+                        card = document.getElementById('s23-m-card');
+                        if (!card || card._s23SwipeBound) return;
+                        card._s23SwipeBound = true;
+                        card.addEventListener('touchstart', function (e) {
+                            if (!e.touches || !e.touches[0]) return;
+                            tracking = true;
+                            startX = e.touches[0].clientX;
+                            startY = e.touches[0].clientY;
+                        }, { passive: true });
+                        card.addEventListener('touchend', function (e) {
+                            if (!tracking || !e.changedTouches || !e.changedTouches[0]) return;
+                            tracking = false;
+                            var dx = e.changedTouches[0].clientX - startX;
+                            var dy = e.changedTouches[0].clientY - startY;
+                            if (Math.abs(dx) < 40 || Math.abs(dx) < Math.abs(dy)) return;
+                            if (dx < 0) s23MNext();
+                            else s23MPrev();
+                        }, { passive: true });
+                    }
+                    if (document.readyState === 'loading') {
+                        document.addEventListener('DOMContentLoaded', bind);
+                    } else {
+                        bind();
+                    }
+                })();
+
                 if (document.readyState === 'loading') {
-                    document.addEventListener('DOMContentLoaded', s23InitMobileNeutral);
+                    document.addEventListener('DOMContentLoaded', s23InitMobile);
                 } else {
-                    s23InitMobileNeutral();
+                    s23InitMobile();
                 }
                 window.addEventListener('resize', function () {
-                    if (s23IsMobile() && !s23MobileStarted && s23Clicked.size === 0) {
-                        s23InitMobileNeutral();
-                    }
+                    if (s23IsMobile()) s23InitMobile();
                 });
                 </script>
             </div>
@@ -542,30 +544,44 @@
                     #s24 .cc-grid { min-height: 400px; }
                     #s24 .cc-side { position: relative; }
                     #s24 .cc-ampliar { position:absolute; bottom:18px; left:22px; padding:5px 12px; background:rgba(0,0,0,0.8); border:1px solid rgba(230,81,0,0.6); border-radius:6px; color:rgba(230,81,0,1); font-size:11px; font-weight:700; cursor:pointer; letter-spacing:1px; text-transform:uppercase; backdrop-filter:blur(6px); z-index:3; }
-                    /* MOBILE s24 */
-                    #s24 .cc-mobile { display: none; width: 100%; max-width: 420px; margin: 0 auto; flex-direction: column; align-items: center; gap: 14px; }
-                    #s24 .cc-m-progress { width: 100%; text-align: center; }
-                    #s24 .cc-m-step { font-family: var(--font-h); font-size: 13px; font-weight: 800; letter-spacing: 2px; color: rgba(255,244,232,0.85); margin-bottom: 8px; }
+                    /* MOBILE s24 — carrossel */
+                    #s24 .cc-mobile { display: none; width: 100%; max-width: 100%; margin: 0 auto; flex-direction: column; align-items: center; gap: 12px; }
+                    #s24 .cc-m-intro {
+                        width: 100%; text-align: center; font-size: 14px; line-height: 1.55;
+                        color: rgba(255,244,232,0.65); padding: 0 4px; margin: 0;
+                        font-family: var(--font-h);
+                    }
+                    #s24 .cc-m-progress {
+                        display: flex; flex-direction: column; align-items: center; gap: 8px;
+                        width: 100%;
+                    }
+                    #s24 .cc-m-prog-lbl {
+                        font-family: var(--font-h); font-size: 12px; font-weight: 700;
+                        letter-spacing: 1px; color: rgba(230,81,0,0.75); text-transform: uppercase;
+                    }
                     #s24 .cc-m-dots { display: flex; gap: 8px; justify-content: center; align-items: center; }
                     #s24 .cc-m-dot {
                         width: 10px; height: 10px; border-radius: 50%;
                         background: rgba(255,255,255,0.12); border: 1px solid rgba(255,255,255,0.2);
                         transition: all 0.35s ease;
                     }
-                    #s24 .cc-m-dot.on { background: #FF6B00; border-color: #FF6B00; box-shadow: 0 0 10px rgba(255,107,0,0.55); transform: scale(1.15); }
-                    #s24 .cc-m-intro {
-                        width: 100%; text-align: center; font-size: 14px; line-height: 1.55;
-                        color: rgba(255,244,232,0.65); padding: 0 4px; margin-bottom: 4px;
+                    #s24 .cc-m-dot.done { background: rgba(230,81,0,0.7); border-color: rgba(230,81,0,0.5); }
+                    #s24 .cc-m-dot.cur { background: #FF6B00; border-color: #FF6B00; box-shadow: 0 0 10px rgba(255,107,0,0.55); transform: scale(1.15); }
+                    #s24 .cc-m-carousel {
+                        width: 100%; display: flex; flex-direction: column; align-items: center; gap: 14px;
                     }
-                    #s24 .cc-m-scenario { width: 100%; display: flex; flex-direction: column; align-items: center; gap: 12px; }
+                    #s24 .cc-m-slide {
+                        width: 100%; display: flex; flex-direction: column; align-items: center; gap: 12px;
+                        touch-action: pan-y;
+                    }
                     #s24 .cc-m-img-wrap {
                         position: relative; width: 100%; border-radius: 14px; overflow: hidden;
                         border: 1px solid rgba(255,255,255,0.08);
                         box-shadow: 0 16px 40px rgba(0,0,0,0.65);
                     }
-                    #s24 .cc-m-scenario.ok .cc-m-img-wrap { border-color: rgba(46,204,113,0.25); box-shadow: 0 16px 40px rgba(0,0,0,0.65), 0 0 24px rgba(46,204,113,0.12); }
-                    #s24 .cc-m-scenario.err .cc-m-img-wrap { border-color: rgba(220,50,50,0.25); box-shadow: 0 16px 40px rgba(0,0,0,0.65), 0 0 24px rgba(220,50,50,0.12); }
-                    #s24 .cc-m-img-wrap img { width: 100%; height: 260px; display: block; object-fit: cover; object-position: center center; }
+                    #s24 .cc-m-slide.ok .cc-m-img-wrap { border-color: rgba(46,204,113,0.25); box-shadow: 0 16px 40px rgba(0,0,0,0.65), 0 0 24px rgba(46,204,113,0.12); }
+                    #s24 .cc-m-slide.err .cc-m-img-wrap { border-color: rgba(220,50,50,0.25); box-shadow: 0 16px 40px rgba(0,0,0,0.65), 0 0 24px rgba(220,50,50,0.12); }
+                    #s24 .cc-m-img-wrap img { width: 100%; height: 240px; display: block; object-fit: cover; object-position: center center; }
                     #s24 .cc-m-zoom {
                         position: absolute; bottom: 12px; right: 12px; z-index: 5;
                         padding: 6px 12px; background: rgba(0,0,0,0.8);
@@ -577,24 +593,23 @@
                     #s24 .cc-m-desc-card { width: 100%; border-radius: 14px; padding: 16px 18px; text-align: center; }
                     #s24 .cc-m-desc-card.ok { background: rgba(46,204,113,0.08); border: 1px solid rgba(46,204,113,0.25); box-shadow: 0 0 20px rgba(46,204,113,0.08); }
                     #s24 .cc-m-desc-card.err { background: rgba(220,50,50,0.08); border: 1px solid rgba(220,50,50,0.25); box-shadow: 0 0 20px rgba(220,50,50,0.08); }
-                    #s24 .scroll-hint {
-                        width: fit-content; margin: 4px auto;
-                        padding: 10px 18px; border-radius: 999px;
-                        background: rgba(255,107,0,0.08);
-                        border: 1px solid rgba(255,107,0,0.25);
-                        color: #FF6B00; font-size: 13px; font-weight: 700;
-                        text-align: center; font-family: var(--font-h);
-                        animation: s24ScrollHint 1.8s infinite;
+                    #s24 .cc-m-carousel-nav {
+                        display: flex; align-items: center; justify-content: center;
+                        gap: 18px; width: 100%;
                     }
-                    @keyframes s24ScrollHint {
-                        0% { transform: translateY(0); opacity: 0.6; }
-                        50% { transform: translateY(6px); opacity: 1; }
-                        100% { transform: translateY(0); opacity: 0.6; }
+                    #s24 .cc-m-counter {
+                        font-family: var(--font-h); font-size: 15px; font-weight: 800;
+                        letter-spacing: 2px; color: rgba(255,244,232,0.85); min-width: 48px; text-align: center;
+                    }
+                    #s24 .cc-m-nav-btn.m1o-nav-btn {
+                        min-width: 52px; min-height: 52px; width: 52px; height: 52px;
                     }
                     #s24 .cc-m-gold {
-                        margin-top: 8px; margin-bottom: 8px;
+                        width: 100%; margin-top: 4px;
                         box-shadow: 0 0 36px rgba(255,200,0,0.18), 0 8px 30px rgba(0,0,0,0.35);
+                        display: none;
                     }
+                    #s24 .cc-m-gold.is-visible { display: flex; }
                     @media (max-width: 768px) {
                         #s24 { overflow: hidden !important; }
                         #s24 .top-bar { padding-bottom: 4px !important; }
@@ -630,48 +645,25 @@
 
                     <p class="cc-subtitle">A posição da carga nos garfos muda tudo.</p>
 
-                    <!-- MOBILE: jornada guiada de comparação -->
+                    <!-- MOBILE: carrossel -->
                     <div class="cc-mobile">
-
-                        <div class="cc-m-progress" id="s24-m-prog1">
-                            <div class="cc-m-step">1 DE 2</div>
-                            <div class="cc-m-dots" id="s24-m-dots1">
-                                <span class="cc-m-dot on"></span><span class="cc-m-dot"></span>
+                        <div class="cc-m-carousel">
+                            <div class="cc-m-slide ok" id="s24-m-slide">
+                                <div class="cc-badge ok" id="s24-m-badge">✅ CENTRO DE CARGA CORRETO</div>
+                                <div class="cc-m-img-wrap">
+                                    <img id="s24-m-img" src="imagens/0ANurIC.jpeg" alt="Centro de carga">
+                                    <button type="button" class="cc-m-zoom" id="s24-m-zoom" onclick="openImageModal(document.getElementById('s24-m-img').src)">🔍 AMPLIAR</button>
+                                </div>
+                                <div class="cc-m-desc-card ok" id="s24-m-desc-card">
+                                    <p class="cc-desc" id="s24-m-desc">Carga posicionada corretamente.<br>Maior estabilidade operacional.</p>
+                                </div>
+                            </div>
+                            <div class="cc-m-carousel-nav">
+                                <button type="button" class="cc-m-nav-btn m1o-nav-btn" id="s24-m-prev" aria-label="Cenário anterior" onclick="s24MPrev()">‹</button>
+                                <span class="cc-m-counter" id="s24-m-counter">1/2</span>
+                                <button type="button" class="cc-m-nav-btn m1o-nav-btn" id="s24-m-next" aria-label="Próximo cenário" onclick="s24MNext()">›</button>
                             </div>
                         </div>
-
-                        <p class="cc-m-intro">Compare os dois cenários para entender como o posicionamento da carga afeta a estabilidade.</p>
-
-                        <section class="cc-m-scenario ok" id="s24-m-scenario-ok" data-s24-view="ok">
-                            <div class="cc-badge ok">✅ CENTRO DE CARGA CORRETO</div>
-                            <div class="cc-m-img-wrap">
-                                <img src="imagens/0ANurIC.jpeg" alt="Centro de carga correto">
-                                <button type="button" class="cc-m-zoom" onclick="openImageModal('imagens/0ANurIC.jpeg')">🔍 AMPLIAR</button>
-                            </div>
-                            <div class="cc-m-desc-card ok">
-                                <p class="cc-desc">Carga posicionada corretamente.<br>Maior estabilidade operacional.</p>
-                            </div>
-                        </section>
-
-                        <div class="scroll-hint" id="s24-m-scroll-hint">↓ Continue para comparar com o cenário incorreto</div>
-
-                        <div class="cc-m-progress" id="s24-m-prog2">
-                            <div class="cc-m-step">2 DE 2</div>
-                            <div class="cc-m-dots" id="s24-m-dots2">
-                                <span class="cc-m-dot on"></span><span class="cc-m-dot on"></span>
-                            </div>
-                        </div>
-
-                        <section class="cc-m-scenario err" id="s24-m-scenario-err" data-s24-view="err">
-                            <div class="cc-badge err">⚠ CENTRO DE CARGA EXCEDIDO</div>
-                            <div class="cc-m-img-wrap">
-                                <img src="imagens/ciJ5lHO.jpeg" alt="Centro de carga excedido">
-                                <button type="button" class="cc-m-zoom" onclick="openImageModal('imagens/ciJ5lHO.jpeg')">🔍 AMPLIAR</button>
-                            </div>
-                            <div class="cc-m-desc-card err">
-                                <p class="cc-desc">Maior risco de desequilíbrio<br>e tombamento.</p>
-                            </div>
-                        </section>
 
                         <div class="cc-gold cc-m-gold" id="s24-m-gold">
                             <div class="cc-gold-label">🛡 REGRA DE OURO</div>
@@ -709,91 +701,148 @@
                 </div>
 
                 <script>
-                (function () {
-                    var s24ViewedOk = false;
-                    var s24ViewedErr = false;
-                    var s24MobDone = false;
-                    var s24Observer = null;
-
-                    function s24IsMobile() {
-                        return window.matchMedia('(max-width: 768px)').matches;
+                var s24MIdx = 0;
+                var s24Viewed = new Set();
+                var s24MobDone = false;
+                var s24Slides = [
+                    {
+                        type: 'ok',
+                        badge: '✅ CENTRO DE CARGA CORRETO',
+                        img: 'imagens/0ANurIC.jpeg',
+                        alt: 'Centro de carga correto',
+                        desc: 'Carga posicionada corretamente.<br>Maior estabilidade operacional.'
+                    },
+                    {
+                        type: 'err',
+                        badge: '⚠ CENTRO DE CARGA EXCEDIDO',
+                        img: 'imagens/ciJ5lHO.jpeg',
+                        alt: 'Centro de carga excedido',
+                        desc: 'Maior risco de desequilíbrio<br>e tombamento.'
                     }
+                ];
 
-                    function s24CheckComplete() {
-                        if (!s24IsMobile() || s24MobDone) return;
-                        if (!s24ViewedOk || !s24ViewedErr) return;
-                        s24MobDone = true;
-                        try { if (typeof playBeep === 'function') playBeep('end'); } catch (e) {}
-                        var tracker = document.getElementById('s24-mobile-tracker');
-                        if (tracker) {
-                            tracker.style.display = 'block';
-                            tracker.classList.add('req-done');
-                        }
-                        setTimeout(function () {
-                            if (typeof updateNextButton === 'function') updateNextButton();
-                        }, 300);
+                function s24IsMobile() {
+                    return window.matchMedia('(max-width: 768px)').matches;
+                }
+
+                function s24CheckComplete() {
+                    if (!s24IsMobile() || s24MobDone) return;
+                    if (s24Viewed.size < 2) return;
+                    s24MobDone = true;
+                    try { if (typeof playBeep === 'function') playBeep('end'); } catch (e) {}
+                    var tracker = document.getElementById('s24-mobile-tracker');
+                    if (tracker) {
+                        tracker.style.display = 'block';
+                        tracker.classList.add('req-done');
                     }
-
-                    function s24MarkViewed(which) {
-                        if (which === 'ok' && !s24ViewedOk) {
-                            s24ViewedOk = true;
-                        }
-                        if (which === 'err' && !s24ViewedErr && s24ViewedOk) {
-                            s24ViewedErr = true;
-                            var hint = document.getElementById('s24-m-scroll-hint');
-                            if (hint) hint.style.display = 'none';
-                        }
-                        s24CheckComplete();
-                    }
-
-                    function s24SetupObserver() {
-                        if (s24Observer) {
-                            s24Observer.disconnect();
-                            s24Observer = null;
-                        }
-                        if (!s24IsMobile()) return;
-                        var root = document.querySelector('#s24 .content-area');
-                        var okEl = document.getElementById('s24-m-scenario-ok');
-                        var errEl = document.getElementById('s24-m-scenario-err');
-                        if (!root || !okEl || !errEl || typeof IntersectionObserver === 'undefined') return;
-                        s24Observer = new IntersectionObserver(function (entries) {
-                            entries.forEach(function (entry) {
-                                if (!entry.isIntersecting || entry.intersectionRatio < 0.55) return;
-                                var which = entry.target.getAttribute('data-s24-view');
-                                if (which) s24MarkViewed(which);
-                            });
-                        }, { root: root, threshold: [0.55, 0.75] });
-                        s24Observer.observe(okEl);
-                        s24Observer.observe(errEl);
-                    }
-
-                    function s24InitMode() {
-                        var goldDesktop = document.getElementById('s24-gold-desktop');
-                        var mobTracker = document.getElementById('s24-mobile-tracker');
-                        if (s24IsMobile()) {
-                            if (goldDesktop) goldDesktop.classList.remove('req-item');
-                            if (mobTracker && !s24MobDone) {
-                                mobTracker.classList.remove('req-done');
-                                mobTracker.style.display = 'none';
-                            }
-                            s24SetupObserver();
-                        } else {
-                            if (goldDesktop) goldDesktop.classList.add('req-item', 'req-done');
-                            if (mobTracker) {
-                                mobTracker.style.display = 'block';
-                                mobTracker.classList.add('req-done');
-                            }
-                            if (s24Observer) {
-                                s24Observer.disconnect();
-                                s24Observer = null;
-                            }
-                        }
+                    var gold = document.getElementById('s24-m-gold');
+                    if (gold) gold.classList.add('is-visible');
+                    setTimeout(function () {
                         if (typeof updateNextButton === 'function') updateNextButton();
-                    }
+                    }, 200);
+                }
 
-                    s24InitMode();
-                    window.addEventListener('resize', s24InitMode);
+                function s24UpdateNav() {
+                    var prev = document.getElementById('s24-m-prev');
+                    var next = document.getElementById('s24-m-next');
+                    var counter = document.getElementById('s24-m-counter');
+                    if (counter) counter.textContent = (s24MIdx + 1) + '/2';
+                    if (prev) prev.disabled = s24MIdx <= 0;
+                    if (next) next.disabled = s24MIdx >= 1;
+                }
+
+                function s24RenderSlide(idx) {
+                    var s = s24Slides[idx];
+                    if (!s) return;
+                    var slide = document.getElementById('s24-m-slide');
+                    var badge = document.getElementById('s24-m-badge');
+                    var img = document.getElementById('s24-m-img');
+                    var descCard = document.getElementById('s24-m-desc-card');
+                    var desc = document.getElementById('s24-m-desc');
+                    if (slide) slide.className = 'cc-m-slide ' + s.type;
+                    if (badge) {
+                        badge.className = 'cc-badge ' + s.type;
+                        badge.textContent = s.badge;
+                    }
+                    if (img) {
+                        img.src = s.img;
+                        img.alt = s.alt;
+                    }
+                    if (descCard) descCard.className = 'cc-m-desc-card ' + s.type;
+                    if (desc) desc.innerHTML = s.desc;
+                    var gold = document.getElementById('s24-m-gold');
+                    if (gold) {
+                        if (idx === 1 || s24MobDone) gold.classList.add('is-visible');
+                        else gold.classList.remove('is-visible');
+                    }
+                }
+
+                function s24MGo(idx, fromUser) {
+                    if (idx < 0 || idx > 1) return;
+                    s24MIdx = idx;
+                    s24Viewed.add(idx);
+                    s24RenderSlide(idx);
+                    s24UpdateNav();
+                    s24CheckComplete();
+                    if (fromUser && typeof playTechClick === 'function') playTechClick();
+                }
+
+                function s24MPrev() { s24MGo(s24MIdx - 1, true); }
+                function s24MNext() { s24MGo(s24MIdx + 1, true); }
+
+                function s24InitMode() {
+                    var goldDesktop = document.getElementById('s24-gold-desktop');
+                    var mobTracker = document.getElementById('s24-mobile-tracker');
+                    if (s24IsMobile()) {
+                        if (goldDesktop) goldDesktop.classList.remove('req-item');
+                        if (mobTracker && !s24MobDone) {
+                            mobTracker.classList.remove('req-done');
+                            mobTracker.style.display = 'none';
+                        }
+                        s24MGo(s24MIdx, false);
+                    } else {
+                        if (goldDesktop) goldDesktop.classList.add('req-item', 'req-done');
+                        if (mobTracker) {
+                            mobTracker.style.display = 'block';
+                            mobTracker.classList.add('req-done');
+                        }
+                    }
+                    if (typeof updateNextButton === 'function') updateNextButton();
+                }
+
+                // Swipe
+                (function () {
+                    var startX = 0, startY = 0, tracking = false;
+                    function bind() {
+                        var slide = document.getElementById('s24-m-slide');
+                        if (!slide || slide._s24SwipeBound) return;
+                        slide._s24SwipeBound = true;
+                        slide.addEventListener('touchstart', function (e) {
+                            if (!e.touches || !e.touches[0]) return;
+                            tracking = true;
+                            startX = e.touches[0].clientX;
+                            startY = e.touches[0].clientY;
+                        }, { passive: true });
+                        slide.addEventListener('touchend', function (e) {
+                            if (!tracking || !e.changedTouches || !e.changedTouches[0]) return;
+                            tracking = false;
+                            var dx = e.changedTouches[0].clientX - startX;
+                            var dy = e.changedTouches[0].clientY - startY;
+                            if (Math.abs(dx) < 40 || Math.abs(dx) < Math.abs(dy)) return;
+                            if (dx < 0) s24MNext();
+                            else s24MPrev();
+                        }, { passive: true });
+                    }
+                    if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', bind);
+                    else bind();
                 })();
+
+                if (document.readyState === 'loading') {
+                    document.addEventListener('DOMContentLoaded', s24InitMode);
+                } else {
+                    s24InitMode();
+                }
+                window.addEventListener('resize', s24InitMode);
                 </script>
 
                 <div class="wave" style="position:absolute;bottom:0;left:0;right:0;z-index:1;"><svg viewBox="0 0 1440 100" preserveAspectRatio="none"><path d="M0,65 C360,20 720,90 1080,40 C1260,15 1390,70 1440,60 L1440,100 L0,100 Z" fill="rgba(230,81,0,0.07)"/></svg></div>
@@ -887,33 +936,18 @@
 
             <div class="slide" id="s26">
                 <style>
-                    /* ── Q4 Layout ── */
+                    /* ── Q4 Layout (imagem + texto) ── */
                     #s26 .q4-layout { display:flex; gap:24px; align-items:stretch; width:100%; max-width:900px; margin:0 auto; }
                     #s26 .q4-col-img { flex:0 0 58%; border-radius:14px; overflow:hidden; border:1px solid rgba(230,81,0,0.15); box-shadow:0 20px 60px rgba(0,0,0,0.7); }
                     #s26 .q4-col-img img { width:100%; height:100%; object-fit:cover; display:block; min-height:160px; max-height:220px; }
                     #s26 .q4-col-text { flex:1; display:flex; flex-direction:column; justify-content:center; padding:8px 0; }
                     #s26 .q4-sit-title { font-family:var(--font-h); font-size:12px; font-weight:800; letter-spacing:3px; color:rgba(230,81,0,0.9); margin-bottom:14px; }
                     #s26 .q4-sit-desc { font-size:clamp(14px,1.8vw,17px); font-weight:600; color:#FFF4E8; line-height:1.5; }
-
-                    /* ── Q4 Botões ── */
-                    #s26 .q4-options { display:flex; flex-direction:row; gap:12px; max-width:900px; margin:16px auto 0; width:100%; }
-                    #s26 .q4-opt { flex:1; min-height:72px; display:flex; align-items:center; justify-content:center; text-align:center; font-family:var(--font-h); font-size:clamp(14px,1.6vw,17px); font-weight:800; letter-spacing:1.5px; border-radius:12px; padding:20px 24px; cursor:pointer; transition:all 0.25s ease; }
-                    #s26 .q4-opt:first-child { background:rgba(120,20,20,0.3); border:1px solid rgba(220,50,50,0.5); color:rgba(255,100,100,1); }
-                    #s26 .q4-opt:last-child  { background:rgba(10,60,20,0.3);  border:1px solid rgba(46,204,113,0.5); color:rgba(46,204,113,1); }
-                    #s26 .q4-opt:first-child:hover { background:rgba(180,30,30,0.4); box-shadow:0 0 24px rgba(220,50,50,0.25); transform:translateY(-2px); }
-                    #s26 .q4-opt:last-child:hover  { background:rgba(15,80,30,0.4);  box-shadow:0 0 24px rgba(46,204,113,0.25); transform:translateY(-2px); }
-                    #s26 .q4-opt.correct { box-shadow:0 0 28px rgba(46,204,113,0.4)  !important; border-color:rgba(46,204,113,1)  !important; }
-                    #s26 .q4-opt.wrong   { box-shadow:0 0 28px rgba(220,50,50,0.4)   !important; border-color:rgba(220,50,50,1)   !important; }
-
-                    /* ── Q4 Feedback ── */
-                    #s26 .q-feedback.ok  { background:rgba(10,28,12,0.95); border:1px solid rgba(46,160,80,0.5); border-left:3px solid rgba(46,204,113,1); color:rgba(46,204,113,1); border-radius:10px; padding:14px 18px; margin-top:12px; font-weight:600; max-width:900px; width:100%; box-sizing:border-box; }
-                    #s26 .q-feedback.nok { background:rgba(28,5,4,0.95);  border:1px solid rgba(200,40,30,0.5);  border-left:3px solid rgba(220,50,50,1);   color:rgba(220,80,80,1);   border-radius:10px; padding:14px 18px; margin-top:12px; font-weight:600; max-width:900px; width:100%; box-sizing:border-box; }
-
-                    /* ── Q4 Counter (desktop) ── */
-                    @media (min-width: 769px) {
-                        #s26 #q4-counter { font-family:var(--font-h); font-size:12px; font-weight:800; letter-spacing:3px; color:rgba(230,81,0,1); text-transform:uppercase; }
+                    #s26 #q4-question-panel .q-text {
+                        flex-direction: column !important;
+                        align-items: stretch !important;
+                        font-weight: 400 !important;
                     }
-                    /* ── Q4 Mobile: padrão quiz M1/M2/M3 ── */
                     #s26 .q4-m-img-wrap {
                         position: relative; width: 100%; border-radius: 10px; overflow: hidden;
                         border: 1px solid rgba(230,81,0,0.2); margin-bottom: 14px;
@@ -945,13 +979,9 @@
                         }
                         #s26 .quiz-wrap { padding: 0 !important; max-width: 100% !important; }
                         #s26 #q4-intro-panel { padding: 10px 0 !important; }
-                        #s26 #q4-intro-panel .hud-anim-enter:first-of-type {
-                            padding: 20px 16px !important;
-                            margin-bottom: 14px !important;
-                        }
-                        #s26 #q4-intro-panel h3 { font-size: 20px !important; margin-bottom: 8px !important; }
-                        #s26 #q4-intro-panel p { font-size: 13px !important; }
-                        #s26 #q4-intro-panel .hud-anim-enter:nth-of-type(2) { margin-top: 16px !important; margin-bottom: 16px !important; font-size: 12px !important; padding: 8px 14px !important; }
+                        #s26 .quiz-intro-card { padding: 28px 18px 24px !important; }
+                        #s26 .quiz-intro-title { font-size: 20px !important; }
+                        #s26 .quiz-intro-desc { font-size: 14px !important; }
                         #s26 .btn-tf-verify {
                             font-size: 15px !important;
                             padding: 14px 30px !important;
@@ -959,63 +989,23 @@
                             justify-content: center !important;
                         }
                         #s26 #q4-question-panel .q-meta { margin-bottom: 14px !important; }
-                        #s26 #q4-counter { font-size: 13px !important; letter-spacing: 1.5px !important; }
-                        #s26 #q4-text {
-                            font-size: 16px !important;
-                            line-height: 1.45 !important;
-                            padding: 24px 16px 20px !important;
-                            margin-bottom: 12px !important;
-                        }
                         #s26 #q4-text .q4-sit-title { font-size: 11px !important; letter-spacing: 2px !important; margin-bottom: 10px !important; }
                         #s26 #q4-text .q4-sit-desc { font-size: 15px !important; line-height: 1.4 !important; font-weight: 600 !important; }
-                        #s26 #q4-text .q4-m-img-wrap { margin: -8px -4px 14px; }
+                        #s26 #q4-text .q4-m-img-wrap { margin: 0 0 14px; }
                         #s26 #q4-text .q4-m-img-wrap img { height: 200px !important; }
-                        #s26 .q-options { gap: 10px !important; }
-                        #s26 .q-opt {
-                            padding: 10px 14px !important;
-                            font-size: 15px !important;
-                            width: 100% !important;
-                        }
-                        #s26 .q-opt span { font-size: 15px !important; }
-                        #s26 .opt-l {
-                            width: 32px !important;
-                            height: 32px !important;
-                            font-size: 17px !important;
-                        }
                         #s26 .q-feedback {
                             padding: 12px 14px !important;
                             font-size: 15px !important;
                             line-height: 1.45 !important;
                             margin-top: 10px !important;
                             margin-bottom: 8px !important;
-                            max-height: 180px;
-                            overflow-y: auto;
-                            -webkit-overflow-scrolling: touch;
                         }
                         #s26 .btn-next-q {
                             width: 100% !important;
-                            display: none;
                             font-size: 15px !important;
                             padding: 14px 30px !important;
-                            letter-spacing: 1px;
-                            text-transform: uppercase;
-                        }
-                        #s26 .btn-next-q.show {
-                            display: block !important;
-                            width: 100% !important;
-                            min-height: 52px !important;
                             margin-top: 12px !important;
-                            position: relative !important;
-                            z-index: 100 !important;
-                            animation: quizNextPulse 1.8s infinite;
                         }
-                        @keyframes quizNextPulse {
-                            0% { transform: scale(1); }
-                            50% { transform: scale(1.03); }
-                            100% { transform: scale(1); }
-                        }
-                        #s26 .q4-options { flex-direction: column !important; }
-                        #s26 .q4-opt { width: 100% !important; min-height: auto !important; }
                         #s26 .wave { pointer-events: none; }
                     }
                     @media (min-width: 769px) {
@@ -1025,122 +1015,56 @@
                 </style>
                 <div class="top-bar">
                     <div class="section-tag"
-                        style="background: var(--red); color: var(--black); font-size: 16px; padding: 6px 16px; font-weight: 800; box-shadow: 0 0 12px rgba(46, 204, 113, 0.4);">
+                        style="background: var(--red); color: var(--black); font-size: 16px; padding: 6px 16px; font-weight: 800; box-shadow: 0 0 12px rgba(230, 81, 0, 0.4);">
                         🎯 Quiz · Módulo 4</div>
                     <h2 class="slide-title"
-                        style="font-size: clamp(32px, 5vw, 48px); letter-spacing: 0.02em; text-shadow: 0 0 20px rgba(46, 204, 113, 0.6); position: relative; display: inline-block;">
+                        style="font-size: clamp(32px, 5vw, 48px); letter-spacing: 0.02em; text-shadow: 0 0 20px rgba(230, 81, 0, 0.6); position: relative; display: inline-block;">
                         <div
-                            style="position: absolute; inset: -20px; background: radial-gradient(circle, rgba(46,204,113,0.15) 0%, transparent 70%); z-index: -1; filter: blur(10px);">
+                            style="position: absolute; inset: -20px; background: radial-gradient(circle, rgba(230,81,0,0.15) 0%, transparent 70%); z-index: -1; filter: blur(10px);">
                         </div>
-                        Avaliação de<span> Cenários</span>
+                        Hora do <span>Desafio</span>
                     </h2>
                 </div>
                 <div class="content-area">
                     <div class="quiz-wrap">
-
-                        <!-- ABERTURA -->
-                        <div id="q4-intro-panel" style="text-align: center; padding: 40px 20px; position: relative;">
-                            <!-- Efeitos Visuais Sutis HUD -->
-                            <div
-                                style="position: absolute; inset: 0; pointer-events: none; z-index: 0; background: radial-gradient(ellipse at center, rgba(230, 81, 0, 0.05) 0%, transparent 60%);">
-                            </div>
-                            <div
-                                style="position: absolute; top: 20px; left: 50%; transform: translateX(-50%); width: 200px; height: 1px; background: linear-gradient(90deg, transparent, rgba(230,81,0,0.3), transparent);">
-                            </div>
-                            <div
-                                style="position: absolute; bottom: 20px; left: 50%; transform: translateX(-50%); width: 200px; height: 1px; background: linear-gradient(90deg, transparent, rgba(230,81,0,0.3), transparent);">
-                            </div>
-
-                            <div class="hud-anim-enter"
-                                style="position: relative; z-index: 1; max-width: 680px; margin: 0 auto 30px; padding: 40px 30px; border-radius: 8px; background: rgba(20, 8, 3, 0.6); border: 1px solid rgba(230, 81, 0, 0.15); box-shadow: 0 10px 40px rgba(0,0,0,0.5), inset 0 0 20px rgba(230,81,0,0.05); backdrop-filter: blur(12px); animation-delay: 0.2s; opacity: 0; overflow: hidden;">
-                                <!-- Efeitos Visuais HUD Premium Internos -->
-                                <div
-                                    style="position: absolute; inset: 0; pointer-events: none; background: repeating-linear-gradient(0deg, transparent, transparent 2px, rgba(230,81,0,0.03) 3px, rgba(230,81,0,0.03) 4px);">
-                                </div>
-                                <div
-                                    style="position: absolute; inset: 0; pointer-events: none; opacity: 0.3; background-image: radial-gradient(rgba(255,255,255,0.1) 1px, transparent 1px); background-size: 20px 20px; animation: s1b-smoke 40s infinite linear;">
-                                </div>
-                                <div
-                                    style="position: absolute; top: 0; left: 50%; transform: translateX(-50%); width: 60%; height: 1px; background: linear-gradient(90deg, transparent, rgba(230,81,0,0.4), transparent);">
-                                </div>
-                                <div
-                                    style="position: absolute; bottom: 0; left: 50%; transform: translateX(-50%); width: 60%; height: 1px; background: linear-gradient(90deg, transparent, rgba(230,81,0,0.4), transparent);">
-                                </div>
-                                <div
-                                    style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); width: 80%; height: 80%; background: radial-gradient(circle, rgba(230,81,0,0.08) 0%, transparent 70%); pointer-events: none; animation: pulse 4s infinite;">
-                                </div>
-
-                                <div class="hud-anim-enter" style="animation-delay: 0.2s; opacity: 0; margin-bottom: 20px;">
-                                    <div style="font-family:var(--font-h);font-size:12px;font-weight:700;color:rgba(230,81,0,0.8);letter-spacing:4px;text-transform:uppercase;margin-bottom:16px;display:flex;align-items:center;justify-content:center;gap:12px;">
-                                        <span style="width:30px;height:1px;background:rgba(230,81,0,0.4);"></span>
-                                        PROTOCOLO DE AVALIAÇÃO
-                                        <span style="width:30px;height:1px;background:rgba(230,81,0,0.4);"></span>
-                                    </div>
-                                    <h3 style="position:relative;font-family:var(--font-h);font-size:clamp(24px,3.5vw,36px);font-weight:800;color:#FFF4E8;text-transform:uppercase;letter-spacing:1px;line-height:1.2;margin-bottom:16px;text-shadow:0 0 15px rgba(230,81,0,0.4);">
-                                        DECISÕES OPERACIONAIS
-                                    </h3>
-                                    <p style="position:relative;font-size:clamp(16px,2vw,18px);color:rgba(255,244,232,0.78);max-width:500px;margin:0 auto;line-height:1.5;font-weight:300;">
-                                        Analise cada situação e escolha a ação mais segura.
-                                    </p>
-                                </div>
-
-                                <!-- Badge Premium -->
-                                <div class="hud-anim-enter"
-                                    style="position: relative; z-index: 1; font-family: var(--font-h); font-size: 14px; font-weight: 700; color: #ffffff; letter-spacing: 2px; text-transform: uppercase; margin-bottom: 40px; animation-delay: 0.3s; opacity: 0; display: inline-flex; align-items: center; gap: 8px; background: rgba(30, 10, 3, 0.9); padding: 10px 20px; border: 1px solid rgba(230, 81, 0, 0.4); border-radius: 8px; box-shadow: 0 0 15px rgba(230, 81, 0, 0.3);">
-                                    <span
-                                        style="display:inline-block; width:6px; height:6px; background:var(--red); border-radius:50%; box-shadow:0 0 6px var(--red);"></span>
-                                    4 CENÁRIOS &middot; MÍNIMO DE 70% DE ACERTOS
-                                </div><br>
-
-                                <!-- Botão -->
-                                <div class="hud-anim-enter"
-                                    style="position: relative; display: inline-block; z-index: 2; animation-delay: 0.4s; opacity: 0;">
-                                    <div
-                                        style="position: absolute; inset: -15px; border-radius: 99px; border: 1px dashed rgba(230,81,0,0.3); pointer-events: none;">
-                                    </div>
-                                    <div
-                                        style="position: absolute; inset: -5px; border-radius: 99px; background: rgba(230,81,0,0.15); filter: blur(10px); animation: pulse 2s infinite; pointer-events: none;">
-                                    </div>
-
-                                    <button class="btn-tf-verify req-item"
-                                        style="position:relative;font-size:18px;padding:15px 40px;border-radius:99px;display:inline-flex;align-items:center;gap:10px;background:#ffffff !important;border:none !important;color:#0d0a08 !important;text-transform:uppercase;letter-spacing:1px;font-weight:800;box-shadow:0 0 30px rgba(255,255,255,0.2) !important;transition:all 0.3s ease;"
-                                        onclick="startQuiz4Intro(); this.classList.add('req-done'); updateNextButton();">
-                                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none"
-                                            stroke="currentColor" stroke-width="2.5" stroke-linecap="round"
-                                            stroke-linejoin="round"
-                                            style="filter: drop-shadow(0 0 4px rgba(230,81,0,0.5));">
-                                            <polygon points="5 3 19 12 5 21"></polygon>
-                                        </svg>
-                                        INICIAR DESAFIO
-                                    </button>
-                                </div>
+                        <div id="q4-intro-panel" class="quiz-intro-panel">
+                            <div class="quiz-intro-card">
+                                <div class="quiz-intro-icon" aria-hidden="true">📋</div>
+                                <h3 class="quiz-intro-title">Desafio NR-11 — Módulo 4</h3>
+                                <p class="quiz-intro-desc">Analise <strong>4</strong> cenários. Você precisa acertar no mínimo <strong>3</strong> para avançar.</p>
+                                <button type="button" class="quiz-intro-btn" onclick="startQuiz4Intro()">INICIAR DESAFIO</button>
                             </div>
                         </div>
 
-                        <!-- PERGUNTAS -->
                         <div id="q4-question-panel" style="display:none; transition: opacity 0.5s ease;">
                             <div class="q-meta">
                                 <div class="q-dots" id="q4-dots"></div>
-                                <div class="q-lbl" id="q4-counter">1 DE 4</div>
+                                <div class="q-lbl" id="q4-counter">Pergunta 1 de 4</div>
                             </div>
                             <div class="q-text" id="q4-text"></div>
                             <div class="q-options" id="q4-options"></div>
-                            <div id="q4-verify-container" style="text-align:center;opacity:0;visibility:hidden;transition:all 0.3s ease;display:none;">
-                                <button class="btn-tf-verify" id="btn-tf-verify-q4" onclick="verifyAnswer4()">✔ Verificar Resposta</button>
+                            <div id="q4-verify-container"
+                                style="text-align: center; margin-top: 15px; opacity: 0; visibility: hidden; transition: all 0.3s ease; display: none;">
+                                <button class="btn-tf-verify" id="btn-tf-verify-q4" onclick="verifyAnswer4()">✔
+                                    Verificar
+                                    Resposta</button>
                             </div>
                             <div class="q-feedback" id="q4-feedback"></div>
-                            <button class="btn-next-q" id="btn-next-q4" onclick="nextQuestion4()">PRÓXIMA PERGUNTA →</button>
+                            <button class="btn-next-q" id="btn-next-q4" onclick="nextQuestion4()">Continuar →</button>
                         </div>
 
-                        <!-- RESULTADO FINAL -->
-                        <div id="q4-result-panel" style="display:none;text-align:center;">
-                            <div class="result-pct green" id="q4-pct">--</div>
-                            <div class="r-stars" id="q4-stars">⭐⭐⭐</div>
-                            <div class="r-status" id="q4-status"></div>
-                            <div class="r-sub" id="q4-sub"></div>
-                            <button class="btn-retry" onclick="resetQuiz4()">↺ Tentar Novamente</button>
+                        <div id="q4-result-panel" class="quiz-result-panel" style="display:none;">
+                            <div class="quiz-result-card">
+                                <div class="quiz-result-icon" id="q4-result-icon" aria-hidden="true">📚</div>
+                                <h3 class="quiz-result-title r-status" id="q4-status">Desafio não concluído</h3>
+                                <p class="quiz-result-desc" id="q4-sub"></p>
+                                <div class="quiz-result-review" id="q4-review" hidden></div>
+                                <button type="button" class="quiz-result-btn" id="q4-retry-btn"
+                                    onclick="resetQuiz4()">JOGAR NOVAMENTE</button>
+                            </div>
+                            <div id="q4-pct" class="result-pct" style="display:none" aria-hidden="true"></div>
+                            <div id="q4-stars" class="r-stars" style="display:none" aria-hidden="true"></div>
                         </div>
-
                     </div>
                 </div>
                 <div class="wave"><svg viewBox="0 0 1440 100" preserveAspectRatio="none">
@@ -1178,7 +1102,7 @@
     </div>
 
     <script src="audio-data.js"></script>
-    <script src="shared.js?v=3"></script>
+    <script src="shared.js?v=16"></script>
 </body>
 
 </html>

@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="pt-BR">
 
 <head>
@@ -11,7 +11,7 @@
         href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;900&family=Open+Sans:wght@400;600&display=swap"
         rel="stylesheet">
     <script src="https://player.vimeo.com/api/player.js"></script>
-    <link rel="stylesheet" href="shared.css?v=3">
+    <link rel="stylesheet" href="shared.css?v=16">
     <script>
         window.MODULE_NAV = {
             id: "modulo-3",
@@ -135,6 +135,18 @@
     #s17 .cam-dot.active { background: rgba(230,81,0,0.9); box-shadow: 0 0 8px rgba(230,81,0,0.6); transform: scale(1.2); }
     #s17 .cam-dot.done { background: rgba(46,160,80,0.7); }
     #s17 .done-msg { max-width: 700px; margin: 8px auto 0; text-align: center; font-family: var(--font-h); font-size: 14px; font-weight: 800; color: rgba(230,81,0,0.9); letter-spacing: 1px; opacity: 0; transition: opacity 0.5s ease; position: relative; z-index: 1; }
+    #s17 .wave {
+        position: absolute !important;
+        bottom: 0 !important;
+        left: 0 !important;
+        right: 0 !important;
+        height: 100px !important;
+        z-index: 1 !important;
+        pointer-events: none;
+    }
+    #s17 .content-area {
+        padding-bottom: 100px !important;
+    }
     @media (max-width: 768px) {
         #s17 { overflow: hidden !important; }
         #s17 .cam-img-wrap { height: 180px !important; }
@@ -373,9 +385,10 @@
     camRender();
 </script>
 
-<div class="wave"><svg viewBox="0 0 1440 100" preserveAspectRatio="none">
-    <path d="M0,60 C360,20 720,90 1080,35 L1440,55 L1440,100 L0,100 Z" fill="rgba(230,81,0,0.07)" />
-</svg></div>
+<div class="wave" style="position: absolute; bottom: 0; left: 0; right: 0; z-index: 1;"><svg
+        viewBox="0 0 1440 100" preserveAspectRatio="none">
+        <path d="M0,55 C480,15 960,85 1440,35 L1440,100 L0,100 Z" fill="rgba(230,81,0,0.07)" />
+    </svg></div>
             </div>
 
 <div class="slide" id="s18">
@@ -947,7 +960,13 @@
 
             <div class="slide" id="s21">
                 <style>
-                #s21 #q3-text::before { display: none; content: none; }
+                #s21 #q3-text::before,
+                #s21 #q3-question-panel .q-text::before { display: none !important; content: none !important; }
+                #s21 #q3-question-panel .q-text {
+                    flex-direction: column !important;
+                    font-weight: 400 !important;
+                    align-items: stretch !important;
+                }
                 @media (min-width: 769px) {
                     #s21 #q3-text {
                         font-size: clamp(17px, 2.2vw, 20px) !important;
@@ -977,13 +996,9 @@
                     }
                     #s21 .quiz-wrap { padding: 0 !important; max-width: 100% !important; }
                     #s21 #q3-intro-panel { padding: 10px 0 !important; }
-                    #s21 #q3-intro-panel .hud-anim-enter:first-of-type {
-                        padding: 20px 16px !important;
-                        margin-bottom: 14px !important;
-                    }
-                    #s21 #q3-intro-panel h3 { font-size: 20px !important; margin-bottom: 8px !important; }
-                    #s21 #q3-intro-panel p { font-size: 13px !important; }
-                    #s21 #q3-intro-panel .hud-anim-enter:nth-of-type(2) { margin-top: 16px !important; margin-bottom: 16px !important; font-size: 12px !important; padding: 8px 14px !important; }
+                    #s21 .quiz-intro-card { padding: 28px 18px 24px !important; }
+                    #s21 .quiz-intro-title { font-size: 20px !important; }
+                    #s21 .quiz-intro-desc { font-size: 14px !important; }
                     #s21 .btn-tf-verify {
                         font-size: 15px !important;
                         padding: 14px 30px !important;
@@ -1065,84 +1080,12 @@
                 </div>
                 <div class="content-area">
                     <div class="quiz-wrap">
-                        <div id="q3-intro-panel" style="text-align: center; padding: 40px 20px; position: relative;">
-                            <!-- Efeitos Visuais Sutis HUD -->
-                            <div
-                                style="position: absolute; inset: 0; pointer-events: none; z-index: 0; background: radial-gradient(ellipse at center, rgba(46, 204, 113, 0.05) 0%, transparent 60%);">
-                            </div>
-                            <div
-                                style="position: absolute; top: 20px; left: 50%; transform: translateX(-50%); width: 200px; height: 1px; background: linear-gradient(90deg, transparent, rgba(46,204,113,0.3), transparent);">
-                            </div>
-                            <div
-                                style="position: absolute; bottom: 20px; left: 50%; transform: translateX(-50%); width: 200px; height: 1px; background: linear-gradient(90deg, transparent, rgba(46,204,113,0.3), transparent);">
-                            </div>
-
-                            <div class="hud-anim-enter"
-                                style="position: relative; z-index: 1; max-width: 680px; margin: 0 auto 30px; padding: 40px 30px; border-radius: 8px; background: linear-gradient(180deg, rgba(28,10,6,0.96) 0%, rgba(12,5,4,0.98) 100%); border: 1px solid rgba(255,106,26,0.14); box-shadow: 0 0 40px rgba(255,106,26,0.08), 0 20px 60px rgba(0,0,0,0.45); backdrop-filter: blur(12px); animation-delay: 0.2s; opacity: 0; overflow: hidden;">
-                                <!-- Efeitos Visuais HUD Premium Internos -->
-                                <div
-                                    style="position: absolute; inset: 0; pointer-events: none; background: repeating-linear-gradient(0deg, transparent, transparent 2px, rgba(255,106,26,0.03) 3px, rgba(255,106,26,0.03) 4px);">
-                                </div>
-                                <div
-                                    style="position: absolute; inset: 0; pointer-events: none; opacity: 0.3; background-image: radial-gradient(rgba(255,255,255,0.1) 1px, transparent 1px); background-size: 20px 20px; animation: s1b-smoke 40s infinite linear;">
-                                </div>
-                                <div
-                                    style="position: absolute; top: 0; left: 50%; transform: translateX(-50%); width: 60%; height: 1px; background: linear-gradient(90deg, transparent, rgba(255,106,26,0.4), transparent);">
-                                </div>
-                                <div
-                                    style="position: absolute; bottom: 0; left: 50%; transform: translateX(-50%); width: 60%; height: 1px; background: linear-gradient(90deg, transparent, rgba(255,106,26,0.4), transparent);">
-                                </div>
-                                <div
-                                    style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); width: 80%; height: 80%; background: radial-gradient(circle, rgba(255,106,26,0.08) 0%, transparent 70%); pointer-events: none; animation: pulse 4s infinite;">
-                                </div>
-
-                                <div class="hud-anim-enter"
-                                    style="animation-delay: 0.2s; opacity: 0; margin-bottom: 20px;">
-                                    <div style="font-family:var(--font-h);font-size:12px;font-weight:700;color:rgba(255,106,26,0.8);letter-spacing:4px;text-transform:uppercase;margin-bottom:16px;display:flex;align-items:center;justify-content:center;gap:12px;">
-                                        <span style="width:30px;height:1px;background:rgba(255,106,26,0.4);"></span>
-                                        PROTOCOLO DE AVALIAÇÃO
-                                        <span style="width:30px;height:1px;background:rgba(255,106,26,0.4);"></span>
-                                    </div>
-                                    <h3
-                                        style="position: relative; font-family: var(--font-h); font-size: clamp(24px, 3.5vw, 36px); font-weight: 800; color: #FFF4E8; text-transform: uppercase; letter-spacing: 1px; line-height: 1.2; margin-bottom: 16px; text-shadow: 0 0 15px rgba(255,106,26,0.4);">
-                                        VALIDAÇÃO TÉCNICA
-                                    </h3>
-                                    <p
-                                        style="position: relative; font-size: clamp(16px, 2vw, 18px); color: rgba(255,244,232,0.78); max-width: 500px; margin: 0 auto; line-height: 1.5; font-weight: 300;">
-                                        Riscos operacionais, condições climáticas e condução segura.
-                                    </p>
-                                </div>
-
-                                <!-- Badge Premium -->
-                                <div class="hud-anim-enter"
-                                    style="position: relative; z-index: 1; font-family: var(--font-h); font-size: 14px; font-weight: 700; color: rgba(255,255,255,0.75); letter-spacing: 2px; text-transform: uppercase; margin-bottom: 40px; animation-delay: 0.3s; opacity: 0; display: inline-flex; align-items: center; gap: 8px; background: rgba(255,255,255,0.05); padding: 10px 20px; border: 1px solid rgba(255,255,255,0.15); border-radius: 8px;">
-                                    <span
-                                        style="display:inline-block; width:6px; height:6px; background:var(--red); border-radius:50%; box-shadow:0 0 6px var(--red);"></span>
-                                    5 PERGUNTAS &middot; MÍNIMO DE 70% DE ACERTOS
-                                </div><br>
-
-                                <!-- Botão -->
-                                <div class="hud-anim-enter"
-                                    style="position: relative; display: inline-block; z-index: 2; animation-delay: 0.4s; opacity: 0;">
-                                    <div
-                                        style="position: absolute; inset: -15px; border-radius: 99px; border: 1px dashed rgba(255,106,26,0.3); pointer-events: none;">
-                                    </div>
-                                    <div
-                                        style="position: absolute; inset: -5px; border-radius: 99px; background: rgba(255,106,26,0.15); filter: blur(10px); animation: pulse 2s infinite; pointer-events: none;">
-                                    </div>
-
-                                    <button class="btn-tf-verify"
-                                        style="position:relative; font-size:18px; padding:15px 40px; border-radius:99px; display:inline-flex; align-items:center; gap:10px; background:#ffffff; border:none; color:#0d0a08; text-transform:uppercase; letter-spacing:1px; font-weight:800; box-shadow:0 0 30px rgba(255,255,255,0.2); transition:all 0.3s ease;"
-                                        onclick="startQuiz3Intro()">
-                                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none"
-                                            stroke="currentColor" stroke-width="2.5" stroke-linecap="round"
-                                            stroke-linejoin="round"
-                                            style="filter: drop-shadow(0 0 4px rgba(255,106,26,0.5));">
-                                            <polygon points="5 3 19 12 5 21"></polygon>
-                                        </svg>
-                                        COMEÇAR
-                                    </button>
-                                </div>
+                        <div id="q3-intro-panel" class="quiz-intro-panel">
+                            <div class="quiz-intro-card">
+                                <div class="quiz-intro-icon" aria-hidden="true">📋</div>
+                                <h3 class="quiz-intro-title">Desafio NR-11 — Módulo 3</h3>
+                                <p class="quiz-intro-desc">Responda <strong>5</strong> chamadas. Você precisa acertar no mínimo <strong>3</strong> para avançar.</p>
+                                <button type="button" class="quiz-intro-btn" onclick="startQuiz3Intro()">INICIAR DESAFIO</button>
                             </div>
                         </div>
 
@@ -1154,22 +1097,26 @@
                             <div class="q-text" id="q3-text"></div>
                             <div class="q-options" id="q3-options"></div>
                             <div id="q3-verify-container"
-                                style="text-align: center; opacity: 0; visibility: hidden; transition: all 0.3s ease; display: none;">
+                                style="text-align: center; margin-top: 15px; opacity: 0; visibility: hidden; transition: all 0.3s ease; display: none;">
                                 <button class="btn-tf-verify" id="btn-tf-verify-q3" onclick="verifyAnswer3()">✔
                                     Verificar
                                     Resposta</button>
                             </div>
                             <div class="q-feedback" id="q3-feedback"></div>
-                            <button class="btn-next-q" id="btn-next-q3" onclick="nextQuestion3()">Próxima Chamada
-                                ▶</button>
+                            <button class="btn-next-q" id="btn-next-q3" onclick="nextQuestion3()">Continuar →</button>
                         </div>
 
-                        <div id="q3-result-panel" style="display:none;text-align:center;">
-                            <div class="result-pct green" id="q3-pct">--</div>
-                            <div class="r-stars" id="q3-stars">⭐⭐⭐</div>
-                            <div class="r-status" id="q3-status"></div>
-                            <div class="r-sub" id="q3-sub"></div>
-                            <button class="btn-retry" onclick="resetQuiz3()">↺ Tentar Novamente</button>
+                        <div id="q3-result-panel" class="quiz-result-panel" style="display:none;">
+                            <div class="quiz-result-card">
+                                <div class="quiz-result-icon" id="q3-result-icon" aria-hidden="true">📚</div>
+                                <h3 class="quiz-result-title r-status" id="q3-status">Desafio não concluído</h3>
+                                <p class="quiz-result-desc" id="q3-sub"></p>
+                                <div class="quiz-result-review" id="q3-review" hidden></div>
+                                <button type="button" class="quiz-result-btn" id="q3-retry-btn"
+                                    onclick="resetQuiz3()">JOGAR NOVAMENTE</button>
+                            </div>
+                            <div id="q3-pct" class="result-pct" style="display:none" aria-hidden="true"></div>
+                            <div id="q3-stars" class="r-stars" style="display:none" aria-hidden="true"></div>
                         </div>
                     </div>
                 </div>
@@ -1217,7 +1164,7 @@
     </div>
 
     <script src="audio-data.js"></script>
-    <script src="shared.js?v=3"></script>
+    <script src="shared.js?v=16"></script>
 </body>
 
 </html>

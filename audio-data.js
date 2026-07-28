@@ -98,30 +98,27 @@
         's26': {
             panels: { intro: '#q4-intro-panel', question: '#q4-question-panel', result: '#q4-result-panel' },
             counterSelector: '#q4-counter',
-            intro: 'Quiz do Módulo 4. Decisão Rápida. Simule situações operacionais e tome a decisão correta. Esta avaliação contém cinco situações com mínimo de sessenta por cento de acertos. Toque em Iniciar para começar.',
+            intro: 'Quiz do Módulo 4. Desafio NR-11. Analise 4 cenários. Você precisa acertar no mínimo 3 para avançar. Toque em Iniciar Desafio para começar.',
             questions: [
-                'Situação 1 de 5. A carga começou a inclinar durante o deslocamento. Opção A: Parar e reposicionar. Opção B: Continuar a operação.',
-                'Situação 2 de 5. O trajeto possui pessoas circulando próximas. Opção A: Manter velocidade. Opção B: Reduzir e sinalizar.',
-                'Situação 3 de 5. Sua visão frontal foi totalmente bloqueada pela carga alta. Opção A: Conduzir de ré. Opção B: Tentar olhar por cima.',
-                'Situação 4 de 5. Você finalizou o turno e precisa estacionar o equipamento. Opção A: Baixar os garfos ao chão. Opção B: Deixar os garfos elevados.',
-                'Situação 5 de 5. Durante o deslocamento, você precisa passar por uma rampa. Opção A: Subir de frente e descer de ré. Opção B: Subir e descer de frente.'
+                'Pergunta 1 de 4. Cenário 1. O operador pegou a carga máxima permitida na máquina e elevou a torre até o limite máximo de altura. Opção A: Vai tombar. Opção B: Operação segura.',
+                'Pergunta 2 de 4. Cenário 2. O operador apanhou a caixa, posicionou a coluna na vertical e inclinou a carga ligeiramente para trás antes de começar a andar. Opção A: Vai tombar. Opção B: Operação segura.',
+                'Pergunta 3 de 4. Cenário 3. Durante o transporte, o operador decide fazer um giro muito rápido para a esquerda. Opção A: Vai tombar. Opção B: Operação segura.',
+                'Pergunta 4 de 4. Cenário 4. O operador pega uma carga muito longa, deixando o centro de carga bem na ponta dos garfos. Opção A: Vai tombar. Opção B: Operação segura.'
             ],
-            result: 'Resultado do Quiz do Módulo 4. Veja sua pontuação na tela. Toque em Tentar Novamente para refazer ou siga para o próximo módulo.'
+            result: 'Resultado do Desafio do Módulo 4. Veja se concluiu o desafio na tela. Toque em Jogar Novamente para refazer ou siga para o próximo módulo.'
         },
 
-        // ─── QUIZ 5 (slide global 36, modulo-5.html, s-quiz5) ─────────────────
+        // ─── QUIZ 5 (slide global ~33, modulo-5.html, s35) ─────────────────
         's35': {
             panels: { intro: '#q5-intro-panel', question: '#q5-question-panel', result: '#q5-result-panel' },
             counterSelector: '#q5-counter',
-            intro: 'Quiz do Módulo 5. Simulação Operacional. Avalie cenários de movimentação, armazenagem e emergências. Esta avaliação contém cinco situações com mínimo de setenta por cento de acertos. Toque em Iniciar para começar.',
+            intro: 'Hora do desafio. Quiz do Módulo 5. Desafio NR-11. Analise 3 ocorrências. Você precisa acertar no mínimo 2 para avançar. Toque em Iniciar Desafio para começar.',
             questions: [
-                'Pergunta 1 de 5. Corredor Obstruído. O operador encontrou um corredor parcialmente bloqueado durante a movimentação da carga. Qual deve ser o procedimento correto? Opção A: Continuar normalmente. Opção B: Sinalizar e liberar o corredor antes da operação. Opção C: Passar rapidamente pelo bloqueio. Opção D: Ignorar o obstáculo.',
-                'Pergunta 2 de 5. Carga Elevada. A carga está sendo transportada acima da altura recomendada. Qual é o principal risco desta operação? Opção A: Melhor visibilidade. Opção B: Maior estabilidade. Opção C: Maior velocidade. Opção D: Comprometimento da visibilidade e risco de colisão.',
-                'Pergunta 3 de 5. EPI Ausente. O operador iniciou a movimentação sem todos os EPIs obrigatórios. Qual procedimento está correto? Opção A: Interromper a operação até regularizar os EPIs. Opção B: Operar apenas em áreas vazias. Opção C: Continuar se a operação for rápida. Opção D: Solicitar ajuda apenas em caso de risco.',
-                'Pergunta 4 de 5. Emergência Operacional. Foi identificado um princípio de incêndio próximo à área de movimentação. Qual deve ser a primeira ação? Opção A: Continuar a operação. Opção B: Improvisar sozinho o combate. Opção C: Parar a operação e afastar as pessoas. Opção D: Mover a carga rapidamente.',
-                'Pergunta 5 de 5. Distanciamento Seguro. Durante a movimentação, o operador reduziu excessivamente a distância da estrutura lateral. Qual distância mínima deve ser mantida? Opção A: Vinte centímetros. Opção B: Cinquenta centímetros. Opção C: Trinta centímetros. Opção D: Não existe distância mínima.'
+                'Pergunta 1 de 3. Ocorrência 01. O operador está com uma carga muito alta e volumosa que tampa sua visão frontal, então ele decide conduzir a empilhadeira de marcha à ré. Qual sua decisão? Opção A: Aprovado. Opção B: Advertência.',
+                'Pergunta 2 de 3. Ocorrência 02. Para adiantar o serviço, o operador deu uma carona rápida para o ajudante ir em pé na lateral da empilhadeira. Qual sua decisão? Opção A: Aprovado. Opção B: Advertência.',
+                'Pergunta 3 de 3. Ocorrência 03. O operador estacionou no local correto e abaixou os garfos, mas deixou a chave na ignição. Qual sua decisão? Opção A: Aprovado. Opção B: Advertência.'
             ],
-            result: 'Resultado do Quiz do Módulo 5. Veja sua pontuação na tela. Toque em Tentar Novamente para refazer ou siga para o próximo módulo.'
+            result: 'Resultado do Desafio do Módulo 5. Veja se concluiu o desafio na tela. Toque em Jogar Novamente para refazer ou siga para o próximo módulo.'
         },
 
         // ─── QUIZ 6 (slide global 39, modulo-6.html, s43) — Liberar/Não ───

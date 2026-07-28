@@ -173,13 +173,14 @@ function nr11GlobalSlide() {
     const offset = NR11_MODULE_OFFSETS[(window.MODULE_NAV && window.MODULE_NAV.id) || 'index'] || 0;
     return offset + currentSlide + 1;
 }
-const QUIZ_AUDIO_HELPER_PAGES = [9, 15, 18, 21, 27, 33, 41];
+const QUIZ_AUDIO_HELPER_PAGES = [9, 15, 18, 21, 27, 33, 37, 40, 41];
 const QUIZ_AUDIO_HELPER_PANELS = {
     s9: 'q1-question-panel',
     s15: 'sq2-question-panel',
     's21': 'q3-question-panel',
     's26': 'q4-question-panel',
     's35': 'q5-question-panel',
+    's39': 'q6b-question-panel',
     's43': 'q6-question-panel'
 };
 window.updateQuizAudioHelper = function updateQuizAudioHelper() {
@@ -824,6 +825,15 @@ function finishTraining() {
     // Aqui iria a chamada para o LMS, ex: window.close(), SCORM.quit(), etc.
 }
 
+function restartCourse() {
+    try {
+        window.location.href = 'index.html';
+    } catch (e) {
+        window.location.assign('index.html');
+    }
+}
+window.restartCourse = restartCourse;
+
 /* ════════════════════════════════════════
    ════════════════════════════════════════ */
 const AudioContext = window.AudioContext || window.webkitAudioContext;
@@ -981,7 +991,7 @@ function quizIsMobile() {
 function createQuizEngine(prefix, questions, numDots) {
     let idx = 0, answered = false, score = 0, selectedOptIdx = -1;
     let wrongTopics = [];
-    const isM1Quiz = function () { return prefix === 'q1'; };
+    const isChallengeQuiz = function () { return prefix === 'q1' || prefix === 'q3' || prefix === 'q4' || prefix === 'q5' || prefix === 'q6b' || prefix === 'q6'; };
 
     const _stateKey = () => 'nr11_' + getPageKey() + '_' + prefix + '_state';
     function _saveState() {
@@ -1003,8 +1013,9 @@ function createQuizEngine(prefix, questions, numDots) {
     }
 
     function getMinCorrect() {
-        if (prefix === 'q1') return 2;
-        if (prefix === 'q5') return Math.ceil(questions.length * 0.70);
+        if (prefix === 'q1' || prefix === 'q5' || prefix === 'q6b') return 2;
+        if (prefix === 'q3' || prefix === 'q4') return 3;
+        if (prefix === 'q6') return 5;
         return Math.ceil(questions.length * 0.60);
     }
 
@@ -1018,6 +1029,24 @@ function createQuizEngine(prefix, questions, numDots) {
             setTimeout(() => qPanel.style.opacity = '1', 50);
         }
         playBeep('click');
+        if (prefix === 'q6') {
+            try { playQuiz6Audio('start'); } catch (e) { }
+            try {
+                const m = document.getElementById('q6-bg-music');
+                const btn = document.getElementById('q6-btn-music-toggle');
+                if (m) {
+                    m.volume = 0.15;
+                    m.muted = false;
+                    m.currentTime = 0;
+                    m.play().catch(function () { });
+                }
+                if (btn) {
+                    btn.innerHTML = '🔊 MUSIC ON';
+                    btn.style.color = 'var(--green)';
+                    btn.style.borderColor = 'var(--green)';
+                }
+            } catch (e) { }
+        }
         try { window.updateQuizAudioHelper(); } catch (e) { }
     }
 
@@ -1044,13 +1073,14 @@ function createQuizEngine(prefix, questions, numDots) {
 
         const q = questions[idx];
         const isQ4 = prefix === 'q4';
-        const isQuizMobile = quizIsMobile() && (prefix === 'q3' || prefix === 'q4');
+        const isQ5 = prefix === 'q5';
+        const isQuizMobile = quizIsMobile() && (prefix === 'q3' || prefix === 'q4' || prefix === 'q5');
         const c = document.getElementById(prefix + '-counter');
         if (c) {
-            if (isQuizMobile) {
+            if (isChallengeQuiz()) {
+                c.textContent = `Pergunta ${idx + 1} de ${questions.length}`;
+            } else if (isQuizMobile) {
                 c.textContent = (idx + 1) + ' DE ' + questions.length;
-            } else if (isQ4) {
-                c.textContent = `MISSÃO ${idx + 1} DE ${questions.length}`;
             } else {
                 c.textContent = `Pergunta ${idx + 1} de ${questions.length}`;
             }
@@ -1072,6 +1102,12 @@ function createQuizEngine(prefix, questions, numDots) {
                     ${q.q}
                 </div>
             </div>`;
+            } else if (isQ5) {
+                txt.innerHTML = `
+            ${q.img ? `<div class="q5-img-wrap"><img src="${q.img}" alt="Cenário"><button type="button" onclick="openImageModal('${q.img}')">🔍 AMPLIAR</button></div>` : ''}
+            ${q.tag ? `<div class="q5-tag">${q.tag}</div>` : ''}
+            ${q.situation ? `<div class="q5-sit">${q.situation}</div>` : ''}
+            <div class="q5-ask">${q.q}</div>`;
             } else {
                 txt.innerHTML = q.q;
             }
@@ -1080,34 +1116,14 @@ function createQuizEngine(prefix, questions, numDots) {
         if (opts) {
             opts.innerHTML = '';
             const letters = ['A', 'B', 'C', 'D'];
-            if (isQ4 && quizIsMobile()) {
-                opts.className = 'q-options';
-                q.opts.forEach((opt, i) => {
-                    const el = document.createElement('div');
-                    el.className = 'q-opt';
-                    el.innerHTML = `<div class="opt-l">${letters[i]}</div><span>${opt}</span>`;
-                    el.onclick = () => selectAnswer(i, el);
-                    opts.appendChild(el);
-                });
-            } else if (isQ4) {
-                opts.className = 'q-options q4-options';
-                q.opts.forEach((opt, i) => {
-                    const el = document.createElement('div');
-                    el.className = 'q-opt q4-opt';
-                    el.innerHTML = `<span>${opt}</span>`;
-                    el.onclick = () => selectAnswer(i, el);
-                    opts.appendChild(el);
-                });
-            } else {
-                opts.className = 'q-options';
-                q.opts.forEach((opt, i) => {
-                    const el = document.createElement('div');
-                    el.className = 'q-opt';
-                    el.innerHTML = `<div class="opt-l">${letters[i]}</div><span>${opt}</span>`;
-                    el.onclick = () => selectAnswer(i, el);
-                    opts.appendChild(el);
-                });
-            }
+            opts.className = 'q-options';
+            q.opts.forEach((opt, i) => {
+                const el = document.createElement('div');
+                el.className = 'q-opt';
+                el.innerHTML = `<div class="opt-l">${letters[i]}</div><span>${opt}</span>`;
+                el.onclick = () => selectAnswer(i, el);
+                opts.appendChild(el);
+            });
         }
         const fb = document.getElementById(prefix + '-feedback');
         if (fb) {
@@ -1122,18 +1138,16 @@ function createQuizEngine(prefix, questions, numDots) {
         const btn = document.getElementById('btn-next-' + prefix);
         if (btn) {
             btn.className = 'btn-next-q';
-            if (prefix === 'q3') {
-                btn.textContent = quizIsMobile() ? 'Continuar →' : 'Próxima Chamada ▶';
-            } else if (prefix === 'q4') {
-                btn.textContent = quizIsMobile() ? 'PRÓXIMA PERGUNTA →' : 'Próximo Cenário ▶';
+            if (isChallengeQuiz()) {
+                btn.textContent = 'Continuar →';
             }
         }
         // Scroll para o topo do painel ao trocar de pergunta
         if (qPanel) {
             qPanel.scrollTop = 0;
-            const wrap = document.querySelector('#s21 .quiz-wrap') || document.querySelector('#s26 .quiz-wrap') || document.querySelector('.quiz-wrap');
+            const wrap = document.querySelector('#s21 .quiz-wrap') || document.querySelector('#s26 .quiz-wrap') || document.querySelector('#s35 .quiz-wrap') || document.querySelector('#s39 .quiz-wrap') || document.querySelector('#s43 .quiz-wrap') || document.querySelector('.quiz-wrap');
             if (wrap) wrap.scrollTop = 0;
-            const contentArea = document.querySelector('#s21 .content-area') || document.querySelector('#s26 .content-area') || document.querySelector('.content-area');
+            const contentArea = document.querySelector('#s21 .content-area') || document.querySelector('#s26 .content-area') || document.querySelector('#s35 .content-area') || document.querySelector('#s39 .content-area') || document.querySelector('#s43 .content-area') || document.querySelector('.content-area');
             if (contentArea && isQuizMobile) {
                 contentArea.scrollTop = 0;
             } else {
@@ -1184,6 +1198,8 @@ function createQuizEngine(prefix, questions, numDots) {
             if (letter) letter.textContent = icon;
         }
 
+        const twoOpts = allOpts.length === 2;
+
         if (selectedOptIdx === q.correct) {
             // removed persistence
             allOpts[selectedOptIdx].classList.add('correct');
@@ -1194,22 +1210,23 @@ function createQuizEngine(prefix, questions, numDots) {
                 fb.style.background = '';
                 fb.style.border = '';
             }
-            score++; playBeep('ok');
+            score++;
+            try { playBeep('ok'); } catch (e) { }
         } else {
             allOpts[selectedOptIdx].classList.add('wrong');
             setOptIcon(allOpts[selectedOptIdx], '✕');
-            if (allOpts[q.correct]) {
+            if (!twoOpts && allOpts[q.correct]) {
                 allOpts[q.correct].classList.add('correct');
                 setOptIcon(allOpts[q.correct], '✓');
             }
-            if (q.topic || q.cat) wrongTopics.push(q.topic || q.cat);
+            if (q.topic || q.cat || q.theme) wrongTopics.push(q.topic || q.cat || q.theme);
             if (fb) {
                 fb.textContent = q.feedback_nok;
                 fb.className = 'q-feedback nok';
                 fb.style.background = '';
                 fb.style.border = '';
             }
-            playBeep('nok');
+            try { playBeep('nok'); } catch (e) { }
         }
 
         allOpts.forEach(function (o) {
@@ -1221,10 +1238,8 @@ function createQuizEngine(prefix, questions, numDots) {
         const btn = document.getElementById('btn-next-' + prefix);
         if (btn) {
             btn.className = 'btn-next-q show';
-            if (prefix === 'q3') {
-                btn.textContent = quizIsMobile() ? 'Continuar →' : 'Próxima Chamada ▶';
-            } else if (prefix === 'q4') {
-                btn.textContent = quizIsMobile() ? 'PRÓXIMA PERGUNTA →' : 'Próximo Cenário ▶';
+            if (isChallengeQuiz()) {
+                btn.textContent = 'Continuar →';
             }
         }
 
@@ -1232,7 +1247,7 @@ function createQuizEngine(prefix, questions, numDots) {
 
         // Scroll após feedback
         setTimeout(function () {
-            if (quizIsMobile() && (prefix === 'q3' || prefix === 'q4')) {
+            if (quizIsMobile() && (prefix === 'q3' || prefix === 'q4' || prefix === 'q5')) {
                 if (btn) btn.scrollIntoView({ behavior: 'smooth', block: 'center' });
                 return;
             }
@@ -1242,7 +1257,7 @@ function createQuizEngine(prefix, questions, numDots) {
             if (wrap) wrap.scrollTop = 0;
             var contentArea = document.querySelector('.content-area');
             if (contentArea) contentArea.scrollTop = 0;
-        }, quizIsMobile() && (prefix === 'q3' || prefix === 'q4') ? 300 : 100);
+        }, quizIsMobile() && (prefix === 'q3' || prefix === 'q4' || prefix === 'q5') ? 300 : 100);
 
         // persist quiz state after verification
         try { _saveState(); } catch (e) { }
@@ -1257,6 +1272,12 @@ function createQuizEngine(prefix, questions, numDots) {
 
     function showResult() {
         playBeep('end');
+        if (prefix === 'q6') {
+            try {
+                const m = document.getElementById('q6-bg-music');
+                if (m) m.pause();
+            } catch (e) { }
+        }
         const qPanel = document.getElementById(prefix + '-question-panel');
         if (qPanel) qPanel.style.display = 'none';
         const rPanel = document.getElementById(prefix + '-result-panel');
@@ -1281,7 +1302,7 @@ function createQuizEngine(prefix, questions, numDots) {
         }
         const status = document.getElementById(prefix + '-status');
         if (status) {
-            if (isM1Quiz()) {
+            if (isChallengeQuiz()) {
                 status.textContent = approved ? 'Desafio Concluído!' : 'Desafio não concluído';
                 status.className = 'quiz-result-title r-status ' + (approved ? 'ap' : 'ref');
             } else {
@@ -1291,7 +1312,7 @@ function createQuizEngine(prefix, questions, numDots) {
         }
         const sub = document.getElementById(prefix + '-sub');
         if (sub) {
-            if (isM1Quiz()) {
+            if (isChallengeQuiz()) {
                 if (approved) {
                     sub.textContent = 'Você acertou ' + score + ' de ' + questions.length + ' questões. Parabéns! Pode avançar para a próxima etapa.';
                 } else {
@@ -1302,7 +1323,7 @@ function createQuizEngine(prefix, questions, numDots) {
             }
         }
 
-        if (isM1Quiz()) {
+        if (isChallengeQuiz()) {
             const reviewEl = document.getElementById(prefix + '-review');
             const iconEl = document.getElementById(prefix + '-result-icon');
             const retryBtn = document.getElementById(prefix + '-retry-btn');
@@ -1341,6 +1362,12 @@ function createQuizEngine(prefix, questions, numDots) {
     function reset() {
         idx = 0; score = 0; answered = false; selectedOptIdx = -1;
         wrongTopics = [];
+        if (prefix === 'q6') {
+            try {
+                const m = document.getElementById('q6-bg-music');
+                if (m) { m.pause(); m.currentTime = 0; }
+            } catch (e) { }
+        }
         const introPanel = document.getElementById(prefix + '-intro-panel');
         const qPanel = document.getElementById(prefix + '-question-panel');
         const rPanel = document.getElementById(prefix + '-result-panel');
@@ -1354,7 +1381,7 @@ function createQuizEngine(prefix, questions, numDots) {
             rPanel.classList.remove('is-approved', 'is-failed', 'q-result-anim', 'is-visible');
         }
         if (introPanel) {
-            introPanel.style.display = isM1Quiz() ? 'flex' : 'block';
+            introPanel.style.display = isChallengeQuiz() ? 'flex' : 'block';
         }
 
         const fb = document.getElementById(prefix + '-feedback');
@@ -1432,26 +1459,31 @@ function resetQuiz1() { quiz1.reset(); }
 const q3_questions = [
     {
         q: '<div style="display:flex;flex-direction:column;align-items:center;justify-content:center;gap:8px;margin-bottom:0;"><div class="q3-badge" style="background:rgba(230, 81, 0, 0.15);border:1px solid rgba(230, 81, 0, 0.3);color:var(--gold);box-shadow:0 0 10px rgba(230, 81, 0, 0.15);font-size:12px;padding:2px 10px;margin-bottom:4px;">📡 CHAMADA 1</div><div style="font-size:clamp(15px, 2.2vw, 18px);color:var(--white);font-family:var(--font-h);font-weight:700;line-height:1.5;text-align:center;text-shadow: 0 0 10px rgba(255,255,255,0.1);">Atenção operador.<br>Começou a chover forte e o piso do armazém está escorregadio.</div></div><div style="font-size:14px;color:rgba(255,255,255,0.8);font-family:var(--font-h);font-weight:400;margin-top:12px;text-align:center;">Qual sua ação?<br><span style="color:rgba(46,204,113,0.7);font-style:italic;">Câmbio.</span></div>',
+        topic: 'Condução em piso molhado / chuva',
         opts: ['Reduzir a velocidade imediatamente.', 'Manter a velocidade e utilizar frenagens bruscas.'],
         correct: 0, feedback_ok: '✓ Câmbio, copiado. Procedimento correto.', feedback_nok: '⚠ Câmbio, repita a operação. Procedimento inseguro.'
     },
     {
         q: '<div style="display:flex;flex-direction:column;align-items:center;justify-content:center;gap:8px;margin-bottom:0;"><div class="q3-badge" style="background:rgba(230, 81, 0, 0.15);border:1px solid rgba(230, 81, 0, 0.3);color:var(--gold);box-shadow:0 0 10px rgba(230, 81, 0, 0.15);font-size:12px;padding:2px 10px;margin-bottom:4px;">📡 CHAMADA 2</div><div style="font-size:clamp(15px, 2.2vw, 18px);color:var(--white);font-family:var(--font-h);font-weight:700;line-height:1.5;text-align:center;text-shadow: 0 0 10px rgba(255,255,255,0.1);">Atenção.<br>Neblina intensa na área externa.</div></div><div style="font-size:14px;color:rgba(255,255,255,0.8);font-family:var(--font-h);font-weight:400;margin-top:12px;text-align:center;">Confirme o alcance dos faróis para auxiliar a segurança da operação.<br><span style="color:rgba(46,204,113,0.7);font-style:italic;">Câmbio.</span></div>',
+        topic: 'Alcance dos faróis / neblina',
         opts: ['50 metros.', '120 metros.'],
         correct: 1, feedback_ok: '✓ Câmbio, copiado. Procedimento correto.', feedback_nok: '⚠ Câmbio, repita a operação. Procedimento inseguro.'
     },
     {
         q: '<div style="display:flex;flex-direction:column;align-items:center;justify-content:center;gap:8px;margin-bottom:0;"><div class="q3-badge" style="background:rgba(230, 81, 0, 0.15);border:1px solid rgba(230, 81, 0, 0.3);color:var(--gold);box-shadow:0 0 10px rgba(230, 81, 0, 0.15);font-size:12px;padding:2px 10px;margin-bottom:4px;">📡 CHAMADA 3</div><div style="font-size:clamp(15px, 2.2vw, 18px);color:var(--white);font-family:var(--font-h);font-weight:700;line-height:1.5;text-align:center;text-shadow: 0 0 10px rgba(255,255,255,0.1);">Alerta geral.<br>Um operador relatou ofuscamento causado por luz intensa.</div></div><div style="font-size:14px;color:rgba(255,255,255,0.8);font-family:var(--font-h);font-weight:400;margin-top:12px;text-align:center;">Quanto tempo a visão humana pode levar para se recuperar?<br><span style="color:rgba(46,204,113,0.7);font-style:italic;">Câmbio.</span></div>',
+        topic: 'Ofuscamento e recuperação da visão',
         opts: ['3 segundos.', '7 segundos.'],
         correct: 1, feedback_ok: '✓ Câmbio, copiado. Procedimento correto.', feedback_nok: '⚠ Câmbio, repita a operação. Procedimento inseguro.'
     },
     {
         q: '<div style="display:flex;flex-direction:column;align-items:center;justify-content:center;gap:8px;margin-bottom:0;"><div class="q3-badge" style="background:rgba(230, 81, 0, 0.15);border:1px solid rgba(230, 81, 0, 0.3);color:var(--gold);box-shadow:0 0 10px rgba(230, 81, 0, 0.15);font-size:12px;padding:2px 10px;margin-bottom:4px;">📡 CHAMADA 4</div><div style="font-size:clamp(15px, 2.2vw, 18px);color:var(--white);font-family:var(--font-h);font-weight:700;line-height:1.5;text-align:center;text-shadow: 0 0 10px rgba(255,255,255,0.1);">Para encerrar o turno, confirme os principais riscos críticos da operação de empilhadeiras.</div></div><div style="font-size:14px;color:rgba(255,255,255,0.8);font-family:var(--font-h);font-weight:400;margin-top:12px;text-align:center;"><span style="color:rgba(46,204,113,0.7);font-style:italic;">Câmbio.</span></div>',
+        topic: 'Riscos críticos da operação',
         opts: ['Apenas falhas mecânicas da máquina.', 'Tombamentos, colisões, atropelamentos e queda de materiais.'],
         correct: 1, feedback_ok: '✓ Câmbio, copiado. Procedimento correto.', feedback_nok: '⚠ Câmbio, repita a operação. Procedimento inseguro.'
     },
     {
         q: '<div style="display:flex;flex-direction:column;align-items:center;justify-content:center;gap:8px;margin-bottom:0;"><div class="q3-badge" style="background:rgba(230, 81, 0, 0.15);border:1px solid rgba(230, 81, 0, 0.3);color:var(--gold);box-shadow:0 0 10px rgba(230, 81, 0, 0.15);font-size:12px;padding:2px 10px;margin-bottom:4px;">📡 CHAMADA 5</div><div style="font-size:clamp(15px, 2.2vw, 18px);color:var(--white);font-family:var(--font-h);font-weight:700;line-height:1.5;text-align:center;text-shadow: 0 0 10px rgba(255,255,255,0.1);">Atenção operador.<br>Pedestre detectado cruzando o corredor durante a movimentação.</div></div><div style="font-size:14px;color:rgba(255,255,255,0.8);font-family:var(--font-h);font-weight:400;margin-top:12px;text-align:center;">Qual sua ação?<br><span style="color:rgba(46,204,113,0.7);font-style:italic;">Câmbio.</span></div>',
+        topic: 'Pedestres no corredor',
         opts: ['Parar completamente e aguardar a liberação do caminho.', 'Manter a velocidade e buzinar para alertar.'],
         correct: 0, feedback_ok: '✓ Câmbio, copiado. Procedimento correto.', feedback_nok: '⚠ Câmbio, repita a operação. Procedimento inseguro.'
     }
@@ -1924,7 +1956,7 @@ function sq2ShowResult() {
     if (qPanel) qPanel.style.display = 'none';
     if (!rPanel) return;
 
-    const minCorrect = 4;
+    const minCorrect = 3;
     const approved = scoreQ2 >= minCorrect;
 
     rPanel.style.display = 'block';
@@ -2180,24 +2212,28 @@ window.checkMod4Item = function (el) {
 const q4_questions = [
     {
         img: 'imagens/RdlrAU8.jpeg',
+        topic: 'Carga nominal com torre no limite máximo',
         q: '<div class="q4-sit-title">CENÁRIO 1</div><div class="q4-sit-desc">O operador pegou a carga máxima permitida na máquina (capacidade nominal) e elevou a torre até o limite máximo de altura para tentar manobrar.</div>',
         opts: ['💥 VAI TOMBAR!', '✅ OPERAÇÃO SEGURA'],
         correct: 0, feedback_ok: '✅ DECISÃO CORRETA — O manual alerta que elevar a carga nominal até o limite máximo da torre compromete seriamente o equilíbrio da máquina.', feedback_nok: '❌ DECISÃO INCORRETA — Carga nominal com torre no limite máximo compromete seriamente o equilíbrio da máquina.'
     },
     {
         img: 'imagens/DkzI2Zl.jpeg',
+        topic: 'Inclinação da carga e centro de gravidade',
         q: '<div class="q4-sit-title">CENÁRIO 2</div><div class="q4-sit-desc">O operador apanhou a caixa, posicionou a coluna na vertical e inclinou a carga ligeiramente para trás antes de começar a andar.</div>',
         opts: ['💥 VAI TOMBAR!', '✅ OPERAÇÃO SEGURA'],
         correct: 1, feedback_ok: '✅ DECISÃO CORRETA — Inclinar a carga para trás mantém o Centro de Gravidade protegido no meio do Triângulo da Estabilidade.', feedback_nok: '❌ DECISÃO INCORRETA — Inclinar a carga para trás é o procedimento correto e mantém o centro de gravidade dentro do triângulo.'
     },
     {
         img: 'imagens/S2Yyyle.jpeg',
+        topic: 'Giros rápidos / Triângulo da Estabilidade',
         q: '<div class="q4-sit-title">CENÁRIO 3</div><div class="q4-sit-desc">Durante o transporte, o operador decide fazer um giro muito rápido (curva fechada) para a esquerda para ganhar tempo na entrega.</div>',
         opts: ['💥 VAI TOMBAR!', '✅ OPERAÇÃO SEGURA'],
         correct: 0, feedback_ok: '✅ DECISÃO CORRETA — Giros rápidos jogam o ponto de equilíbrio para fora do Triângulo da Estabilidade, causando tombamento imediato.', feedback_nok: '❌ DECISÃO INCORRETA — Giros rápidos em curvas fechadas deslocam o centro de gravidade para fora do triângulo de estabilidade.'
     },
     {
         img: 'imagens/OQJ0Uri.jpeg',
+        topic: 'Centro de carga além do especificado',
         q: '<div class="q4-sit-title">CENÁRIO 4</div><div class="q4-sit-desc">Para não perder a viagem, o operador pega uma carga muito longa, deixando o centro de carga bem na ponta dos garfos (além do especificado).</div>',
         opts: ['💥 VAI TOMBAR!', '✅ OPERAÇÃO SEGURA'],
         correct: 0, feedback_ok: '✅ DECISÃO CORRETA — Centro de carga além do especificado causa desequilíbrio violento e tombamento.', feedback_nok: '❌ DECISÃO INCORRETA — Caso o centro de carga esteja além do especificado, ocorre desequilíbrio violento e tombamento.'
@@ -2212,37 +2248,90 @@ function resetQuiz4() { quiz4.reset(); }
 
 const q5_questions = [
     {
-        q: '<img src="imagens/YZ03elm.png" style="width:100%; height:180px; object-fit:cover; object-position:center; border-radius:8px; margin-bottom:10px; box-shadow:0 10px 20px rgba(0,0,0,0.5);"><div style="font-size:15px;color:var(--gold);margin-bottom:5px;text-transform:uppercase;letter-spacing:1px;font-family:var(--font-h);font-weight:700;">Corredor Obstruído</div><p style="font-size:13px;color:rgba(255,255,255,0.7);margin-bottom:10px;line-height:1.4;">O operador encontrou um corredor parcialmente bloqueado durante a movimentação da carga.</p><div style="font-size:clamp(16px, 2.2vw, 20px);color:var(--cream);font-family:var(--font-h);line-height:1.3;text-align:center;">Qual deve ser o procedimento correto?</div>',
-        opts: ['Continuar normalmente', 'Sinalizar e liberar o corredor antes da operação', 'Passar rapidamente pelo bloqueio', 'Ignorar o obstáculo'],
-        correct: 1, feedback_ok: '✅ Correto! O corredor deve ser sinalizado e liberado antes de qualquer movimentação.', feedback_nok: '❌ Incorreto. É necessário sinalizar e liberar o corredor antes da operação.'
+        tag: 'OCORRÊNCIA 01',
+        img: 'imagens/rzLV2uK.jpeg',
+        situation: 'O operador está com uma carga muito alta e volumosa que tampa sua visão frontal, então ele decide conduzir a empilhadeira de marcha à ré para enxergar o caminho.',
+        q: 'Qual sua decisão?',
+        topic: 'Marcha à ré com carga que bloqueia a visão',
+        opts: ['Aprovado', 'Advertência'],
+        correct: 0,
+        feedback_ok: '✅ Correto! A regra exige que o operador transite sempre de ré quando estiver conduzindo uma carga que atrapalhe a visão.',
+        feedback_nok: '❌ Incorreto. A NR-11 determina que o operador deve transitar de marcha à ré quando a carga bloquear a visão frontal.'
     },
     {
-        q: '<img src="imagens/jxIK2Rh.png" style="width:100%; height:180px; object-fit:cover; object-position:center; border-radius:8px; margin-bottom:10px; box-shadow:0 10px 20px rgba(0,0,0,0.5);"><div style="font-size:15px;color:var(--gold);margin-bottom:5px;text-transform:uppercase;letter-spacing:1px;font-family:var(--font-h);font-weight:700;">Carga Elevada</div><p style="font-size:13px;color:rgba(255,255,255,0.7);margin-bottom:10px;line-height:1.4;">A carga está sendo transportada acima da altura recomendada.</p><div style="font-size:clamp(16px, 2.2vw, 20px);color:var(--cream);font-family:var(--font-h);line-height:1.3;text-align:center;">Qual é o principal risco desta operação?</div>',
-        opts: ['Melhor visibilidade', 'Maior estabilidade', 'Maior velocidade', 'Comprometimento da visibilidade e risco de colisão'],
-        correct: 3, feedback_ok: '✅ Correto! Transportar cargas elevadas compromete a visibilidade e aumenta gravemente os riscos de colisão.', feedback_nok: '❌ Incorreto. O principal risco é o comprometimento da visibilidade e a colisão.'
+        tag: 'OCORRÊNCIA 02',
+        img: 'imagens/X3o5ASP.jpeg',
+        situation: 'Para adiantar o serviço, o operador deu uma carona rápida para o ajudante ir em pé na lateral da empilhadeira até o outro lado do galpão.',
+        q: 'Qual sua decisão?',
+        topic: 'Proibição de caronas na empilhadeira',
+        opts: ['Aprovado', 'Advertência'],
+        correct: 1,
+        feedback_ok: '✅ Correto! O veículo não é um meio de transporte para pessoas. Nunca dê caronas ou permita pessoas em pé na máquina.',
+        feedback_nok: '❌ Incorreto. O veículo não é um meio de transporte para pessoas. Nunca dê caronas ou permita pessoas em pé na máquina.'
     },
     {
-        q: '<img src="imagens/EwLaKkj.png" style="width:100%; height:180px; object-fit:cover; object-position:center; border-radius:8px; margin-bottom:10px; box-shadow:0 10px 20px rgba(0,0,0,0.5);"><div style="font-size:15px;color:var(--gold);margin-bottom:5px;text-transform:uppercase;letter-spacing:1px;font-family:var(--font-h);font-weight:700;">EPI Ausente</div><p style="font-size:13px;color:rgba(255,255,255,0.7);margin-bottom:10px;line-height:1.4;">O operador iniciou a movimentação sem todos os EPIs obrigatórios.</p><div style="font-size:clamp(16px, 2.2vw, 20px);color:var(--cream);font-family:var(--font-h);line-height:1.3;text-align:center;">Qual procedimento está correto?</div>',
-        opts: ['Interromper a operação até regularizar os EPIs', 'Operar apenas em áreas vazias', 'Continuar se a operação for rápida', 'Solicitar ajuda apenas em caso de risco'],
-        correct: 0, feedback_ok: '✅ Correto! Nenhuma operação deve prosseguir sem os EPIs regularizados e em conformidade.', feedback_nok: '❌ Incorreto. O procedimento correto é interromper a operação até regularizar os EPIs.'
-    },
-    {
-        q: '<img src="imagens/V9SVveG.png" style="width:100%; height:180px; object-fit:cover; object-position:center; border-radius:8px; margin-bottom:10px; box-shadow:0 10px 20px rgba(0,0,0,0.5);"><div style="font-size:15px;color:var(--gold);margin-bottom:5px;text-transform:uppercase;letter-spacing:1px;font-family:var(--font-h);font-weight:700;">Emergência Operacional</div><p style="font-size:13px;color:rgba(255,255,255,0.7);margin-bottom:10px;line-height:1.4;">Foi identificado um princípio de incêndio próximo à área de movimentação.</p><div style="font-size:clamp(16px, 2.2vw, 20px);color:var(--cream);font-family:var(--font-h);line-height:1.3;text-align:center;">Qual deve ser a primeira ação?</div>',
-        opts: ['Continuar a operação', 'Improvisar sozinho o combate', 'Parar a operação e afastar as pessoas', 'Mover a carga rapidamente'],
-        correct: 2, feedback_ok: '✅ Correto! Parar a operação imediatamente e priorizar a vida afastando as pessoas é essencial.', feedback_nok: '❌ Incorreto. A primeira ação deve ser parar a operação e afastar as pessoas.'
-    },
-    {
-        q: '<img src="imagens/mAXUjMF.png" style="width:100%; height:180px; object-fit:cover; object-position:center; border-radius:8px; margin-bottom:10px; box-shadow:0 10px 20px rgba(0,0,0,0.5);"><div style="font-size:15px;color:var(--gold);margin-bottom:5px;text-transform:uppercase;letter-spacing:1px;font-family:var(--font-h);font-weight:700;">Distanciamento Seguro</div><p style="font-size:13px;color:rgba(255,255,255,0.7);margin-bottom:10px;line-height:1.4;">Durante a movimentação, o operador reduziu excessivamente a distância da estrutura lateral.</p><div style="font-size:clamp(16px, 2.2vw, 20px);color:var(--cream);font-family:var(--font-h);line-height:1.3;text-align:center;">Qual distância mínima deve ser mantida?</div>',
-        opts: ['20 cm', '50 cm', '30 cm', 'Não existe distância mínima'],
-        correct: 1, feedback_ok: '✅ Correto! Deve-se manter no mínimo 50 cm de distância segura das estruturas.', feedback_nok: '❌ Incorreto. A distância mínima que deve ser mantida é de 50 cm.'
+        tag: 'OCORRÊNCIA 03',
+        img: 'imagens/9qtKZUV.jpeg',
+        situation: 'O operador foi para o horário de almoço. Estacionou no local correto e abaixou os garfos até o chão, mas deixou a chave na ignição para facilitar na volta.',
+        q: 'Qual sua decisão?',
+        topic: 'Chave removida ao estacionar',
+        opts: ['Aprovado', 'Advertência'],
+        correct: 1,
+        feedback_ok: '✅ Correto! Ao estacionar, a regra é clara: nunca deixe a chave na ignição.',
+        feedback_nok: '❌ Incorreto. Ao estacionar, a regra é clara: nunca deixe a chave na ignição.'
     }
 ];
-const quiz5 = createQuizEngine('q5', q5_questions, 5);
+const quiz5 = createQuizEngine('q5', q5_questions, 3);
 if (document.getElementById('q5-question-panel')) quiz5.render();
 function startQuiz5Intro() { quiz5.start(); }
 function verifyAnswer5() { quiz5.verify(); }
 function nextQuestion5() { quiz5.next(); }
 function resetQuiz5() { quiz5.reset(); }
+
+const q6b_questions = [
+    {
+        q: 'De acordo com o protocolo de emergência, qual deve ser sua atitude imediata ao ouvir o alarme de incêndio disparar no galpão?',
+        topic: 'Protocolo de emergência — alarme de incêndio',
+        opts: [
+            'Acelerar a empilhadeira para sair do prédio o mais rápido possível.',
+            'Abandonar o equipamento no meio do cruzamento e correr.',
+            'Estacionar o veículo em local seguro, deixando a passagem livre, e aguardar as orientações do brigadista.'
+        ],
+        correct: 2,
+        feedback_ok: '✅ Correto! Estacionar em local seguro, liberar a passagem e aguardar o brigadista é o procedimento correto.',
+        feedback_nok: '❌ Incorreto. O procedimento correto é estacionar em local seguro, liberar a passagem e aguardar as orientações do brigadista.'
+    },
+    {
+        q: 'O que o operador deve fazer caso ocorra um princípio de incêndio na sua própria empilhadeira?',
+        topic: 'Princípio de incêndio na empilhadeira',
+        opts: [
+            'Primeiramente pedir ajuda e comunicar, para só então iniciar o combate usando o extintor adequado (Pó químico ou CO₂).',
+            'Tentar apagar o fogo sozinho com qualquer extintor, sem avisar ninguém para não assustar a equipe.',
+            'Jogar água no motor imediatamente e fugir.'
+        ],
+        correct: 0,
+        feedback_ok: '✅ Correto! Comunicar primeiro e depois usar o extintor adequado é o procedimento seguro.',
+        feedback_nok: '❌ Incorreto. Sempre comunique primeiro, depois utilize o extintor adequado (Pó químico ou CO₂).'
+    },
+    {
+        q: 'Sobre o procedimento seguro para a troca de baterias de empilhadeiras elétricas, qual é a sequência correta?',
+        topic: 'Troca segura de baterias',
+        opts: [
+            'A troca pode ser feita com a máquina ligada, desde que seja rápida.',
+            'Remover a bateria, colocar a nova e deixar a bateria velha no chão do estoque.',
+            'Desligar a chave de partida, desconectar o cabo, instalar a nova bateria e conectar a bateria retirada no carregador.'
+        ],
+        correct: 2,
+        feedback_ok: '✅ Correto! Desligar, desconectar, instalar a nova e colocar a antiga para carregar é o procedimento correto.',
+        feedback_nok: '❌ Incorreto. A sequência correta é: desligar a chave, desconectar, instalar a nova e colocar a antiga no carregador.'
+    }
+];
+const quiz6b = createQuizEngine('q6b', q6b_questions, 3);
+if (document.getElementById('q6b-question-panel')) quiz6b.render();
+function startQuiz6bIntro() { quiz6b.start(); }
+function verifyAnswer6b() { quiz6b.verify(); }
+function nextQuestion6b() { quiz6b.next(); }
+function resetQuiz6b() { quiz6b.reset(); }
 
 const q6_questions = [
     { theme:'LEGISLAÇÃO E HABILITAÇÃO', svg:'<circle cx="28" cy="16" r="10" stroke="rgba(230,81,0,0.8)" stroke-width="1.5" fill="none"/><rect x="20" y="28" width="16" height="20" rx="3" stroke="rgba(230,81,0,0.8)" stroke-width="1.5" fill="none"/><line x1="23" y1="34" x2="33" y2="34" stroke="rgba(230,81,0,0.6)" stroke-width="1.5"/><line x1="23" y1="38" x2="33" y2="38" stroke="rgba(230,81,0,0.6)" stroke-width="1.5"/><text x="28" y="52" font-size="8" text-anchor="middle" fill="rgba(230,81,0,0.7)" font-family="monospace">VENCIDO</text>', q:'O operador está com seu cartão de identificação (com nome e foto) vencido há 2 anos, mas continua operando a máquina normalmente.', opts:['🟢 OPERAÇÃO SEGURA','🔴 RISCO / INFRAÇÃO'], correct:1, feedback_ok:'✅ O cartão possui validade de 1 ano e deve ser revalidado mediante exame de saúde.', feedback_nok:'❌ O cartão possui validade de 1 ano e deve ser revalidado. Esta é uma infração.' },
@@ -2353,216 +2442,12 @@ function playQuiz6Audio(type) {
     } catch (e) { }
 }
 
-function createQuiz6Engine(questions) {
-    let idx = 0, answered = false, score = 0, selectedOptIdx = -1;
-
-    function start() {
-        const introPanel = document.getElementById('q6-intro-panel');
-        const qPanel = document.getElementById('q6-question-panel');
-        if (introPanel) introPanel.style.display = 'none';
-        if (qPanel) {
-            qPanel.style.display = 'block';
-            qPanel.style.opacity = '0';
-            setTimeout(() => qPanel.style.opacity = '1', 50);
-        }
-        playQuiz6Audio('start');
-        const m = document.getElementById('q6-bg-music');
-        if (m) {
-            m.volume = 0.15;
-            m.play().catch(e => console.log('Audio autoplay blocked'));
-        }
-        try { window.updateQuizAudioHelper(); } catch (e) { }
-    }
-
-    function render() {
-        const qPanel = document.getElementById('q6-question-panel');
-        if (qPanel) qPanel.classList.remove('q-result-anim');
-        const q = questions[idx];
-        const stepLabels = ['LEGISLAÇÃO','ESTABILIDADE','TRÂNSITO','MARCHA À RÉ','CHECKLIST','CARONA','BATERIA','EMERGÊNCIA'];
-        // Contador
-        const counter = document.getElementById('q6-counter');
-        if (counter) counter.textContent = 'ANÁLISE ' + (idx + 1) + '/' + questions.length;
-        // Progress steps
-        const prog = document.getElementById('q6-progress');
-        if (prog) {
-            prog.innerHTML = '';
-            for (var i = 0; i < questions.length; i++) {
-                var step = document.createElement('div');
-                step.className = 'q6-step ' + (i < idx ? 'done' : i === idx ? 'cur' : 'todo');
-                var sym = i < idx ? '✓' : (i + 1).toString();
-                step.innerHTML = '<div class="q6-step-circle">' + sym + '</div><div class="q6-step-label">' + (stepLabels[i] || '') + '</div>';
-                prog.appendChild(step);
-            }
-        }
-        // Ícone SVG
-        const svgEl = document.getElementById('q6-icon-svg');
-        if (svgEl && q.svg) svgEl.innerHTML = q.svg;
-        // Badge
-        const badge = document.getElementById('q6-icon-badge');
-        if (badge) badge.textContent = q.theme || '';
-        // Texto
-        const txt = document.getElementById('q6-text');
-        if (txt) txt.innerHTML = q.q;
-        // Feedback reset
-        const fb = document.getElementById('q6-feedback');
-        if (fb) { fb.className = 'q-feedback'; fb.textContent = ''; }
-        // Botões reset
-        document.querySelectorAll('#q6-options .q6-btn').forEach(function(b) { b.classList.remove('selected'); b.style.pointerEvents = ''; });
-        const vCont = document.getElementById('q6-verify-container');
-        if (vCont) { vCont.style.display = 'none'; vCont.style.opacity = '0'; vCont.style.visibility = 'hidden'; }
-        const btn = document.getElementById('btn-next-q6');
-        if (btn) btn.className = 'btn-next-q';
-        answered = false; selectedOptIdx = -1;
-        try { window.updateQuizAudioHelper(); } catch (e) { }
-    }
-
-    function selectAnswer(i, el) {
-        if (answered) return;
-        selectedOptIdx = i;
-        document.querySelectorAll('#q6-options .q6-btn').forEach(function(b) { b.classList.remove('selected'); });
-        el.classList.add('selected');
-        playQuiz6Audio('click');
-        const vCont = document.getElementById('q6-verify-container');
-        if (vCont) { vCont.style.display = 'block'; setTimeout(function() { vCont.style.opacity = '1'; vCont.style.visibility = 'visible'; }, 50); }
-    }
-
-    function verify() {
-        if (answered || selectedOptIdx === -1) return;
-        answered = true;
-
-        const vCont = document.getElementById('q6-verify-container');
-        if (vCont) { vCont.style.display = 'none'; vCont.style.opacity = '0'; vCont.style.visibility = 'hidden'; }
-
-        const q = questions[idx];
-        const allOpts = document.querySelectorAll('#q6-options .q6-btn');
-        allOpts.forEach(function (o) {
-            o.style.pointerEvents = 'none';
-        });
-        if (allOpts[selectedOptIdx]) allOpts[selectedOptIdx].classList.add('selected');
-        const fb = document.getElementById('q6-feedback');
-
-        if (selectedOptIdx === q.correct) {
-            if (fb) { fb.innerHTML = q.feedback_ok || ''; fb.className = 'q-feedback ok'; }
-            score++; playQuiz6Audio('correct');
-        } else {
-            if (fb) { fb.innerHTML = q.feedback_nok || ''; fb.className = 'q-feedback nok'; }
-            playQuiz6Audio('incorrect');
-        }
-        const btn = document.getElementById('btn-next-q6');
-        if (btn) btn.className = 'btn-next-q visible';
-    }
-
-    function next() {
-        idx++;
-        if (idx < questions.length) {
-            playQuiz6Audio('transition');
-            render();
-        }
-        else { showResult(); }
-        try { window.updateQuizAudioHelper(); } catch (e) { }
-    }
-
-    function showResult() {
-        playQuiz6Audio('end');
-        const m = document.getElementById('q6-bg-music');
-        if (m) m.pause();
-
-        const qPanel = document.getElementById('q6-question-panel');
-        if (qPanel) qPanel.style.display = 'none';
-        const rPanel = document.getElementById('q6-result-panel');
-        if (rPanel) {
-            rPanel.style.display = 'block';
-            rPanel.classList.remove('q-result-anim');
-            void rPanel.offsetWidth;
-            rPanel.classList.add('q-result-anim');
-        }
-        const pct = score / questions.length;
-        const approved = pct >= 0.60;
-        if (rPanel) {
-            if (approved) rPanel.classList.add('req-done');
-            else rPanel.classList.remove('req-done');
-        }
-
-        const pctEl = document.getElementById('q6-pct');
-        if (pctEl) {
-            pctEl.textContent = Math.round(pct * 100) + '%';
-            pctEl.className = 'result-pct ' + (approved ? 'green' : 'red-c');
-            if (!approved) {
-                pctEl.style.textShadow = '0 0 50px rgba(231,76,60,0.5)';
-            } else {
-                pctEl.style.textShadow = '0 0 50px rgba(46,204,113,0.5)';
-            }
-        }
-
-        const starsEl = document.getElementById('q6-stars');
-        if (starsEl) {
-            starsEl.textContent = pct === 1 ? '⭐⭐⭐' : pct >= 0.60 ? '⭐⭐' : '⭐';
-            starsEl.classList.remove('stars-anim');
-            void starsEl.offsetWidth;
-            starsEl.classList.add('stars-anim');
-        }
-
-        const status = document.getElementById('q6-status');
-        if (status) {
-            status.textContent = approved ? '✅ Aprovado!' : '❌ Quase lá!';
-            status.className = 'r-status ' + (approved ? 'ap' : 'ref');
-        }
-
-        const sub = document.getElementById('q6-sub');
-        if (sub) {
-            sub.textContent = `Você acertou ${score} de ${questions.length} questões.` + (approved ? ' Parabéns!' : ' Revise o módulo e tente novamente.');
-        }
-
-        const subAdd = document.getElementById('q6-sub-additional');
-        if (subAdd) {
-            subAdd.textContent = `Você validou ${score} de ${questions.length} operações corretamente.`;
-        }
-
-        const btnF = document.getElementById('q6-btn-final');
-        if (btnF) {
-            btnF.textContent = approved ? 'FINALIZAR TREINAMENTO' : 'REFAZER VALIDAÇÃO';
-            btnF.onclick = approved ? () => goTo(currentSlide + 1) : resetQuiz6;
-        }
-        if (approved) {
-            try { playBeep('end'); } catch (e) { }
-        }
-        updateNextButton();
-        try { window.updateQuizAudioHelper(); } catch (e) { }
-    }
-
-    function reset() {
-        idx = 0; score = 0; answered = false; selectedOptIdx = -1;
-        const introPanel = document.getElementById('q6-intro-panel');
-        const qPanel = document.getElementById('q6-question-panel');
-        const rPanel = document.getElementById('q6-result-panel');
-
-        if (introPanel) introPanel.style.display = 'block';
-        if (qPanel) qPanel.style.display = 'none';
-        if (rPanel) {
-            rPanel.style.display = 'none';
-            rPanel.classList.remove('req-done');
-        }
-        const m = document.getElementById('q6-bg-music');
-        if (m) { m.pause(); m.currentTime = 0; }
-
-        // Re-render immediately to clear visual selections
-        render();
-        if (typeof updateNextButton === 'function') updateNextButton();
-        try { window.updateQuizAudioHelper(); } catch (e) { }
-    }
-
-    return { start, render, verify, next, reset, selectAnswerPublic: selectAnswer };
-}
-
-const quiz6 = createQuiz6Engine(q6_questions);
+const quiz6 = createQuizEngine('q6', q6_questions, 8);
 if (document.getElementById('q6-question-panel')) quiz6.render();
 function startQuiz6Intro() { quiz6.start(); }
 function verifyAnswer6() { quiz6.verify(); }
 function nextQuestion6() { quiz6.next(); }
 function resetQuiz6() { quiz6.reset(); }
-window.q6Select = function(i, el) {
-    if (typeof quiz6 !== 'undefined') quiz6.selectAnswerPublic(i, el);
-};
 
 
 
@@ -2689,38 +2574,28 @@ window.q6Select = function(i, el) {
     function init() {
         if (document.getElementById('a11y-bar')) return;
 
-        // ── Barra de ferramentas dobrável ──
         const bar = document.createElement('div');
         bar.id = 'a11y-bar';
         bar.setAttribute('role', 'toolbar');
         bar.setAttribute('aria-label', 'Ferramentas de acessibilidade');
         bar.innerHTML = `
-            <button type="button" id="a11y-launcher" aria-expanded="false" aria-controls="a11y-tools" aria-label="Abrir ferramentas de acessibilidade" title="Acessibilidade">
-                <img src="assets/accessibility-icon.png" alt="" aria-hidden="true">
+            <button type="button" id="a11y-launcher" aria-pressed="false" aria-label="Ouvir o conteúdo da página" title="Ouvir">
+                <svg class="a11y-speaker-ico" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                    <path d="M4 9v6h3.5L12 19V5L7.5 9H4z" fill="currentColor"/>
+                    <path d="M15.5 8.5a4.5 4.5 0 0 1 0 7" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                    <path d="M17.8 6a7.5 7.5 0 0 1 0 12" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                </svg>
             </button>
-            <div id="a11y-tools" role="group" aria-label="Opções de acessibilidade">
-                <button type="button" class="a11y-btn" id="a11y-btn-ouvir" aria-pressed="false" aria-label="Ouvir o conteúdo do slide">
-                    <span class="a11y-ico" aria-hidden="true">🔊</span>
-                    <span class="a11y-lbl">Ouvir</span>
-                </button>
-                <button type="button" class="a11y-btn" id="a11y-btn-libras" aria-label="Tradução em Libras">
-                    <span class="a11y-ico" aria-hidden="true">👋</span>
-                    <span class="a11y-lbl">Libras</span>
-                </button>
-            </div>
             <div class="audio-helper">Reproduza o áudio em cada nova pergunta.</div>
         `;
         document.body.appendChild(bar);
 
-        // ── Posiciona o launcher imediatamente à esquerda do logo ──
-        // e o botão SIMULAÇÃO imediatamente à esquerda do ícone de acessibilidade
         function positionA11yBar() {
             const logo = document.getElementById('logo');
             if (!logo) return;
             const r = logo.getBoundingClientRect();
             const gap = 10;
             const launcherSize = parseFloat(getComputedStyle(document.getElementById('a11y-launcher')).width) || 36;
-            // alinhamento vertical: centro do logo
             const topPx = Math.max(8, r.top + (r.height - launcherSize) / 2);
             const rightPx = Math.max(8, window.innerWidth - r.left + gap);
             bar.style.top = topPx + 'px';
@@ -2739,7 +2614,6 @@ window.q6Select = function(i, el) {
         positionA11yBar();
         window.addEventListener('resize', positionA11yBar);
         window.addEventListener('load', positionA11yBar);
-        // Re-checa logo após imagens carregarem (o logo é uma <img> e pode mudar de tamanho)
         const logoEl = document.getElementById('logo');
         if (logoEl) {
             const logoImg = logoEl.querySelector('img');
@@ -2749,129 +2623,141 @@ window.q6Select = function(i, el) {
             }
         }
 
-        // ── Toggle do launcher ──
         const launcher = document.getElementById('a11y-launcher');
-        function setOpen(open) {
-            bar.classList.toggle('open', open);
-            launcher.setAttribute('aria-expanded', open ? 'true' : 'false');
-            if (open) window.updateQuizAudioHelper();
-        }
-        launcher.addEventListener('click', function (e) {
-            e.stopPropagation();
-            setOpen(!bar.classList.contains('open'));
-        });
-        // Fecha ao clicar fora
-        document.addEventListener('click', function (e) {
-            if (!bar.contains(e.target) && bar.classList.contains('open')) setOpen(false);
-        });
-        // Fecha com ESC
-        document.addEventListener('keydown', function (e) {
-            if (e.key === 'Escape' && bar.classList.contains('open')) setOpen(false);
-        });
-
-        // ── Modal Libras ──
-        const modal = document.createElement('div');
-        modal.id = 'libras-modal';
-        modal.setAttribute('role', 'dialog');
-        modal.setAttribute('aria-modal', 'true');
-        modal.setAttribute('aria-labelledby', 'libras-modal-title');
-        modal.innerHTML = `
-            <div class="lm-box">
-                <button type="button" class="lm-close" aria-label="Fechar">×</button>
-                <div class="lm-ico" aria-hidden="true">👐</div>
-                <h3 id="libras-modal-title">Tradução em Libras</h3>
-                <p>Para acompanhar este treinamento em <strong>Língua Brasileira de Sinais</strong>, ative o <strong>VLibras</strong> — o tradutor gratuito do Governo Federal disponível para navegadores e celular.</p>
-                <div class="lm-actions">
-                    <button type="button" id="libras-go">Abrir VLibras</button>
-                    <button type="button" class="secondary" id="libras-cancel">Fechar</button>
-                </div>
-            </div>
-        `;
-        document.body.appendChild(modal);
-
-        // ── OUVIR (ÁUDIO LOCAL) ──
-        const btnOuvir = document.getElementById('a11y-btn-ouvir');
         let currentAudio = null;
+        let currentObjectUrl = null;
+        let speaking = false;
+        let speakToken = 0;
+
+        // TESTE página 1: toca MP3 pré-gerado na hora (sem esperar API no clique).
+        const TTS_TEST_PAGE_ONLY = 1;
+        const TTS_LOCAL_PAGE1 = 'audios-novos/pagina-1.mp3';
+        const preloadedPage1 = new Audio(TTS_LOCAL_PAGE1);
+        preloadedPage1.preload = 'auto';
+        try { preloadedPage1.load(); } catch (e) { }
 
         function stopSpeak() {
+            speakToken++;
             if (currentAudio) {
+                try { currentAudio.onended = null; currentAudio.onerror = null; } catch (e) { }
                 currentAudio.pause();
-                currentAudio.currentTime = 0;
+                currentAudio.removeAttribute('src');
+                try { currentAudio.load(); } catch (e) { }
+                currentAudio = null;
             }
-            if (btnOuvir) {
-                btnOuvir.classList.remove('is-active');
-                btnOuvir.setAttribute('aria-pressed', 'false');
-                btnOuvir.querySelector('.a11y-lbl').textContent = 'Ouvir';
+            if (currentObjectUrl) {
+                try { URL.revokeObjectURL(currentObjectUrl); } catch (e) { }
+                currentObjectUrl = null;
+            }
+            speaking = false;
+            if (launcher) {
+                launcher.classList.remove('is-active');
+                launcher.setAttribute('aria-pressed', 'false');
+                launcher.setAttribute('title', 'Ouvir');
             }
         }
 
-        /* Detecta o arquivo de áudio correspondente ao estado atualmente
-           visível na tela. Para slides multi-estado (quizzes, micro-quiz
-           de condução) o nome inclui o sub-estado: intro, q{N} ou result.   */
-        const AUDIO_DIR = 'audios-novos';
-        function resolveAudioFile(pageNum) {
-            const fallback = `${AUDIO_DIR}/pagina-${pageNum}.mp3`;
-            try {
-                if (typeof AUDIO_DATA === 'undefined' || !AUDIO_DATA.MULTI_STATE) return fallback;
-
-                const activeSlide = document.querySelector('.slide.active');
-                if (!activeSlide || !activeSlide.id) return fallback;
-
-                const cfg = AUDIO_DATA.MULTI_STATE[activeSlide.id];
-                if (!cfg) return fallback;
-
-                const isVisible = (sel) => {
-                    if (!sel) return false;
-                    const el = activeSlide.querySelector(sel) || document.querySelector(sel);
-                    if (!el) return false;
-                    const cs = window.getComputedStyle(el);
-                    if (cs.display === 'none' || cs.visibility === 'hidden') return false;
-                    return el.offsetParent !== null || el.getClientRects().length > 0;
-                };
-
-                if (cfg.panels && cfg.panels.result && isVisible(cfg.panels.result)) {
-                    return `${AUDIO_DIR}/pagina-${pageNum}-result.mp3`;
-                }
-                if (cfg.panels && cfg.panels.intro && isVisible(cfg.panels.intro)) {
-                    return `${AUDIO_DIR}/pagina-${pageNum}-intro.mp3`;
-                }
-                if (cfg.panels && cfg.panels.question && isVisible(cfg.panels.question)) {
-                    const counter = activeSlide.querySelector(cfg.counterSelector) ||
-                                    document.querySelector(cfg.counterSelector);
-                    let qNum = 1;
-                    if (counter) {
-                        const pat = cfg.counterPattern || /(\d+)/;
-                        const m = (counter.textContent || '').match(pat);
-                        if (m && m[1]) qNum = parseInt(m[1], 10) || 1;
-                    }
-                    return `${AUDIO_DIR}/pagina-${pageNum}-q${qNum}.mp3`;
-                }
-            } catch (e) {
-                console.warn('resolveAudioFile falhou, usando fallback:', e);
-            }
-            return fallback;
+        function cleanSpeakText(s) {
+            if (!s) return '';
+            return String(s)
+                .replace(/[\u{1F300}-\u{1FAFF}\u{2600}-\u{27BF}\u{2300}-\u{23FF}\u{2B00}-\u{2BFF}\u{1F000}-\u{1F2FF}\u{FE0F}]/gu, ' ')
+                .replace(/[·•●▪►–—]+/g, '. ')
+                .replace(/\u00A0/g, ' ')
+                .replace(/\s+/g, ' ')
+                .trim();
         }
 
-        async function startSpeak() {
-            /* Áudios desvinculados — botão Ouvir mantido sem reprodução */
-            return;
+        /* Extrai texto visível da página, INCLUINDO rótulos de botões. */
+        function extractActiveSlideText() {
+            const slide = document.querySelector('.slide.active');
+            if (!slide) return '';
+            const clone = slide.cloneNode(true);
+            const removeSel = [
+                'script', 'style', 'noscript', 'svg', 'iframe', 'audio', 'video',
+                'canvas', 'embed', 'object', 'img', 'picture', 'source',
+                '[aria-hidden="true"]', '.wave', '.s1-hero-img',
+                '.s1-session-info', '#nav', '#a11y-bar'
+            ];
+            removeSel.forEach(function (sel) {
+                clone.querySelectorAll(sel).forEach(function (n) { n.remove(); });
+            });
+            clone.querySelectorAll('br').forEach(function (br) {
+                br.replaceWith(document.createTextNode(' '));
+            });
+            clone.querySelectorAll('button, .btn-start, .btn-tutorial, .tutorial-replay').forEach(function (btn) {
+                const label = cleanSpeakText(btn.innerText || btn.textContent || '');
+                if (label) btn.textContent = ' ' + label + '. ';
+            });
+            return cleanSpeakText(clone.textContent || '');
         }
 
-        if (btnOuvir) {
-            btnOuvir.addEventListener('click', function () {
-                if (btnOuvir.classList.contains('is-active')) {
+        function playFromSrc(src) {
+            return new Promise(function (resolve, reject) {
+                if (currentAudio) {
+                    try { currentAudio.onended = null; currentAudio.onerror = null; } catch (e) { }
+                    currentAudio.pause();
+                }
+                const audio = new Audio();
+                currentAudio = audio;
+                audio.preload = 'auto';
+                audio.onended = function () {
                     stopSpeak();
+                    resolve();
+                };
+                audio.onerror = function () {
+                    reject(new Error('Erro ao carregar/reproduzir: ' + src));
+                };
+                audio.src = src;
+                const p = audio.play();
+                if (p && typeof p.then === 'function') {
+                    p.then(function () { /* playing */ }).catch(reject);
                 }
             });
         }
 
-        // Para a fala ao trocar de slide / sair da página
+        async function startSpeak() {
+            const pageNum = (typeof nr11GlobalSlide === 'function') ? nr11GlobalSlide() : 1;
+
+            if (pageNum !== TTS_TEST_PAGE_ONLY) {
+                console.warn('TTS teste ativo só na página 1. Página atual:', pageNum);
+                return;
+            }
+
+            speakToken++;
+            speaking = true;
+            if (launcher) {
+                launcher.classList.add('is-active');
+                launcher.setAttribute('aria-pressed', 'true');
+                launcher.setAttribute('title', 'Parar leitura');
+            }
+
+            // Log do texto (com botões) para conferência — áudio toca na hora do MP3 local
+            const pageLabel = 'Página ' + pageNum + ' de ' + NR11_TOTAL_SLIDES + '.';
+            const bodyText = extractActiveSlideText();
+            console.log('[TTS] narrando:', cleanSpeakText(pageLabel + ' ' + bodyText));
+
+            try {
+                await playFromSrc(TTS_LOCAL_PAGE1);
+            } catch (err) {
+                console.error('TTS falhou:', err);
+                alert('Não foi possível reproduzir o áudio da página 1.');
+                stopSpeak();
+            }
+        }
+
+        launcher.addEventListener('click', function (e) {
+            e.stopPropagation();
+            e.preventDefault();
+            if (speaking) stopSpeak();
+            else startSpeak();
+            window.updateQuizAudioHelper();
+        });
+
         document.addEventListener('visibilitychange', function () {
             if (document.hidden) stopSpeak();
         });
         window.addEventListener('beforeunload', stopSpeak);
 
-        // Hook em goTo para parar a leitura ao mudar slide
         if (typeof window.goTo === 'function' && !window.goTo.__a11yHooked) {
             const origGoTo = window.goTo;
             window.goTo = function () {
@@ -2884,34 +2770,11 @@ window.q6Select = function(i, el) {
         }
 
         window.updateQuizAudioHelper();
-        ['q1-question-panel', 'sq2-question-panel', 'q3-question-panel', 'q4-question-panel', 'q5-question-panel', 'q6-question-panel'].forEach(function (id) {
+        ['q1-question-panel', 'sq2-question-panel', 'q3-question-panel', 'q4-question-panel', 'q5-question-panel', 'q6-question-panel', 'q6b-question-panel'].forEach(function (id) {
             const panel = document.getElementById(id);
             if (panel) {
                 new MutationObserver(window.updateQuizAudioHelper).observe(panel, { attributes: true, attributeFilter: ['style', 'class'] });
             }
-        });
-
-        // ── LIBRAS ──
-        const btnLibras = document.getElementById('a11y-btn-libras');
-        const lmClose = modal.querySelector('.lm-close');
-        const lmCancel = document.getElementById('libras-cancel');
-        const lmGo = document.getElementById('libras-go');
-
-        function openLibras() { modal.classList.add('active'); }
-        function closeLibras() { modal.classList.remove('active'); }
-
-        btnLibras.addEventListener('click', openLibras);
-        lmClose.addEventListener('click', closeLibras);
-        lmCancel.addEventListener('click', closeLibras);
-        lmGo.addEventListener('click', function () {
-            window.open('https://vlibras.gov.br/', '_blank', 'noopener,noreferrer');
-            closeLibras();
-        });
-        modal.addEventListener('click', function (e) {
-            if (e.target === modal) closeLibras();
-        });
-        document.addEventListener('keydown', function (e) {
-            if (e.key === 'Escape' && modal.classList.contains('active')) closeLibras();
         });
     }
 
@@ -2976,18 +2839,6 @@ window.q6Select = function(i, el) {
             if (staticModal) staticModal.classList.add('active');
         };
         row.appendChild(replay);
-
-        const warn = document.createElement('button');
-        warn.type = 'button';
-        warn.className = 's1-session-info';
-        warn.setAttribute('aria-label', 'Aviso importante sobre a conclusão do treinamento');
-        warn.title = 'Aviso importante';
-        warn.innerHTML = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 9v4" /><path d="M12 17h.01" /><path d="M10.29 3.86 1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z" /></svg>';
-        warn.onclick = function () {
-            try { if (window.playTechClick) playTechClick(); } catch (e) { }
-            if (typeof window.openAvisoModal === 'function') window.openAvisoModal();
-        };
-        row.appendChild(warn);
 
         startBtn.insertAdjacentElement('afterend', row);
     }

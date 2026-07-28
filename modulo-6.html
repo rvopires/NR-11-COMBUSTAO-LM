@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="pt-BR">
 
 <head>
@@ -11,7 +11,7 @@
         href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;900&family=Open+Sans:wght@400;600&display=swap"
         rel="stylesheet">
     <script src="https://player.vimeo.com/api/player.js"></script>
-    <link rel="stylesheet" href="shared.css?v=3">
+    <link rel="stylesheet" href="shared.css?v=16">
     <link rel="preload" as="image" href="imagens/gtuC8HP.png">
     <link rel="preload" as="image" href="imagens/7BJLUgg.png">
     <script>
@@ -120,59 +120,110 @@
             <div class="slide" id="s37">
                 <style>
                     #s37 { background: radial-gradient(circle at center, rgba(20,10,7,1) 0%, rgba(13,10,8,1) 100%); overflow:hidden; }
-                    #s37 .rc-subtitle { font-size:clamp(12px,1.5vw,14px); color:rgba(255,244,232,0.5); line-height:1.6; margin-bottom:18px; max-width:760px; margin-top:14px; }
-                    #s37 .rc-grid { display:flex; gap:14px; max-width:1000px; width:100%; margin:0 auto; align-items:stretch; }
-                    #s37 .rc-col { flex:1; border-radius:14px; padding:10px 10px; display:flex; flex-direction:column; gap:10px; }
-                    #s37 .rc-img-wrap { position:relative; width:100%; }
-                    #s37 .rc-img-wrap img { width:100%; min-height:280px; max-height:340px; border-radius:12px; object-fit:cover; display:block; box-shadow:0 10px 36px rgba(0,0,0,0.55); }
-                    #s37 .rc-ampliar { position:absolute; top:8px; right:10px; z-index:3; padding:5px 12px; background:rgba(0,0,0,0.75); border:1px solid rgba(230,81,0,0.6); border-radius:6px; color:rgba(230,81,0,1); font-size:11px; font-weight:700; cursor:pointer; letter-spacing:1px; text-transform:uppercase; backdrop-filter:blur(6px); }
-                    #s37 .rc-col.blue   { background:rgba(41,98,255,0.06);  border:1px solid rgba(41,98,255,0.2); }
-                    #s37 .rc-col.yellow { background:rgba(255,200,0,0.06);  border:1px solid rgba(255,200,0,0.2); }
-                    #s37 .rc-col.green  { background:rgba(46,204,113,0.06); border:1px solid rgba(46,204,113,0.2); }
-                    #s37 .rc-col-header { display:flex; align-items:center; gap:10px; padding-bottom:10px; border-bottom:1px solid rgba(255,255,255,0.06); }
-                    #s37 .rc-col-icon { font-size:28px; flex-shrink:0; }
-                    #s37 .rc-col-title { font-family:var(--font-h); font-size:13px; font-weight:800; letter-spacing:2px; color:#FFF4E8; line-height:1.2; }
-                    #s37 .rc-section-label { font-family:var(--font-h); font-size:9px; font-weight:800; letter-spacing:2px; margin-bottom:4px; }
-                    #s37 .rc-col.blue   .rc-section-label.bad  { color:rgba(255,80,80,0.9); }
-                    #s37 .rc-col.blue   .rc-section-label.good { color:rgba(46,204,113,0.9); }
-                    #s37 .rc-col.yellow .rc-section-label { color:rgba(255,200,0,0.9); }
-                    #s37 .rc-col.green  .rc-section-label.bad  { color:rgba(255,80,80,0.9); }
-                    #s37 .rc-col.green  .rc-section-label.good { color:rgba(46,204,113,0.9); }
-                    #s37 .rc-item { display:flex; align-items:flex-start; gap:6px; font-size:12px; color:rgba(255,244,232,0.7); line-height:1.4; }
-                    #s37 .rc-num { width:18px; height:18px; border-radius:50%; background:rgba(255,200,0,0.2); border:1px solid rgba(255,200,0,0.5); color:rgba(255,200,0,1); font-family:var(--font-h); font-size:10px; font-weight:800; display:flex; align-items:center; justify-content:center; flex-shrink:0; margin-top:1px; }
-                    #s37 .rc-bar { max-width:900px; width:100%; margin:18px auto 0; border-radius:16px; padding:22px 28px; background:linear-gradient(135deg,rgba(220,50,50,0.12) 0%,rgba(140,30,30,0.06) 100%); border:1px solid rgba(220,50,50,0.35); border-top:3px solid rgba(220,50,50,0.9); display:flex; flex-direction:column; align-items:center; gap:14px; text-align:center; box-shadow:0 0 30px rgba(220,50,50,0.14), 0 8px 32px rgba(0,0,0,0.35); position:relative; overflow:hidden; }
-                    #s37 .rc-bar::before { content:''; position:absolute; top:0; left:50%; transform:translateX(-50%); width:55%; height:2px; background:linear-gradient(90deg,transparent,rgba(220,50,50,0.8),transparent); }
-                    #s37 .rc-bar-label { font-family:var(--font-h); font-size:15px; font-weight:800; letter-spacing:3px; color:rgba(255,100,100,1); text-shadow:0 0 14px rgba(220,50,50,0.45); white-space:nowrap; }
-                    #s37 .rc-bar-items { display:flex; gap:0; flex-wrap:wrap; justify-content:center; width:100%; border-top:1px solid rgba(220,50,50,0.2); padding-top:14px; }
-                    #s37 .rc-bar-item { font-size:16px; font-weight:600; color:rgba(255,244,232,0.88); display:flex; align-items:center; gap:8px; padding:8px 20px; border-right:1px solid rgba(220,50,50,0.18); }
-                    #s37 .rc-bar-item:last-child { border-right:none; }
-                    /* MOBILE s37 — scroll vertical, imagens legíveis */
-                    #s37 .rc-mobile { display: none; width: 100%; flex-direction: column; align-items: stretch; gap: 28px; }
-                    #s37 .rc-m-theme { width: 100%; display: flex; flex-direction: column; gap: 12px; }
-                    #s37 .rc-m-label { padding: 10px 16px; font-family: var(--font-h); font-size: 13px; font-weight: 800; letter-spacing: 2px; border-radius: 10px; text-align: center; }
-                    #s37 .rc-m-theme.blue .rc-m-label { background: rgba(41,98,255,0.15); color: rgba(100,150,255,1); border: 1px solid rgba(41,98,255,0.3); }
-                    #s37 .rc-m-theme.yellow .rc-m-label { background: rgba(255,200,0,0.15); color: rgba(255,200,0,1); border: 1px solid rgba(255,200,0,0.3); }
-                    #s37 .rc-m-theme.green .rc-m-label { background: rgba(46,204,113,0.15); color: rgba(46,204,113,1); border: 1px solid rgba(46,204,113,0.3); }
-                    #s37 .rc-m-img-wrap { position: relative; width: 100%; border-radius: 14px; box-shadow: 0 16px 40px rgba(0,0,0,0.65); }
-                    #s37 .rc-m-theme.blue .rc-m-img-wrap { border: 1px solid rgba(41,98,255,0.25); }
-                    #s37 .rc-m-theme.yellow .rc-m-img-wrap { border: 1px solid rgba(255,200,0,0.25); }
-                    #s37 .rc-m-theme.green .rc-m-img-wrap { border: 1px solid rgba(46,204,113,0.25); }
-                    #s37 .rc-m-img-wrap img { width: 100%; height: auto; display: block; object-fit: contain; border-radius: 14px; }
-                    #s37 .rc-m-zoom { position: absolute; bottom: 12px; right: 12px; z-index: 5; padding: 6px 12px; background: rgba(0,0,0,0.8); border: 1px solid rgba(230,81,0,0.6); border-radius: 6px; color: rgba(230,81,0,1); font-size: 10px; font-weight: 700; cursor: pointer; letter-spacing: 1px; backdrop-filter: blur(6px); text-transform: uppercase; font-family: var(--font-h); }
-                    #s37 .rc-m-proibido { width: 100%; margin-top: 4px; }
+                    #s37 .rc-carousel {
+                        width: 100%; max-width: 720px; margin: 0 auto;
+                        display: flex; flex-direction: column; align-items: center; gap: 14px;
+                    }
+                    @media (min-width: 769px) {
+                        #s37 .content-area {
+                            padding-top: 0 !important;
+                            justify-content: center !important;
+                            min-height: calc(100vh - 160px);
+                        }
+                        #s37 .rc-carousel { margin-top: 0; margin-bottom: 40px; }
+                    }
+                    #s37 .rc-slide {
+                        width: 100%; display: flex; flex-direction: column; align-items: center; gap: 12px;
+                        touch-action: pan-y;
+                    }
+                    #s37 .rc-label {
+                        width: 100%; padding: 10px 16px; font-family: var(--font-h); font-size: 14px;
+                        font-weight: 800; letter-spacing: 2px; border-radius: 10px; text-align: center;
+                    }
+                    #s37 .rc-slide.blue .rc-label { background: rgba(41,98,255,0.15); color: rgba(100,150,255,1); border: 1px solid rgba(41,98,255,0.3); }
+                    #s37 .rc-slide.yellow .rc-label { background: rgba(255,200,0,0.15); color: rgba(255,200,0,1); border: 1px solid rgba(255,200,0,0.3); }
+                    #s37 .rc-slide.green .rc-label { background: rgba(46,204,113,0.15); color: rgba(46,204,113,1); border: 1px solid rgba(46,204,113,0.3); }
+                    #s37 .rc-slide.proibido .rc-label {
+                        background: rgba(220,50,50,0.18); color: rgba(255,100,100,1);
+                        border: 1px solid rgba(220,50,50,0.4);
+                    }
+                    #s37 .rc-img-wrap {
+                        position: relative; width: 100%; border-radius: 14px; overflow: hidden;
+                        background: rgba(0,0,0,0.35); box-shadow: 0 16px 40px rgba(0,0,0,0.65);
+                    }
+                    #s37 .rc-slide.blue .rc-img-wrap { border: 1px solid rgba(41,98,255,0.25); box-shadow: 0 16px 40px rgba(0,0,0,0.65), 0 0 24px rgba(41,98,255,0.12); }
+                    #s37 .rc-slide.yellow .rc-img-wrap { border: 1px solid rgba(255,200,0,0.25); box-shadow: 0 16px 40px rgba(0,0,0,0.65), 0 0 24px rgba(255,200,0,0.12); }
+                    #s37 .rc-slide.green .rc-img-wrap { border: 1px solid rgba(46,204,113,0.25); box-shadow: 0 16px 40px rgba(0,0,0,0.65), 0 0 24px rgba(46,204,113,0.12); }
+                    #s37 .rc-img-wrap img {
+                        width: 100%; height: clamp(240px, 40vh, 400px); display: block;
+                        object-fit: contain; object-position: center center; background: rgba(0,0,0,0.25);
+                    }
+                    #s37 .rc-zoom {
+                        position: absolute; bottom: 12px; right: 12px; z-index: 5;
+                        padding: 6px 12px; background: rgba(0,0,0,0.8);
+                        border: 1px solid rgba(230,81,0,0.6); border-radius: 6px;
+                        color: rgba(230,81,0,1); font-size: 10px; font-weight: 700;
+                        cursor: pointer; letter-spacing: 1px; backdrop-filter: blur(6px);
+                        text-transform: uppercase; font-family: var(--font-h);
+                    }
+                    #s37 .rc-proibido-card {
+                        width: 100%; border-radius: 16px; padding: 22px 20px;
+                        background: linear-gradient(135deg,rgba(220,50,50,0.14) 0%,rgba(140,30,30,0.08) 100%);
+                        border: 1px solid rgba(220,50,50,0.4); border-top: 3px solid rgba(220,50,50,0.95);
+                        display: flex; flex-direction: column; align-items: center; gap: 14px; text-align: center;
+                        box-shadow: 0 0 30px rgba(220,50,50,0.18), 0 12px 36px rgba(0,0,0,0.4);
+                        position: relative; overflow: hidden;
+                    }
+                    #s37 .rc-proibido-card::before {
+                        content: ''; position: absolute; top: 0; left: 50%; transform: translateX(-50%);
+                        width: 55%; height: 2px;
+                        background: linear-gradient(90deg,transparent,rgba(220,50,50,0.85),transparent);
+                    }
+                    #s37 .rc-proibido-items {
+                        display: flex; flex-direction: column; gap: 10px; width: 100%;
+                        border-top: 1px solid rgba(220,50,50,0.25); padding-top: 14px;
+                    }
+                    #s37 .rc-proibido-item {
+                        font-size: 16px; font-weight: 600; color: rgba(255,244,232,0.92);
+                        display: flex; align-items: center; justify-content: center; gap: 10px;
+                        padding: 12px 14px; border-radius: 12px;
+                        background: rgba(220,50,50,0.08); border: 1px solid rgba(220,50,50,0.2);
+                    }
+                    #s37 .rc-media { width: 100%; }
+                    #s37 .rc-media.is-hidden { display: none !important; }
+                    #s37 .rc-proibido-wrap { width: 100%; display: none; }
+                    #s37 .rc-proibido-wrap.is-visible { display: block; animation: s37FadeUp 0.35s ease forwards; }
+                    @keyframes s37FadeUp {
+                        from { opacity: 0; transform: translateY(10px); }
+                        to { opacity: 1; transform: translateY(0); }
+                    }
+                    #s37 .rc-carousel-nav {
+                        display: flex; align-items: center; justify-content: center;
+                        gap: 18px; width: 100%;
+                    }
+                    #s37 .rc-counter {
+                        font-family: var(--font-h); font-size: 15px; font-weight: 800;
+                        letter-spacing: 2px; color: rgba(255,244,232,0.85); min-width: 56px; text-align: center;
+                    }
+                    #s37 .rc-nav-btn.m1o-nav-btn {
+                        min-width: 52px; min-height: 52px; width: 52px; height: 52px;
+                    }
                     @media (max-width: 768px) {
                         #s37 { overflow: hidden !important; }
                         #s37 .top-bar { padding-bottom: 4px !important; }
                         #s37 .slide-title { font-size: 18px !important; margin-bottom: 0 !important; }
-                        #s37 .content-area { padding: 8px 14px 180px !important; overflow-y: auto !important; -webkit-overflow-scrolling: touch !important; touch-action: pan-y !important; height: calc(100vh - 140px) !important; max-height: calc(100vh - 140px) !important; align-items: stretch !important; }
-                        #s37 .rc-desktop { display: none !important; }
-                        #s37 .rc-mobile { display: flex !important; }
-                        #s37 .rc-m-proibido .rc-bar-items { flex-direction: column; align-items: center; gap: 4px; }
-                        #s37 .rc-m-proibido .rc-bar-item { border-right: none; padding: 6px 12px; font-size: 14px; }
+                        #s37 .content-area {
+                            padding: 8px 14px 180px !important;
+                            overflow-y: auto !important;
+                            -webkit-overflow-scrolling: touch !important;
+                            touch-action: pan-y !important;
+                            height: calc(100vh - 140px) !important;
+                            max-height: calc(100vh - 140px) !important;
+                            align-items: stretch !important;
+                        }
+                        #s37 .rc-img-wrap img { height: auto !important; max-height: 46vh; }
+                        #s37 .rc-proibido-item { font-size: 15px; padding: 12px 12px; }
                         #s37 .wave { pointer-events: none; }
-                    }
-                    @media (min-width: 769px) {
-                        #s37 .rc-mobile { display: none !important; }
                     }
                 </style>
 
@@ -184,97 +235,146 @@
                     <h2 class="slide-title" style="font-size:clamp(22px,3.5vw,36px);letter-spacing:-0.01em;text-shadow:0 0 15px rgba(230,81,0,0.4);">Regras Críticas para <span>Baterias e GLP</span></h2>
                 </div>
 
-                <div class="content-area" style="position:relative;z-index:2;display:flex;flex-direction:column;align-items:center;justify-content:flex-start;padding-top:8px !important;">
+                <div class="content-area" style="position:relative;z-index:2;display:flex;flex-direction:column;align-items:center;justify-content:flex-start;padding-top:8px;">
 
-                    <!-- MOBILE: scroll vertical, conteúdo nas artes -->
-                    <div class="rc-mobile">
+                    <div class="rc-carousel">
+                        <div class="rc-slide blue" id="s37-slide">
+                            <div class="rc-label" id="s37-label">🔋 BATERIA ELÉTRICA</div>
 
-                        <div class="rc-m-theme blue">
-                            <div class="rc-m-label">🔋 BATERIA ELÉTRICA</div>
-                            <div class="rc-m-img-wrap">
-                                <img src="imagens/iXCNO4r.jpeg" alt="Bateria Elétrica">
-                                <button type="button" class="rc-m-zoom" onclick="openImageModal('imagens/iXCNO4r.jpeg')">🔍 AMPLIAR</button>
+                            <div class="rc-media" id="s37-media">
+                                <div class="rc-img-wrap">
+                                    <img id="s37-img" src="imagens/iXCNO4r.jpeg" alt="Bateria Elétrica">
+                                    <button type="button" class="rc-zoom" onclick="openImageModal(document.getElementById('s37-img').src)">🔍 AMPLIAR</button>
+                                </div>
+                            </div>
+
+                            <div class="rc-proibido-wrap" id="s37-proibido">
+                                <div class="rc-proibido-card">
+                                    <div class="rc-proibido-items">
+                                        <div class="rc-proibido-item">🚬 Fumar</div>
+                                        <div class="rc-proibido-item">⚡ Produzir fagulhas</div>
+                                        <div class="rc-proibido-item">🔥 Utilizar chamas abertas</div>
+                                        <div class="rc-proibido-item">🔧 Improvisar procedimentos</div>
+                                    </div>
+                                </div>
                             </div>
                         </div>
 
-                        <div class="rc-m-theme yellow">
-                            <div class="rc-m-label">🧪 VAZAMENTO DE ÁCIDO</div>
-                            <div class="rc-m-img-wrap">
-                                <img src="imagens/loSFBUq.jpeg" alt="Vazamento de Ácido">
-                                <button type="button" class="rc-m-zoom" onclick="openImageModal('imagens/loSFBUq.jpeg')">🔍 AMPLIAR</button>
-                            </div>
-                        </div>
-
-                        <div class="rc-m-theme green">
-                            <div class="rc-m-label">⛽ CILINDRO DE GLP</div>
-                            <div class="rc-m-img-wrap">
-                                <img src="imagens/3k1tnLL.jpeg" alt="Cilindro de GLP">
-                                <button type="button" class="rc-m-zoom" onclick="openImageModal('imagens/3k1tnLL.jpeg')">🔍 AMPLIAR</button>
-                            </div>
-                        </div>
-
-                        <div class="rc-bar rc-m-proibido req-item req-done" id="s37-bar-mobile">
-                            <div class="rc-bar-label">🚨 PROIBIDO</div>
-                            <div class="rc-bar-items">
-                                <div class="rc-bar-item">🚬 Fumar</div>
-                                <div class="rc-bar-item">⚡ Produzir fagulhas</div>
-                                <div class="rc-bar-item">🔥 Utilizar chamas abertas</div>
-                                <div class="rc-bar-item">🔧 Improvisar procedimentos</div>
-                            </div>
+                        <div class="rc-carousel-nav">
+                            <button type="button" class="rc-nav-btn m1o-nav-btn" id="s37-prev" aria-label="Anterior" onclick="s37Prev()">‹</button>
+                            <span class="rc-counter" id="s37-counter">1/4</span>
+                            <button type="button" class="rc-nav-btn m1o-nav-btn" id="s37-next" aria-label="Próximo" onclick="s37Next()">›</button>
                         </div>
                     </div>
 
-                    <!-- DESKTOP: comparação simultânea -->
-                    <div class="rc-desktop" style="width:100%;display:flex;flex-direction:column;align-items:center;">
-
-                    <div class="rc-grid">
-                        <div class="rc-col blue">
-                            <div class="rc-img-wrap">
-                                <img src="imagens/iXCNO4r.jpeg" alt="Bateria Elétrica">
-                                <button class="rc-ampliar" onclick="openImageModal('imagens/iXCNO4r.jpeg')">🔍 AMPLIAR</button>
-                            </div>
-                            <div class="rc-col-header">
-                                <div class="rc-col-icon">💧</div>
-                                <div class="rc-col-title">BATERIA ELÉTRICA</div>
-                            </div>
-                        </div>
-                        <div class="rc-col yellow">
-                            <div class="rc-img-wrap">
-                                <img src="imagens/loSFBUq.jpeg" alt="Vazamento de Ácido">
-                                <button class="rc-ampliar" onclick="openImageModal('imagens/loSFBUq.jpeg')">🔍 AMPLIAR</button>
-                            </div>
-                            <div class="rc-col-header">
-                                <div class="rc-col-icon">🧪</div>
-                                <div class="rc-col-title">VAZAMENTO DE ÁCIDO</div>
-                            </div>
-                        </div>
-                        <div class="rc-col green">
-                            <div class="rc-img-wrap">
-                                <img src="imagens/3k1tnLL.jpeg" alt="Cilindro de GLP">
-                                <button class="rc-ampliar" onclick="openImageModal('imagens/3k1tnLL.jpeg')">🔍 AMPLIAR</button>
-                            </div>
-                            <div class="rc-col-header">
-                                <div class="rc-col-icon">💨</div>
-                                <div class="rc-col-title">CILINDRO DE GLP</div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="rc-bar req-item req-done" id="s37-bar-desktop">
-                        <div class="rc-bar-label">🚨 PROIBIDO</div>
-                        <div class="rc-bar-items">
-                            <div class="rc-bar-item">🚬 Fumar</div>
-                            <div class="rc-bar-item">⚡ Produzir fagulhas</div>
-                            <div class="rc-bar-item">🔥 Utilizar chamas abertas</div>
-                            <div class="rc-bar-item">🔧 Improvisar procedimentos</div>
-                        </div>
-                    </div>
-
-                    </div><!-- /rc-desktop -->
+                    <div id="s37-tracker" class="req-item" style="display:none;"></div>
 
                 </div>
 
                 <div class="wave" style="position:absolute;bottom:0;left:0;right:0;z-index:1;"><svg viewBox="0 0 1440 100" preserveAspectRatio="none"><path d="M0,65 C360,20 720,90 1080,40 C1260,15 1390,70 1440,60 L1440,100 L0,100 Z" fill="rgba(230,81,0,0.07)"/></svg></div>
+
+                <script>
+                (function () {
+                    var s37Idx = 0;
+                    var s37Viewed = { 0: true };
+                    var s37Done = false;
+                    var s37Slides = [
+                        { type: 'blue', label: '🔋 BATERIA ELÉTRICA', kind: 'img', img: 'imagens/iXCNO4r.jpeg', alt: 'Bateria Elétrica' },
+                        { type: 'yellow', label: '🧪 VAZAMENTO DE ÁCIDO', kind: 'img', img: 'imagens/loSFBUq.jpeg', alt: 'Vazamento de Ácido' },
+                        { type: 'green', label: '⛽ CILINDRO DE GLP', kind: 'img', img: 'imagens/3k1tnLL.jpeg', alt: 'Cilindro de GLP' },
+                        { type: 'proibido', label: '🚨 PROIBIDO', kind: 'proibido' }
+                    ];
+
+                    function s37UpdateNav() {
+                        var prev = document.getElementById('s37-prev');
+                        var next = document.getElementById('s37-next');
+                        var counter = document.getElementById('s37-counter');
+                        if (counter) counter.textContent = (s37Idx + 1) + '/' + s37Slides.length;
+                        if (prev) prev.disabled = s37Idx <= 0;
+                        if (next) next.disabled = s37Idx >= s37Slides.length - 1;
+                    }
+
+                    function s37Unlock() {
+                        if (s37Done) return;
+                        s37Done = true;
+                        var tracker = document.getElementById('s37-tracker');
+                        if (tracker) {
+                            tracker.style.display = 'block';
+                            tracker.classList.add('req-done');
+                        }
+                        try { if (typeof playBeep === 'function') playBeep('end'); } catch (e) {}
+                        setTimeout(function () {
+                            if (typeof updateNextButton === 'function') updateNextButton();
+                        }, 200);
+                    }
+
+                    function s37CheckComplete() {
+                        if (!(s37Viewed[0] && s37Viewed[1] && s37Viewed[2] && s37Viewed[3])) return;
+                        s37Unlock();
+                    }
+
+                    function s37Render(idx) {
+                        var s = s37Slides[idx];
+                        if (!s) return;
+                        var slide = document.getElementById('s37-slide');
+                        var label = document.getElementById('s37-label');
+                        var media = document.getElementById('s37-media');
+                        var proibido = document.getElementById('s37-proibido');
+                        var img = document.getElementById('s37-img');
+
+                        if (slide) slide.className = 'rc-slide ' + s.type;
+                        if (label) label.textContent = s.label;
+
+                        if (s.kind === 'proibido') {
+                            if (media) media.classList.add('is-hidden');
+                            if (proibido) proibido.classList.add('is-visible');
+                        } else {
+                            if (media) media.classList.remove('is-hidden');
+                            if (proibido) proibido.classList.remove('is-visible');
+                            if (img) {
+                                img.src = s.img;
+                                img.alt = s.alt;
+                            }
+                        }
+                    }
+
+                    function s37GoTo(idx) {
+                        if (idx < 0 || idx >= s37Slides.length || idx === s37Idx) return;
+                        s37Idx = idx;
+                        s37Viewed[idx] = true;
+                        try {
+                            if (typeof playTechClick === 'function') playTechClick();
+                            else if (typeof playBeep === 'function') playBeep('click');
+                        } catch (e) {}
+                        s37Render(s37Idx);
+                        s37UpdateNav();
+                        s37CheckComplete();
+                    }
+
+                    window.s37Prev = function () { s37GoTo(s37Idx - 1); };
+                    window.s37Next = function () { s37GoTo(s37Idx + 1); };
+
+                    var slideEl = document.getElementById('s37-slide');
+                    if (slideEl) {
+                        var touchX = null;
+                        slideEl.addEventListener('touchstart', function (e) {
+                            touchX = e.changedTouches[0].clientX;
+                        }, { passive: true });
+                        slideEl.addEventListener('touchend', function (e) {
+                            if (touchX == null) return;
+                            var dx = e.changedTouches[0].clientX - touchX;
+                            touchX = null;
+                            if (Math.abs(dx) < 40) return;
+                            if (dx < 0) s37Next();
+                            else s37Prev();
+                        }, { passive: true });
+                    }
+
+                    s37Render(0);
+                    s37UpdateNav();
+                    if (typeof updateNextButton === 'function') updateNextButton();
+                })();
+                </script>
             </div>
 
             <div class="slide" id="s38">
@@ -713,261 +813,92 @@
 
             <div class="slide" id="s39">
                 <style>
-                @media (max-width: 768px) {
-                    #s39 { overflow: hidden !important; }
-                    #s39 .top-bar { padding-bottom: 4px !important; }
-                    #s39 .slide-title { font-size: 18px !important; margin-bottom: 0 !important; }
-                    #s39 .content-area {
-                        padding: 8px 10px 180px !important;
-                        overflow-y: auto !important;
-                        overflow-x: hidden !important;
-                        -webkit-overflow-scrolling: touch !important;
-                        touch-action: pan-y !important;
-                        flex: 1 1 auto !important;
-                        min-height: 0 !important;
-                        height: calc(100vh - 140px) !important;
-                        max-height: calc(100vh - 140px) !important;
+                    @media (max-width: 768px) {
+                        #s39 { overflow: hidden !important; }
+                        #s39 .top-bar { padding-bottom: 4px !important; }
+                        #s39 .slide-title { font-size: 18px !important; margin-bottom: 0 !important; }
+                        #s39 .content-area {
+                            padding: 8px 10px 220px !important;
+                            overflow-y: auto !important;
+                            overflow-x: hidden !important;
+                            -webkit-overflow-scrolling: touch !important;
+                            touch-action: pan-y !important;
+                            justify-content: flex-start !important;
+                            flex: 1 1 auto !important;
+                            min-height: 0 !important;
+                            height: calc(100vh - 140px) !important;
+                            max-height: calc(100vh - 140px) !important;
+                        }
+                        #s39 .quiz-wrap { padding: 0 !important; max-width: 100% !important; height: auto !important; }
+                        #s39 #q6b-intro-panel { padding: 10px 0 !important; }
+                        #s39 .quiz-intro-card { padding: 28px 18px 24px !important; }
+                        #s39 .quiz-intro-title { font-size: 20px !important; }
+                        #s39 .quiz-intro-desc { font-size: 14px !important; }
+                        #s39 .btn-tf-verify { font-size: 15px !important; padding: 14px 30px !important; width: 100% !important; justify-content: center !important; }
+                        #s39 #q6b-question-panel { height: auto !important; }
+                        #s39 .q-feedback {
+                            padding: 12px 14px !important;
+                            font-size: 15px !important;
+                            line-height: 1.45 !important;
+                            margin-top: 10px !important;
+                            margin-bottom: 8px !important;
+                        }
+                        #s39 .btn-next-q {
+                            width: 100% !important;
+                            font-size: 15px !important;
+                            padding: 14px 30px !important;
+                            margin-top: 12px !important;
+                        }
+                        #s39 .wave { pointer-events: none; }
                     }
-                    #s39 .quiz-wrap { padding: 0 !important; max-width: 100% !important; }
-                    #s39 #q6b-intro-panel { padding: 10px 0 !important; }
-                    #s39 #q6b-intro-panel .hud-anim-enter:first-of-type {
-                        padding: 20px 16px !important;
-                        margin-bottom: 14px !important;
-                    }
-                    #s39 #q6b-intro-panel h3 { font-size: 20px !important; margin-bottom: 8px !important; }
-                    #s39 #q6b-intro-panel p { font-size: 13px !important; }
-                    #s39 #q6b-intro-panel .hud-anim-enter:nth-of-type(2) { margin-top: 16px !important; margin-bottom: 16px !important; font-size: 12px !important; padding: 8px 14px !important; }
-                    #s39 .btn-tf-verify {
-                        font-size: 15px !important;
-                        padding: 14px 30px !important;
-                        width: 100% !important;
-                        justify-content: center !important;
-                    }
-                    #s39 #q6b-question-panel .q-meta { margin-bottom: 14px !important; }
-                    #s39 #q6b-counter { font-size: 13px !important; letter-spacing: 1.5px !important; }
-                    #s39 #q6b-text {
-                        font-size: 16px !important;
-                        line-height: 1.45 !important;
-                        padding: 24px 16px 20px !important;
-                        margin-bottom: 12px !important;
-                    }
-                    #s39 .q-options { gap: 10px !important; }
-                    #s39 .q-opt {
-                        padding: 10px 14px !important;
-                        font-size: 15px !important;
-                        width: 100% !important;
-                    }
-                    #s39 .q-opt span { font-size: 15px !important; }
-                    #s39 .opt-l {
-                        width: 32px !important;
-                        height: 32px !important;
-                        font-size: 17px !important;
-                    }
-                    #s39 .q-feedback {
-                        padding: 12px 14px !important;
-                        font-size: 15px !important;
-                        line-height: 1.45 !important;
-                        margin-top: 10px !important;
-                        margin-bottom: 8px !important;
-                        max-height: 180px;
-                        overflow-y: auto;
-                        -webkit-overflow-scrolling: touch;
-                    }
-                    #s39 .btn-next-q {
-                        width: 100% !important;
-                        display: none;
-                        font-size: 15px !important;
-                        padding: 14px 30px !important;
-                        letter-spacing: 1px;
-                        text-transform: uppercase;
-                    }
-                    #s39 .btn-next-q.show {
-                        display: block !important;
-                        width: 100% !important;
-                        min-height: 52px !important;
-                        margin-top: 12px !important;
-                        position: relative !important;
-                        z-index: 100 !important;
-                        animation: q6bNextPulse 1.8s infinite;
-                    }
-                    @keyframes q6bNextPulse {
-                        0% { transform: scale(1); }
-                        50% { transform: scale(1.03); }
-                        100% { transform: scale(1); }
-                    }
-                    #s39 #q6b-verify-wrap { display: none !important; }
-                    #s39 .wave { pointer-events: none; }
-                }
                 </style>
                 <div class="top-bar" style="position:relative;z-index:2;">
                     <div class="section-tag" style="background:var(--red);color:var(--black);font-size:16px;padding:6px 16px;font-weight:800;box-shadow:0 0 12px rgba(230,81,0,0.4);">Módulo 6</div>
                     <h2 class="slide-title" style="font-size:clamp(22px,3.5vw,36px);letter-spacing:-0.01em;text-shadow:0 0 15px rgba(230,81,0,0.4);">Mini Quiz: <span>Emergências e Baterias</span></h2>
                 </div>
-
                 <div class="content-area" style="position:relative;z-index:2;">
-                    <div class="quiz-wrap" style="display:flex;flex-direction:column;gap:10px;max-width:860px;">
-
-                        <!-- INTRO -->
-                        <div id="q6b-intro-panel" style="text-align:center;padding:30px 20px;">
-                            <div class="hud-anim-enter" style="position:relative;z-index:1;max-width:680px;margin:0 auto;padding:40px 30px;border-radius:8px;background:linear-gradient(180deg,rgba(28,10,6,0.96) 0%,rgba(12,5,4,0.98) 100%);border:1px solid rgba(230,81,0,0.14);box-shadow:0 0 40px rgba(230,81,0,0.08),0 20px 60px rgba(0,0,0,0.45);animation-delay:0.2s;opacity:0;overflow:hidden;">
-                                <div style="position:absolute;inset:0;pointer-events:none;background:repeating-linear-gradient(0deg,transparent,transparent 2px,rgba(230,81,0,0.03) 3px,rgba(230,81,0,0.03) 4px);"></div>
-                                <div style="position:absolute;top:0;left:50%;transform:translateX(-50%);width:60%;height:1px;background:linear-gradient(90deg,transparent,rgba(230,81,0,0.4),transparent);"></div>
-                                <div style="position:absolute;bottom:0;left:50%;transform:translateX(-50%);width:60%;height:1px;background:linear-gradient(90deg,transparent,rgba(230,81,0,0.4),transparent);"></div>
-                                <div class="hud-anim-enter" style="animation-delay:0.2s;opacity:0;margin-bottom:20px;">
-                                    <div style="font-family:var(--font-h);font-size:12px;font-weight:700;color:rgba(230,81,0,0.8);letter-spacing:4px;text-transform:uppercase;margin-bottom:16px;display:flex;align-items:center;justify-content:center;gap:12px;">
-                                        <span style="width:30px;height:1px;background:rgba(230,81,0,0.4);"></span>PROTOCOLO DE AVALIAÇÃO<span style="width:30px;height:1px;background:rgba(230,81,0,0.4);"></span>
-                                    </div>
-                                    <h3 style="font-family:var(--font-h);font-size:clamp(24px,3.5vw,36px);font-weight:800;color:#FFF4E8;text-transform:uppercase;letter-spacing:1px;line-height:1.2;margin-bottom:16px;text-shadow:0 0 15px rgba(230,81,0,0.4);">MINI QUIZ — MÓDULO 6</h3>
-                                    <p style="font-size:clamp(16px,2vw,18px);color:rgba(255,244,232,0.78);max-width:500px;margin:0 auto;line-height:1.5;font-weight:300;">Emergências e Baterias</p>
-                                </div>
-                                <div class="hud-anim-enter" style="position:relative;z-index:1;font-family:var(--font-h);font-size:14px;font-weight:700;color:rgba(255,255,255,0.75);letter-spacing:2px;text-transform:uppercase;margin-bottom:40px;animation-delay:0.3s;opacity:0;display:inline-flex;align-items:center;gap:8px;background:rgba(255,255,255,0.05);padding:10px 20px;border:1px solid rgba(255,255,255,0.15);border-radius:8px;">
-                                    <span style="display:inline-block;width:6px;height:6px;background:var(--red);border-radius:50%;box-shadow:0 0 6px var(--red);"></span>
-                                    3 PERGUNTAS &middot; MÍNIMO DE 70% DE ACERTOS
-                                </div><br>
-                                <div class="hud-anim-enter" style="position:relative;display:inline-block;z-index:2;animation-delay:0.4s;opacity:0;">
-                                    <div style="position:absolute;inset:-15px;border-radius:99px;border:1px dashed rgba(230,81,0,0.3);pointer-events:none;"></div>
-                                    <div style="position:absolute;inset:-5px;border-radius:99px;background:rgba(230,81,0,0.15);filter:blur(10px);animation:pulse 2s infinite;pointer-events:none;"></div>
-                                    <button class="btn-tf-verify req-item" style="position:relative;font-size:18px;padding:15px 40px;border-radius:99px;display:inline-flex;align-items:center;gap:10px;"
-                                        onclick="try{if(typeof playBeep==='function')playBeep('click');else if(typeof playTechClick==='function')playTechClick();}catch(e){}this.classList.add('req-done');if(typeof updateNextButton==='function')updateNextButton();document.getElementById('q6b-intro-panel').style.display='none';document.getElementById('q6b-question-panel').style.display='block';q6bRender();">
-                                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polygon points="5 3 19 12 5 21"></polygon></svg>
-                                        COMEÇAR
-                                    </button>
-                                </div>
+                    <div class="quiz-wrap">
+                        <div id="q6b-intro-panel" class="quiz-intro-panel">
+                            <div class="quiz-intro-card">
+                                <div class="quiz-intro-icon" aria-hidden="true">📋</div>
+                                <h3 class="quiz-intro-title">Desafio NR-11 — Módulo 6</h3>
+                                <p class="quiz-intro-desc">Responda <strong>3</strong> perguntas. Você precisa acertar no mínimo <strong>2</strong> para avançar.</p>
+                                <button type="button" class="quiz-intro-btn" onclick="startQuiz6bIntro()">INICIAR DESAFIO</button>
                             </div>
                         </div>
 
-                        <!-- PERGUNTAS -->
-                        <div id="q6b-question-panel" style="display:none;transition:opacity 0.5s ease;">
+                        <div id="q6b-question-panel" style="display:none; transition: opacity 0.5s ease;">
                             <div class="q-meta">
-                                <div class="q-dots" id="q6b-dots"></div>
+                                <div class="q-dots"></div>
                                 <div class="q-lbl" id="q6b-counter">Pergunta 1 de 3</div>
                             </div>
                             <div class="q-text" id="q6b-text"></div>
                             <div class="q-options" id="q6b-options"></div>
-                            <div id="q6b-verify-wrap" style="text-align:center;opacity:0;visibility:hidden;transition:all 0.3s;display:none;margin-top:20px;">
-                                <button class="btn-tf-verify" onclick="q6bVerify()">✔ Verificar Resposta</button>
+                            <div id="q6b-verify-container"
+                                style="text-align: center; margin-top: 15px; opacity: 0; visibility: hidden; transition: all 0.3s ease; display: none;">
+                                <button class="btn-tf-verify" id="btn-tf-verify-q6b" onclick="verifyAnswer6b()">✔
+                                    Verificar
+                                    Resposta</button>
                             </div>
                             <div class="q-feedback" id="q6b-feedback"></div>
-                            <button class="btn-next-q" id="btn-next-q6b" onclick="q6bNext()">Próxima ▶</button>
+                            <button class="btn-next-q" id="btn-next-q6b" onclick="nextQuestion6b()">Continuar →</button>
                         </div>
 
-                        <!-- RESULTADO -->
-                        <div id="q6b-result-panel" style="display:none;text-align:center;">
-                            <div class="result-pct green" id="q6b-pct">--</div>
-                            <div class="r-stars" id="q6b-stars">⭐⭐⭐</div>
-                            <div class="r-status" id="q6b-status"></div>
-                            <div class="r-sub" id="q6b-sub"></div>
-                            <button class="btn-retry" onclick="q6bReset()" style="margin-top:30px;">↺ Tentar Novamente</button>
+                        <div id="q6b-result-panel" class="quiz-result-panel" style="display:none;">
+                            <div class="quiz-result-card">
+                                <div class="quiz-result-icon" id="q6b-result-icon" aria-hidden="true">📚</div>
+                                <h3 class="quiz-result-title r-status" id="q6b-status">Desafio não concluído</h3>
+                                <p class="quiz-result-desc" id="q6b-sub"></p>
+                                <div class="quiz-result-review" id="q6b-review" hidden></div>
+                                <button type="button" class="quiz-result-btn" id="q6b-retry-btn"
+                                    onclick="resetQuiz6b()">JOGAR NOVAMENTE</button>
+                            </div>
+                            <div id="q6b-pct" class="result-pct" style="display:none" aria-hidden="true"></div>
+                            <div id="q6b-stars" class="r-stars" style="display:none" aria-hidden="true"></div>
                         </div>
-
                     </div>
                 </div>
-
                 <div class="wave" style="position:absolute;bottom:0;left:0;right:0;z-index:1;"><svg viewBox="0 0 1440 100" preserveAspectRatio="none"><path d="M0,65 C360,20 720,90 1080,40 C1260,15 1390,70 1440,60 L1440,100 L0,100 Z" fill="rgba(230,81,0,0.07)"/></svg></div>
-
-                <script>
-                var q6bIdx = 0, q6bScore = 0, q6bAnswered = false, q6bSelected = -1;
-                var q6bQuestions = [
-                    { q:'De acordo com o protocolo de emergência, qual deve ser sua atitude imediata ao ouvir o alarme de incêndio disparar no galpão?', opts:['Acelerar a empilhadeira para sair do prédio o mais rápido possível.','Abandonar o equipamento no meio do cruzamento e correr.','Estacionar o veículo em local seguro, deixando a passagem livre, e aguardar as orientações do brigadista.'], correct:2, ok:'✅ Correto! Estacionar em local seguro, liberar a passagem e aguardar o brigadista é o procedimento correto.', nok:'❌ Incorreto. O procedimento correto é estacionar em local seguro, liberar a passagem e aguardar as orientações do brigadista.' },
-                    { q:'O que o operador deve fazer caso ocorra um princípio de incêndio na sua própria empilhadeira?', opts:['Primeiramente pedir ajuda e comunicar, para só então iniciar o combate usando o extintor adequado (Pó químico ou CO₂).','Tentar apagar o fogo sozinho com qualquer extintor, sem avisar ninguém para não assustar a equipe.','Jogar água no motor imediatamente e fugir.'], correct:0, ok:'✅ Correto! Comunicar primeiro e depois usar o extintor adequado é o procedimento seguro.', nok:'❌ Incorreto. Sempre comunique primeiro, depois utilize o extintor adequado (Pó químico ou CO₂).' },
-                    { q:'Sobre o procedimento seguro para a troca de baterias de empilhadeiras elétricas, qual é a sequência correta?', opts:['A troca pode ser feita com a máquina ligada, desde que seja rápida.','Remover a bateria, colocar a nova e deixar a bateria velha no chão do estoque.','Desligar a chave de partida, desconectar o cabo, instalar a nova bateria e conectar a bateria retirada no carregador.'], correct:2, ok:'✅ Correto! Desligar, desconectar, instalar a nova e colocar a antiga para carregar é o procedimento correto.', nok:'❌ Incorreto. A sequência correta é: desligar a chave, desconectar, instalar a nova e colocar a antiga no carregador.' }
-                ];
-                function q6bIsMobile() {
-                    return window.matchMedia('(max-width: 768px)').matches;
-                }
-                function q6bRenderDots() {
-                    var dots = document.getElementById('q6b-dots');
-                    if (!dots) return;
-                    dots.innerHTML = '';
-                    for (var i = 0; i < q6bQuestions.length; i++) {
-                        var d = document.createElement('div');
-                        if (q6bIsMobile()) {
-                            d.className = 'qdot2' + (i < q6bIdx ? ' done' : '') + (i === q6bIdx ? ' cur' : '');
-                        } else {
-                            d.className = 'q-dot' + (i < q6bIdx ? ' done' : i === q6bIdx ? ' active' : '');
-                        }
-                        dots.appendChild(d);
-                    }
-                }
-                function q6bRender() {
-                    var q = q6bQuestions[q6bIdx];
-                    var counter = document.getElementById('q6b-counter');
-                    if (counter) {
-                        counter.textContent = q6bIsMobile()
-                            ? (q6bIdx + 1) + ' DE ' + q6bQuestions.length
-                            : 'Pergunta ' + (q6bIdx + 1) + ' de ' + q6bQuestions.length;
-                    }
-                    q6bRenderDots();
-                    document.getElementById('q6b-text').textContent = q.q;
-                    var opts = document.getElementById('q6b-options'); opts.innerHTML = '';
-                    var letters = ['A','B','C'];
-                    q.opts.forEach(function(opt,i){var el=document.createElement('div');el.className='q-opt';el.innerHTML='<div class="opt-l">'+letters[i]+'</div><span>'+opt+'</span>';el.onclick=function(){q6bSelect(i,el);};opts.appendChild(el);});
-                    document.getElementById('q6b-feedback').className='q-feedback'; document.getElementById('q6b-feedback').textContent='';
-                    var vw=document.getElementById('q6b-verify-wrap');vw.style.display='none';vw.style.opacity='0';vw.style.visibility='hidden';
-                    var nb=document.getElementById('btn-next-q6b');
-                    if (nb) {
-                        nb.className = 'btn-next-q';
-                        nb.textContent = q6bIsMobile() ? 'PRÓXIMA PERGUNTA →' : 'Próxima ▶';
-                    }
-                    q6bAnswered=false; q6bSelected=-1;
-                    if (q6bIsMobile()) {
-                        var contentArea = document.querySelector('#s39 .content-area');
-                        if (contentArea) contentArea.scrollTop = 0;
-                    }
-                }
-                function q6bSelect(i,el){
-                    if(q6bAnswered) return; q6bSelected=i;
-                    document.querySelectorAll('#q6b-options .q-opt').forEach(function(o){o.classList.remove('selected');});
-                    el.classList.add('selected'); try{playBeep('click');}catch(e){}
-                    q6bVerify();
-                }
-                function q6bVerify(){
-                    if(q6bAnswered||q6bSelected===-1) return; q6bAnswered=true;
-                    var q=q6bQuestions[q6bIdx]; var ok=q6bSelected===q.correct;
-                    if(ok){ q6bScore++; try{ if(typeof playBeep==='function') playBeep('ok'); else if(typeof playHUDBeep==='function') playHUDBeep('correct'); }catch(e){} }
-                    else{ try{ if(typeof playBeep==='function') playBeep('nok'); else if(typeof playHUDBeep==='function') playHUDBeep('wrong'); }catch(e){} }
-                    var fb=document.getElementById('q6b-feedback'); fb.className='q-feedback '+(ok?'ok':'nok'); fb.textContent=ok?q.ok:q.nok;
-                    var vw=document.getElementById('q6b-verify-wrap');vw.style.display='none';
-                    var nb=document.getElementById('btn-next-q6b');
-                    if (nb) {
-                        nb.className = 'btn-next-q show';
-                        nb.textContent = q6bIsMobile() ? 'PRÓXIMA PERGUNTA →' : 'Próxima ▶';
-                    }
-                    document.querySelectorAll('#q6b-options .q-opt').forEach(function(o,i){o.style.pointerEvents='none';if(i===q.correct)o.classList.add('correct');else if(i===q6bSelected&&!ok)o.classList.add('wrong');});
-                    if (q6bIsMobile() && nb) {
-                        setTimeout(function () {
-                            nb.scrollIntoView({ behavior: 'smooth', block: 'center' });
-                        }, 300);
-                    }
-                }
-                function q6bNext(){
-                    q6bIdx++;
-                    if(q6bIdx<q6bQuestions.length){q6bRender();}
-                    else{
-                        document.getElementById('q6b-question-panel').style.display='none';
-                        var r=document.getElementById('q6b-result-panel'); r.style.display='block';
-                        try{playBeep('end');}catch(e){}
-                        var pct=Math.round((q6bScore/q6bQuestions.length)*100); var approved=pct>=70;
-                        document.getElementById('q6b-pct').textContent=pct+'%'; document.getElementById('q6b-pct').className='result-pct '+(approved?'green':'red-c');
-                        document.getElementById('q6b-stars').textContent=pct===100?'⭐⭐⭐':pct>=70?'⭐⭐':'⭐';
-                        document.getElementById('q6b-status').textContent=approved?'✅ Aprovado!':'❌ Tente Novamente'; document.getElementById('q6b-status').className='r-status '+(approved?'ap':'ref');
-                        document.getElementById('q6b-sub').textContent='Você acertou '+q6bScore+' de '+q6bQuestions.length+' questões.'+(approved?' Parabéns!':' Revise o módulo e tente novamente.');
-                        r.classList.add('req-item','req-done'); if(typeof updateNextButton==='function')updateNextButton();
-                        if (q6bIsMobile()) {
-                            var contentArea = document.querySelector('#s39 .content-area');
-                            if (contentArea) contentArea.scrollTop = 0;
-                        }
-                    }
-                }
-                function q6bReset(){
-                    q6bIdx=0;q6bScore=0;q6bAnswered=false;q6bSelected=-1;
-                    document.getElementById('q6b-result-panel').style.display='none';
-                    document.getElementById('q6b-question-panel').style.display='block';
-                    q6bRender();
-                }
-                if(document.getElementById('q6b-question-panel')) q6bRender();
-                </script>
-
             </div>
 
             <div class="slide" id="s40"
@@ -1435,350 +1366,107 @@
 
             <div class="slide" id="s43">
                 <style>
-                    #s43 { background: radial-gradient(circle at center, rgba(20,10,7,1) 0%, rgba(13,10,8,1) 100%); overflow:hidden; }
-                    /* Scanner line */
-                    #s43 .hud-scanner { position:absolute;top:0;left:0;width:100%;height:2px;background:rgba(230,81,0,0.6);box-shadow:0 0 20px 2px rgba(230,81,0,0.4);opacity:0.4;animation:scan-line 4s linear infinite;pointer-events:none;z-index:0; }
-                    @keyframes scan-line { 0%{top:0;opacity:0} 10%{opacity:0.4} 90%{opacity:0.4} 100%{top:100%;opacity:0} }
-                    /* Progress bar */
-                    #s43 .q6-progress { display:flex;align-items:center;justify-content:center;gap:0;max-width:880px;width:100%;margin:0 auto 12px;position:relative; }
-                    #s43 .q6-progress::before { content:'';position:absolute;top:18px;left:10%;right:10%;height:1px;background:rgba(255,255,255,0.1);z-index:0; }
-                    #s43 .q6-step { display:flex;flex-direction:column;align-items:center;gap:5px;flex:1;position:relative;z-index:1; }
-                    #s43 .q6-step-circle { width:36px;height:36px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-family:var(--font-h);font-size:12px;font-weight:800;transition:all 0.3s; }
-                    #s43 .q6-step.done .q6-step-circle { background:rgba(46,204,113,0.2);border:2px solid rgba(46,204,113,0.8);color:rgba(46,204,113,1);box-shadow:0 0 10px rgba(46,204,113,0.3); }
-                    #s43 .q6-step.cur .q6-step-circle { background:rgba(230,81,0,0.2);border:2px solid rgba(230,81,0,1);color:#FFF4E8;box-shadow:0 0 14px rgba(230,81,0,0.5); }
-                    #s43 .q6-step.todo .q6-step-circle { background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.15);color:rgba(255,255,255,0.3); }
-                    #s43 .q6-step-label { font-family:var(--font-h);font-size:8px;font-weight:800;letter-spacing:1px;text-align:center;line-height:1.2; }
-                    #s43 .q6-step.done .q6-step-label { color:rgba(46,204,113,0.7); }
-                    #s43 .q6-step.cur  .q6-step-label { color:rgba(230,81,0,0.9); }
-                    #s43 .q6-step.todo .q6-step-label { color:rgba(255,255,255,0.2); }
-                    /* Card */
-                    #s43 .q6-card { display:flex;gap:0;border-radius:14px;overflow:hidden;border:1px solid rgba(255,120,0,0.25);background:linear-gradient(180deg,rgba(15,23,42,0.95) 0%,rgba(8,12,20,0.95) 100%);box-shadow:0 20px 60px rgba(0,0,0,0.7);width:100%;max-width:880px;margin:0 auto 14px;min-height:200px; }
-                    #s43 .q6-icon-col { flex:0 0 180px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:12px;padding:24px 16px;background:rgba(255,120,0,0.04);border-right:1px solid rgba(255,120,0,0.12);position:relative; }
-                    #s43 .q6-icon-circle { width:100px;height:100px;border-radius:50%;border:2px solid rgba(230,81,0,0.6);background:radial-gradient(circle,rgba(230,81,0,0.12) 0%,transparent 70%);display:flex;align-items:center;justify-content:center;box-shadow:0 0 24px rgba(230,81,0,0.2),inset 0 0 20px rgba(230,81,0,0.05); }
-                    #s43 .q6-icon-svg { width:56px;height:56px; }
-                    #s43 .q6-icon-badge { background:rgba(230,81,0,0.15);border:1px solid rgba(230,81,0,0.4);border-radius:6px;padding:5px 10px;font-family:var(--font-h);font-size:9px;font-weight:800;letter-spacing:2px;color:rgba(230,81,0,0.9);text-align:center;max-width:140px; }
-                    #s43 .q6-divider { width:1px;background:linear-gradient(to bottom,transparent,rgba(230,81,0,0.6) 30%,rgba(230,81,0,0.6) 70%,transparent);box-shadow:0 0 8px rgba(230,81,0,0.3);flex-shrink:0; }
-                    #s43 .q6-content { flex:1;padding:22px 24px;display:flex;flex-direction:column;justify-content:center;gap:12px; }
-                    #s43 .q6-situation-label { font-family:var(--font-h);font-size:10px;font-weight:800;letter-spacing:3px;color:rgba(230,81,0,0.7);border-bottom:1px solid rgba(230,81,0,0.2);padding-bottom:6px; }
-                    #s43 .q6-situation-text { font-size:clamp(15px,1.9vw,18px);color:#F5F5F5;line-height:1.65;font-weight:400; }
-                    #s43 .q6-info-box { display:flex;align-items:flex-start;gap:10px;padding:10px 14px;background:rgba(255,255,255,0.04);border-radius:8px;border:1px solid rgba(255,255,255,0.08); }
-                    #s43 .q6-info-icon { font-size:16px;flex-shrink:0;color:rgba(230,81,0,0.7);margin-top:1px; }
-                    #s43 .q6-info-text { font-size:12px;color:#A0AEC0;line-height:1.5; }
-                    /* Decision area */
-                    #s43 .q6-decision-label { text-align:center;font-family:var(--font-h);font-size:11px;font-weight:800;letter-spacing:3px;color:rgba(230,81,0,0.7);margin-bottom:10px;display:flex;align-items:center;justify-content:center;gap:10px; }
-                    #s43 .q6-decision-label::before, #s43 .q6-decision-label::after { content:'';flex:1;max-width:80px;height:1px;background:rgba(230,81,0,0.25); }
-                    /* Buttons */
-                    #s43 .q6-btns { display:flex;gap:12px;max-width:880px;width:100%;margin:0 auto; }
-                    #s43 .q6-btn { flex:1;padding:18px 20px;border-radius:12px;cursor:pointer;border:none;transition:all 0.25s ease;display:flex;align-items:center;justify-content:center;gap:14px;position:relative;overflow:hidden; }
-                    #s43 .q6-btn-ok  { background:linear-gradient(135deg,rgba(46,130,60,0.9) 0%,rgba(30,100,45,0.95) 100%);box-shadow:0 0 20px rgba(46,204,113,0.2);border:1px solid rgba(46,204,113,0.3); }
-                    #s43 .q6-btn-bad { background:linear-gradient(135deg,rgba(160,30,30,0.9) 0%,rgba(120,20,20,0.95) 100%);box-shadow:0 0 20px rgba(220,50,50,0.2);border:1px solid rgba(220,50,50,0.3); }
-                    #s43 .q6-btn-ok:hover  { box-shadow:0 0 30px rgba(46,204,113,0.4);transform:translateY(-2px); }
-                    #s43 .q6-btn-bad:hover { box-shadow:0 0 30px rgba(220,50,50,0.4);transform:translateY(-2px); }
-                    #s43 .q6-btn-ok.selected  { box-shadow:0 0 40px rgba(46,204,113,0.6)!important;border-color:rgba(46,204,113,0.8)!important; }
-                    #s43 .q6-btn-bad.selected { box-shadow:0 0 40px rgba(220,50,50,0.6)!important;border-color:rgba(220,50,50,0.8)!important; }
-                    #s43 .q6-btn-shield { width:40px;height:40px;flex-shrink:0; }
-                    #s43 .q6-btn-text { display:flex;flex-direction:column;align-items:flex-start;gap:3px; }
-                    #s43 .q6-btn-title { font-family:var(--font-h);font-size:clamp(14px,1.8vw,18px);font-weight:800;letter-spacing:1px;color:#FFF4E8; }
-                    #s43 .q6-btn-sub { font-size:12px;color:rgba(255,255,255,0.55);letter-spacing:0.5px; }
-                    /* Feedback */
-                    #s43 .q-feedback { max-width:880px;width:100%;margin:10px auto 0;border-radius:10px;padding:14px 18px;font-size:14px;font-weight:600;line-height:1.5; }
-                    #s43 .q-feedback.ok  { background:rgba(10,28,12,0.95);border:1px solid rgba(46,204,113,0.35);border-left:3px solid rgba(46,204,113,1);color:rgba(46,204,113,1); }
-                    #s43 .q-feedback.nok { background:rgba(28,5,4,0.95);border:1px solid rgba(220,50,50,0.35);border-left:3px solid rgba(220,50,50,1);color:rgba(220,80,80,1); }
-                    #s43 .btn-next-q { display:none;margin:10px auto 0;font-family:monospace;letter-spacing:1px; }
-                    #s43 .btn-next-q.visible { display:block; }
-                    @keyframes hud-enter { 0%{opacity:0;transform:scale(0.9) translateY(20px);filter:blur(10px)} 100%{opacity:1;transform:scale(1) translateY(0);filter:blur(0)} }
-                    #q6-result-panel.q-result-anim { animation:hud-enter 1s ease forwards; }
-                    /* MOBILE — Central Final / Liberação Operacional */
-                    #s43 .q6-intro-mobile { display:none;width:100%;flex-direction:column;align-items:center;text-align:center;position:relative;z-index:1;gap:8px; }
-                    #s43 .q6-m-glow { position:fixed;inset:0;z-index:0;pointer-events:none;background:radial-gradient(circle at 50% 36%,rgba(255,107,0,0.16) 0%,transparent 58%); }
-                    #s43 .q6-m-header { display:flex;flex-direction:column;align-items:center;gap:3px;width:100%;padding-top:2px; }
-                    #s43 .q6-m-tag { font-family:var(--font-h);font-size:10px;font-weight:800;letter-spacing:3px;color:rgba(230,81,0,0.9);text-transform:uppercase; }
-                    #s43 .q6-m-title { font-family:var(--font-h);font-size:clamp(17px,4.8vw,21px);font-weight:900;letter-spacing:1.5px;color:#FFF4E8;line-height:1.15;text-shadow:0 0 18px rgba(230,81,0,0.45); }
-                    #s43 .q6-m-body { display:flex;flex-direction:column;align-items:center;justify-content:flex-start;gap:8px;width:100%;padding:0 4px; }
-                    #s43 .q6-m-shield-wrap { position:relative;display:flex;align-items:center;justify-content:center;width:100%;padding:0;margin:0;flex-shrink:0; }
-                    #s43 .q6-m-shield-wrap .q6-m-ring1 { position:absolute;bottom:4px;left:50%;transform:translateX(-50%);width:115px;height:14px;border-radius:50%;border:1px solid rgba(230,81,0,0.25);box-shadow:0 0 14px rgba(230,81,0,0.15); }
-                    #s43 .q6-m-shield-wrap .q6-m-ring2 { position:absolute;bottom:0;left:50%;transform:translateX(-50%);width:86px;height:10px;border-radius:50%;border:1px solid rgba(230,81,0,0.35);box-shadow:0 0 10px rgba(230,81,0,0.2); }
-                    #s43 .q6-m-shield-wrap .q6-m-glow-base { position:absolute;bottom:-2px;left:50%;transform:translateX(-50%);width:50px;height:8px;border-radius:50%;background:radial-gradient(ellipse,rgba(230,81,0,0.45) 0%,transparent 70%);box-shadow:0 0 16px rgba(230,81,0,0.5); }
-                    #s43 .q6-m-shield-svg { width:clamp(108px,28vw,130px);height:clamp(108px,28vw,130px);filter:drop-shadow(0 0 18px rgba(255,107,0,0.55));position:relative;z-index:1; }
-                    #s43 .q6-m-quiz-title { font-family:var(--font-h);font-size:clamp(19px,5.2vw,25px);font-weight:900;color:#FFF4E8;letter-spacing:1px;line-height:1.05;text-shadow:0 0 24px rgba(230,81,0,0.5);margin:0; }
-                    #s43 .q6-m-desc { font-size:clamp(12px,3.4vw,13px);color:rgba(255,244,232,0.88);line-height:1.45;max-width:300px;margin:0;padding:0 10px; }
-                    #s43 .q6-m-highlight { font-size:clamp(12px,3.4vw,13px);color:#FF6B00;font-weight:800;line-height:1.35;text-shadow:0 0 12px rgba(255,107,0,0.35);margin:0;padding:0 10px; }
-                    #s43 .q6-m-themes { width:100%;max-width:320px;padding:7px 8px 8px;border-radius:10px;border:1px solid rgba(255,255,255,0.08);background:rgba(255,255,255,0.03);flex-shrink:0; }
-                    #s43 .q6-m-themes-label { font-family:var(--font-h);font-size:8px;font-weight:800;letter-spacing:2.5px;color:rgba(230,81,0,0.7);margin-bottom:7px; }
-                    #s43 .q6-m-themes-icons { display:flex;gap:clamp(6px,2vw,10px);justify-content:center;align-items:center;flex-wrap:nowrap; }
-                    #s43 .q6-m-theme-icon { width:clamp(30px,8vw,36px);height:clamp(30px,8vw,36px);border-radius:50%;border:1px solid rgba(46,204,113,0.4);background:rgba(46,204,113,0.08);display:flex;align-items:center;justify-content:center;font-size:clamp(14px,4vw,17px);flex-shrink:0; }
-                    @keyframes pulseFinal { 0%{transform:scale(1);} 50%{transform:scale(1.03);} 100%{transform:scale(1);} }
-                    #s43 .q6-m-cta { width:100%;display:flex;justify-content:center;padding:12px 0 16px; }
-                    #s43 .q6-m-start-wrap { position:relative;display:inline-flex;width:90%;max-width:320px;justify-content:center; }
-                    #s43 .q6-m-start-glow { position:absolute;inset:-6px;border-radius:99px;background:rgba(255,107,0,0.35);filter:blur(12px);pointer-events:none; }
-                    #s43 .q6-m-start-btn { width:100%;padding:17px 18px;border-radius:99px;border:1px solid rgba(255,140,0,0.45);cursor:pointer;display:inline-flex;align-items:center;justify-content:center;gap:10px;font-family:var(--font-h);font-size:clamp(14px,3.8vw,15px);font-weight:900;letter-spacing:1.2px;color:#FFF4E8;background:linear-gradient(135deg,rgba(240,90,10,1) 0%,rgba(210,70,0,1) 100%);box-shadow:0 0 28px rgba(255,107,0,0.65),0 8px 22px rgba(0,0,0,0.45);animation:pulseFinal 2.2s ease-in-out infinite;transition:box-shadow 0.2s;position:relative;z-index:1; }
-                    #s43 .q6-m-start-btn:active { animation:none;transform:scale(0.98);box-shadow:0 0 34px rgba(255,107,0,0.8),0 4px 14px rgba(0,0,0,0.45); }
-                    #s43 .q6-m-start-icon { font-size:18px;line-height:1;font-weight:900; }
-                    @media (max-width:768px) {
-                        #s43 { overflow-y:auto !important;overflow-x:hidden !important;align-items:stretch !important;justify-content:flex-start !important;-webkit-overflow-scrolling:touch !important; }
-                        #s43 .hud-scanner { opacity:0.25; }
-                        #s43 .top-bar { display:none !important; }
-                        #s43 .content-area { position:relative;z-index:2;padding:60px 14px 220px !important;overflow-y:auto !important;overflow-x:hidden !important;height:auto !important;min-height:100% !important;max-height:none !important;justify-content:flex-start !important;align-items:center !important;margin-top:0 !important;flex:1 1 auto !important;-webkit-overflow-scrolling:touch !important;touch-action:pan-y !important; }
-                        #s43 .quiz-wrap { max-width:100% !important;width:100%;height:auto;display:flex;flex-direction:column;overflow:visible; }
-                        #s43 #q6-intro-panel { padding:0 !important;margin:0 !important;height:auto;display:flex;flex-direction:column;align-items:center;justify-content:flex-start;overflow:visible; }
-                        #s43 .q6-intro-desktop { display:none !important; }
-                        #s43 .q6-intro-mobile { display:flex !important; }
-                        #s43 .q6-m-shield-wrap { margin-top:0; }
-                        #s43 .q6-card { flex-direction:column; }
-                        #s43 .q6-icon-col { flex:none;flex-direction:row;padding:14px 16px;gap:14px; }
-                        #s43 .q6-divider { display:none; }
-                        #s43 .q6-btns { flex-direction:column; }
-                        #s43 .q6-progress::before { display:none; }
-                        #s43 .q6-step-label { display:none; }
-                    }
-                    @media (min-width:769px) {
-                        #s43 .q6-intro-mobile { display:none !important; }
-                        #s43 .q6-m-glow { display:none; }
+                    @media (max-width: 768px) {
+                        #s43 { overflow: hidden !important; }
+                        #s43 .top-bar { padding-bottom: 4px !important; }
+                        #s43 .slide-title { font-size: 18px !important; margin-bottom: 0 !important; }
+                        #s43 .content-area {
+                            padding: 8px 10px 220px !important;
+                            overflow-y: auto !important;
+                            overflow-x: hidden !important;
+                            -webkit-overflow-scrolling: touch !important;
+                            touch-action: pan-y !important;
+                            justify-content: flex-start !important;
+                            flex: 1 1 auto !important;
+                            min-height: 0 !important;
+                            height: calc(100vh - 140px) !important;
+                            max-height: calc(100vh - 140px) !important;
+                        }
+                        #s43 .quiz-wrap { padding: 0 !important; max-width: 100% !important; height: auto !important; }
+                        #s43 #q6-intro-panel { padding: 10px 0 !important; }
+                        #s43 .quiz-intro-card { padding: 28px 18px 24px !important; }
+                        #s43 .quiz-intro-title { font-size: 20px !important; }
+                        #s43 .quiz-intro-desc { font-size: 14px !important; }
+                        #s43 .btn-tf-verify { font-size: 15px !important; padding: 14px 30px !important; width: 100% !important; justify-content: center !important; }
+                        #s43 #q6-question-panel { height: auto !important; }
+                        #s43 .q-feedback {
+                            padding: 12px 14px !important;
+                            font-size: 15px !important;
+                            line-height: 1.45 !important;
+                            margin-top: 10px !important;
+                            margin-bottom: 8px !important;
+                        }
+                        #s43 .btn-next-q {
+                            width: 100% !important;
+                            font-size: 15px !important;
+                            padding: 14px 30px !important;
+                            margin-top: 12px !important;
+                        }
+                        #s43 #q6-btn-music-toggle {
+                            font-size: 10px !important;
+                            padding: 4px 10px !important;
+                        }
+                        #s43 .wave { pointer-events: none; }
                     }
                 </style>
-
-                <div class="hud-scanner"></div>
-
-                <div class="top-bar" style="position: relative; z-index: 2;">
-                    <div class="section-tag"
-                        style="background: var(--red); color: var(--black); font-size: 16px; padding: 6px 16px; font-weight: 800; box-shadow: 0 0 12px rgba(230,81,0, 0.4);">
-                        🟩 CENTRAL FINAL
-                    </div>
-                    <h2 class="slide-title"
-                        style="font-size: clamp(28px, 4vw, 42px); letter-spacing: -0.01em; text-shadow: 0 0 15px rgba(230,81,0, 0.4);">
-                        Liberação
-                        <span>Operacional</span>
-                    </h2>
-
+                <div class="top-bar" style="position:relative;z-index:2;">
+                    <div class="section-tag" style="background:var(--red);color:var(--black);font-size:16px;padding:6px 16px;font-weight:800;box-shadow:0 0 12px rgba(230,81,0,0.4);">Módulo 6</div>
+                    <h2 class="slide-title" style="font-size:clamp(22px,3.5vw,36px);letter-spacing:-0.01em;text-shadow:0 0 15px rgba(230,81,0,0.4);">Liberação <span>Operacional</span></h2>
                 </div>
-
-                <div class="content-area" style="position: relative; z-index: 2;">
-                    <div class="quiz-wrap" style="max-width: 800px; width: 100%;">
-
-                        <!-- ABERTURA -->
-                        <div id="q6-intro-panel" style="position:relative;width:100%;max-width:920px;margin:0 auto;padding:6px 0 12px;">
-
-                            <div class="q6-m-glow" aria-hidden="true"></div>
-
-                            <!-- MOBILE: liberação operacional -->
-                            <div class="q6-intro-mobile">
-                                <div class="q6-m-header">
-                                    <div class="q6-m-tag">CENTRAL FINAL</div>
-                                    <div class="q6-m-title">LIBERAÇÃO<br>OPERACIONAL</div>
-                                </div>
-                                <div class="q6-m-body">
-                                    <div class="q6-m-shield-wrap" aria-hidden="true">
-                                        <div class="q6-m-ring1"></div>
-                                        <div class="q6-m-ring2"></div>
-                                        <div class="q6-m-glow-base"></div>
-                                        <svg class="q6-m-shield-svg" viewBox="0 0 160 180" xmlns="http://www.w3.org/2000/svg">
-                                            <defs>
-                                                <radialGradient id="shieldGradM" cx="50%" cy="40%" r="60%">
-                                                    <stop offset="0%" stop-color="rgba(255,140,0,0.3)"/>
-                                                    <stop offset="100%" stop-color="rgba(180,60,0,0.1)"/>
-                                                </radialGradient>
-                                                <filter id="glowM"><feGaussianBlur stdDeviation="3" result="blur"/><feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
-                                            </defs>
-                                            <path d="M80 8 L148 36 L148 90 C148 128 116 158 80 168 C44 158 12 128 12 90 L12 36 Z" fill="url(#shieldGradM)" stroke="rgba(230,81,0,0.9)" stroke-width="2" filter="url(#glowM)"/>
-                                            <path d="M80 22 L136 46 L136 90 C136 122 110 148 80 156 C50 148 24 122 24 90 L24 46 Z" fill="none" stroke="rgba(255,120,0,0.4)" stroke-width="1"/>
-                                            <polyline points="52,88 70,108 112,68" stroke="rgba(230,81,0,1)" stroke-width="8" stroke-linecap="round" stroke-linejoin="round" fill="none" filter="url(#glowM)"/>
-                                        </svg>
-                                    </div>
-                                    <div class="q6-m-quiz-title">MEGA QUIZ FINAL</div>
-                                    <p class="q6-m-desc">Você será responsável por avaliar situações reais da operação.</p>
-                                    <p class="q6-m-highlight">Liberar apenas procedimentos seguros.</p>
-                                    <div class="q6-m-themes">
-                                        <div class="q6-m-themes-label">TEMAS QUE SERÃO AVALIADOS</div>
-                                        <div class="q6-m-themes-icons">
-                                            <div class="q6-m-theme-icon">📋</div>
-                                            <div class="q6-m-theme-icon">🔧</div>
-                                            <div class="q6-m-theme-icon">⚠️</div>
-                                            <div class="q6-m-theme-icon">⚖️</div>
-                                            <div class="q6-m-theme-icon">🚶</div>
-                                            <div class="q6-m-theme-icon">📑</div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="q6-m-cta">
-                                    <div class="q6-m-start-wrap">
-                                        <div class="q6-m-start-glow" aria-hidden="true"></div>
-                                        <button type="button" class="q6-m-start-btn hud-anim-enter"
-                                            onclick="try{if(typeof playTechClick==='function')playTechClick();else if(typeof playBeep==='function')playBeep('ok');}catch(e){}startQuiz6Intro();">
-                                            <span>INICIAR AVALIAÇÃO FINAL</span>
-                                            <span class="q6-m-start-icon" aria-hidden="true">→</span>
-                                        </button>
-                                    </div>
-                                </div>
+                <div class="content-area" style="position:relative;z-index:2;">
+                    <div class="quiz-wrap">
+                        <div id="q6-intro-panel" class="quiz-intro-panel">
+                            <div class="quiz-intro-card">
+                                <div class="quiz-intro-icon" aria-hidden="true">📋</div>
+                                <h3 class="quiz-intro-title">Desafio NR-11 — Avaliação Final</h3>
+                                <p class="quiz-intro-desc">Responda <strong>8</strong> perguntas. Você precisa acertar no mínimo <strong>5</strong> para avançar.</p>
+                                <button type="button" class="quiz-intro-btn" onclick="startQuiz6Intro()">INICIAR DESAFIO</button>
                             </div>
-
-                            <!-- DESKTOP: card principal -->
-                            <div class="q6-intro-desktop">
-                            <div style="display:flex;gap:0;border-radius:16px;overflow:hidden;border:1px solid rgba(230,81,0,0.35);background:linear-gradient(135deg,rgba(28,14,6,0.96) 0%,rgba(18,9,3,0.98) 100%);box-shadow:0 0 60px rgba(230,81,0,0.12),0 30px 80px rgba(0,0,0,0.8);backdrop-filter:blur(10px);min-height:268px;margin-bottom:18px;">
-
-                                <!-- Esquerda: Escudo holográfico SVG -->
-                                <div style="flex:0 0 300px;display:flex;align-items:center;justify-content:center;padding:20px 12px;background:radial-gradient(circle at 50% 52%,rgba(230,81,0,0.14) 0%,transparent 72%);border-right:1px solid rgba(230,81,0,0.15);position:relative;">
-                                    <!-- Anéis holográficos -->
-                                    <div style="position:absolute;bottom:26px;left:50%;transform:translateX(-50%);width:192px;height:24px;border-radius:50%;border:1px solid rgba(230,81,0,0.25);box-shadow:0 0 20px rgba(230,81,0,0.15);"></div>
-                                    <div style="position:absolute;bottom:18px;left:50%;transform:translateX(-50%);width:144px;height:17px;border-radius:50%;border:1px solid rgba(230,81,0,0.35);box-shadow:0 0 14px rgba(230,81,0,0.2);"></div>
-                                    <div style="position:absolute;bottom:12px;left:50%;transform:translateX(-50%);width:84px;height:12px;border-radius:50%;background:radial-gradient(ellipse,rgba(230,81,0,0.4) 0%,transparent 70%);box-shadow:0 0 20px rgba(230,81,0,0.5);"></div>
-                                    <!-- Escudo SVG (+20%) -->
-                                    <svg viewBox="0 0 160 180" xmlns="http://www.w3.org/2000/svg" style="width:216px;height:216px;filter:drop-shadow(0 0 26px rgba(230,81,0,0.55));position:relative;z-index:1;">
-                                        <defs>
-                                            <radialGradient id="shieldGrad" cx="50%" cy="40%" r="60%">
-                                                <stop offset="0%" stop-color="rgba(255,140,0,0.3)"/>
-                                                <stop offset="100%" stop-color="rgba(180,60,0,0.1)"/>
-                                            </radialGradient>
-                                            <filter id="glow"><feGaussianBlur stdDeviation="3" result="blur"/><feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
-                                        </defs>
-                                        <path d="M80 8 L148 36 L148 90 C148 128 116 158 80 168 C44 158 12 128 12 90 L12 36 Z" fill="url(#shieldGrad)" stroke="rgba(230,81,0,0.9)" stroke-width="2" filter="url(#glow)"/>
-                                        <path d="M80 22 L136 46 L136 90 C136 122 110 148 80 156 C50 148 24 122 24 90 L24 46 Z" fill="none" stroke="rgba(255,120,0,0.4)" stroke-width="1"/>
-                                        <polyline points="52,88 70,108 112,68" stroke="rgba(230,81,0,1)" stroke-width="8" stroke-linecap="round" stroke-linejoin="round" fill="none" filter="url(#glow)"/>
-                                    </svg>
-                                </div>
-
-                                <!-- Direita: conteúdo -->
-                                <div style="flex:1;padding:30px 32px 26px;display:flex;flex-direction:column;justify-content:center;gap:16px;">
-                                    <div style="font-family:var(--font-h);font-size:clamp(30px,4.2vw,44px);font-weight:900;color:#FFF4E8;letter-spacing:1px;line-height:1.05;text-shadow:0 0 32px rgba(230,81,0,0.5),0 2px 10px rgba(0,0,0,0.65);">MEGA QUIZ FINAL</div>
-
-                                    <div style="display:flex;flex-direction:column;gap:5px;">
-                                        <div style="font-size:clamp(15px,1.8vw,17px);color:rgba(255,244,232,0.88);line-height:1.55;font-weight:400;">Você será responsável por avaliar situações reais da operação.</div>
-                                        <div style="font-size:clamp(15px,1.8vw,17px);color:rgba(230,81,0,1);font-weight:700;line-height:1.55;text-shadow:0 0 14px rgba(230,81,0,0.3);">Liberar apenas procedimentos seguros.</div>
-                                    </div>
-
-                                    <!-- Temas avaliados — ícones -->
-                                    <div style="border-radius:10px;border:1px solid rgba(255,255,255,0.08);background:rgba(255,255,255,0.03);padding:14px 18px;">
-                                        <div style="font-family:var(--font-h);font-size:9px;font-weight:800;letter-spacing:3px;color:rgba(230,81,0,0.7);margin-bottom:14px;text-align:center;">TEMAS QUE SERÃO AVALIADOS</div>
-                                        <div style="display:flex;gap:18px;flex-wrap:wrap;justify-content:center;align-items:center;">
-                                            <div style="width:50px;height:50px;border-radius:50%;border:1px solid rgba(46,204,113,0.45);background:rgba(46,204,113,0.1);display:flex;align-items:center;justify-content:center;font-size:24px;box-shadow:0 0 12px rgba(46,204,113,0.08);">📋</div>
-                                            <div style="width:50px;height:50px;border-radius:50%;border:1px solid rgba(46,204,113,0.45);background:rgba(46,204,113,0.1);display:flex;align-items:center;justify-content:center;font-size:24px;box-shadow:0 0 12px rgba(46,204,113,0.08);">🔧</div>
-                                            <div style="width:50px;height:50px;border-radius:50%;border:1px solid rgba(46,204,113,0.45);background:rgba(46,204,113,0.1);display:flex;align-items:center;justify-content:center;font-size:24px;box-shadow:0 0 12px rgba(46,204,113,0.08);">🔺</div>
-                                            <div style="width:50px;height:50px;border-radius:50%;border:1px solid rgba(46,204,113,0.45);background:rgba(46,204,113,0.1);display:flex;align-items:center;justify-content:center;font-size:24px;box-shadow:0 0 12px rgba(46,204,113,0.08);">⚖️</div>
-                                            <div style="width:50px;height:50px;border-radius:50%;border:1px solid rgba(46,204,113,0.45);background:rgba(46,204,113,0.1);display:flex;align-items:center;justify-content:center;font-size:24px;box-shadow:0 0 12px rgba(46,204,113,0.08);">🚶</div>
-                                            <div style="width:50px;height:50px;border-radius:50%;border:1px solid rgba(46,204,113,0.45);background:rgba(46,204,113,0.1);display:flex;align-items:center;justify-content:center;font-size:24px;box-shadow:0 0 12px rgba(46,204,113,0.08);">🔋</div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <!-- Botão principal -->
-                            <div style="display:flex;justify-content:center;">
-                                <div style="position:relative;display:inline-flex;">
-                                    <div style="position:absolute;inset:-5px;border-radius:99px;background:rgba(230,81,0,0.3);filter:blur(10px);pointer-events:none;animation:pulse 2s infinite;"></div>
-                                    <div style="position:absolute;inset:-1px;border-radius:99px;border:1px solid rgba(230,81,0,0.45);pointer-events:none;box-shadow:0 0 14px rgba(230,81,0,0.35);"></div>
-                                    <button class="btn-tf-verify hud-anim-enter" style="position:relative;font-size:17px;padding:18px 48px;border-radius:99px;display:inline-flex;align-items:center;gap:14px;background:linear-gradient(135deg,rgba(240,90,10,1) 0%,rgba(210,70,0,1) 100%);border:none;color:#FFF4E8;letter-spacing:1.5px;font-weight:900;box-shadow:0 0 18px rgba(230,81,0,0.5),0 6px 20px rgba(0,0,0,0.4);transition:all 0.3s ease;"
-                                    onclick="startQuiz6Intro();">
-                                    <div style="width:38px;height:38px;border-radius:50%;background:rgba(255,255,255,0.22);display:flex;align-items:center;justify-content:center;flex-shrink:0;box-shadow:0 0 12px rgba(255,255,255,0.15);">
-                                        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#FFF4E8" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="M12 5l7 7-7 7"/></svg>
-                                    </div>
-                                    <span style="font-size:clamp(17px,2.2vw,21px);font-weight:900;letter-spacing:1.5px;">INICIAR AVALIAÇÃO FINAL</span>
-                                    </button>
-                                </div>
-                            </div>
-                            </div><!-- /.q6-intro-desktop -->
-
                         </div>
 
-                        <!-- PERGUNTAS -->
-                        <div id="q6-question-panel" style="display:none;transition:opacity 0.5s ease;width:100%;max-width:880px;margin:0 auto;">
+                        <div id="q6-question-panel" style="display:none; transition: opacity 0.5s ease;">
                             <audio id="q6-bg-music" src="https://res.cloudinary.com/dzqns0zpe/video/upload/v1779288781/musica.mp3_gxctw8.mp3" loop></audio>
-
-                            <!-- Topo: contador + música -->
-                            <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:10px;">
-                                <div id="q6-counter" style="font-family:monospace;letter-spacing:3px;font-size:13px;color:rgba(230,81,0,1);font-weight:800;">ANÁLISE 1/8</div>
-                                <button id="q6-btn-music-toggle" onclick="toggleQuiz6Music()" style="background:rgba(0,0,0,0.5);border:1px solid rgba(230,81,0,0.3);color:rgba(230,81,0,0.7);padding:5px 12px;border-radius:6px;cursor:pointer;font-family:monospace;font-size:11px;letter-spacing:1px;">🔊 MUSIC ON</button>
-                            </div>
-
-                            <!-- Linha de progresso com etapas -->
-                            <div class="q6-progress" id="q6-progress"></div>
-
-                            <!-- Card principal -->
-                            <div class="q6-card" id="q6-card">
-                                <div class="q6-icon-col">
-                                    <div class="q6-icon-circle">
-                                        <svg class="q6-icon-svg" id="q6-icon-svg" viewBox="0 0 56 56" fill="none" xmlns="http://www.w3.org/2000/svg"></svg>
-                                    </div>
-                                    <div class="q6-icon-badge" id="q6-icon-badge"></div>
+                            <div class="q-meta" style="display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap;">
+                                <div style="display:flex;align-items:center;gap:12px;min-width:0;">
+                                    <div class="q-dots"></div>
+                                    <div class="q-lbl" id="q6-counter">Pergunta 1 de 8</div>
                                 </div>
-                                <div class="q6-divider"></div>
-                                <div class="q6-content">
-                                    <div class="q6-situation-label">SITUAÇÃO ANALISADA</div>
-                                    <div class="q6-situation-text" id="q6-text"></div>
-                                </div>
+                                <button type="button" id="q6-btn-music-toggle" onclick="toggleQuiz6Music()"
+                                    style="background:rgba(0,0,0,0.5);border:1px solid rgba(46,204,113,0.45);color:var(--green);padding:5px 12px;border-radius:6px;cursor:pointer;font-family:monospace;font-size:11px;letter-spacing:1px;flex-shrink:0;">🔊 MUSIC ON</button>
                             </div>
-
-                            <!-- Área de decisão -->
-                            <div class="q6-decision-label">VOCÊ LIBERARIA ESTA CONDUTA?</div>
-                            <div class="q6-btns" id="q6-options">
-                                <button class="q6-btn q6-btn-ok opt-approve" onclick="q6Select(0,this)">
-                                    <svg class="q6-btn-shield" viewBox="0 0 40 40" fill="none"><path d="M20 4L6 10v10c0 9 6.2 16.8 14 19 7.8-2.2 14-10 14-19V10L20 4z" fill="rgba(46,204,113,0.25)" stroke="rgba(46,204,113,0.9)" stroke-width="1.5"/><polyline points="13,20 18,25 28,15" stroke="rgba(46,204,113,1)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
-                                    <div class="q6-btn-text"><div class="q6-btn-title">OPERAÇÃO SEGURA</div><div class="q6-btn-sub">Conduta em conformidade</div></div>
-                                </button>
-                                <button class="q6-btn q6-btn-bad opt-reject" onclick="q6Select(1,this)">
-                                    <svg class="q6-btn-shield" viewBox="0 0 40 40" fill="none"><path d="M20 4L6 10v10c0 9 6.2 16.8 14 19 7.8-2.2 14-10 14-19V10L20 4z" fill="rgba(220,50,50,0.25)" stroke="rgba(220,50,50,0.9)" stroke-width="1.5"/><line x1="14" y1="14" x2="26" y2="26" stroke="rgba(220,80,80,1)" stroke-width="2.5" stroke-linecap="round"/><line x1="26" y1="14" x2="14" y2="26" stroke="rgba(220,80,80,1)" stroke-width="2.5" stroke-linecap="round"/></svg>
-                                    <div class="q6-btn-text"><div class="q6-btn-title">RISCO / INFRAÇÃO</div><div class="q6-btn-sub">Conduta inadequada</div></div>
-                                </button>
-                            </div>
-
-                            <div id="q6-verify-container" style="text-align:center;opacity:0;visibility:hidden;transition:all 0.3s ease;display:none;margin-top:14px;">
-                                <button class="btn-tf-verify" id="btn-tf-verify-q6" onclick="verifyAnswer6()">CONFIRMAR DECISÃO</button>
+                            <div class="q-text" id="q6-text"></div>
+                            <div class="q-options" id="q6-options"></div>
+                            <div id="q6-verify-container"
+                                style="text-align: center; margin-top: 15px; opacity: 0; visibility: hidden; transition: all 0.3s ease; display: none;">
+                                <button class="btn-tf-verify" id="btn-tf-verify-q6" onclick="verifyAnswer6()">✔
+                                    Verificar
+                                    Resposta</button>
                             </div>
                             <div class="q-feedback" id="q6-feedback"></div>
-                            <button class="btn-next-q" id="btn-next-q6" onclick="nextQuestion6()" style="font-family:monospace;letter-spacing:1px;">CARREGAR PRÓXIMA ANÁLISE ▶</button>
+                            <button class="btn-next-q" id="btn-next-q6" onclick="nextQuestion6()">Continuar →</button>
                         </div>
 
-                        <!-- RESULTADO FINAL -->
-                        <div id="q6-result-panel" class="req-item" style="display:none;text-align:center; padding: 40px 20px;">
-                            <div class="hud-status" style="font-size: 18px; margin-bottom: 30px;">[ RELATÓRIO
-                                OPERACIONAL GERADO ]
+                        <div id="q6-result-panel" class="quiz-result-panel" style="display:none;">
+                            <div class="quiz-result-card">
+                                <div class="quiz-result-icon" id="q6-result-icon" aria-hidden="true">📚</div>
+                                <h3 class="quiz-result-title r-status" id="q6-status">Desafio não concluído</h3>
+                                <p class="quiz-result-desc" id="q6-sub"></p>
+                                <div class="quiz-result-review" id="q6-review" hidden></div>
+                                <button type="button" class="quiz-result-btn" id="q6-retry-btn"
+                                    onclick="resetQuiz6()">JOGAR NOVAMENTE</button>
                             </div>
-                            <div class="result-pct green" id="q6-pct"
-                                style="font-size: 80px; text-shadow: 0 0 50px rgba(230,81,0,0.5);">--</div>
-                            <div class="r-stars" id="q6-stars" style="font-size: 50px; margin: 20px 0;">⭐⭐⭐</div>
-                            <div class="r-status" id="q6-status"
-                                style="font-size: 30px; letter-spacing: 2px; text-transform: uppercase; margin-bottom: 15px;">
-                            </div>
-                            <div class="r-sub" id="q6-sub"
-                                style="font-size: 18px; color: rgba(255,255,255,0.7); max-width: 600px; margin: 0 auto;">
-                            </div>
-                            <div class="r-sub" id="q6-sub-additional"
-                                style="font-size: 14px; color: rgba(255,255,255,0.5); max-width: 600px; margin: 10px auto 0; font-family: monospace;">
-                            </div>
-
-                            <button class="btn-tf-verify" id="q6-btn-final" style="margin-top:50px;"
-                                onclick="resetQuiz6()">REFAZER
-                                VALIDAÇÃO</button>
+                            <div id="q6-pct" class="result-pct" style="display:none" aria-hidden="true"></div>
+                            <div id="q6-stars" class="r-stars" style="display:none" aria-hidden="true"></div>
                         </div>
-
                     </div>
                 </div>
-                <script>
-                function s43OnSlideEnter() {
-                    var slide = document.getElementById('s43');
-                    if (!slide) return;
-                    slide.querySelectorAll('.req-item').forEach(function(el) {
-                        el.classList.remove('req-done');
-                    });
-                    if (typeof updateNextButton === 'function') updateNextButton();
-                }
-                (function() {
-                    var slide = document.getElementById('s43');
-                    if (!slide) return;
-                    var wasActive = slide.classList.contains('active');
-                    if (wasActive) s43OnSlideEnter();
-                    var obs = new MutationObserver(function() {
-                        var isActive = slide.classList.contains('active');
-                        if (isActive && !wasActive) s43OnSlideEnter();
-                        wasActive = isActive;
-                    });
-                    obs.observe(slide, { attributes: true, attributeFilter: ['class'] });
-                })();
-                </script>
+                <div class="wave" style="position:absolute;bottom:0;left:0;right:0;z-index:1;"><svg viewBox="0 0 1440 100" preserveAspectRatio="none"><path d="M0,65 C360,20 720,90 1080,40 C1260,15 1390,70 1440,60 L1440,100 L0,100 Z" fill="rgba(230,81,0,0.07)"/></svg></div>
             </div>
 
             <div class="slide" id="s44">
                 <style>
                     #s44 {
-                        background: radial-gradient(circle at center, rgba(20,10,7,1) 0%, rgba(13,10,8,1) 100%);
+                        background-color: #0d0a08;
                         align-items: center;
                         justify-content: center;
                         text-align: center;
@@ -1786,10 +1474,7 @@
 
                     #s44 .bg-overlay {
                         position: absolute;
-                        top: 0;
-                        left: 0;
-                        width: 100%;
-                        height: 100%;
+                        top: 0; left: 0; width: 100%; height: 100%;
                         background-image: url('imagens/IPbpmJv.png');
                         background-size: cover;
                         background-position: center;
@@ -1800,54 +1485,96 @@
                     }
 
                     @keyframes bg-zoom {
-                        0% {
-                            transform: scale(1);
-                        }
-
-                        100% {
-                            transform: scale(1.08);
-                        }
+                        0% { transform: scale(1); }
+                        100% { transform: scale(1.08); }
                     }
 
                     #s44 .glow-overlay {
                         position: absolute;
-                        top: 0;
-                        left: 0;
-                        width: 100%;
-                        height: 100%;
-                        background: radial-gradient(circle at center, rgba(230,81,0,0.18) 0%, rgba(20,10,7,0.88) 55%, rgba(8,5,3,1) 100%);
+                        top: 0; left: 0; width: 100%; height: 100%;
+                        background: radial-gradient(circle at center, rgba(230,81,0,0.22) 0%, rgba(13,10,8,0.88) 60%, rgba(0,0,0,1) 100%);
                         z-index: 1;
+                    }
+
+                    #s44 .content-area {
+                        position: relative;
+                        z-index: 10;
+                        width: 100%;
+                        max-width: 100%;
+                        display: flex;
+                        flex-direction: column;
+                        align-items: center;
+                        justify-content: center;
+                        flex: 1;
+                        min-height: 0;
+                        overflow-x: hidden;
+                        overflow-y: auto;
+                        -webkit-overflow-scrolling: touch;
+                        padding: 20px 16px 40px;
                     }
 
                     #s44 .content-wrap {
                         position: relative;
                         z-index: 10;
-                        padding: 60px 50px;
-                        max-width: 850px;
-                        width: 90%;
-                        margin-top: 80px;
-                        background: linear-gradient(180deg, rgba(32,16,8,0.88) 0%, rgba(18,9,3,0.96) 100%);
-                        border: 1px solid rgba(230,81,0, 0.4);
-                        border-radius: 16px;
-                        box-shadow: 0 0 80px rgba(0, 0, 0, 0.9), inset 0 0 40px rgba(230,81,0, 0.1);
+                        isolation: isolate;
+                        padding: 28px 32px 26px;
+                        max-width: 520px;
+                        width: min(92%, 520px);
+                        margin-top: 24px;
+                        margin-bottom: 16px;
+                        background:
+                            radial-gradient(ellipse at 50% 0%, rgba(230,81,0,0.16) 0%, transparent 55%),
+                            linear-gradient(160deg, #2a160c 0%, #1b0d09 55%, #120905 100%);
+                        border: 1px solid rgba(230,81,0,0.35);
+                        border-radius: 18px;
+                        box-shadow:
+                            0 18px 44px rgba(0,0,0,0.55),
+                            0 0 36px rgba(230,81,0,0.2),
+                            0 0 70px rgba(230,81,0,0.08),
+                            inset 0 1px 0 rgba(255,255,255,0.06);
                         backdrop-filter: blur(16px);
                         animation: hud-enter-epic 1.5s cubic-bezier(0.16, 1, 0.3, 1) forwards;
                         opacity: 0;
                         transform: translateY(30px);
+                        overflow: visible;
+                        flex-shrink: 0;
+                    }
+
+                    #s44 .content-wrap::before {
+                        content: '';
+                        position: absolute;
+                        inset: -14px;
+                        border-radius: 28px;
+                        background: radial-gradient(ellipse at 50% 30%,
+                            rgba(230,81,0,0.32) 0%,
+                            rgba(230,81,0,0.1) 40%,
+                            transparent 70%);
+                        filter: blur(18px);
+                        z-index: -1;
+                        pointer-events: none;
+                    }
+
+                    #s44 .content-wrap::after {
+                        content: '';
+                        position: absolute;
+                        top: 0;
+                        left: 12%;
+                        right: 12%;
+                        height: 3px;
+                        border-radius: 0 0 4px 4px;
+                        background: linear-gradient(90deg, transparent, #ff8a3d 20%, #e65100 50%, #ff8a3d 80%, transparent);
+                        opacity: 0.95;
                     }
 
                     @keyframes hud-enter-epic {
-                        to {
-                            opacity: 1;
-                            transform: translateY(0);
-                        }
+                        to { opacity: 1; transform: translateY(0); }
                     }
 
-                    .seal-container {
+                    #s44 .seal-container {
                         position: relative;
-                        width: 120px;
-                        height: 120px;
-                        margin: 0 auto 25px auto;
+                        width: 72px;
+                        height: 72px;
+                        margin: 0 auto 14px auto;
                         display: flex;
                         align-items: center;
                         justify-content: center;
@@ -1857,148 +1584,248 @@
                     }
 
                     @keyframes seal-pop {
-                        to {
-                            opacity: 1;
-                            transform: scale(1);
-                        }
+                        to { opacity: 1; transform: scale(1); }
                     }
 
-                    .seal-ring {
+                    #s44 .seal-ring {
                         position: absolute;
                         width: 100%;
                         height: 100%;
                         border-radius: 50%;
-                        border: 3px dashed rgba(230,81,0, 0.6);
+                        border: 3px dashed rgba(230,81,0,0.6);
                         animation: rotate-ring 15s linear infinite;
                     }
 
                     @keyframes rotate-ring {
-                        100% {
-                            transform: rotate(360deg);
-                        }
+                        100% { transform: rotate(360deg); }
                     }
 
-                    .seal-inner {
-                        width: 90px;
-                        height: 90px;
-                        background: rgba(230,81,0, 0.1);
+                    #s44 .seal-inner {
+                        width: 56px;
+                        height: 56px;
+                        background:
+                            radial-gradient(circle at 35% 30%, rgba(255,255,255,0.18), transparent 50%),
+                            linear-gradient(145deg, rgba(230,81,0,0.28) 0%, rgba(180,60,0,0.35) 100%);
                         border-radius: 50%;
                         display: flex;
                         align-items: center;
                         justify-content: center;
-                        font-size: 45px;
-                        border: 2px solid rgba(230,81,0,0.75);
-                        box-shadow: 0 0 30px rgba(230,81,0,0.5);
-                        text-shadow: 0 0 20px rgba(230,81,0, 0.8);
+                        font-size: 28px;
+                        border: 2px solid rgba(255,138,61,0.85);
+                        box-shadow:
+                            0 0 22px rgba(230,81,0,0.5),
+                            inset 0 1px 0 rgba(255,255,255,0.25);
+                        text-shadow: 0 0 16px rgba(230,81,0,0.8);
                     }
 
                     #s44 .title-epic {
                         font-family: var(--font-h);
-                        font-size: clamp(36px, 5vw, 64px);
+                        font-size: clamp(22px, 3.2vw, 28px);
                         color: var(--white);
                         text-transform: uppercase;
-                        letter-spacing: 4px;
-                        margin-bottom: 15px;
+                        letter-spacing: 0.05em;
+                        margin-bottom: 8px;
                         opacity: 0;
                         animation: fade-up 0.8s ease forwards 1s;
+                        line-height: 1.15;
                     }
 
                     #s44 .title-epic span {
-                        color: rgba(230,81,0,1);
+                        color: #ffab40;
                         text-shadow: 0 0 30px rgba(230,81,0,0.7), 0 0 60px rgba(230,81,0,0.4);
                         display: block;
                     }
 
                     #s44 .subtext {
-                        font-size: clamp(18px, 2.5vw, 24px);
-                        color: rgba(255, 255, 255, 0.8);
-                        margin-bottom: 35px;
-                        line-height: 1.6;
+                        font-size: clamp(13px, 1.6vw, 15px);
+                        color: rgba(255,255,255,0.82);
+                        margin-bottom: 14px;
+                        line-height: 1.45;
                         opacity: 0;
                         animation: fade-up 0.8s ease forwards 1.3s;
+                        max-width: 440px;
+                        margin-left: auto;
+                        margin-right: auto;
                     }
 
                     #s44 .msg-box {
-                        background: rgba(230,81,0, 0.05);
-                        border: 1px solid rgba(230,81,0, 0.2);
-                        border-left: 4px solid rgba(230,81,0,0.85);
-                        padding: 25px;
-                        margin: 0 auto 45px;
-                        max-width: 650px;
+                        position: relative;
+                        background:
+                            radial-gradient(circle at 0% 50%, rgba(230,81,0,0.14), transparent 50%),
+                            linear-gradient(145deg, rgba(40,20,10,0.95) 0%, rgba(28,12,6,0.98) 100%);
+                        border: 1px solid rgba(230,81,0,0.38);
+                        border-left: 3px solid #e65100;
+                        padding: 14px 16px;
+                        margin: 0 auto;
+                        max-width: 100%;
                         font-family: var(--font-b);
-                        font-size: 17px;
-                        color: rgba(255, 255, 255, 0.95);
-                        line-height: 1.6;
-                        box-shadow: 0 0 30px rgba(230,81,0, 0.05);
+                        font-size: 13px;
+                        font-weight: 500;
+                        color: rgba(255,255,255,0.92);
+                        line-height: 1.5;
+                        box-shadow:
+                            0 8px 22px rgba(0,0,0,0.3),
+                            0 0 18px rgba(230,81,0,0.14),
+                            inset 0 1px 0 rgba(255,255,255,0.05);
                         opacity: 0;
                         animation: fade-up 0.8s ease forwards 1.6s;
-                        border-radius: 4px;
+                        border-radius: 12px;
+                        text-align: left;
+                    }
+
+                    #s44 .msg-box::before {
+                        content: '+';
+                        display: flex;
+                        align-items: center;
+                        justify-content: center;
+                        width: 22px;
+                        height: 22px;
+                        margin-bottom: 8px;
+                        border-radius: 50%;
+                        background: rgba(230,81,0,0.18);
+                        border: 1px solid rgba(230,81,0,0.45);
+                        color: #ffab40;
+                        font-size: 14px;
+                        font-weight: 700;
+                        box-shadow: 0 0 10px rgba(230,81,0,0.25);
+                    }
+
+                    #s44 .concl-stats {
+                        display: flex;
+                        flex-direction: column;
+                        gap: 8px;
+                        width: 100%;
+                        max-width: 100%;
+                        margin: 14px auto 0;
+                        opacity: 0;
+                        animation: fade-up 0.8s ease forwards 1.75s;
+                    }
+
+                    #s44 .concl-stat {
+                        display: flex;
+                        align-items: center;
+                        gap: 12px;
+                        padding: 10px 14px;
+                        border-radius: 12px;
+                        background: linear-gradient(145deg, rgba(42,22,12,0.95) 0%, rgba(24,12,8,0.98) 100%);
+                        border: 1px solid rgba(230,81,0,0.22);
+                        box-shadow:
+                            0 8px 22px rgba(0,0,0,0.3),
+                            inset 0 1px 0 rgba(255,255,255,0.04);
+                        text-align: left;
+                    }
+
+                    #s44 .concl-stat-icon {
+                        flex-shrink: 0;
+                        width: 34px;
+                        height: 34px;
+                        border-radius: 10px;
+                        display: inline-flex;
+                        align-items: center;
+                        justify-content: center;
+                        font-size: 17px;
+                        line-height: 1;
+                        background: rgba(230,81,0,0.12);
+                        border: 1px solid rgba(230,81,0,0.28);
+                        box-shadow: 0 0 10px rgba(230,81,0,0.12);
+                    }
+
+                    #s44 .concl-stat-label {
+                        flex: 1;
+                        font-family: var(--font-h);
+                        font-size: 11px;
+                        font-weight: 800;
+                        letter-spacing: 0.12em;
+                        text-transform: uppercase;
+                        color: rgba(255,255,255,0.55);
+                    }
+
+                    #s44 .concl-stat-value {
+                        font-family: var(--font-h);
+                        font-size: 13px;
+                        font-weight: 800;
+                        color: #fff;
+                        white-space: nowrap;
+                    }
+
+                    #s44 .concl-stat-value.is-ok {
+                        color: #ffab40;
+                        text-shadow: 0 0 12px rgba(230,81,0,0.35);
+                    }
+
+                    #s44 .concl-stat-arrow {
+                        flex-shrink: 0;
+                        width: 24px;
+                        height: 24px;
+                        border-radius: 50%;
+                        display: inline-flex;
+                        align-items: center;
+                        justify-content: center;
+                        color: rgba(255,255,255,0.55);
+                        background: rgba(255,255,255,0.06);
+                        border: 1px solid rgba(255,255,255,0.12);
+                        font-size: 16px;
+                        line-height: 1;
+                        margin-left: 2px;
+                    }
+
+                    #s44 .concl-stat-arrow svg {
+                        width: 12px;
+                        height: 12px;
+                        display: block;
                     }
 
                     #s44 .btn-finish {
-                        background: linear-gradient(135deg, rgba(230,81,0,0.25), rgba(180,70,0,0.45));
-                        border: 1px solid rgba(230,81,0,0.7);
-                        color: #fff;
+                        width: 100%;
+                        max-width: 100%;
+                        margin: 14px auto 0;
+                        background:
+                            radial-gradient(circle at 18% 0%, rgba(255,255,255,0.28), transparent 36%),
+                            linear-gradient(135deg, #ff8a3d 0%, #e65100 46%, #bf360c 100%);
+                        border: 1px solid rgba(255,138,61,0.75);
+                        color: #1a0a04;
                         font-family: var(--font-h);
-                        font-weight: 700;
-                        font-size: 20px;
-                        padding: 20px 60px;
+                        font-weight: 900;
+                        font-size: 13px;
+                        padding: 12px 22px;
+                        min-height: 44px;
                         border-radius: 999px;
                         cursor: pointer;
                         text-transform: uppercase;
-                        letter-spacing: 2px;
-                        transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-                        box-shadow: 0 10px 30px rgba(230,81,0, 0.3), inset 0 0 10px rgba(255, 255, 255, 0.1);
+                        letter-spacing: 0.08em;
+                        transition: transform 0.2s ease, box-shadow 0.2s ease, filter 0.2s ease;
+                        box-shadow:
+                            0 12px 28px rgba(0,0,0,0.35),
+                            0 0 28px rgba(230,81,0,0.42),
+                            inset 0 1px 0 rgba(255,255,255,0.5);
                         opacity: 0;
-                        display: none;
-                        align-items: center;
-                        gap: 15px;
-                    }
-
-                    #s44 .btn-finish.is-visible {
+                        animation: fade-up 0.8s ease forwards 1.9s;
                         display: inline-flex;
-                        animation: s44-finalizar-in 0.8s ease forwards, s44-finalizar-glow 2.2s ease-in-out infinite 0.8s;
+                        align-items: center;
+                        justify-content: center;
+                        gap: 10px;
                     }
 
-                    @keyframes s44-finalizar-in {
-                        from {
-                            opacity: 0;
-                            transform: translateY(20px);
-                        }
-                        to {
-                            opacity: 1;
-                            transform: translateY(0);
-                        }
-                    }
-
-                    @keyframes s44-finalizar-glow {
-                        0%, 100% {
-                            box-shadow: 0 10px 30px rgba(230,81,0,0.3), 0 0 24px rgba(230,81,0,0.2), inset 0 0 10px rgba(255,255,255,0.1);
-                        }
-                        50% {
-                            box-shadow: 0 15px 40px rgba(230,81,0,0.5), 0 0 48px rgba(230,81,0,0.35), inset 0 0 16px rgba(255,255,255,0.15);
-                        }
+                    #s44 .btn-finish svg {
+                        width: 18px;
+                        height: 18px;
+                        flex-shrink: 0;
                     }
 
                     #s44 .btn-finish:hover {
-                        background: linear-gradient(135deg, rgba(230,81,0,0.45), rgba(200,80,0,0.65));
-                        box-shadow: 0 15px 40px rgba(230,81,0, 0.5), inset 0 0 20px rgba(255, 255, 255, 0.2);
-                        transform: translateY(-5px) scale(1.02);
+                        filter: brightness(1.05);
+                        box-shadow:
+                            0 16px 34px rgba(0,0,0,0.4),
+                            0 0 40px rgba(230,81,0,0.58),
+                            inset 0 1px 0 rgba(255,255,255,0.58);
+                        transform: translateY(-3px) scale(1.02);
                     }
 
                     @keyframes fade-up {
-                        from {
-                            opacity: 0;
-                            transform: translateY(20px);
-                        }
-
-                        to {
-                            opacity: 1;
-                            transform: translateY(0);
-                        }
+                        from { opacity: 0; transform: translateY(20px); }
+                        to { opacity: 1; transform: translateY(0); }
                     }
 
-                    /* Particles */
                     #s44 .particle-green {
                         position: absolute;
                         background: rgba(230,81,0,0.9);
@@ -2011,27 +1838,13 @@
                     }
 
                     @keyframes float-up {
-                        0% {
-                            transform: translateY(10vh) scale(0.5);
-                            opacity: 0;
-                        }
-
-                        20% {
-                            opacity: 0.6;
-                        }
-
-                        80% {
-                            opacity: 0.6;
-                        }
-
-                        100% {
-                            transform: translateY(-100vh) scale(1.5);
-                            opacity: 0;
-                        }
+                        0% { transform: translateY(10vh) scale(0.5); opacity: 0; }
+                        20% { opacity: 0.6; }
+                        80% { opacity: 0.6; }
+                        100% { transform: translateY(-100vh) scale(1.5); opacity: 0; }
                     }
 
-                    /* Confetti */
-                    .confetti {
+                    #s44 .confetti {
                         position: absolute;
                         width: 8px;
                         height: 16px;
@@ -2042,53 +1855,127 @@
                     }
 
                     @keyframes fall {
-                        0% {
-                            transform: translateY(-10vh) rotate(0deg);
-                            opacity: 1;
-                        }
+                        0% { transform: translateY(-10vh) rotate(0deg); opacity: 1; }
+                        100% { transform: translateY(110vh) rotate(720deg); opacity: 0; }
+                    }
 
-                        100% {
-                            transform: translateY(110vh) rotate(720deg);
-                            opacity: 0;
+                    @media (max-width: 900px) {
+                        #s44 .content-wrap {
+                            padding: 22px 20px 20px;
+                            margin-top: 16px;
+                            max-width: 460px;
+                        }
+                        #s44 .msg-box {
+                            max-width: 100%;
+                            padding: 14px 16px 16px;
+                            font-size: 14px;
+                            line-height: 1.5;
+                            border-radius: 14px;
+                        }
+                        #s44 .msg-box::before {
+                            width: 24px;
+                            height: 24px;
+                            margin-bottom: 8px;
+                            font-size: 12px;
+                        }
+                        #s44 .concl-stats {
+                            max-width: 100%;
+                            margin-top: 14px;
+                            gap: 10px;
+                        }
+                        #s44 .concl-stat {
+                            padding: 11px 14px;
+                            gap: 12px;
+                            border-radius: 12px;
+                        }
+                        #s44 .concl-stat-icon {
+                            width: 36px;
+                            height: 36px;
+                            font-size: 18px;
+                            border-radius: 10px;
+                        }
+                        #s44 .concl-stat-label { font-size: 11px; }
+                        #s44 .concl-stat-value { font-size: 14px; }
+                        #s44 .btn-finish {
+                            margin-top: 16px;
+                            max-width: 100%;
+                            min-height: 48px;
+                            padding: 12px 22px;
+                            font-size: 14px;
                         }
                     }
-                    /* Ajustes Mobile: Posicionamento mais equilibrado */
+
                     @media (max-width: 768px) {
                         #s44 {
                             justify-content: flex-start !important;
-                            align-items: center !important;
-                            padding-top: 2vh !important;
+                            align-items: stretch !important;
+                            padding-top: 0 !important;
                             margin-top: 0 !important;
+                            overflow: hidden !important;
+                        }
+                        #s44 .content-area {
+                            overflow-y: auto !important;
+                            -webkit-overflow-scrolling: touch !important;
+                            flex: 1 1 auto !important;
+                            min-height: 0 !important;
+                            height: 100% !important;
+                            padding: 48px 14px calc(140px + env(safe-area-inset-bottom, 0px)) !important;
+                            justify-content: flex-start !important;
+                            align-items: center !important;
                         }
                         #s44 .content-wrap {
-                            margin: -40px auto 0 auto !important;
-                            padding: 30px 20px !important;
+                            margin: 20px auto 12px auto !important;
+                            padding: 16px 14px 14px !important;
                             display: flex;
                             flex-direction: column;
                             align-items: center !important;
                             justify-content: center !important;
                             text-align: center !important;
-                            width: 90% !important;
+                            width: 92% !important;
+                            max-width: 420px !important;
+                            border-radius: 16px !important;
                         }
                         #s44 .seal-container {
-                            margin: 0 auto 20px auto !important;
-                            transform: scale(0.9);
+                            margin: 0 auto 10px auto !important;
+                            width: 64px !important;
+                            height: 64px !important;
+                        }
+                        #s44 .seal-inner {
+                            width: 48px !important;
+                            height: 48px !important;
+                            font-size: 24px !important;
                         }
                         #s44 .title-epic {
-                            font-size: clamp(26px, 7vw, 32px) !important;
-                            margin: 0 auto 10px auto !important;
+                            font-size: 22px !important;
+                            margin: 0 auto 6px auto !important;
                             text-align: center !important;
+                            letter-spacing: 0.04em !important;
                         }
                         #s44 .subtext {
-                            font-size: 15px !important;
-                            margin: 0 auto 25px auto !important;
+                            font-size: 12px !important;
+                            margin: 0 auto 12px auto !important;
                             text-align: center !important;
                         }
                         #s44 .msg-box {
-                            padding: 15px !important;
-                            font-size: 14px !important;
+                            padding: 12px !important;
+                            font-size: 12px !important;
                             margin: 0 auto !important;
-                            text-align: center !important;
+                            text-align: left !important;
+                            width: 100%;
+                        }
+                        #s44 .concl-stats { width: 100%; }
+                        #s44 .btn-finish {
+                            width: 100% !important;
+                            max-width: 100% !important;
+                            min-height: 46px !important;
+                            padding: 12px 18px !important;
+                            font-size: 13px !important;
+                            letter-spacing: 0.06em !important;
+                            gap: 8px !important;
+                        }
+                        #s44 .btn-finish svg {
+                            width: 16px !important;
+                            height: 16px !important;
                         }
                     }
                 </style>
@@ -2098,8 +1985,8 @@
                 <div id="c-particles"></div>
                 <div id="c-confetti"></div>
 
+                <div class="content-area">
                 <div class="content-wrap">
-                    
 
                     <div class="seal-container">
                         <div class="seal-ring"></div>
@@ -2110,15 +1997,35 @@
                         TREINAMENTO <span>CONCLUÍDO</span>
                     </h1>
 
-                    <p class="subtext">Você completou com sucesso a capacitação em NR-11 — Empilhadeira Elétrica Retrátil & Combustão.</p>
+                    <p class="subtext">Você concluiu a parte teórica do treinamento NR-11 — Empilhadeira Elétrica Retrátil &amp; Combustão.</p>
 
                     <div class="msg-box">
-                        A segurança é resultado das decisões tomadas em cada operação.
-                        Ao aplicar corretamente os procedimentos, você ajuda a proteger vidas e fortalecer uma cultura de trabalho segura e responsável.
+                        Seu empenho com a segurança faz diferença em cada operação.
+                        Seguir os procedimentos corretos protege vidas e fortalece um ambiente de trabalho responsável.
                     </div>
 
-                    <button type="button" class="btn-finish" id="s44-btn-final" style="display:none;" aria-hidden="true">FINALIZAR TREINAMENTO</button>
+                    <div class="concl-stats" aria-label="Resumo do treinamento">
+                        <div class="concl-stat">
+                            <span class="concl-stat-icon" aria-hidden="true">📚</span>
+                            <span class="concl-stat-label">Módulos</span>
+                            <span class="concl-stat-value">6 Concluídos</span>
+                        </div>
+                        <div class="concl-stat">
+                            <span class="concl-stat-icon" aria-hidden="true">⭐</span>
+                            <span class="concl-stat-label">Avaliação</span>
+                            <span class="concl-stat-value is-ok">Aprovado</span>
+                        </div>
+                    </div>
 
+                    <button type="button" class="btn-finish" id="btn-restart-course" onclick="restartCourse()">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                            <path d="M3 12a9 9 0 1 0 3-6.7" />
+                            <polyline points="3 4 3 9 8 9" />
+                        </svg>
+                        Reiniciar Curso
+                    </button>
+
+                </div>
                 </div>
             </div>
 
@@ -2151,7 +2058,7 @@
     </div>
 
     <script src="audio-data.js"></script>
-    <script src="shared.js?v=3"></script>
+    <script src="shared.js?v=16"></script>
 </body>
 
 </html>

@@ -15,7 +15,7 @@
         href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800;900&family=Open+Sans:wght@400;600&display=swap"
         rel="stylesheet">
     <script src="https://player.vimeo.com/api/player.js"></script>
-    <link rel="stylesheet" href="shared.css?v=3">
+    <link rel="stylesheet" href="shared.css?v=16">
     <script>
         window.MODULE_NAV = {
             id: "index",
@@ -935,56 +935,7 @@
             </div>
         </div>
 
-        <!-- Modal Aviso Importante (depois do tutorial) -->
-        <div class="img-modal-overlay" id="avisoModal" style="z-index: 10001;">
-            <div class="aviso-card" role="dialog" aria-modal="true" aria-labelledby="avisoModalTitle">
-                <div class="aviso-accent" aria-hidden="true"></div>
-                <div class="aviso-inner">
-                    <div class="aviso-header">
-                        <div class="aviso-icon" aria-hidden="true">
-                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"
-                                stroke-linecap="round" stroke-linejoin="round">
-                                <path d="M12 9v4" />
-                                <path d="M12 17h.01" />
-                                <path d="M10.29 3.86 1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z" />
-                            </svg>
-                        </div>
-                        <div class="aviso-badge">Aviso importante</div>
-                        <h2 class="aviso-title" id="avisoModalTitle">Atenção</h2>
-                    </div>
-                    <div class="aviso-list">
-                        <p class="aviso-item">Para garantir o registro correto da sua conclusão, este treinamento deve ser assistido e concluído integralmente em uma única sessão.</p>
-                        <p class="aviso-item">Caso o treinamento seja fechado antes da conclusão, o progresso poderá não ser salvo, sendo necessário iniciá-lo novamente.</p>
-                        <p class="aviso-item">Antes de iniciar, certifique-se de que possui tempo suficiente para concluir o treinamento e uma conexão estável com a internet, evitando interrupções durante a realização.</p>
-                    </div>
-                    <div class="aviso-footer">
-                        <button type="button" id="btnAvisoClose"
-                            onclick="try{if(window.playTechClick) playTechClick();}catch(e){} closeAvisoModal()">
-                            Eu compreendo
-                        </button>
-                    </div>
-                </div>
-            </div>
-        </div>
-
         <script>
-            function openAvisoModal() {
-                const aviso = document.getElementById('avisoModal');
-                if (!aviso) return;
-                aviso.classList.add('active');
-                setTimeout(() => { if (typeof playBeep === 'function') playBeep('flip'); }, 200);
-            }
-            window.openAvisoModal = openAvisoModal;
-
-            function closeAvisoModal() {
-                const aviso = document.getElementById('avisoModal');
-                if (aviso) aviso.classList.remove('active');
-            }
-
-            // Só no fluxo inicial: fechar tutorial → abrir aviso.
-            // Depois, cada botão abre só o próprio modal.
-            let chainWarningAfterTutorial = true;
-
             function closeTutorialModal(e) {
                 const modal = document.getElementById('tutorialModal');
                 if (modal) {
@@ -994,10 +945,6 @@
                         const src = iframe.src;
                         iframe.src = src;
                     }
-                }
-                if (chainWarningAfterTutorial) {
-                    chainWarningAfterTutorial = false;
-                    setTimeout(openAvisoModal, 280);
                 }
             }
 
@@ -1049,7 +996,7 @@
     </div><!-- fecha #app -->
 
     <script src="audio-data.js"></script>
-    <script src="shared.js?v=3"></script>
+    <script src="shared.js?v=20"></script>
 </body>
 
 </html>
