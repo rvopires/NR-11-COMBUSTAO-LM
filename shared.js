@@ -375,6 +375,19 @@ window.addEventListener('keydown', (e) => {
     }
 });
 
+function toggleDemoBtnReveal() {
+    var btn = document.getElementById('btn-demo');
+    if (!btn) return;
+    btn.classList.toggle('demo-shortcut-visible');
+    var visible = btn.classList.contains('demo-shortcut-visible');
+    setDemoBtnRevealed(visible);
+    if (!visible && window.demoMode) {
+        window.demoMode = false;
+        try { sessionStorage.setItem('nr11-demoMode', '0'); } catch (err) { }
+    }
+    applyDemoModeUI();
+}
+
 /* Atalho: digitar qa1010 → mostra/esconde o botão SIMULAÇÃO */
 (function initDemoShortcutReveal() {
     var seq = '';
@@ -386,19 +399,44 @@ window.addEventListener('keydown', (e) => {
         if (!e.key || e.key.length !== 1) return;
         seq = (seq + e.key.toLowerCase()).slice(-target.length);
         if (seq !== target) return;
-        var btn = document.getElementById('btn-demo');
-        if (btn) {
-            btn.classList.toggle('demo-shortcut-visible');
-            var visible = btn.classList.contains('demo-shortcut-visible');
-            setDemoBtnRevealed(visible);
-            if (!visible && window.demoMode) {
-                window.demoMode = false;
-                try { sessionStorage.setItem('nr11-demoMode', '0'); } catch (err) { }
-            }
-            applyDemoModeUI();
-        }
+        toggleDemoBtnReveal();
         seq = '';
     });
+})();
+
+/* Atalho mobile: 5 toques rápidos no logo → mostra/esconde SIMULAÇÃO */
+(function initDemoLogoTapReveal() {
+    var taps = 0;
+    var resetTimer = null;
+    var TAP_NEED = 5;
+    var TAP_WINDOW_MS = 2200;
+
+    function onLogoTap() {
+        taps += 1;
+        if (resetTimer) clearTimeout(resetTimer);
+        if (taps >= TAP_NEED) {
+            taps = 0;
+            toggleDemoBtnReveal();
+            try { playTechClick(); } catch (err) { }
+            return;
+        }
+        resetTimer = setTimeout(function () { taps = 0; }, TAP_WINDOW_MS);
+    }
+
+    function bind() {
+        var logo = document.getElementById('logo');
+        if (!logo || logo.dataset.demoTapBound) return;
+        logo.dataset.demoTapBound = '1';
+        logo.style.cursor = 'pointer';
+        logo.style.touchAction = 'manipulation';
+        logo.addEventListener('click', onLogoTap);
+    }
+
+    if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', bind);
+    } else {
+        bind();
+    }
 })();
 
 /* Atalho: digitar go + número (ex. go31) → pula para a página global; Esc cancela */

@@ -71,7 +71,7 @@ img {
     content-visibility: auto;
 }
 
-/* ── PORTRAIT MOBILE: Full responsive layout ── */
+/* ?? PORTRAIT MOBILE: Full responsive layout ?? */
 @media screen and (max-width: 768px) and (orientation: portrait) {
     #rotate-msg {
         display: none;
@@ -486,7 +486,7 @@ img {
     }
 }
 
-/* ── APP SHELL ── */
+/* ?? APP SHELL ?? */
 #app {
     width: 100%;
     height: 100%;
@@ -495,7 +495,7 @@ img {
     flex-direction: column;
 }
 
-/* ── PROGRESS BAR ── */
+/* ?? PROGRESS BAR ?? */
 #pbar-wrap {
     position: fixed;
     top: 0;
@@ -514,7 +514,7 @@ img {
     border-radius: 0 4px 4px 0;
 }
 
-/* ── LOGO ── */
+/* ?? LOGO ?? */
 #logo {
     position: fixed;
     top: 14px;
@@ -555,7 +555,7 @@ img {
     margin-top: 2px;
 }
 
-/* ── SLIDE COUNTER ── */
+/* ?? SLIDE COUNTER ?? */
 #slide-counter {
     position: fixed;
     top: 16px;
@@ -573,7 +573,7 @@ img {
     border: 1px solid var(--hud-border);
 }
 
-/* ── SLIDES CONTAINER ── */
+/* ?? SLIDES CONTAINER ?? */
 #slides {
     flex: 1;
     position: relative;
@@ -607,7 +607,7 @@ img {
     transform: translateX(-40px);
 }
 
-/* ── BOTTOM NAV ── */
+/* ?? BOTTOM NAV ?? */
 #nav {
     position: fixed;
     bottom: 0;
@@ -698,7 +698,7 @@ img {
     box-shadow: 0 0 8px rgba(255, 106, 26, 0.35);
 }
 
-/* ── WAVE DECORATION ── */
+/* ?? WAVE DECORATION ?? */
 .wave {
     position: absolute;
     bottom: 0;
@@ -713,7 +713,7 @@ img {
     height: 100%;
 }
 
-/* ── SECTION HEADER AREA ── */
+/* ?? SECTION HEADER AREA ?? */
 .top-bar {
     padding: 22px 120px 0 28px;
     display: flex;
@@ -758,7 +758,7 @@ img {
     font-weight: 600;
 }
 
-/* ── CONTENT AREA ── */
+/* ?? CONTENT AREA ?? */
 .content-area {
     flex: 1;
     padding: 10px 28px 80px;
@@ -780,7 +780,7 @@ img {
     border-radius: 4px;
 }
 
-/* ── MOBILE LANDSCAPE OPTIMIZATION ── */
+/* ?? MOBILE LANDSCAPE OPTIMIZATION ?? */
 @media screen and (max-height: 480px) {
     #logo {
         top: 5px;
@@ -856,7 +856,7 @@ img {
     }
 }
 
-/* ── CARDS ── */
+/* ?? CARDS ?? */
 .card {
     background: var(--card-bg);
     border: 1px solid var(--card-border);
@@ -1396,7 +1396,7 @@ img {
     line-height: 1.4;
 }
 
-/* ── VIDEO CONTAINER ── */
+/* ?? VIDEO CONTAINER ?? */
 .video-wrap {
     width: 100%;
     max-width: 1000px;
@@ -1572,7 +1572,7 @@ img {
     }
 }
 
-/* ── SLIDE 1 — CAPA ── */
+/* ?? SLIDE 1 ? CAPA ?? */
 #s1 {
     min-height: 100vh;
     position: relative;
@@ -1612,28 +1612,87 @@ img {
     z-index: 1;
 }
 
-.hero-image,
-.s1-image,
-.hero-media,
+/* Desktop: capa full-bleed ? esconde o quadro da imagem */
+@media (min-width: 901px) {
+    .hero-image,
+    .s1-image,
+    .hero-media,
+    .s1-hero-img,
+    .s1-hero-img::before,
+    .s1-hero-img::after,
+    .s1-hero-img img {
+        display: none !important;
+    }
+}
+
+/* Mobile/tablet: quadro + imagem no fluxo (layout como Patolada) */
 .s1-hero-img {
+    position: relative;
+    width: 85%;
+    max-width: 320px;
+    z-index: 1;
+    margin: 15px auto 28px;
+    align-self: center;
     background: none;
     border: none;
     box-shadow: none;
-    display: none;
 }
 
-.s1-hero-img::before,
+.s1-hero-img::before {
+    content: '';
+    position: absolute;
+    inset: -14% -10%;
+    background: radial-gradient(ellipse at 50% 50%,
+            rgba(255, 106, 26, 0.55) 0%,
+            rgba(230, 81, 0, 0.28) 38%,
+            rgba(255, 176, 122, 0.1) 55%,
+            transparent 72%);
+    filter: blur(36px);
+    z-index: 0;
+    pointer-events: none;
+    animation: s1-glow-pulse 3.5s ease-in-out infinite alternate;
+}
+
 .s1-hero-img::after {
-    display: none;
+    content: '';
+    position: absolute;
+    inset: -4%;
+    border-radius: 22px;
+    background: transparent;
+    box-shadow:
+        0 0 40px rgba(255, 106, 26, 0.45),
+        0 0 80px rgba(230, 81, 0, 0.28),
+        0 0 120px rgba(255, 176, 122, 0.12);
+    z-index: 0;
+    pointer-events: none;
 }
 
 .s1-hero-img img {
-    display: none;
+    width: 100%;
+    height: auto;
+    display: block;
+    position: relative;
+    z-index: 1;
+    border: 6px solid rgba(255, 140, 60, 0.4);
+    border-radius: 16px;
+    box-shadow:
+        0 10px 28px rgba(0, 0, 0, 0.45),
+        0 0 32px rgba(255, 106, 26, 0.35),
+        0 0 64px rgba(230, 81, 0, 0.2);
+    object-fit: cover;
 }
 
 @media (max-width: 900px) {
     .s1-inner {
         padding: 40px 20px 20px 20px !important;
+    }
+
+    .s1-hero-img {
+        position: relative;
+        right: auto;
+        top: auto;
+        transform: none;
+        opacity: 1;
     }
 }
 
@@ -1886,7 +1945,7 @@ img {
     color: var(--gold);
 }
 
-/* ── QUIZ INTRO (card central) ── */
+/* ?? QUIZ INTRO (card central) ?? */
 .quiz-intro-panel {
     display: flex;
     align-items: center;
@@ -2026,7 +2085,7 @@ img {
     }
 }
 
-/* ── QUIZ STYLES ── */
+/* ?? QUIZ STYLES ?? */
 .quiz-wrap {
     width: 100%;
     max-width: 760px;
@@ -2250,7 +2309,7 @@ img {
     box-shadow: none !important;
 }
 
-/* Quiz módulo 1 (#s9) — painel com alternativas coloridas (ref. página 10) */
+/* Quiz m?dulo 1 (#s9) ? painel com alternativas coloridas (ref. p?gina 10) */
 #s9 #q1-question-panel,
 #s15 #sq2-question-panel ,
 #s21 #q3-question-panel ,
@@ -2830,7 +2889,7 @@ img {
     }
 }
 
-/* Card de resultado — quiz módulo 1 (#s9) */
+/* Card de resultado ? quiz m?dulo 1 (#s9) */
 #s9 #q1-result-panel.quiz-result-panel ,
 #s15 #sq2-result-panel.quiz-result-panel ,
 #s21 #q3-result-panel.quiz-result-panel ,
@@ -3274,7 +3333,7 @@ img {
     color: var(--black);
 }
 
-/* ── SLIDE 32 — CONCLUSÃO ── */
+/* ?? SLIDE 32 ? CONCLUS?O ?? */
 #s32 {
     text-align: center;
     background: var(--black);
@@ -3361,7 +3420,7 @@ img {
     color: var(--gold-dk);
 }
 
-/* ── REQ-ITEM INTERACTIONS ── */
+/* ?? REQ-ITEM INTERACTIONS ?? */
 .req-item {
     position: relative;
     cursor: pointer !important;
@@ -3390,7 +3449,7 @@ img {
     box-shadow: 0 8px 32px rgba(255, 106, 26, 0.15) !important;
 }
 
-/* ── VIDEO WARNING ── */
+/* ?? VIDEO WARNING ?? */
 .video-warn {
     position: absolute;
     top: 15px;
@@ -3415,7 +3474,7 @@ img {
 }
 
 
-/* ── MODULE INTRO SLIDE ── */
+/* ?? MODULE INTRO SLIDE ?? */
 .mod-intro {
     flex: 1;
     display: flex;
@@ -3461,7 +3520,7 @@ img {
     line-height: 1.4;
 }
 
-/* ── CINEMATIC ANIMATIONS (TITLES E MÓDULOS) ── */
+/* ?? CINEMATIC ANIMATIONS (TITLES E M?DULOS) ?? */
 .slide.active .mod-intro-pill {
     animation: cinematic-pill-in 1.2s cubic-bezier(0.16, 1, 0.3, 1) forwards;
     opacity: 0;
@@ -3570,7 +3629,7 @@ img {
     }
 }
 
-/* ── RESPONSIVE TWEAKS ── */
+/* ?? RESPONSIVE TWEAKS ?? */
 @media (max-width:700px) and (orientation:landscape) {
 
     .two-col,
@@ -3606,7 +3665,7 @@ img {
     }
 }
 
-/* ── 3D REALISTIC BADGE ── */
+/* ?? 3D REALISTIC BADGE ?? */
 .badge-scene {
     perspective: 1200px;
     display: flex;
@@ -3714,7 +3773,7 @@ img {
 
 @media (max-width: 900px) {
 
-    /* Espaçamentos verticais maiores nas páginas de vídeo mobile */
+    /* Espa?amentos verticais maiores nas p?ginas de v?deo mobile */
     #s1b .section-tag,
     #s4 .section-tag,
     #s-video-riscos .section-tag {
@@ -3756,7 +3815,7 @@ img {
     }
 }
 
-/* ── FLIP CARDS ── */
+/* ?? FLIP CARDS ?? */
 .flip-card {
     width: 240px;
     height: 260px;
@@ -4080,7 +4139,7 @@ img {
     }
 }
 
-/* CONDUÇÃO SEGURA */
+/* CONDU??O SEGURA */
 .rules-container {
     display: flex;
     gap: 30px;
@@ -4495,7 +4554,7 @@ img {
     box-shadow: 0 0 15px rgba(255, 255, 255, 0.05);
 }
 
-/* Wrong 1: No chão */
+/* Wrong 1: No ch?o */
 .v-item.floor .v-title {
     top: 50px;
 }
@@ -4781,7 +4840,7 @@ img {
     }
 }
 
-/* MODULO 4 INSPECÃO INICIAL */
+/* MODULO 4 INSPEC?O INICIAL */
 .m4-grid {
     display: grid;
     grid-template-columns: 1fr 1.2fr;
@@ -4985,7 +5044,7 @@ img {
     }
 }
 
-/* Página 22 — Quiz Módulo 3: alinhar texto da pergunta ao centro do card */
+/* P?gina 22 ? Quiz M?dulo 3: alinhar texto da pergunta ao centro do card */
 #s21 #q3-text .question-title,
 #s26 #q4-text .question-title,
 #s21 #q3-text .quiz-question-title,
@@ -5000,7 +5059,7 @@ img {
     margin-right: auto;
 }
 
-/* Página 22 — Quiz Módulo 3: alinhar pergunta secundária ao eixo da situação */
+/* P?gina 22 ? Quiz M?dulo 3: alinhar pergunta secund?ria ao eixo da situa??o */
 #s21 #q3-text .question-subtitle,
 #s26 #q4-text .question-subtitle,
 #s21 #q3-text .quiz-subtitle,
@@ -5015,9 +5074,9 @@ img {
     margin-right: auto;
 }
 
-/* ════════════════════════════════════════
-   MOBILE / iOS FIXES (refactor split — v2)
-   ════════════════════════════════════════ */
+/* ????????????????????????????????????????
+   MOBILE / iOS FIXES (refactor split ? v2)
+   ???????????????????????????????????????? */
 
 /* Base viewport sizing for all sizes */
 html,
@@ -5121,7 +5180,7 @@ body {
         display: flex !important;
     }
 
-    /* ─── CONTENT AREA: scrollable, gives room for nav + counter ─── */
+    /* ??? CONTENT AREA: scrollable, gives room for nav + counter ??? */
     .content-area {
         flex: 1 1 auto;
         min-height: 0;
@@ -5132,7 +5191,7 @@ body {
         padding-bottom: calc(110px + env(safe-area-inset-bottom, 0px)) !important;
     }
 
-    /* ─── TOP BAR: padding-right reservado pra logo, padding-top pra contador ─── */
+    /* ??? TOP BAR: padding-right reservado pra logo, padding-top pra contador ??? */
     .top-bar {
         padding: 50px 80px 0 14px !important;
     }
@@ -5143,7 +5202,7 @@ body {
         word-break: break-word;
     }
 
-    /* ─── SLIDE COUNTER: centralizado e single-line ─── */
+    /* ??? SLIDE COUNTER: centralizado e single-line ??? */
     #slide-counter {
         top: 12px !important;
         font-size: 13px !important;
@@ -5155,7 +5214,7 @@ body {
         backdrop-filter: blur(8px);
     }
 
-    /* ─── LOGO: menor e canto, sem cobrir o título ─── */
+    /* ??? LOGO: menor e canto, sem cobrir o t?tulo ??? */
     #logo {
         top: calc(8px + env(safe-area-inset-top, 0px)) !important;
         right: 8px !important;
@@ -5167,7 +5226,7 @@ body {
         height: 30px !important;
     }
 
-    /* ─── BOTÃO SIMULAÇÃO: ao lado do ícone de acessibilidade ─── */
+    /* ??? BOT?O SIMULA??O: ao lado do ?cone de acessibilidade ??? */
     #btn-demo {
         height: 32px;
         padding: 5px 14px;
@@ -5184,7 +5243,7 @@ body {
         padding: 4px 10px !important;
     }
 
-    /* ─── NAV BOTTOM: padding e safe-area ─── */
+    /* ??? NAV BOTTOM: padding e safe-area ??? */
     #nav {
         position: fixed !important;
         bottom: 0;
@@ -5200,7 +5259,7 @@ body {
         visibility: visible !important;
     }
 
-    /* ─── BOTÕES NAV: maiores, separados, fáceis de tocar ─── */
+    /* ??? BOT?ES NAV: maiores, separados, f?ceis de tocar ??? */
     .nav-btn {
         pointer-events: auto;
         z-index: 951;
@@ -5221,7 +5280,7 @@ body {
         flex-shrink: 0;
     }
 
-    /* Quando "PRÓXIMO MÓDULO" (texto maior), reduz fonte */
+    /* Quando "PR?XIMO M?DULO" (texto maior), reduz fonte */
     .nav-btn.btn-next-module .fwd-label {
         font-size: 12.5px;
     }
@@ -5231,7 +5290,7 @@ body {
         opacity: 0.5;
     }
 
-    /* ─── CAPA (S1): centralizada, botão sempre visível ─── */
+    /* ??? CAPA (S1): centralizada, bot?o sempre vis?vel ??? */
     #s1 .s1-inner {
         padding: 50px 18px calc(120px + env(safe-area-inset-bottom, 0px)) !important;
         align-items: center !important;
@@ -5259,7 +5318,17 @@ body {
         margin: 0 auto !important;
     }
 
-    /* ─── CARDS: espaço extra no bottom pra não cortar ─── */
+    #s1 .s1-hero-img {
+        display: block !important;
+        align-self: center !important;
+        margin: 16px auto 24px !important;
+    }
+
+    #s1 .s1-hero-img img {
+        display: block !important;
+    }
+
+    /* ??? CARDS: espa?o extra no bottom pra n?o cortar ??? */
     .flip-card,
     .icon-card,
     .card,
@@ -5275,12 +5344,12 @@ body {
         margin-bottom: 12px;
     }
 
-    /* Garante que o último card de qualquer grid tenha espaço extra */
+    /* Garante que o ?ltimo card de qualquer grid tenha espa?o extra */
     .content-area>*:last-child {
         margin-bottom: 20px !important;
     }
 
-    /* Cards de flip do módulo 1 (s7) - tamanho aumentado pra não cortar texto */
+    /* Cards de flip do m?dulo 1 (s7) - tamanho aumentado pra n?o cortar texto */
     #s8 .flip-card {
         width: 100% !important;
         max-width: 320px !important;
@@ -5321,9 +5390,9 @@ body {
     }
 }
 
-/* ════════════════════════════════════════
+/* ????????????????????????????????????????
    IMAGE MODAL (shared across all modules)
-   ════════════════════════════════════════ */
+   ???????????????????????????????????????? */
 .img-modal-overlay {
     position: fixed;
     top: 0;
@@ -5389,9 +5458,9 @@ body {
 }
 
 
-/* ════════════════════════════════════════
-   MOBILE: feedback inline (não absolute) na atividade s-conducao
-   ════════════════════════════════════════ */
+/* ????????????????????????????????????????
+   MOBILE: feedback inline (n?o absolute) na atividade s-conducao
+   ???????????????????????????????????????? */
 @media screen and (max-width: 768px) {
     #conducao-question-panel {
         position: relative;
@@ -5447,9 +5516,9 @@ body {
 }
 
 
-/* ════════════════════════════════════════
-   FIX BATCH (mobile correções múltiplas)
-   ════════════════════════════════════════ */
+/* ????????????????????????????????????????
+   FIX BATCH (mobile corre??es m?ltiplas)
+   ???????????????????????????????????????? */
 
 /* Cover-only: hide nav completely (overrides mobile !important rules) */
 #nav.nav-hidden-cover {
@@ -5459,14 +5528,14 @@ body {
 
 @media screen and (max-width: 768px) {
 
-    /* ─── MÓD 2 pág 3 (s10): desativar transforms que dificultam scroll ─── */
+    /* ??? M?D 2 p?g 3 (s10): desativar transforms que dificultam scroll ??? */
     #s12 .hub-spoke:hover,
     #s12 .hub-spoke.active {
         transform: scale(1.02) !important;
         box-shadow: 0 8px 20px rgba(255, 106, 26, 0.2) !important;
     }
 
-    /* Ao tocar, não amplifica box-shadow exagerado que cria glow gigante */
+    /* Ao tocar, n?o amplifica box-shadow exagerado que cria glow gigante */
     #s12 .hub-spoke::before {
         box-shadow: none !important;
     }
@@ -5480,7 +5549,7 @@ body {
         background-blend-mode: normal !important;
     }
 
-    /* ─── MÓD 4 pág 4 (s-mod4-video-finalizacao): card expandido deve mostrar todo texto ─── */
+    /* ??? M?D 4 p?g 4 (s-mod4-video-finalizacao): card expandido deve mostrar todo texto ??? */
     #s25 .passo-card {
         padding: 18px !important;
         overflow: hidden;
@@ -5512,7 +5581,7 @@ body {
 
 
 
-    /* ─── MÓD 6 pág 3 (s-mod6-compromissos): garantir cards uniformes ─── */
+    /* ??? M?D 6 p?g 3 (s-mod6-compromissos): garantir cards uniformes ??? */
     #s38 .hud-panel-grid {
         grid-template-columns: 1fr !important;
         gap: 14px !important;
@@ -5527,7 +5596,7 @@ body {
         min-height: auto !important;
     }
 
-    /* ─── MÓD 5 pág 3 (s-mod5-comp1 / página 30): scroll mobile igual página 40 ─── */
+    /* ??? M?D 5 p?g 3 (s-mod5-comp1 / p?gina 30): scroll mobile igual p?gina 40 ??? */
     #s29 {
         overflow: hidden;
     }
@@ -5552,7 +5621,7 @@ body {
         gap: 24px !important;
     }
 
-    /* ─── MÓD 2 s14b: área interna com scroll próprio (nav fixa) ─── */
+    /* ??? M?D 2 s14b: ?rea interna com scroll pr?prio (nav fixa) ??? */
     #s14b {
         overflow: hidden !important;
     }
@@ -5600,7 +5669,7 @@ body {
         align-items: center;
     }
 
-    /* ─── MÓD 6 pág 4 (s-mod6-comp-preventiva): espaço entre cards ─── */
+    /* ??? M?D 6 p?g 4 (s-mod6-comp-preventiva): espa?o entre cards ??? */
     #s39 .compare-container,
     #s39 .content-area>div[style*="grid"],
     #s39 .content-area>div[style*="flex"] {
@@ -5615,7 +5684,7 @@ body {
         max-width: 100% !important;
     }
 
-    /* Copiado de #s29 (página 30) — aplicar também em s-mod6-comp-preventiva (página 40) */
+    /* Copiado de #s29 (p?gina 30) ? aplicar tamb?m em s-mod6-comp-preventiva (p?gina 40) */
     #s39 .comp-cards-grid {
         display: flex;
         flex-direction: column;
@@ -5698,7 +5767,7 @@ body {
         }
     }
 
-    /* ─── MÓD 6 pág 5 (s-mod6-mensagem-final): centralizar + blur ─── */
+    /* ??? M?D 6 p?g 5 (s-mod6-mensagem-final): centralizar + blur ??? */
     #s40 {
         align-items: center !important;
         justify-content: center !important;
@@ -5718,7 +5787,7 @@ body {
         text-align: center !important;
     }
 
-    /* ─── MÓD 6 pág 8 (s-quiz6): botão mute reposicionado ─── */
+    /* ??? M?D 6 p?g 8 (s-quiz6): bot?o mute reposicionado ??? */
     #s43 #q6-btn-music-toggle {
         top: 6px !important;
         right: 6px !important;
@@ -5733,7 +5802,7 @@ body {
         padding-right: 12px !important;
     }
 
-    /* ─── MÓD 6 pág final (s44): card de conclusão ─── */
+    /* ??? M?D 6 p?g final (s44): card de conclus?o ??? */
     #s44 {
         align-items: stretch !important;
         justify-content: flex-start !important;
@@ -5796,13 +5865,13 @@ body {
 }
 
 
-/* ════════════════════════════════════════
-   FIX BATCH v3 — mobile refinements
-   ════════════════════════════════════════ */
+/* ????????????????????????????????????????
+   FIX BATCH v3 ? mobile refinements
+   ???????????????????????????????????????? */
 
 @media screen and (max-width: 768px) {
 
-    /* ─── CAPA: imagem menor pra botão INICIAR caber ─── */
+    /* ??? CAPA: imagem menor pra bot?o INICIAR caber ??? */
     #s1 .s1-inner {
         padding: 92px 18px calc(80px + env(safe-area-inset-bottom, 0px)) !important;
         transform: translateY(8px);
@@ -5816,6 +5885,17 @@ body {
         font-size: 15px !important;
         margin-bottom: 18px !important;
         line-height: 1.4 !important;
+    }
+
+    #s1 .s1-hero-img {
+        display: block !important;
+        max-width: 220px !important;
+        width: 78% !important;
+        margin: 8px auto 18px !important;
+    }
+
+    #s1 .s1-hero-img img {
+        display: block !important;
     }
 
     #s1 .btn-start {
@@ -5842,11 +5922,31 @@ body {
         left:0;
     }
 
+    #s1 .s1-secondary-actions {
+        display: flex !important;
+        align-items: center !important;
+        align-self: center !important;
+        justify-content: center !important;
+        width: 100% !important;
+        margin-left: 0 !important;
+        margin-right: 0 !important;
+    }
+
+    #s1 .s1-secondary-actions .btn-tutorial,
+    #s1 .s1-secondary-actions .tutorial-replay {
+        align-self: center !important;
+        justify-content: center !important;
+        margin-left: 0 !important;
+        margin-right: 0 !important;
+        margin-top: 0 !important;
+        left: 0 !important;
+    }
+
     .slide:not(#s1) .visual-placeholder::after {
         display: none;
     }
 
-    /* ─── GLOBAL: desativa hover/transform agressivo nos cards ─── */
+    /* ??? GLOBAL: desativa hover/transform agressivo nos cards ??? */
     /* Em mobile com touch, hover fica preso. Desativar transforms evita "travadas". */
     .icon-card:hover,
     .card:hover,
@@ -5871,7 +5971,7 @@ body {
         box-shadow: 0 6px 18px rgba(0, 0, 0, 0.4) !important;
     }
 
-    /* ─── MÓD 3 pág 3 (s-conducao): mais espaço pro feedback ─── */
+    /* ??? M?D 3 p?g 3 (s-conducao): mais espa?o pro feedback ??? */
     #s18 .content-area {
         padding-bottom: calc(160px + env(safe-area-inset-bottom, 0px)) !important;
     }
@@ -5888,7 +5988,7 @@ body {
 
 
 
-    /* ─── MÓD 6 pág 3 (s-mod6-compromissos): ícones uniformes e centralizados ─── */
+    /* ??? M?D 6 p?g 3 (s-mod6-compromissos): ?cones uniformes e centralizados ??? */
     #s38 .hud-panel-icon {
         font-size: 28px !important;
         width: 48px !important;
@@ -5914,7 +6014,7 @@ body {
         margin-top: 6px !important;
     }
 
-    /* ─── MÓD 6 pág 4 (s-mod6-comp-preventiva): card vira verde ao clicar (one-time) ─── */
+    /* ??? M?D 6 p?g 4 (s-mod6-comp-preventiva): card vira verde ao clicar (one-time) ??? */
     #s39 .comp-card-modern.req-done {
         border-color: var(--green) !important;
         box-shadow: 0 0 24px rgba(255, 106, 26, 0.35), inset 0 0 12px rgba(255, 106, 26, 0.1) !important;
@@ -5922,7 +6022,7 @@ body {
     }
 
     #s39 .comp-card-modern.req-done::after {
-        content: '✓';
+        content: '?';
         position: absolute;
         top: 10px;
         right: 12px;
@@ -5933,7 +6033,7 @@ body {
         z-index: 5;
     }
 
-    /* ─── MÓD 6 pág 5 (s-mod6-mensagem-final): centralizar mais embaixo + blur menor ─── */
+    /* ??? M?D 6 p?g 5 (s-mod6-mensagem-final): centralizar mais embaixo + blur menor ??? */
     #s40 {
         align-items: center !important;
         justify-content: center !important;
@@ -5948,14 +6048,14 @@ body {
         margin-top: 60px !important;
     }
 
-    /* Especificamente: o título central */
+    /* Especificamente: o t?tulo central */
     #s40 h1,
     #s40 h2 {
         margin-top: 8vh !important;
         text-align: center !important;
     }
 
-    /* ─── MÓD 6 pág 8 (s-quiz6): subir mais o botão música ─── */
+    /* ??? M?D 6 p?g 8 (s-quiz6): subir mais o bot?o m?sica ??? */
     #s43 #q6-btn-music-toggle {
         top: -6px !important;
         right: 6px !important;
@@ -5969,7 +6069,7 @@ body {
         margin-top: 48px !important;
     }
 
-    /* ─── MÓD 6 pág final (s44): card com scroll no mobile ─── */
+    /* ??? M?D 6 p?g final (s44): card com scroll no mobile ??? */
     #s44 {
         overflow: hidden !important;
         align-items: stretch !important;
@@ -6025,12 +6125,12 @@ body {
 }
 
 
-/* ════════════════════════════════════════
-   ACESSIBILIDADE — Toolbar dobrável (Ouvir & Libras)
-   ════════════════════════════════════════ */
+/* ????????????????????????????????????????
+   ACESSIBILIDADE ? Toolbar dobr?vel (Ouvir & Libras)
+   ???????????????????????????????????????? */
 #a11y-bar {
     position: fixed;
-    /* posição é definida via JS para alinhar à esquerda do logo */
+    /* posi??o ? definida via JS para alinhar ? esquerda do logo */
     top: 24px;
     right: 130px;
     z-index: 902;
@@ -6041,7 +6141,7 @@ body {
     pointer-events: none;
 }
 
-/* Launcher (botão único circular com ícone de acessibilidade) */
+/* Launcher (bot?o ?nico circular com ?cone de acessibilidade) */
 #a11y-launcher {
     pointer-events: auto;
     width: 36px;
@@ -6187,7 +6287,7 @@ body {
     border-color: var(--red);
 }
 
-/* Mobile portrait — compacto, à esquerda do logo */
+/* Mobile portrait ? compacto, ? esquerda do logo */
 @media screen and (max-width: 768px) and (orientation: portrait) {
     #a11y-bar {
         top: 14px;
@@ -6231,7 +6331,7 @@ body {
     }
 }
 
-/* ── Modal de Libras ── */
+/* ?? Modal de Libras ?? */
 #libras-modal {
     position: fixed;
     inset: 0;
@@ -6338,9 +6438,9 @@ body {
     }
 }
 
-/* ════════════════════════════════════════
-   SLIDE COUNTER — sempre visível, no topo
-   ════════════════════════════════════════ */
+/* ????????????????????????????????????????
+   SLIDE COUNTER ? sempre vis?vel, no topo
+   ???????????????????????????????????????? */
 #slide-counter {
     visibility: visible !important;
     display: block !important;
@@ -6381,7 +6481,7 @@ body {
     .slide-title { font-size:22px !important; line-height:1.2 !important; }
 }
 
-/* Quiz M5 — layout da ocorrência dentro do card padrão */
+/* Quiz M5 ? layout da ocorr?ncia dentro do card padr?o */
 #s35 #q5-question-panel .q-text {
     flex-direction: column !important;
     align-items: stretch !important;
@@ -6449,7 +6549,7 @@ body {
 }
 
 
-/* Quiz final (#s43) — alternativas coloridas verde/vermelho */
+/* Quiz final (#s43) ? alternativas coloridas verde/vermelho */
 #s43 #q6-question-panel .q-opt:nth-child(1) {
     background: linear-gradient(135deg, rgba(46,130,60,0.95) 0%, rgba(30,100,45,1) 100%) !important;
     border-color: rgba(46,204,113,0.45) !important;
@@ -6485,7 +6585,7 @@ body {
     transition: color 0.2s, border-color 0.2s;
 }
 
-/* Esconder bot�o SIMULA��O at� o atalho qa1010 (ou modo simula��o ativo) */
+/* Esconder bot?o SIMULA??O at? o atalho qa1010 (ou modo simula??o ativo) */
 html body #btn-demo,
 html body #demo-indicator {
     display: none !important;
