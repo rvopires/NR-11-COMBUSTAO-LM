@@ -14,8 +14,8 @@
     <link
         href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800;900&family=Open+Sans:wght@400;600&display=swap"
         rel="stylesheet">
-    <script src="https://player.vimeo.com/api/player.js"></script>
-    <link rel="stylesheet" href="shared.css?v=30">
+    <script src="https://player.pandavideo.com.br/api.v2.js"></script>
+    <link rel="stylesheet" href="shared.css?v=31">
     <script>
         window.MODULE_NAV = {
             id: "index",
@@ -770,9 +770,7 @@
 
                     <div class="video-wrap req-item"
                         style="max-width: 1240px; margin-top: 40px; box-shadow: 0 40px 80px rgba(0,0,0,0.9), 0 0 60px rgba(230, 81, 0, 0.3); border: 1px solid rgba(230, 81, 0, 0.4); border-radius: 12px; transform: translateZ(0);">
-                        <iframe id="vimeo-s1b"
-                            src="https://www.youtube.com/embed/uuhBLx38efc?enablejsapi=1&rel=0&modestbranding=1&playsinline=1"
-                            frameborder="0" allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen title="INTRODUÇÃO"></iframe>
+                        <iframe id="panda-66ed0ce1-856d-4aa0-b29e-b60ec527f1a2" src="https://player-vz-d35edf2a-8e7.tv.pandavideo.com.br/embed/?v=66ed0ce1-856d-4aa0-b29e-b60ec527f1a2&saveProgress=false" style="border:none;" allow="accelerometer;gyroscope;autoplay;encrypted-media;picture-in-picture" allowfullscreen="true" fetchpriority="high" referrerpolicy="strict-origin-when-cross-origin" title="INTRODUÇÃO"></iframe>
                     </div>
 
 
@@ -905,15 +903,7 @@
                 <div
                     class="tutorial-video-wrap"
                     style="padding:56.25% 0 0 0;position:relative; border-radius: 8px; overflow: hidden; margin: 5px 0;">
-                    <iframe
-                        id="tutorial-yt"
-                        src="https://www.youtube.com/embed/OWapmAu3780?enablejsapi=1&rel=0&modestbranding=1&playsinline=1"
-                        frameborder="0"
-                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                        referrerpolicy="strict-origin-when-cross-origin"
-                        style="position:absolute;top:0;left:0;width:100%;height:100%;"
-                        allowfullscreen
-                        title="TUTORIAL TREINAMENTOS"></iframe>
+                    <iframe id="panda-21cc3767-4f20-4b2a-9a26-fbda433e99ee" src="https://player-vz-d35edf2a-8e7.tv.pandavideo.com.br/embed/?v=21cc3767-4f20-4b2a-9a26-fbda433e99ee&saveProgress=false" frameborder="0" allow="accelerometer; gyroscope; autoplay; encrypted-media; picture-in-picture" referrerpolicy="strict-origin-when-cross-origin" style="border:none;position:absolute;top:0;left:0;width:100%;height:100%;" allowfullscreen title="TUTORIAL TREINAMENTOS"></iframe>
                 </div>
 
                 <!-- FOOTER -->
@@ -961,42 +951,30 @@
                 }, 800);
             });
 
-            // YouTube Player — ao terminar, volta ao início e pausa
-            (function setupTutorialYouTube() {
-                function bindPlayer() {
-                    if (!window.YT || !YT.Player) return false;
-                    new YT.Player('tutorial-yt', {
-                        events: {
-                            onStateChange: function (e) {
-                                if (e.data === YT.PlayerState.ENDED) {
-                                    try {
-                                        e.target.seekTo(0, true);
-                                        e.target.pauseVideo();
-                                    } catch (err) { }
-                                }
-                            }
+            // Panda Player — ao terminar, volta ao início e pausa
+            (function setupTutorialPanda() {
+                var iframe = document.getElementById('panda-21cc3767-4f20-4b2a-9a26-fbda433e99ee') ||
+                    document.querySelector('#tutorialModal iframe');
+                if (!iframe) return;
+                var videoId = '21cc3767-4f20-4b2a-9a26-fbda433e99ee';
+                window.addEventListener('message', function (event) {
+                    var data = event.data;
+                    if (!data || data.message !== 'panda_ended') return;
+                    if (data.video && String(data.video) !== videoId) return;
+                    try {
+                        if (iframe.contentWindow) {
+                            iframe.contentWindow.postMessage({ type: 'currentTime', parameter: 0 }, '*');
+                            iframe.contentWindow.postMessage({ type: 'pause' }, '*');
                         }
-                    });
-                    return true;
-                }
-                if (bindPlayer()) return;
-                var prev = window.onYouTubeIframeAPIReady;
-                window.onYouTubeIframeAPIReady = function () {
-                    if (typeof prev === 'function') prev();
-                    bindPlayer();
-                };
-                if (!document.querySelector('script[src*="youtube.com/iframe_api"]')) {
-                    var tag = document.createElement('script');
-                    tag.src = 'https://www.youtube.com/iframe_api';
-                    document.head.appendChild(tag);
-                }
+                    } catch (err) { }
+                });
             })();
         </script>
 
     </div><!-- fecha #app -->
 
     <script src="audio-data.js"></script>
-    <script src="shared.js?v=30"></script>
+    <script src="shared.js?v=31"></script>
 </body>
 
 </html>
