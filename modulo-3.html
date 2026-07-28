@@ -11,7 +11,7 @@
         href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;900&family=Open+Sans:wght@400;600&display=swap"
         rel="stylesheet">
     <script src="https://player.vimeo.com/api/player.js"></script>
-    <link rel="stylesheet" href="shared.css?v=16">
+    <link rel="stylesheet" href="shared.css?v=30">
     <script>
         window.MODULE_NAV = {
             id: "modulo-3",
@@ -146,6 +146,20 @@
     }
     #s17 .content-area {
         padding-bottom: 100px !important;
+        justify-content: center !important;
+        padding-top: 8px !important;
+        gap: 10px;
+    }
+    @media (min-width: 769px) {
+        #s17 .content-area.camera-analysis-mobile {
+            justify-content: center !important;
+            padding-top: 12px !important;
+            padding-bottom: 110px !important;
+        }
+        #s17 .cam-progress { margin-bottom: 10px; }
+        #s17 #s17-first-hint { margin-bottom: 14px !important; }
+        #s17 .cam-carousel { margin-top: 4px; }
+        #s17 .mobile-scene-footer { margin-top: 14px; }
     }
     @media (max-width: 768px) {
         #s17 { overflow: hidden !important; }
@@ -163,6 +177,8 @@
             touch-action: pan-y !important;
             display: block !important;
             padding-bottom: 220px !important;
+            justify-content: flex-start !important;
+            padding-top: 16px !important;
         }
         #s17 .mobile-scene-footer {
             margin-bottom: 120px !important;
@@ -199,7 +215,7 @@
     <h2 class="slide-title" style="font-size:clamp(22px,3.5vw,36px);letter-spacing:-0.01em;text-shadow:0 0 15px rgba(230,81,0,0.4);">Análise de <span>Riscos Operacionais</span></h2>
 </div>
 
-<div class="content-area camera-analysis-mobile" style="position:relative;z-index:1;display:flex;flex-direction:column;justify-content:flex-start;padding-top:24px !important;flex:1;">
+<div class="content-area camera-analysis-mobile" style="position:relative;z-index:1;display:flex;flex-direction:column;flex:1;">
 
     <div class="cam-progress">
         <span id="s17-prog-label">0 / 6</span>
@@ -385,9 +401,8 @@
     camRender();
 </script>
 
-<div class="wave" style="position: absolute; bottom: 0; left: 0; right: 0; z-index: 1;"><svg
-        viewBox="0 0 1440 100" preserveAspectRatio="none">
-        <path d="M0,55 C480,15 960,85 1440,35 L1440,100 L0,100 Z" fill="rgba(230,81,0,0.07)" />
+<div class="wave"><svg viewBox="0 0 1440 100" preserveAspectRatio="none">
+        <path d="M0,50 C480,10 960,85 1440,30 L1440,100 L0,100 Z" fill="rgba(230,81,0,0.07)" />
     </svg></div>
             </div>
 
@@ -833,6 +848,7 @@
                 reqSlider.classList.add('req-done');
                 try { updateNextButton(); } catch (e) {}
             }
+            try { if (typeof window.updateQuizAudioHelper === 'function') window.updateQuizAudioHelper(); } catch (e) {}
         }
 
         slider.addEventListener('input', function () {
@@ -857,6 +873,7 @@
             btn.classList.add('req-done');
             try { updateNextButton(); } catch (e) {}
         }
+        try { if (typeof window.updateQuizAudioHelper === 'function') window.updateQuizAudioHelper(); } catch (e) {}
     };
     window.s18CloseBlind = function (e) {
         if (e && e.target && e.target.id === 's18-modal') {
@@ -865,6 +882,7 @@
             var m = document.getElementById('s18-modal');
             if (m) m.classList.remove('active');
         }
+        try { if (typeof window.updateQuizAudioHelper === 'function') window.updateQuizAudioHelper(); } catch (err) {}
     };
 
     if (document.readyState === 'loading') {
@@ -1164,7 +1182,7 @@
     </div>
 
     <script src="audio-data.js"></script>
-    <script src="shared.js?v=16"></script>
+    <script src="shared.js?v=30"></script>
 </body>
 
 </html>

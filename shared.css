@@ -2468,8 +2468,8 @@ img {
 #s15 #sq2-question-panel .q-opt:nth-child(1):hover:not(.answered) ,
 #s21 #q3-question-panel .q-opt:nth-child(1):hover:not(.answered) ,
 #s26 #q4-question-panel .q-opt:nth-child(1):hover:not(.answered) ,
-#s35 #q5-question-panel .q-opt:nth-child(1),
-#s39 #q6b-question-panel .q-opt:nth-child(1),
+#s35 #q5-question-panel .q-opt:nth-child(1):hover:not(.answered),
+#s39 #q6b-question-panel .q-opt:nth-child(1):hover:not(.answered),
 #s43 #q6-question-panel .q-opt:nth-child(1):hover:not(.answered) {
     background: linear-gradient(135deg, #246db7, #3d88ef) !important;
 }
@@ -2478,8 +2478,8 @@ img {
 #s15 #sq2-question-panel .q-opt:nth-child(2):hover:not(.answered) ,
 #s21 #q3-question-panel .q-opt:nth-child(2):hover:not(.answered) ,
 #s26 #q4-question-panel .q-opt:nth-child(2):hover:not(.answered) ,
-#s35 #q5-question-panel .q-opt:nth-child(2),
-#s39 #q6b-question-panel .q-opt:nth-child(2),
+#s35 #q5-question-panel .q-opt:nth-child(2):hover:not(.answered),
+#s39 #q6b-question-panel .q-opt:nth-child(2):hover:not(.answered),
 #s43 #q6-question-panel .q-opt:nth-child(2):hover:not(.answered) {
     background: linear-gradient(135deg, #cc9410, #f2c42f) !important;
 }
@@ -2488,8 +2488,8 @@ img {
 #s15 #sq2-question-panel .q-opt:nth-child(3):hover:not(.answered) ,
 #s21 #q3-question-panel .q-opt:nth-child(3):hover:not(.answered) ,
 #s26 #q4-question-panel .q-opt:nth-child(3):hover:not(.answered) ,
-#s35 #q5-question-panel .q-opt:nth-child(3),
-#s39 #q6b-question-panel .q-opt:nth-child(3),
+#s35 #q5-question-panel .q-opt:nth-child(3):hover:not(.answered),
+#s39 #q6b-question-panel .q-opt:nth-child(3):hover:not(.answered),
 #s43 #q6-question-panel .q-opt:nth-child(3):hover:not(.answered) {
     background: linear-gradient(135deg, #df3508, #ff4b12) !important;
 }
@@ -2498,8 +2498,8 @@ img {
 #s15 #sq2-question-panel .q-opt:nth-child(4):hover:not(.answered) ,
 #s21 #q3-question-panel .q-opt:nth-child(4):hover:not(.answered) ,
 #s26 #q4-question-panel .q-opt:nth-child(4):hover:not(.answered) ,
-#s35 #q5-question-panel .q-opt:nth-child(4),
-#s39 #q6b-question-panel .q-opt:nth-child(4),
+#s35 #q5-question-panel .q-opt:nth-child(4):hover:not(.answered),
+#s39 #q6b-question-panel .q-opt:nth-child(4):hover:not(.answered),
 #s43 #q6-question-panel .q-opt:nth-child(4):hover:not(.answered) {
     background: linear-gradient(135deg, #168756, #2ecc71) !important;
 }
@@ -2508,8 +2508,8 @@ img {
 #s15 #sq2-question-panel .q-opt .opt-l ,
 #s21 #q3-question-panel .q-opt .opt-l ,
 #s26 #q4-question-panel .q-opt .opt-l ,
-#s35 #q5-question-panel .q-opt,
-#s39 #q6b-question-panel .q-opt,
+#s35 #q5-question-panel .q-opt .opt-l,
+#s39 #q6b-question-panel .q-opt .opt-l,
 #s43 #q6-question-panel .q-opt .opt-l {
     width: 40px !important;
     height: 40px !important;
@@ -2668,15 +2668,15 @@ img {
 #s15 #sq2-question-panel .q-opt.correct .opt-l,
 #s21 #q3-question-panel .q-opt.correct .opt-l,
 #s26 #q4-question-panel .q-opt.correct .opt-l,
-#s35 #q5-question-panel .q-opt.correct,
-#s39 #q6b-question-panel .q-opt.correct,
+#s35 #q5-question-panel .q-opt.correct .opt-l,
+#s39 #q6b-question-panel .q-opt.correct .opt-l,
 #s43 #q6-question-panel .q-opt.correct .opt-l,
 #s9 #q1-question-panel .q-opt.wrong .opt-l ,
 #s15 #sq2-question-panel .q-opt.wrong .opt-l ,
 #s21 #q3-question-panel .q-opt.wrong .opt-l ,
 #s26 #q4-question-panel .q-opt.wrong .opt-l ,
-#s35 #q5-question-panel .q-opt.wrong,
-#s39 #q6b-question-panel .q-opt.wrong,
+#s35 #q5-question-panel .q-opt.wrong .opt-l,
+#s39 #q6b-question-panel .q-opt.wrong .opt-l,
 #s43 #q6-question-panel .q-opt.wrong .opt-l {
     background: #fff !important;
     border-color: #fff !important;
@@ -2688,8 +2688,8 @@ img {
 #s15 #sq2-question-panel .q-opt.correct .opt-l ,
 #s21 #q3-question-panel .q-opt.correct .opt-l ,
 #s26 #q4-question-panel .q-opt.correct .opt-l ,
-#s35 #q5-question-panel .q-opt.correct,
-#s39 #q6b-question-panel .q-opt.correct,
+#s35 #q5-question-panel .q-opt.correct .opt-l,
+#s39 #q6b-question-panel .q-opt.correct .opt-l,
 #s43 #q6-question-panel .q-opt.correct .opt-l {
     color: #1f9e57 !important;
 }
@@ -2698,8 +2698,8 @@ img {
 #s15 #sq2-question-panel .q-opt.wrong .opt-l ,
 #s21 #q3-question-panel .q-opt.wrong .opt-l ,
 #s26 #q4-question-panel .q-opt.wrong .opt-l ,
-#s35 #q5-question-panel .q-opt.wrong,
-#s39 #q6b-question-panel .q-opt.wrong,
+#s35 #q5-question-panel .q-opt.wrong .opt-l,
+#s39 #q6b-question-panel .q-opt.wrong .opt-l,
 #s43 #q6-question-panel .q-opt.wrong .opt-l {
     color: #e74c3c !important;
 }
@@ -2708,8 +2708,8 @@ img {
 #s15 #sq2-question-panel .q-opt.muted .opt-l ,
 #s21 #q3-question-panel .q-opt.muted .opt-l ,
 #s26 #q4-question-panel .q-opt.muted .opt-l ,
-#s35 #q5-question-panel .q-opt.muted,
-#s39 #q6b-question-panel .q-opt.muted,
+#s35 #q5-question-panel .q-opt.muted .opt-l,
+#s39 #q6b-question-panel .q-opt.muted .opt-l,
 #s43 #q6-question-panel .q-opt.muted .opt-l {
     background: rgba(255, 255, 255, 0.08) !important;
     border-color: rgba(255, 255, 255, 0.12) !important;
@@ -2821,8 +2821,8 @@ img {
 #s15 #sq2-question-panel .q-opt .opt-l ,
 #s21 #q3-question-panel .q-opt .opt-l ,
 #s26 #q4-question-panel .q-opt .opt-l ,
-#s35 #q5-question-panel .q-opt,
-#s39 #q6b-question-panel .q-opt,
+#s35 #q5-question-panel .q-opt .opt-l,
+#s39 #q6b-question-panel .q-opt .opt-l,
 #s43 #q6-question-panel .q-opt .opt-l {
         width: 34px !important;
         height: 34px !important;
@@ -6483,4 +6483,27 @@ body {
 }
 #s43 #q6-btn-music-toggle {
     transition: color 0.2s, border-color 0.2s;
+}
+
+/* Esconder botão SIMULAÇÃO até o atalho qa1010 (ou modo simulação ativo) */
+html body #btn-demo,
+html body #demo-indicator {
+    display: none !important;
+    visibility: hidden !important;
+    pointer-events: none !important;
+    opacity: 0 !important;
+}
+
+html body #btn-demo.demo-shortcut-visible {
+    display: inline-flex !important;
+    visibility: visible !important;
+    pointer-events: auto !important;
+    opacity: 1 !important;
+}
+
+html body #demo-indicator.demo-shortcut-visible {
+    display: block !important;
+    visibility: visible !important;
+    pointer-events: none !important;
+    opacity: 1 !important;
 }

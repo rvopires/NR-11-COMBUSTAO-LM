@@ -135,8 +135,11 @@ if (_scrollBtnMq.addEventListener) {
     } catch (e) { }
 })();
 try {
+    // Mantém ?restoreslide / ?last para o atalho goNN; limpa o resto
     if (window.location.search) {
-        history.replaceState(null, '', window.location.pathname);
+        const url = new URL(window.location.href);
+        const keep = url.searchParams.has('restoreslide') || url.searchParams.has('last');
+        if (!keep) history.replaceState(null, '', window.location.pathname);
     }
 } catch (e) { }
 
@@ -161,19 +164,19 @@ function _saveReqState(arr) {
 const NR11_MODULE_OFFSETS = {
     'index': 0,
     'modulo-1': 3,
-    'modulo-2': 9,
-    'modulo-3': 15,
-    'modulo-4': 21,
-    'modulo-5': 26,
-    'modulo-6': 32
+    'modulo-2': 10,
+    'modulo-3': 17,
+    'modulo-4': 23,
+    'modulo-5': 29,
+    'modulo-6': 35
 };
-const NR11_TOTAL_SLIDES = 42;
+const NR11_TOTAL_SLIDES = 44;
 function nr11GlobalSlide() {
     if (typeof currentSlide === 'undefined') return 1;
     const offset = NR11_MODULE_OFFSETS[(window.MODULE_NAV && window.MODULE_NAV.id) || 'index'] || 0;
     return offset + currentSlide + 1;
 }
-const QUIZ_AUDIO_HELPER_PAGES = [9, 15, 18, 21, 27, 33, 37, 40, 41];
+const QUIZ_AUDIO_HELPER_PAGES = [10, 17, 23, 29, 35, 40, 43];
 const QUIZ_AUDIO_HELPER_PANELS = {
     s9: 'q1-question-panel',
     s15: 'sq2-question-panel',
@@ -277,8 +280,46 @@ function buildDots() {
     }
 }
 
-window.demoMode = false;
+window.demoMode = (function () {
+    try { return sessionStorage.getItem('nr11-demoMode') === '1'; } catch (e) { return false; }
+})();
 window._s44FinalizarUnlocked = false;
+
+function isDemoBtnRevealed() {
+    try { return sessionStorage.getItem('nr11-demoBtnVisible') === '1'; } catch (e) { return false; }
+}
+
+function setDemoBtnRevealed(visible) {
+    try { sessionStorage.setItem('nr11-demoBtnVisible', visible ? '1' : '0'); } catch (e) { }
+}
+
+function applyDemoModeUI() {
+    const btn = document.getElementById('btn-demo');
+    const ind = document.getElementById('demo-indicator');
+    var revealBtn = !!window.demoMode || isDemoBtnRevealed();
+
+    if (window.demoMode) {
+        setDemoBtnRevealed(true);
+        revealBtn = true;
+    }
+
+    if (btn) {
+        btn.classList.toggle('demo-shortcut-visible', !!revealBtn);
+        btn.classList.toggle('is-active', !!window.demoMode);
+    }
+    if (ind) {
+        ind.classList.toggle('demo-shortcut-visible', !!window.demoMode);
+        if (window.demoMode) {
+            ind.style.opacity = '1';
+            ind.style.transform = 'translateY(0)';
+        } else {
+            ind.style.opacity = '0';
+            ind.style.transform = 'translateY(-20px)';
+        }
+    }
+    try { updateNextButton(); } catch (e) { }
+    try { if (typeof window.positionA11yBar === 'function') window.positionA11yBar(); } catch (e) { }
+}
 
 function s44HideFinalizarBtn() {
     window._s44FinalizarUnlocked = false;
@@ -304,29 +345,19 @@ function s44RevealFinalizarBtn() {
 
 function toggleDemoMode() {
     window.demoMode = !window.demoMode;
-    const btn = document.getElementById('btn-demo');
-    const ind = document.getElementById('demo-indicator');
+    try { sessionStorage.setItem('nr11-demoMode', window.demoMode ? '1' : '0'); } catch (e) { }
+    setDemoBtnRevealed(!!window.demoMode);
+
+    const activeSlide = document.querySelector('.slide.active');
     if (window.demoMode) {
-        if (btn) btn.classList.add('is-active');
-        if (ind) {
-            ind.style.opacity = '1';
-            ind.style.transform = 'translateY(0)';
-        }
-        const activeSlide = document.querySelector('.slide.active');
         if (activeSlide && activeSlide.id === 's44') {
             s44RevealFinalizarBtn();
         }
-        if (activeSlide && activeSlide.id === 's43' && window.demoMode) {
+        if (activeSlide && activeSlide.id === 's43') {
             const rPanel = document.getElementById('q6-result-panel');
             if (rPanel) rPanel.classList.add('req-done');
         }
     } else {
-        if (btn) btn.classList.remove('is-active');
-        if (ind) {
-            ind.style.opacity = '0';
-            ind.style.transform = 'translateY(-20px)';
-        }
-        const activeSlide = document.querySelector('.slide.active');
         if (activeSlide && activeSlide.id === 's43') {
             const rPanel = document.getElementById('q6-result-panel');
             const status = document.getElementById('q6-status');
@@ -334,7 +365,7 @@ function toggleDemoMode() {
             if (rPanel && !approved) rPanel.classList.remove('req-done');
         }
     }
-    updateNextButton();
+    applyDemoModeUI();
 }
 
 window.addEventListener('keydown', (e) => {
@@ -343,6 +374,124 @@ window.addEventListener('keydown', (e) => {
         toggleDemoMode();
     }
 });
+
+/* Atalho: digitar qa1010 → mostra/esconde o botão SIMULAÇÃO */
+(function initDemoShortcutReveal() {
+    var seq = '';
+    var target = 'qa1010';
+    window.addEventListener('keydown', function (e) {
+        if (e.ctrlKey || e.altKey || e.metaKey) return;
+        var tag = (e.target && e.target.tagName) ? e.target.tagName.toLowerCase() : '';
+        if (tag === 'input' || tag === 'textarea' || (e.target && e.target.isContentEditable)) return;
+        if (!e.key || e.key.length !== 1) return;
+        seq = (seq + e.key.toLowerCase()).slice(-target.length);
+        if (seq !== target) return;
+        var btn = document.getElementById('btn-demo');
+        if (btn) {
+            btn.classList.toggle('demo-shortcut-visible');
+            var visible = btn.classList.contains('demo-shortcut-visible');
+            setDemoBtnRevealed(visible);
+            if (!visible && window.demoMode) {
+                window.demoMode = false;
+                try { sessionStorage.setItem('nr11-demoMode', '0'); } catch (err) { }
+            }
+            applyDemoModeUI();
+        }
+        seq = '';
+    });
+})();
+
+/* Atalho: digitar go + número (ex. go31) → pula para a página global; Esc cancela */
+(function initGoPageShortcut() {
+    var buf = '';
+    var timer = null;
+    var modules = [
+        { id: 'index', offset: 0, file: 'index.html' },
+        { id: 'modulo-1', offset: 3, file: 'modulo-1.html' },
+        { id: 'modulo-2', offset: 10, file: 'modulo-2.html' },
+        { id: 'modulo-3', offset: 17, file: 'modulo-3.html' },
+        { id: 'modulo-4', offset: 23, file: 'modulo-4.html' },
+        { id: 'modulo-5', offset: 29, file: 'modulo-5.html' },
+        { id: 'modulo-6', offset: 35, file: 'modulo-6.html' }
+    ];
+
+    function clearBuf() {
+        buf = '';
+        if (timer) {
+            clearTimeout(timer);
+            timer = null;
+        }
+    }
+
+    function resolveGlobalPage(pageNum) {
+        if (!pageNum || pageNum < 1 || pageNum > NR11_TOTAL_SLIDES) return null;
+        for (var i = modules.length - 1; i >= 0; i--) {
+            if (pageNum > modules[i].offset) {
+                return {
+                    id: modules[i].id,
+                    file: modules[i].file,
+                    local: pageNum - modules[i].offset - 1
+                };
+            }
+        }
+        return null;
+    }
+
+    function jumpToGlobalPage(pageNum) {
+        var target = resolveGlobalPage(pageNum);
+        if (!target) return;
+        clearBuf();
+        var currentId = (window.MODULE_NAV && window.MODULE_NAV.id) || 'index';
+        if (target.id === currentId) {
+            if (typeof goTo === 'function') goTo(target.local, true);
+            return;
+        }
+        window.location.href = target.file + '?restoreslide=' + target.local;
+    }
+
+    function tryCommitGo() {
+        var m = buf.match(/^go(\d{1,2})$/);
+        if (!m) return;
+        var pageNum = parseInt(m[1], 10);
+        if (pageNum >= 1 && pageNum <= NR11_TOTAL_SLIDES) jumpToGlobalPage(pageNum);
+        else clearBuf();
+    }
+
+    window.addEventListener('keydown', function (e) {
+        if (e.ctrlKey || e.altKey || e.metaKey) return;
+        var tag = (e.target && e.target.tagName) ? e.target.tagName.toLowerCase() : '';
+        if (tag === 'input' || tag === 'textarea' || (e.target && e.target.isContentEditable)) return;
+
+        if (e.key === 'Enter' && /^go\d{1,2}$/.test(buf)) {
+            e.preventDefault();
+            tryCommitGo();
+            return;
+        }
+        if (e.key === 'Escape') {
+            clearBuf();
+            return;
+        }
+        if (!e.key || e.key.length !== 1) return;
+
+        var ch = e.key.toLowerCase();
+        if (ch === 'g') {
+            clearBuf();
+            buf = 'g';
+            return;
+        }
+        if (buf === 'g' && ch === 'o') {
+            buf = 'go';
+            return;
+        }
+        if (buf.indexOf('go') === 0 && /^\d$/.test(ch) && buf.length < 4) {
+            buf += ch;
+            if (timer) clearTimeout(timer);
+            timer = setTimeout(function () { tryCommitGo(); }, 700);
+            return;
+        }
+        clearBuf();
+    });
+})();
 
 function isCourseVideoSrc(src) {
     src = src || '';
@@ -1198,8 +1347,6 @@ function createQuizEngine(prefix, questions, numDots) {
             if (letter) letter.textContent = icon;
         }
 
-        const twoOpts = allOpts.length === 2;
-
         if (selectedOptIdx === q.correct) {
             // removed persistence
             allOpts[selectedOptIdx].classList.add('correct');
@@ -1215,7 +1362,7 @@ function createQuizEngine(prefix, questions, numDots) {
         } else {
             allOpts[selectedOptIdx].classList.add('wrong');
             setOptIcon(allOpts[selectedOptIdx], '✕');
-            if (!twoOpts && allOpts[q.correct]) {
+            if (allOpts[q.correct]) {
                 allOpts[q.correct].classList.add('correct');
                 setOptIcon(allOpts[q.correct], '✓');
             }
@@ -1497,7 +1644,31 @@ function resetQuiz3() { quiz3.reset(); }
 /* ════════════════════════════════════════
    INIT
    ════════════════════════════════════════ */
-currentSlide = 0;
+(function initSlideFromUrl() {
+    try {
+        const urlParams = new URLSearchParams(window.location.search);
+        const restoreSlide = urlParams.get('restoreslide');
+        const isLast = urlParams.get('last');
+        if (restoreSlide !== null && restoreSlide !== '') {
+            const n = parseInt(restoreSlide, 10);
+            if (!isNaN(n) && n >= 0 && n < TOTAL) currentSlide = n;
+        } else if (isLast === '1') {
+            currentSlide = TOTAL - 1;
+        } else {
+            currentSlide = 0;
+        }
+    } catch (e) {
+        currentSlide = 0;
+    }
+    try {
+        const url = new URL(window.location.href);
+        if (url.searchParams.has('restoreslide') || url.searchParams.has('last')) {
+            url.searchParams.delete('restoreslide');
+            url.searchParams.delete('last');
+            history.replaceState(null, '', url.pathname + (url.search ? url.search : '') + url.hash);
+        }
+    } catch (e) { }
+})();
 trackHistory(currentSlide);
 
 document.querySelectorAll('.slide').forEach((s, i) => {
@@ -1526,6 +1697,15 @@ buildDots();
 if (document.getElementById('q1-question-panel')) quiz1.render();
 if (document.getElementById('q3-question-panel')) quiz3.render();
 try { syncSlideVideos(currentSlide); } catch (e) { }
+try { applyDemoModeUI(); } catch (e) { }
+try {
+    const active = document.querySelectorAll('.slide')[currentSlide];
+    if (active && active.id === 's44') {
+        startConclusionEpic();
+        s44HideFinalizarBtn();
+        if (window.demoMode) s44RevealFinalizarBtn();
+    }
+} catch (e) { }
 updateNextButton();
 try { window.updateQuizAudioHelper(); } catch (e) { }
 try { scheduleScrollBtnRefresh(); } catch (e) { }
@@ -2612,6 +2792,7 @@ function resetQuiz6() { quiz6.reset(); }
             }
         }
         positionA11yBar();
+        window.positionA11yBar = positionA11yBar;
         window.addEventListener('resize', positionA11yBar);
         window.addEventListener('load', positionA11yBar);
         const logoEl = document.getElementById('logo');
@@ -2629,12 +2810,213 @@ function resetQuiz6() { quiz6.reset(); }
         let speaking = false;
         let speakToken = 0;
 
-        // TESTE página 1: toca MP3 pré-gerado na hora (sem esperar API no clique).
-        const TTS_TEST_PAGE_ONLY = 1;
-        const TTS_LOCAL_PAGE1 = 'audios-novos/pagina-1.mp3';
-        const preloadedPage1 = new Audio(TTS_LOCAL_PAGE1);
-        preloadedPage1.preload = 'auto';
-        try { preloadedPage1.load(); } catch (e) { }
+        // Páginas com TTS liberado: toca MP3 pré-gerado (sem API no clique).
+        const TTS_TEST_PAGES = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44];
+        const TTS_AUDIO_DIR = 'audios-novos';
+
+        function resolveLocalTtsSrc(pageNum) {
+            const fallback = TTS_AUDIO_DIR + '/pagina-' + pageNum + '.mp3';
+            try {
+                if (typeof AUDIO_DATA === 'undefined' || !AUDIO_DATA.MULTI_STATE) return fallback;
+                const activeSlide = document.querySelector('.slide.active');
+                if (!activeSlide || !activeSlide.id) return fallback;
+                const cfg = AUDIO_DATA.MULTI_STATE[activeSlide.id];
+                if (!cfg) return fallback;
+
+                const isVisible = function (sel) {
+                    if (!sel) return false;
+                    const el = activeSlide.querySelector(sel) || document.querySelector(sel);
+                    if (!el) return false;
+                    const cs = window.getComputedStyle(el);
+                    if (cs.display === 'none' || cs.visibility === 'hidden') return false;
+                    return el.offsetParent !== null || el.getClientRects().length > 0;
+                };
+
+                // Credencial (s8-req): tópico aberto no acordeão OU card do carrossel
+                if (activeSlide.id === 's8-req' && cfg.questions && cfg.questions.length) {
+                    const desktopAcc = activeSlide.querySelector('.s8r-desktop-acc');
+                    const desktopOn = desktopAcc && window.getComputedStyle(desktopAcc).display !== 'none';
+                    if (desktopOn) {
+                        const items = activeSlide.querySelectorAll('.s8r-desktop-acc .acc-item');
+                        let openIdx = -1;
+                        items.forEach(function (el, i) {
+                            if (el.classList.contains('open')) openIdx = i;
+                        });
+                        if (openIdx >= 0) {
+                            return TTS_AUDIO_DIR + '/pagina-' + pageNum + '-q' + (openIdx + 1) + '.mp3';
+                        }
+                        return fallback;
+                    }
+                    const counter = activeSlide.querySelector(cfg.counterSelector) ||
+                        document.querySelector(cfg.counterSelector);
+                    let qNum = 1;
+                    if (counter) {
+                        const m = (counter.textContent || '').match(cfg.counterPattern || /(\d+)\s*\//);
+                        if (m && m[1]) qNum = parseInt(m[1], 10) || 1;
+                    }
+                    return TTS_AUDIO_DIR + '/pagina-' + pageNum + '-q' + qNum + '.mp3';
+                }
+
+                // Carrossel s14b (fazer / não fazer): sempre pelo contador
+                if (activeSlide.id === 's14b' && cfg.questions && cfg.questions.length) {
+                    const counter = activeSlide.querySelector(cfg.counterSelector) ||
+                        document.querySelector(cfg.counterSelector);
+                    let qNum = 1;
+                    if (counter) {
+                        const m = (counter.textContent || '').match(cfg.counterPattern || /(\d+)\s*\//);
+                        if (m && m[1]) qNum = parseInt(m[1], 10) || 1;
+                    }
+                    return TTS_AUDIO_DIR + '/pagina-' + pageNum + '-q' + qNum + '.mp3';
+                }
+
+                // Câmeras s17: índice pelo CAM-0N
+                if (activeSlide.id === 's17' && cfg.questions && cfg.questions.length) {
+                    const camId = activeSlide.querySelector('#s17-cam-id') || document.getElementById('s17-cam-id');
+                    let qNum = 1;
+                    if (camId) {
+                        const m = (camId.textContent || '').match(/CAM-0?(\d+)/i);
+                        if (m && m[1]) qNum = parseInt(m[1], 10) || 1;
+                    }
+                    return TTS_AUDIO_DIR + '/pagina-' + pageNum + '-q' + qNum + '.mp3';
+                }
+
+                // Simulador s18: modal Fator Cegueira OU nível do slider (100/75/50/25/10)
+                if (activeSlide.id === 's18') {
+                    const modal = document.getElementById('s18-modal');
+                    if (modal && modal.classList.contains('active')) {
+                        return TTS_AUDIO_DIR + '/pagina-' + pageNum + '-blind.mp3';
+                    }
+                    const valueEl = document.getElementById('s18-vis-value');
+                    let pct = 100;
+                    if (valueEl) {
+                        const m = (valueEl.textContent || '').match(/(\d+)/);
+                        if (m) pct = parseInt(m[1], 10) || 100;
+                    }
+                    const map = { 100: 1, 75: 2, 50: 3, 25: 4, 10: 5 };
+                    const qNum = map[pct] || 1;
+                    return TTS_AUDIO_DIR + '/pagina-' + pageNum + '-q' + qNum + '.mp3';
+                }
+
+                // Equilíbrio s23: botão ativo (desktop) ou contador (mobile)
+                if (activeSlide.id === 's23' && cfg.questions && cfg.questions.length) {
+                    const activeBtn = activeSlide.querySelector('.eq-btn.active');
+                    const mobileOn = isVisible('#s23-m-card');
+                    if (mobileOn) {
+                        const counter = document.getElementById('s23-m-counter');
+                        let qNum = 1;
+                        if (counter) {
+                            const m = (counter.textContent || '').match(/(\d+)\s*\//);
+                            if (m && m[1]) qNum = parseInt(m[1], 10) || 1;
+                        }
+                        return TTS_AUDIO_DIR + '/pagina-' + pageNum + '-q' + qNum + '.mp3';
+                    }
+                    if (activeBtn && activeBtn.dataset && activeBtn.dataset.idx != null) {
+                        const qNum = (parseInt(activeBtn.dataset.idx, 10) || 0) + 1;
+                        return TTS_AUDIO_DIR + '/pagina-' + pageNum + '-q' + qNum + '.mp3';
+                    }
+                    return TTS_AUDIO_DIR + '/pagina-' + pageNum + '-q1.mp3';
+                }
+
+                // Centro de carga s24: contador mobile ou visão geral no desktop
+                if (activeSlide.id === 's24' && cfg.questions && cfg.questions.length) {
+                    if (isVisible('#s24-m-slide')) {
+                        const counter = document.getElementById('s24-m-counter');
+                        let qNum = 1;
+                        if (counter) {
+                            const m = (counter.textContent || '').match(/(\d+)\s*\//);
+                            if (m && m[1]) qNum = parseInt(m[1], 10) || 1;
+                        }
+                        return TTS_AUDIO_DIR + '/pagina-' + pageNum + '-q' + qNum + '.mp3';
+                    }
+                    return fallback;
+                }
+
+                // Checklist s28: contador mobile ou visão geral desktop
+                if (activeSlide.id === 's28' && cfg.questions && cfg.questions.length) {
+                    if (isVisible('#s28-m-card')) {
+                        const counter = document.getElementById('s28-m-counter');
+                        let qNum = 1;
+                        if (counter) {
+                            const m = (counter.textContent || '').match(/(\d+)\s*\//);
+                            if (m && m[1]) qNum = parseInt(m[1], 10) || 1;
+                        }
+                        return TTS_AUDIO_DIR + '/pagina-' + pageNum + '-q' + qNum + '.mp3';
+                    }
+                    return fallback;
+                }
+
+                // Parada segura s29: contador mobile ou visão geral desktop
+                if (activeSlide.id === 's29' && cfg.questions && cfg.questions.length) {
+                    if (isVisible('#s29-m-slide')) {
+                        const counter = document.getElementById('s29-m-counter');
+                        let qNum = 1;
+                        if (counter) {
+                            const m = (counter.textContent || '').match(/(\d+)\s*\//);
+                            if (m && m[1]) qNum = parseInt(m[1], 10) || 1;
+                        }
+                        return TTS_AUDIO_DIR + '/pagina-' + pageNum + '-q' + qNum + '.mp3';
+                    }
+                    return fallback;
+                }
+
+                // Regras críticas s37: carrossel sempre pelo contador
+                if (activeSlide.id === 's37' && cfg.questions && cfg.questions.length) {
+                    const counter = document.getElementById('s37-counter');
+                    let qNum = 1;
+                    if (counter) {
+                        const m = (counter.textContent || '').match(/(\d+)\s*\//);
+                        if (m && m[1]) qNum = parseInt(m[1], 10) || 1;
+                    }
+                    return TTS_AUDIO_DIR + '/pagina-' + pageNum + '-q' + qNum + '.mp3';
+                }
+
+                // Incêndio s38: passos mobile ou visão geral desktop
+                if (activeSlide.id === 's38' && cfg.questions && cfg.questions.length) {
+                    const mobileOn = isVisible('#s38-m-label') || isVisible('#s38-m-journey');
+                    const postOn = isVisible('#s38-m-post');
+                    if (mobileOn && !postOn) {
+                        const stepEl = document.getElementById('s38-m-step');
+                        let qNum = 1;
+                        if (stepEl) {
+                            const m = (stepEl.textContent || '').match(/(\d+)\s*DE/i);
+                            if (m && m[1]) qNum = parseInt(m[1], 10) || 1;
+                        }
+                        return TTS_AUDIO_DIR + '/pagina-' + pageNum + '-q' + qNum + '.mp3';
+                    }
+                    return fallback;
+                }
+
+                if (cfg.panels && cfg.panels.result && isVisible(cfg.panels.result)) {
+                    return TTS_AUDIO_DIR + '/pagina-' + pageNum + '-result.mp3';
+                }
+                if (cfg.panels && cfg.panels.intro && isVisible(cfg.panels.intro)) {
+                    return TTS_AUDIO_DIR + '/pagina-' + pageNum + '-intro.mp3';
+                }
+                if (cfg.panels && cfg.panels.question && isVisible(cfg.panels.question)) {
+                    const counter = activeSlide.querySelector(cfg.counterSelector) ||
+                        document.querySelector(cfg.counterSelector);
+                    let qNum = 1;
+                    if (counter) {
+                        const pat = cfg.counterPattern || /(\d+)/;
+                        const m = (counter.textContent || '').match(pat);
+                        if (m && m[1]) qNum = parseInt(m[1], 10) || 1;
+                    }
+                    return TTS_AUDIO_DIR + '/pagina-' + pageNum + '-q' + qNum + '.mp3';
+                }
+            } catch (e) {
+                console.warn('resolveLocalTtsSrc falhou:', e);
+            }
+            return fallback;
+        }
+
+        // Pré-carrega áudios simples das páginas liberadas
+        TTS_TEST_PAGES.forEach(function (n) {
+            try {
+                const a = new Audio(TTS_AUDIO_DIR + '/pagina-' + n + '.mp3');
+                a.preload = 'auto';
+                a.load();
+            } catch (e) { }
+        });
 
         function stopSpeak() {
             speakToken++;
@@ -2718,8 +3100,8 @@ function resetQuiz6() { quiz6.reset(); }
         async function startSpeak() {
             const pageNum = (typeof nr11GlobalSlide === 'function') ? nr11GlobalSlide() : 1;
 
-            if (pageNum !== TTS_TEST_PAGE_ONLY) {
-                console.warn('TTS teste ativo só na página 1. Página atual:', pageNum);
+            if (TTS_TEST_PAGES.indexOf(pageNum) === -1) {
+                console.warn('TTS teste: página ' + pageNum + ' ainda não liberada.');
                 return;
             }
 
@@ -2731,16 +3113,15 @@ function resetQuiz6() { quiz6.reset(); }
                 launcher.setAttribute('title', 'Parar leitura');
             }
 
-            // Log do texto (com botões) para conferência — áudio toca na hora do MP3 local
+            const src = resolveLocalTtsSrc(pageNum);
             const pageLabel = 'Página ' + pageNum + ' de ' + NR11_TOTAL_SLIDES + '.';
-            const bodyText = extractActiveSlideText();
-            console.log('[TTS] narrando:', cleanSpeakText(pageLabel + ' ' + bodyText));
+            console.log('[TTS] tocando', src, '|', cleanSpeakText(pageLabel + ' ' + extractActiveSlideText()));
 
             try {
-                await playFromSrc(TTS_LOCAL_PAGE1);
+                await playFromSrc(src);
             } catch (err) {
                 console.error('TTS falhou:', err);
-                alert('Não foi possível reproduzir o áudio da página 1.');
+                alert('Não foi possível reproduzir o áudio da página ' + pageNum + '.');
                 stopSpeak();
             }
         }
