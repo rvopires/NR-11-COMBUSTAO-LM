@@ -234,7 +234,7 @@
                                 <div class="ck-status-desc" id="s28-m-status-desc">Passe por todos os itens para liberar a operação.</div>
                             </div>
                         </div>
-                        <div id="s28-m-tracker" class="req-item" style="display:none;"></div>
+                        <div id="s28-m-tracker" style="display:none;"></div>
                     </div>
 
                     <!-- DESKTOP -->
@@ -462,20 +462,35 @@
                 function s28SyncReqMode() {
                     var deskItems = document.querySelectorAll('#s28-checklist .ck-item');
                     var deskStatus = document.getElementById('s28-status');
+                    var tracker = document.getElementById('s28-m-tracker');
                     if (s28IsMobile()) {
                         deskItems.forEach(function (el) {
-                            el.classList.remove('req-item');
+                            el.classList.remove('req-item', 'req-done');
                         });
                         if (deskStatus) deskStatus.classList.remove('req-item', 'req-done');
+                        if (tracker && !tracker.classList.contains('req-item')) tracker.classList.add('req-item');
                         s28MUpdateStatus();
                     } else {
                         deskItems.forEach(function (el) {
                             if (!el.classList.contains('req-item')) el.classList.add('req-item');
+                            if (el.classList.contains('checked')) el.classList.add('req-done');
+                            else el.classList.remove('req-done');
                         });
-                        var tracker = document.getElementById('s28-m-tracker');
+                        // Tracker mobile não pode continuar como req-item no desktop:
+                        // senão isSlideCompleted nunca libera, mesmo com todos marcados.
                         if (tracker) {
-                            tracker.classList.remove('req-done');
+                            tracker.classList.remove('req-item', 'req-done');
                             tracker.style.display = 'none';
+                        }
+                        // Reaplica estado do status desktop (unlocked → req-done)
+                        var done = document.querySelectorAll('#s28-checklist .ck-item.checked').length;
+                        var total = deskItems.length;
+                        if (deskStatus) {
+                            if (done === total && total > 0) {
+                                deskStatus.className = 'ck-status unlocked req-item req-done';
+                            } else {
+                                deskStatus.className = 'ck-status locked';
+                            }
                         }
                     }
                     if (typeof updateNextButton === 'function') updateNextButton();
